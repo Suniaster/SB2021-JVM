@@ -22,8 +22,7 @@ class FileReader{
     T vector2Int(vector<BYTE> bytes);
 };
 
-
-// Definindo template
+/*** definindo templates ***/
 template <typename T>
 T FileReader::vector2Int(vector<BYTE> bytes){
   T temp = 0;
@@ -34,5 +33,4 @@ T FileReader::vector2Int(vector<BYTE> bytes){
   }
   return temp;
 }
-
 #endif

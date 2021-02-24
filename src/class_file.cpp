@@ -6,15 +6,15 @@ ClassFile::ClassFile(string file_name){
 }
 
 void ClassFile::loadClass(){
-  this->setMagic();
+  this->setAttribute<uint32_t>(4, this->magic_number);
+  this->setAttribute<uint16_t>(2, this->minor_version);
+  this->setAttribute<uint16_t>(2, this->major_version);
+  this->setAttribute<uint16_t>(2, this->constant_pool_count);
 }
 
 void ClassFile::printClass(){
   cout << hex << this->magic_number << endl; 
+  cout << (int)this->minor_version << endl; 
+  cout << (int)this->major_version << endl; 
+  cout << (int)this->constant_pool_count << endl;
 }
-
-void ClassFile::setMagic(){
-  vector<BYTE> magic_bytes = this->file_reader->getBytes(4);
-  this->magic_number = this->file_reader->vector2Int<uint32_t>(magic_bytes);
-}
-
