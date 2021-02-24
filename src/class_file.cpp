@@ -15,5 +15,6 @@ void ClassFile::printClass(){
 
 void ClassFile::setMagic(){
   vector<BYTE> magic_bytes = this->file_reader->getBytes(4);
-  this->magic_number = this->file_reader->vectorTo4Bytes(magic_bytes);
+  this->magic_number = this->file_reader->vector2Int<uint32_t>(magic_bytes);
 }
+

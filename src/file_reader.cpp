@@ -31,23 +31,3 @@ vector<BYTE> FileReader::getBytes(int size){
   this->position += size;
   return temp;
 }
-
-uint16_t FileReader::vectorTo2Bytes(vector<BYTE> bytes){
-  uint16_t temp = 0;
-  for(long unsigned int i=0; i< bytes.size();i++){
-    BYTE masked_bytes = (bytes[i] & 0xff);
-    int shift = ((bytes.size()-i-1)*8);
-    temp |= masked_bytes << shift;
-  }
-  return temp;
-}
-
-uint32_t FileReader::vectorTo4Bytes(vector<BYTE> bytes){
-  uint32_t temp = 0;
-  for(long unsigned int i=0; i< bytes.size();i++){
-    BYTE masked_bytes = (bytes[i] & 0xff);
-    int shift = ((bytes.size()-i-1)*8);
-    temp |= masked_bytes << shift;
-  }
-  return temp;
-}
