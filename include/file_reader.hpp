@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <iostream>
 
-typedef char BYTE;
+typedef unsigned char BYTE;
 using namespace std;
 
 class FileReader{
