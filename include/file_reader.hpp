@@ -18,8 +18,19 @@ class FileReader{
     void readFile(string);
     vector<BYTE> getBytes(int);
 
-    uint16_t vectorTo2Bytes(vector<BYTE>);
-    uint32_t vectorTo4Bytes(vector<BYTE>);
+    template <typename T>
+    T vector2Int(vector<BYTE> bytes);
 };
 
+/*** definindo templates ***/
+template <typename T>
+T FileReader::vector2Int(vector<BYTE> bytes){
+  T temp = 0;
+  for(long unsigned int i=0; i< bytes.size();i++){
+    BYTE masked_bytes = (bytes[i] & 0xff);
+    int shift = ((bytes.size()-i-1)*8);
+    temp |= masked_bytes << shift;
+  }
+  return temp;
+}
 #endif
