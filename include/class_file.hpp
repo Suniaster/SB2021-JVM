@@ -1,9 +1,11 @@
 #ifndef __CLASS_FILE_H__
 #define __CLASS_FILE_H__
+class ClassFile;
 
 #include <vector>
 #include <string>
 #include "./file_reader.hpp"
+#include "./cp_info.hpp"
 #include <cstdint>
 
 using namespace std;
@@ -15,8 +17,8 @@ class ClassFile{
     uint16_t major_version;
     uint16_t constant_pool_count;
     
-    template<typename T>
-    void setAttribute(int n_bytes, T&attribute);
+    vector<CpInfo*> constant_pool;
+    void loadConstantPool();
 
   public:
     FileReader *file_reader;
@@ -24,6 +26,9 @@ class ClassFile{
 
     void loadClass();
     void printClass();
+
+    template<typename T>
+    void setAttribute(int n_bytes, T&attribute);
 };
 
 /*** definindo templates ***/
