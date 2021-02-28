@@ -15,10 +15,7 @@ void Attribute::SourceFile::setInfo(){
 }
 
 void Attribute::SourceFile::printInfo(){
-  cout << dec;
-  cout << "\tAttribute name index: \t#" << this->attribute_name_index;
-  cout << " <" << this->getAttributeName() << ">" << endl;
-  cout << "\tAttribute length: \t" << this->attribute_length << endl;
+  AttributeInfo::printInfo();
   cout << "\tSource file name index: #" << this->sourcefile_index;
   cout << " <" << this->getFileName() << ">" << endl;
 }

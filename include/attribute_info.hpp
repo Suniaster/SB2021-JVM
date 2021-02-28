@@ -21,8 +21,8 @@ class AttributeInfo{
 
     string getAttributeName();
 
+    virtual void printInfo();
     virtual void setInfo() = 0;
-    virtual void printInfo() = 0;
 
     static AttributeInfo* getInstance(
       ClassFile* class_file, 
