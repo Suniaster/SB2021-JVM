@@ -9,6 +9,14 @@ class AttributeInfo;
 using namespace std;
 
 
+namespace Attribute{
+  typedef struct{
+    ClassFile *class_file;
+    uint16_t attribute_name_index; 
+    uint32_t attribute_length;
+  }AttrInitialValue;
+}
+
 class AttributeInfo{
   protected: 
     ClassFile *class_file;
@@ -17,7 +25,7 @@ class AttributeInfo{
     uint16_t sourcefile_index;
 
   public:
-    AttributeInfo(ClassFile *class_file, uint16_t attribute_name_index, uint32_t attribute_length);
+    AttributeInfo(Attribute::AttrInitialValue initial);
 
     string getAttributeName();
 

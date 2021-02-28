@@ -7,11 +7,7 @@ namespace Attribute{
   class SourceFile : public AttributeInfo{
       uint16_t sourcefile_index;
     public:    
-      SourceFile(
-        ClassFile *class_file, 
-        uint16_t attribute_name_index, 
-        uint32_t attribute_length
-      );
+      SourceFile(AttrInitialValue initial_value);
 
       void setInfo();
       void printInfo();

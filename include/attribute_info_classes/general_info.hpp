@@ -7,11 +7,7 @@ namespace Attribute{
   class GeneralInfo : public AttributeInfo{
     public:    
       vector<uint8_t> info;
-      GeneralInfo(
-        ClassFile *class_file, 
-        uint16_t attribute_name_index, 
-        uint32_t attribute_length
-      );
+      GeneralInfo(AttrInitialValue initial_value);
 
       void setInfo();
       void printInfo();

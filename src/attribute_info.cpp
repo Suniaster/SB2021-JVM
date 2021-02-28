@@ -1,14 +1,13 @@
 #include "../include/attribute_info.hpp"
+
 #include "../include/attribute_info_classes/source_file.hpp"
 #include "../include/attribute_info_classes/general_info.hpp"
+#include "../include/attribute_info_classes/constant_value.hpp"
 
-AttributeInfo::AttributeInfo(
-    ClassFile *class_file, 
-    uint16_t attribute_name_index, 
-    uint32_t attribute_length){
-  this->class_file = class_file;
-  this->attribute_name_index = attribute_name_index;
-  this->attribute_length = attribute_length;
+AttributeInfo::AttributeInfo(Attribute::AttrInitialValue initial_value){
+  this->class_file = initial_value.class_file;
+  this->attribute_name_index = initial_value.attribute_name_index;
+  this->attribute_length = initial_value.attribute_length;
 }
 
 string AttributeInfo::getAttributeName(){
@@ -31,13 +30,18 @@ AttributeInfo* AttributeInfo::getInstance(
   ){
   // Todo: pegar nome correto da cosntantPool
   string attr_name="SourceFile";
+  
+  Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
   AttributeInfo* attr_read;
 
   if(attr_name == "SourceFile"){
-    attr_read = new Attribute::SourceFile(class_file, attr_name_index, attr_length);
+    attr_read = new Attribute::SourceFile(params);
+  }
+  if(attr_name == "ConstantValue"){
+    attr_read = new Attribute::ConstantValue(params);
   }
   else{
-    attr_read = new Attribute::GeneralInfo(class_file, attr_name_index, attr_length);
+    attr_read = new Attribute::GeneralInfo(params);
   }
   return attr_read;
 }

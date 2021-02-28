@@ -1,12 +1,7 @@
 #include "../../include/attribute_info_classes/source_file.hpp"
 
-Attribute::SourceFile::SourceFile(ClassFile *class_file, 
-  uint16_t attribute_name_index, 
-  uint32_t attribute_length)
-    :AttributeInfo(
-      class_file, 
-      attribute_name_index, 
-      attribute_length)
+Attribute::SourceFile::SourceFile(AttrInitialValue initial_value)
+    :AttributeInfo(initial_value)
   {
 }
 
