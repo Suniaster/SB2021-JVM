@@ -29,7 +29,7 @@ AttributeInfo* AttributeInfo::getInstance(
   uint32_t attr_length
   ){
   // Todo: pegar nome correto da cosntantPool
-  string attr_name="SourceFile";
+  string attr_name="ConstantValue";
   
   Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
   AttributeInfo* attr_read;
