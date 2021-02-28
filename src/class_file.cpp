@@ -26,6 +26,8 @@ void ClassFile::printClass(){
   cout << (int)this->minor_version << endl; 
   cout << (int)this->major_version << endl; 
   cout << (int)this->constant_pool_count << endl;
+
+  this->printAttributes();
 }
 
 
@@ -52,8 +54,6 @@ void ClassFile::loadConstantPool(){
   }
 }
 
-
-
 void ClassFile::loadAttributes(){
   uint16_t attr_name_i;
   uint32_t attr_len;
@@ -68,6 +68,15 @@ void ClassFile::loadAttributes(){
     this->setAttribute(4, attr_len);
     attr = AttributeInfo::getInstance(this, attr_name_i, attr_len);
     attr->setInfo();
-    attr->printInfo();
+    this->attributes.push_back(attr);
+  }
+}
+
+void ClassFile::printAttributes(){
+  AttributeInfo* attribute;
+  cout << endl << "----- Attributes Info  -----" << endl;
+  for(unsigned int i=0;i<this->attributes.size();i+=1){
+    attribute = this->attributes[i];
+    attribute->printInfo();
   }
 }
