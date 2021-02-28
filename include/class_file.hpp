@@ -16,9 +16,11 @@ class ClassFile{
     uint16_t minor_version;
     uint16_t major_version;
     uint16_t constant_pool_count;
+    uint16_t attributes_count;
     
     vector<CpInfo*> constant_pool;
     void loadConstantPool();
+    void loadAttributes();
 
   public:
     FileReader *file_reader;
