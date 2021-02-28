@@ -1,5 +1,7 @@
 #include "../include/attribute_info.hpp"
 #include "../include/attribute_info_classes/source_file.hpp"
+
+
 AttributeInfo::AttributeInfo(
     ClassFile *class_file, 
     uint16_t attribute_name_index, 
@@ -9,6 +11,10 @@ AttributeInfo::AttributeInfo(
   this->attribute_length = attribute_length;
 }
 
+string AttributeInfo::getAttributeName(){
+  //** TODO: Usar constant pool pra achar nome certo
+  return "SourceFile";
+}
 
 AttributeInfo* AttributeInfo::getInstance(
   ClassFile* class_file,

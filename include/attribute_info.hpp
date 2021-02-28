@@ -19,6 +19,8 @@ class AttributeInfo{
   public:
     AttributeInfo(ClassFile *class_file, uint16_t attribute_name_index, uint32_t attribute_length);
 
+    string getAttributeName();
+
     virtual void setInfo() = 0;
     virtual void printInfo() = 0;
 

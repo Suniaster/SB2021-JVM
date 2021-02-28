@@ -15,6 +15,8 @@ namespace Attribute{
 
       void setInfo();
       void printInfo();
+
+      string getFileName();
   };
 }
 #endif

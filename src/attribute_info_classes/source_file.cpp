@@ -15,7 +15,15 @@ void Attribute::SourceFile::setInfo(){
 }
 
 void Attribute::SourceFile::printInfo(){
-  cout << "Attr name Index: " <<this->attribute_name_index << endl;
-  cout << "Attr length: " << this->attribute_length << endl;
-  cout << "SourceFile: " << this->sourcefile_index << endl;
+  cout << dec;
+  cout << "\tAttribute name index: \t#" << this->attribute_name_index;
+  cout << " <" << this->getAttributeName() << ">" << endl;
+  cout << "\tAttribute length: \t" << this->attribute_length << endl;
+  cout << "\tSource file name index: #" << this->sourcefile_index;
+  cout << " <" << this->getFileName() << ">" << endl;
+}
+
+string Attribute::SourceFile::getFileName(){
+  // TODO: puxar o nome correto da constant pool
+  return "test.java";
 }
