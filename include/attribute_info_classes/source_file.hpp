@@ -1,5 +1,5 @@
-#ifndef __METHOD_REF_INFO_H__
-#define __METHOD_REF_INFO_H__
+#ifndef __ATTR_SOURCE_FILE_INFO_H__
+#define __ATTR_SOURCE_FILE_INFO_H__
 
 #include "../attribute_info.hpp"
 
