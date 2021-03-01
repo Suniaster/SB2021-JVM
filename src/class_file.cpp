@@ -8,10 +8,10 @@ ClassFile::ClassFile(string file_name){
 }
 
 void ClassFile::loadClass(){
-  this->setAttribute<uint32_t>(4, this->magic_number);
-  this->setAttribute<uint16_t>(2, this->minor_version);
-  this->setAttribute<uint16_t>(2, this->major_version);
-  this->setAttribute<uint16_t>(2, this->constant_pool_count);
+  this->file_reader->readBytes(4, this->magic_number);
+  this->file_reader->readBytes(2, this->minor_version);
+  this->file_reader->readBytes(2, this->major_version);
+  this->file_reader->readBytes(2, this->constant_pool_count);
 
   this->loadConstantPool();
 }
@@ -33,7 +33,7 @@ void ClassFile::loadConstantPool(){
   for(int i=0; i< 2;i++){
     // Le tag
     tag = 0;
-    this->setAttribute<uint8_t>(1, tag);
+    this->file_reader->readBytes(1, tag);
 
     // instanciar classe certa
     cp_info = CpInfo::getInstance(tag, this);

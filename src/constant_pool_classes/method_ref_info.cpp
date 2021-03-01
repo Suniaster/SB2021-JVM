@@ -7,8 +7,8 @@ CP::MethodRefInfo::MethodRefInfo(ClassFile* class_file) : CpInfo(class_file){
 }
 
 void CP::MethodRefInfo::setInfo(){
-  this->class_file->setAttribute<uint16_t>(2, this->class_index);
-  this->class_file->setAttribute<uint16_t>(2, this->name_and_type_index);
+  this->class_file->file_reader->readBytes(2, this->class_index);
+  this->class_file->file_reader->readBytes(2, this->name_and_type_index);
 }
 
 void CP::MethodRefInfo::printInfo(){

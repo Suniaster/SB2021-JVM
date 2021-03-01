@@ -27,14 +27,7 @@ class ClassFile{
     void loadClass();
     void printClass();
 
-    template<typename T>
-    void setAttribute(int n_bytes, T&attribute);
+
 };
 
-/*** definindo templates ***/
-template<typename T>
-void ClassFile::setAttribute(int n_bytes, T& attribute){
-  vector<BYTE> bytes_read = this->file_reader->getBytes(n_bytes);
-  attribute = this->file_reader->vector2Int<T>(bytes_read);
-}
 #endif
