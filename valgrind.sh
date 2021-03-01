@@ -1,1 +1,1 @@
-make -j 4 && valgrind --leak-check=full -s ./bin/jvm ./tests/Teste.class
+make -j 4 && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose  --log-file=valgrind-out.txt -s ./bin/jvm ./tests/Teste.class
