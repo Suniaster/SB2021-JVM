@@ -23,16 +23,16 @@ void AttributeInfo::printInfo(){
 }
 
 
-AttributeInfo* AttributeInfo::getInstance(
-  ClassFile* class_file,
-  uint16_t attr_name_index,
-  uint32_t attr_length
-  ){
+AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
+  uint16_t attr_name_index;
+  uint32_t attr_length;
+  AttributeInfo* attr_read;
+
+  class_file->file_reader->readBytes(2, attr_name_index);
+  class_file->file_reader->readBytes(4, attr_length);
+  Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
   // Todo: pegar nome correto da cosntantPool
   string attr_name="ConstantValue";
-  
-  Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
-  AttributeInfo* attr_read;
 
   if(attr_name == "SourceFile"){
     attr_read = new Attribute::SourceFile(params);

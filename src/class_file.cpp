@@ -55,18 +55,12 @@ void ClassFile::loadConstantPool(){
 }
 
 void ClassFile::loadAttributes(){
-  uint16_t attr_name_i;
-  uint32_t attr_len;
+
   AttributeInfo* attr;
 
   cout << "Attr count " << this->attributes_count << endl;
   for(int i=0;i<1;i+=1){
-    attr_name_i = 0;
-    attr_len    = 0;
-
-    this->setAttribute(2, attr_name_i);
-    this->setAttribute(4, attr_len);
-    attr = AttributeInfo::getInstance(this, attr_name_i, attr_len);
+    attr = AttributeInfo::getInstance(this);
     attr->setInfo();
     this->attributes.push_back(attr);
   }
