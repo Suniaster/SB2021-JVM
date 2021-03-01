@@ -77,6 +77,7 @@ void ClassFile::printAttributes(){
   cout << endl << "----- Attributes Info  -----" << endl;
   for(unsigned int i=0;i<this->attributes.size();i+=1){
     attribute = this->attributes[i];
+    cout << "[" << i << "]";
     attribute->printInfo();
   }
 }
