@@ -9,7 +9,7 @@ GetStatic::GetStatic(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 
 void GetStatic::print(){
-  cout << "getstatic #" ;
+  cout << "\t\tgetstatic #" ;
   cout << hex << (int)this->indexbyte << endl;
 }
 

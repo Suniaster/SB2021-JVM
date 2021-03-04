@@ -53,6 +53,7 @@ void Attribute::CodeAttribute::printInfo(){
   Instructions::BaseInstruction* newInstruction;
 
   AttributeInfo::printInfo();
+  cout << "\tByteCode: " << endl; 
   for(int i=0; i < this->number_of_instructions;i+=1){
     newInstruction = this->code[i];
     newInstruction->print();
