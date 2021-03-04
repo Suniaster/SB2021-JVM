@@ -26,6 +26,7 @@ namespace Attribute{
     public:    
       CodeAttribute(AttrInitialValue initial_value);
 
+      uint16_t number_of_instructions;
       void setInfo();
       void printInfo();
   };

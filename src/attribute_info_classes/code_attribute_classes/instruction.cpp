@@ -2,21 +2,21 @@
 
 using namespace Instructions;
 
-BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t bytecode){
+BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode){
   this->code_attr = code_attr;
-  this->bytecode = bytecode;
+  this->opcode = opcode;
 }
 
 void BaseInstruction::print(){
-  cout << hex;
-  cout << "Instrucao Base (0x" << this->bytecode << ")";
+  cout << "Instrucao Base (0x" << hex << (int)this->opcode << ")" << endl;
 }
 
-void BaseInstruction::readOperands(){
+uint8_t BaseInstruction::readOperands(){
   // Instrucao base assume que nao ha operando a serem lidos
+  return 0;
 }
 
-BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t bytecode){
-  //TODO: Fazer swithcase dependendo do bytecode
-  return new BaseInstruction(code_attr, bytecode);
+BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
+  //TODO: Fazer swithcase dependendo do opcode
+  return new BaseInstruction(code_attr, opcode);
 }

@@ -10,14 +10,17 @@ namespace Instructions{
 namespace Instructions{
   class BaseInstruction{
     private:
-      uint8_t bytecode;
+      uint8_t opcode;
       Attribute::CodeAttribute* code_attr;
     public:    
-      BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t bytecode);
+      BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
 
       virtual void print();
-      virtual void readOperands();
-      static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t bytecode);
+
+      // retorna quantidade de bytes lidos nessa operacao
+      virtual uint8_t readOperands();
+
+      static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode);
   };
 }
 
