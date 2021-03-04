@@ -28,7 +28,7 @@ void Attribute::CodeAttribute::setInfo(){
     i+=1;
     newInstruction = Instructions::BaseInstruction::getInstance(this, bytecode_read);
 
-    i += newInstruction->readOperands();
+    i += (uint16_t) newInstruction->readOperands();
     this->code.push_back(newInstruction);
     this->number_of_instructions+=1;
   }

@@ -1,5 +1,7 @@
 #include "../../../include/attribute_info_classes/code_attribute_classes/instruction.hpp"
 
+#include "../../../include/attribute_info_classes/instruction_classes/getstatic.hpp"
+
 using namespace Instructions;
 
 BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode){
@@ -18,5 +20,11 @@ uint8_t BaseInstruction::readOperands(){
 
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
   //TODO: Fazer swithcase dependendo do opcode
-  return new BaseInstruction(code_attr, opcode);
+
+  switch (opcode){
+  case 0xb2:
+    return new GetStatic(code_attr, opcode);  
+  default:
+    return new BaseInstruction(code_attr, opcode);
+  }
 }

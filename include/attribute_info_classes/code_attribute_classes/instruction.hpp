@@ -9,7 +9,7 @@ namespace Instructions{
 
 namespace Instructions{
   class BaseInstruction{
-    private:
+    protected:
       uint8_t opcode;
       Attribute::CodeAttribute* code_attr;
     public:    
