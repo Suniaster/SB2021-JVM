@@ -10,7 +10,7 @@ BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t op
 }
 
 void BaseInstruction::print(){
-  cout << "Instrucao Base (0x" << hex << (int)this->opcode << ")" << endl;
+  cout << "\t\tInstrucao Base (0x" << hex << (int)this->opcode << ")" << endl;
 }
 
 uint8_t BaseInstruction::readOperands(){
