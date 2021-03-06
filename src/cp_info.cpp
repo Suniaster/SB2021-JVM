@@ -9,6 +9,7 @@
 #include "../include/constant_pool_classes/integer_info.hpp"
 #include "../include/constant_pool_classes/long_info.hpp"
 #include "../include/constant_pool_classes/double_info.hpp"
+#include "../include/constant_pool_classes/method_type_info.hpp"
 
 CpInfo::CpInfo(ClassFile* class_file){
   this->class_file = class_file;
@@ -47,7 +48,9 @@ CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   case 0xc:
     correct_instance = new CP::NameAndTypeInfo(class_file);
     break;
-
+  case 0x10:
+    correct_instance = new CP::MethodTypeInfo(class_file);
+    break;
   default:
     correct_instance = new CP::MethodRefInfo(class_file);
     break;
