@@ -6,10 +6,11 @@
 
 namespace CP{
   class LongInfo : public CpInfo{
-      uint32_t bytes;
+      uint32_t high_bytes;
+      uint32_t low_bytes;
 
     public:
-
+      long returnLong();
       LongInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

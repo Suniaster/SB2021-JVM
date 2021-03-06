@@ -7,10 +7,17 @@ CP::LongInfo::LongInfo(ClassFile* class_file) : CpInfo(class_file){
 }
 
 void CP::LongInfo::setInfo(){
-  this->class_file->setAttribute<uint32_t>(4, this->bytes);
+  this->class_file->setAttribute<uint32_t>(4, this->high_bytes);
+  this->class_file->setAttribute<uint32_t>(4, this->low_bytes);
 }
 
 void CP::LongInfo::printInfo(){
-  cout << "Long: B " << this->bytes << endl;
+  cout << "Long: High Bytes " << this->high_bytes << endl;
+  cout << "Long:  Low Bytes" << this->low_bytes << endl;
+}
 
+long CP::LongInfo::returnLong(){
+  long to_return;
+  to_return = ((long) this->high_bytes << 32) + (long) this->low_bytes;
+  return to_return;
 }
