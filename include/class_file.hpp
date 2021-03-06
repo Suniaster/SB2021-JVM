@@ -4,10 +4,12 @@ class ClassFile;
 
 #include <vector>
 #include <string>
-#include "./file_reader.hpp"
-#include "./cp_info.hpp"
-#include "./attribute_info.hpp"
 #include <cstdint>
+
+#include "./cp_info.hpp"
+#include "./file_reader.hpp"
+#include "./field_info.hpp"
+#include "./attribute_info.hpp"
 
 using namespace std;
 
@@ -17,17 +19,23 @@ class ClassFile{
     uint16_t minor_version;
     uint16_t major_version;
     uint16_t constant_pool_count;
+    uint16_t fields_count;
     uint16_t attributes_count;
-    
     vector<AttributeInfo*> attributes;
 
     void loadConstantPool();
     void loadAttributes();
     void printConstantPool();
 
-    void printAttributes();
-  public:
     vector<CpInfo*> constant_pool;
+    vector<FieldInfo*> fields;
+    vector<AttributeInfo*> attributes;
+
+    void loadConstantPool();
+    void loadFields();
+
+    void printFields();
+  public:
     FileReader *file_reader;
     ClassFile(string file_name);
 
