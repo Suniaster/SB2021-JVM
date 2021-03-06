@@ -1,5 +1,6 @@
 #ifndef __FIELD_INFO_H__
 #define __FIELD_INFO_H__
+class FieldInfo;
 
 #include <vector>
 #include <string>
@@ -19,6 +20,8 @@ private:
 
 public:
     FieldInfo(ClassFile *class_file);
+
+    void printInfo();
 };
 
 

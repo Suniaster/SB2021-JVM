@@ -22,6 +22,23 @@ void AttributeInfo::printInfo(){
   cout << "\tAttribute length: \t" << this->attribute_length << endl;
 }
 
+void AttributeInfo::loadAttributes(vector<AttributeInfo*> attributes, uint16_t size, ClassFile* class_file){
+  AttributeInfo* attr;
+
+  for(int i=0; i<size; i++){
+    attr = AttributeInfo::getInstance(class_file);
+    attr->setInfo();
+    attributes.push_back(attr);
+  }
+}
+
+void AttributeInfo::printAttributes(vector<AttributeInfo*> attributes) {
+  cout << endl << "----- Attributes Info  -----" << endl;
+  for (unsigned int i = 0; i < attributes.size(); i += 1) {
+    cout << "[" << i << "]";
+    attributes[i]->printInfo();
+  }
+}
 
 AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   uint16_t attr_name_index;
@@ -32,7 +49,7 @@ AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   class_file->file_reader->readBytes(4, attr_length);
   Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
   // Todo: pegar nome correto da cosntantPool
-  string attr_name="ConstantValue";
+  string attr_name="Suamae";
 
   if(attr_name == "SourceFile"){
     attr_read = new Attribute::SourceFile(params);

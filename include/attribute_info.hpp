@@ -34,6 +34,8 @@ class AttributeInfo{
     static AttributeInfo* getInstance(
       ClassFile* class_file
     );
+    static void loadAttributes(vector<AttributeInfo*> attributes, uint16_t size, ClassFile* class_file);
+    static void printAttributes(vector<AttributeInfo*> attributes);
 };
 
 

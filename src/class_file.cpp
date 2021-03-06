@@ -16,9 +16,11 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
 
   // this->loadConstantPool();
-  this->file_reader->position = 0x17d;
+  this->file_reader->position = 0x226;
+  this->setAttribute(2, this->fields_count);
+  this->loadFields();
   this->setAttribute<uint16_t>(2, this->attributes_count);
-  this->loadAttributes();
+  AttributeInfo::loadAttributes(this->attributes, 1, this);
 }
 
 void ClassFile::printClass(){
@@ -26,8 +28,9 @@ void ClassFile::printClass(){
   cout << (int)this->minor_version << endl; 
   cout << (int)this->major_version << endl; 
   cout << (int)this->constant_pool_count << endl;
+  cout << (int)this->fields_count << endl;
 
-  this->printAttributes();
+  AttributeInfo::printAttributes(this->attributes);
 }
 
 
@@ -54,24 +57,20 @@ void ClassFile::loadConstantPool(){
   }
 }
 
-void ClassFile::loadAttributes(){
+void ClassFile::loadFields() {
+  FieldInfo* field;
 
-  AttributeInfo* attr;
-
-  cout << "Attr count " << this->attributes_count << endl;
-  for(int i=0;i<1;i+=1){
-    attr = AttributeInfo::getInstance(this);
-    attr->setInfo();
-    this->attributes.push_back(attr);
+  for (int i=0; i<this->fields_count; i++) {
+    field = new FieldInfo(this);
+    this->fields.push_back(field);
   }
 }
 
-void ClassFile::printAttributes(){
-  AttributeInfo* attribute;
-  cout << endl << "----- Attributes Info  -----" << endl;
-  for(unsigned int i=0;i<this->attributes.size();i+=1){
-    attribute = this->attributes[i];
+void ClassFile::printFields() {
+  cout << endl << "----- Fields Info  -----" << endl;
+
+  for(unsigned int i=0; i<this->fields.size(); i++){
     cout << "[" << i << "]";
-    attribute->printInfo();
+    this->fields[i]->printInfo();
   }
 }
