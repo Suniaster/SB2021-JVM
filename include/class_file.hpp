@@ -6,6 +6,7 @@ class ClassFile;
 #include <string>
 #include "./file_reader.hpp"
 #include "./cp_info.hpp"
+#include "./attribute_info.hpp"
 #include <cstdint>
 
 using namespace std;
@@ -16,10 +17,15 @@ class ClassFile{
     uint16_t minor_version;
     uint16_t major_version;
     uint16_t constant_pool_count;
+    uint16_t attributes_count;
     
     vector<CpInfo*> constant_pool;
-    void loadConstantPool();
+    vector<AttributeInfo*> attributes;
 
+    void loadConstantPool();
+    void loadAttributes();
+
+    void printAttributes();
   public:
     FileReader *file_reader;
     ClassFile(string file_name);

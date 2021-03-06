@@ -11,15 +11,18 @@ using namespace std;
 
 class FileReader{
   private:
-    unsigned int position = 0;
     vector<BYTE> file;
   public:
+    unsigned int position = 0;
 
     void readFile(string);
     vector<BYTE> getBytes(int);
 
     template <typename T>
     T vector2Int(vector<BYTE> bytes);
+
+    template<typename T>
+    void readBytes(int n_bytes, T&attribute);
 };
 
 /*** definindo templates ***/
@@ -32,5 +35,11 @@ T FileReader::vector2Int(vector<BYTE> bytes){
     temp |= masked_bytes << shift;
   }
   return temp;
+}
+
+template<typename T>
+void FileReader::readBytes(int n_bytes, T& attribute){
+  vector<BYTE> bytes_read = this->getBytes(n_bytes);
+  attribute = this->vector2Int<T>(bytes_read);
 }
 #endif
