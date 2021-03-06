@@ -14,3 +14,7 @@ void CP::IntegerInfo::printInfo(){
   cout << "Integer: NI " << this->bytes << endl;
 
 }
+
+int CP::IntegerInfo::returnInteger(){
+    return (int) this->bytes;
+}
