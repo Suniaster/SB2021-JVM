@@ -19,11 +19,13 @@ class ClassFile{
     uint16_t constant_pool_count;
     uint16_t attributes_count;
     
+
     vector<CpInfo*> constant_pool;
     vector<AttributeInfo*> attributes;
 
     void loadConstantPool();
     void loadAttributes();
+    void printConstantPool();
 
     void printAttributes();
   public:
