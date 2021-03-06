@@ -51,7 +51,7 @@ CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
     correct_instance = new CP::NameAndTypeInfo(class_file);
     break;
   case 0xf:
-    correct_instance = new CP::MethodHandle(class_file);
+    correct_instance = new CP::MethodHandleInfo(class_file);
     break;
   case 0x10:
     correct_instance = new CP::MethodTypeInfo(class_file);

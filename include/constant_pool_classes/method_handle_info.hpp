@@ -7,7 +7,7 @@
 namespace CP{
   class MethodHandleInfo : public CpInfo{
       uint8_t reference_kind;
-      uint8_t reference_index;
+      uint16_t reference_index;
     public:
 
       MethodHandleInfo(ClassFile *class_file);
