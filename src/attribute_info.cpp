@@ -24,7 +24,7 @@ void AttributeInfo::printInfo(){
   cout << "\tAttribute length: \t" << this->attribute_length << endl;
 }
 
-void AttributeInfo::loadAttributes(vector<AttributeInfo*> attributes, uint16_t size, ClassFile* class_file){
+void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t size, ClassFile* class_file){
   AttributeInfo* attr;
 
   for(int i=0; i<size; i++){
