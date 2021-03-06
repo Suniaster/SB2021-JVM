@@ -15,6 +15,5 @@ void Attribute::SourceFile::printInfo(){
 }
 
 string Attribute::SourceFile::getFileName(){
-  // TODO: puxar o nome correto da constant pool
-  return "test.java";
+  return this->class_file->getConstantPoolUtf8String(this->attribute_name_index);
 }

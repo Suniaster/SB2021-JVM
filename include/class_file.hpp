@@ -19,8 +19,6 @@ class ClassFile{
     uint16_t constant_pool_count;
     uint16_t attributes_count;
     
-
-    vector<CpInfo*> constant_pool;
     vector<AttributeInfo*> attributes;
 
     void loadConstantPool();
@@ -29,12 +27,14 @@ class ClassFile{
 
     void printAttributes();
   public:
+    vector<CpInfo*> constant_pool;
     FileReader *file_reader;
     ClassFile(string file_name);
 
     void loadClass();
     void printClass();
 
+    string getConstantPoolUtf8String(int index);
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);
 };

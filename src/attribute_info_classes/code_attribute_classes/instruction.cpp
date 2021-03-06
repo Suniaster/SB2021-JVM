@@ -20,7 +20,6 @@ uint8_t BaseInstruction::readOperands(){
 }
 
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
-  //TODO: Fazer swithcase dependendo do opcode
 
   switch (opcode){
   case 0x12:

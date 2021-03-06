@@ -42,10 +42,9 @@ void Attribute::CodeAttribute::setInfo(){
 
   file_reader->readBytes(2, this->attributes_count);
   for(i=0;i<this->attributes_count;i+=1){
-    // Comentado ate a funcao de pegar instancia estar correta
-    // newAttribute = AttributeInfo::getInstance(this->class_file);
-    // newAttribute->setInfo();
-    // this->attributes.push_back(newAttribute);
+    newAttribute = AttributeInfo::getInstance(this->class_file);
+    newAttribute->setInfo();
+    this->attributes.push_back(newAttribute);
   }
 }
 

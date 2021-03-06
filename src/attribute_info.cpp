@@ -3,6 +3,9 @@
 #include "../include/attribute_info_classes/source_file.hpp"
 #include "../include/attribute_info_classes/general_info.hpp"
 #include "../include/attribute_info_classes/constant_value.hpp"
+#include "../include/attribute_info_classes/code_attribute.hpp"
+
+#include "../include/constant_pool_classes/utf8_info.hpp"
 
 AttributeInfo::AttributeInfo(Attribute::AttrInitialValue initial_value){
   this->class_file = initial_value.class_file;
@@ -11,8 +14,7 @@ AttributeInfo::AttributeInfo(Attribute::AttrInitialValue initial_value){
 }
 
 string AttributeInfo::getAttributeName(){
-  //** TODO: Usar constant pool pra achar nome certo
-  return "SourceFile";
+  return this->class_file->getConstantPoolUtf8String(this->attribute_name_index);
 }
 
 void AttributeInfo::printInfo(){
@@ -31,14 +33,17 @@ AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   class_file->file_reader->readBytes(2, attr_name_index);
   class_file->file_reader->readBytes(4, attr_length);
   Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
-  // Todo: pegar nome correto da cosntantPool
-  string attr_name="ConstantValue";
 
+  string attr_name= class_file->getConstantPoolUtf8String(attr_name_index);
+  cout << attr_name << endl;
   if(attr_name == "SourceFile"){
     attr_read = new Attribute::SourceFile(params);
   }
   if(attr_name == "ConstantValue"){
     attr_read = new Attribute::ConstantValue(params);
+  }
+  if(attr_name == "Code"){
+    attr_read = new Attribute::CodeAttribute(params);
   }
   else{
     attr_read = new Attribute::GeneralInfo(params);

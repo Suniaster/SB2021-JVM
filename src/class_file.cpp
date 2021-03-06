@@ -4,6 +4,8 @@
 
 #include "../include/attribute_info.hpp"
 
+#include "../include/constant_pool_classes/utf8_info.hpp"
+
 ClassFile::ClassFile(string file_name){
   file_reader = new FileReader();
   file_reader->readFile(file_name);
@@ -15,7 +17,8 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->major_version);
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
 
-  // this->loadConstantPool();
+  this->loadConstantPool();
+
   this->file_reader->position = 0x17d;
   this->setAttribute<uint16_t>(2, this->attributes_count);
   this->loadAttributes();
@@ -27,8 +30,8 @@ void ClassFile::printClass(){
   cout << (int)this->major_version << endl;
   cout << (int)this->constant_pool_count << endl;
 
-  this->printAttributes();
   this->printConstantPool();
+  this->printAttributes();
 }
 
 void ClassFile::printConstantPool(){
@@ -78,4 +81,10 @@ void ClassFile::printAttributes(){
     cout << "[" << i << "]";
     attribute->printInfo();
   }
+}
+
+string ClassFile::getConstantPoolUtf8String(int index){
+  // TODO: Codar um throw pra caso indice nao corresponda a UTf8
+  CP::Utf8Info *utf_info = (CP::Utf8Info *)this->constant_pool[index-1];
+  return utf_info->returnString();
 }
