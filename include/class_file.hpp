@@ -21,7 +21,6 @@ class ClassFile{
     uint16_t constant_pool_count;
     uint16_t fields_count;
     uint16_t attributes_count;
-    vector<AttributeInfo*> attributes;
 
     void loadConstantPool();
     void loadAttributes();
@@ -31,7 +30,6 @@ class ClassFile{
     vector<FieldInfo*> fields;
     vector<AttributeInfo*> attributes;
 
-    void loadConstantPool();
     void loadFields();
 
     void printFields();
