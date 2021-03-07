@@ -35,7 +35,6 @@ void Attribute::CodeAttribute::loadInstructions(){
 void Attribute::CodeAttribute::loadExceptioTable(){
   for(uint16_t i=0;i<this->exception_table_length;i+=1){
     CodeException* newException = new CodeException(this);
-    newException->setInfo();
     this->exception_table.push_back(newException);
   }
 }

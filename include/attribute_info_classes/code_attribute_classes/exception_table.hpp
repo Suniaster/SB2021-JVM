@@ -19,7 +19,6 @@ namespace Attribute{
     public:    
       CodeException(CodeAttribute* code_attr);
       
-      void setInfo();
   };
 }
 
