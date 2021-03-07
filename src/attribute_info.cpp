@@ -6,6 +6,7 @@
 #include "../include/attribute_info_classes/code_attribute.hpp"
 #include "../include/attribute_info_classes/exceptions.hpp"
 #include "../include/attribute_info_classes/inner_classes.hpp"
+#include "../include/attribute_info_classes/synthetic.hpp"
 
 #include "../include/constant_pool_classes/utf8_info.hpp"
 
@@ -67,6 +68,9 @@ AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   }
   if(attr_name == "InnerClasses"){
     return new Attribute::InnerClasses(params);
+  }
+  if(attr_name == "Synthetic"){
+    return new Attribute::Synthetic(params);
   }
   
   return new Attribute::GeneralInfo(params);
