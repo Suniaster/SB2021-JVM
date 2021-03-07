@@ -23,6 +23,9 @@ namespace Attribute{
 
       uint16_t attributes_count;
       vector<AttributeInfo*> attributes;
+
+      void loadInstructions();
+      void loadExceptioTable();
     public:    
       CodeAttribute(AttrInitialValue initial_value);
 
