@@ -19,14 +19,18 @@ Attribute::CodeAttribute::CodeAttribute(AttrInitialValue initial_value)
 
 void Attribute::CodeAttribute::loadInstructions(){
   FileReader* file_reader = this->class_file->file_reader;
+  int initial_pos, final_pos;
 
   for(uint16_t i=0;i<this->code_length;){
     uint8_t bytecode_read;
-    file_reader->readBytes(1, bytecode_read);
-    i+=1;
-    Instructions::BaseInstruction* newInstruction = Instructions::BaseInstruction::getInstance(this, bytecode_read);
+    initial_pos = file_reader->position;
 
-    i += (uint16_t) newInstruction->readOperands();
+    file_reader->readBytes(1, bytecode_read);
+    Instructions::BaseInstruction* newInstruction = Instructions::BaseInstruction::getInstance(this, bytecode_read);
+    
+    final_pos = file_reader->position;
+    i += final_pos - initial_pos;
+
     this->code.push_back(newInstruction);
     this->number_of_instructions+=1;
   }

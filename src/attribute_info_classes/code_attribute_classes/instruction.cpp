@@ -14,11 +14,6 @@ void BaseInstruction::print(){
   cout << "\t\tInstrucao Base (0x" << hex << (int)this->opcode << ")" << endl;
 }
 
-uint8_t BaseInstruction::readOperands(){
-  // Instrucao base assume que nao ha operando a serem lidos
-  return 0;
-}
-
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
 
   switch (opcode){

@@ -11,7 +11,6 @@ namespace Instructions{
     public:    
       Lcd(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       void print();
-      uint8_t readOperands();
   };
 }
 
