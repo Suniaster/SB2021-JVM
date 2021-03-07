@@ -24,7 +24,7 @@ void ClassFile::loadClass(){
   this->setAttribute(2, this->fields_count);
   this->loadFields();
 
-  this->file_reader->position = 0x17d;
+  this->file_reader->position = 0x150;
   this->setAttribute<uint16_t>(2, this->attributes_count);
   AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
 }

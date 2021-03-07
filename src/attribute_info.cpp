@@ -29,7 +29,6 @@ void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t 
 
   for(int i=0; i<size; i++){
     attr = AttributeInfo::getInstance(class_file);
-    attr->setInfo();
     attributes.push_back(attr);
   }
 }

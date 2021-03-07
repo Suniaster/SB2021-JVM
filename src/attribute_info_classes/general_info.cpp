@@ -11,8 +11,6 @@ Attribute::GeneralInfo::GeneralInfo(AttrInitialValue initial_value)
   }
 }
 
-void Attribute::GeneralInfo::setInfo(){}
-
 void Attribute::GeneralInfo::printInfo(){
   AttributeInfo::printInfo();
 }

@@ -17,8 +17,6 @@ Attribute::CodeAttribute::CodeAttribute(AttrInitialValue initial_value)
 
 }
 
-void Attribute::CodeAttribute::setInfo(){}
-
 void Attribute::CodeAttribute::loadInstructions(){
   FileReader* file_reader = this->class_file->file_reader;
 

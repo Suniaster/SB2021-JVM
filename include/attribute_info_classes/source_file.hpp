@@ -9,7 +9,6 @@ namespace Attribute{
     public:    
       SourceFile(AttrInitialValue initial_value);
 
-      void setInfo();
       void printInfo();
 
       string getFileName();

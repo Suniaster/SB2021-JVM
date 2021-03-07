@@ -6,8 +6,6 @@ Attribute::SourceFile::SourceFile(AttrInitialValue initial_value)
   this->class_file->setAttribute(2, this->sourcefile_index);
 }
 
-void Attribute::SourceFile::setInfo(){}
-
 void Attribute::SourceFile::printInfo(){
   AttributeInfo::printInfo();
   cout << "\tSource file name index: #" << this->sourcefile_index;
