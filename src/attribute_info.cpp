@@ -4,6 +4,7 @@
 #include "../include/attribute_info_classes/general_info.hpp"
 #include "../include/attribute_info_classes/constant_value.hpp"
 #include "../include/attribute_info_classes/code_attribute.hpp"
+#include "../include/attribute_info_classes/exceptions.hpp"
 
 #include "../include/constant_pool_classes/utf8_info.hpp"
 
@@ -44,7 +45,6 @@ void AttributeInfo::printAttributes(vector<AttributeInfo*> attributes) {
 AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   uint16_t attr_name_index;
   uint32_t attr_length;
-  AttributeInfo* attr_read;
 
   class_file->file_reader->readBytes(2, attr_name_index);
   class_file->file_reader->readBytes(4, attr_length);
@@ -53,16 +53,17 @@ AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   string attr_name= class_file->getConstantPoolUtf8String(attr_name_index);
   cout << attr_name << endl;
   if(attr_name == "SourceFile"){
-    attr_read = new Attribute::SourceFile(params);
+    return new Attribute::SourceFile(params);
   }
   if(attr_name == "ConstantValue"){
-    attr_read = new Attribute::ConstantValue(params);
+    return new Attribute::ConstantValue(params);
   }
   if(attr_name == "Code"){
-    attr_read = new Attribute::CodeAttribute(params);
+    return new Attribute::CodeAttribute(params);
   }
-  else{
-    attr_read = new Attribute::GeneralInfo(params);
+  if(attr_name == "Exceptions"){
+    return new Attribute::Exceptions(params);
   }
-  return attr_read;
+  
+  return new Attribute::GeneralInfo(params);
 }
