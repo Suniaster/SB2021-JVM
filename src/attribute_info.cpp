@@ -5,6 +5,7 @@
 #include "../include/attribute_info_classes/constant_value.hpp"
 #include "../include/attribute_info_classes/code_attribute.hpp"
 #include "../include/attribute_info_classes/exceptions.hpp"
+#include "../include/attribute_info_classes/inner_classes.hpp"
 
 #include "../include/constant_pool_classes/utf8_info.hpp"
 
@@ -63,6 +64,9 @@ AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   }
   if(attr_name == "Exceptions"){
     return new Attribute::Exceptions(params);
+  }
+  if(attr_name == "InnerClasses"){
+    return new Attribute::InnerClasses(params);
   }
   
   return new Attribute::GeneralInfo(params);

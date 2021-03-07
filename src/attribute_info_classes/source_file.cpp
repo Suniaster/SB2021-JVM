@@ -13,5 +13,5 @@ void Attribute::SourceFile::printInfo(){
 }
 
 string Attribute::SourceFile::getFileName(){
-  return this->class_file->getConstantPoolUtf8String(this->attribute_name_index);
+  return this->class_file->getConstantPoolUtf8String(this->sourcefile_index);
 }
