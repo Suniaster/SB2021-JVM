@@ -60,7 +60,7 @@ CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
     correct_instance = new CP::InvokeDynamicInfo(class_file);
     break;
   default:
-    correct_instance = new CP::MethodRefInfo(class_file);
+    throw std::invalid_argument( "Not Valid Constant Pool type" );
     break;
   }
   return correct_instance;
