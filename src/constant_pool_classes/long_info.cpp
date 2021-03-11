@@ -13,11 +13,12 @@ void CP::LongInfo::setInfo(){
 
 void CP::LongInfo::printInfo(){
   cout << "Long: High Bytes " << this->high_bytes << endl;
-  cout << "Long:  Low Bytes" << this->low_bytes << endl;
+  cout << "Long:  Low Bytes " << this->low_bytes << endl;
+  cout << "Long: Value " << dec << this->returnLong() << endl;
 }
 
-long CP::LongInfo::returnLong(){
-  long to_return;
-  to_return = ((long) this->high_bytes << 32) + (long) this->low_bytes;
+long long CP::LongInfo::returnLong(){
+  signed long long to_return;
+  to_return = (signed long long)(((unsigned long long) this->high_bytes << 32) + (unsigned long long)this->low_bytes);
   return to_return;
 }

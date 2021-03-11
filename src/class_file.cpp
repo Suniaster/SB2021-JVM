@@ -12,7 +12,6 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->minor_version);
   this->setAttribute<uint16_t>(2, this->major_version);
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
-
   this->loadConstantPool();
 }
 

@@ -25,7 +25,6 @@ CpInfo* CpInfo::returnUnusableSpace(ClassFile* class_file){
 
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   CpInfo* correct_instance;
-   cout << (int)tag << endl;
   switch (tag){
   case 0x1:
     correct_instance = new CP::Utf8Info(class_file);

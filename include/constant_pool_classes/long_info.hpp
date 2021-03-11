@@ -10,7 +10,7 @@ namespace CP{
       uint32_t low_bytes;
 
     public:
-      long returnLong();
+      long long returnLong();
       LongInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

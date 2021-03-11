@@ -14,11 +14,15 @@ void CP::DoubleInfo::setInfo(){
 void CP::DoubleInfo::printInfo(){
   cout << "Double: High Bytes " << hex << this->high_bytes << endl;
   cout << "Double:  Low Bytes " << hex << this->low_bytes << endl;
-  cout << "Double: Value " << this->returnDouble() << endl;
+  cout << "Double: Value " << fixed <<this->returnDouble() << endl;
 }
 
 double CP::DoubleInfo::returnDouble(){
   double to_return;
-  to_return = (double) ((uint64_t)this->high_bytes << 32) + (uint64_t) this->low_bytes;
-  return (double)to_return;
+  uint64_t bits = ((uint64_t)this->high_bytes << 32) + (uint64_t) this->low_bytes;
+  int s = ((bits >> 63) == 0) ? 1 : -1;
+  int e = (int)((bits >> 52) & 0x7ffL);
+  long m = (e == 0) ? ((bits & 0xfffffffffffffL) << 1) : ((bits & 0xfffffffffffffL) | 0x10000000000000L);
+  to_return = s * m * (2^(e-1075));
+  return to_return;
 }
