@@ -45,10 +45,7 @@ void ClassFile::loadConstantPool(){
 
 
     // seta atributos
-    std::cout << this->constant_pool_count << '\n';
-    std::cout << (int)i << '\n';
     cp_info->setInfo();
-    cp_info->printInfo();
 
     // salva na classe
     this->constant_pool.push_back(cp_info);
