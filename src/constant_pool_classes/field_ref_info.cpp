@@ -3,7 +3,7 @@
 
 
 CP::FieldRefInfo::FieldRefInfo(ClassFile* class_file) : CpInfo(class_file){
-  this->tag = 10;
+  this->tag = 9;
 }
 
 void CP::FieldRefInfo::setInfo(){

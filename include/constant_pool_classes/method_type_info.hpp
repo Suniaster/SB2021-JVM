@@ -6,7 +6,7 @@
 
 namespace CP{
   class MethodTypeInfo : public CpInfo{
-      uint16_t class_index;
+      
       uint16_t descriptor_index;
     public:
 

@@ -12,12 +12,13 @@ void CP::DoubleInfo::setInfo(){
 }
 
 void CP::DoubleInfo::printInfo(){
-  cout << "Double: High Bytes " << this->high_bytes << endl;
-  cout << "Double:  Low Bytes" << this->low_bytes << endl;
+  cout << "Double: High Bytes " << hex << this->high_bytes << endl;
+  cout << "Double:  Low Bytes " << hex << this->low_bytes << endl;
+  cout << "Double: Value " << this->returnDouble() << endl;
 }
 
 double CP::DoubleInfo::returnDouble(){
   double to_return;
-  to_return = ((long) this->high_bytes << 32) + (long) this->low_bytes;
+  to_return = (double) ((uint64_t)this->high_bytes << 32) + (uint64_t) this->low_bytes;
   return (double)to_return;
 }

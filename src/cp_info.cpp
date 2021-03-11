@@ -7,11 +7,13 @@
 #include "../include/constant_pool_classes/field_ref_info.hpp"
 #include "../include/constant_pool_classes/interface_method_ref_info.hpp"
 #include "../include/constant_pool_classes/integer_info.hpp"
+#include "../include/constant_pool_classes/float_info.hpp"
 #include "../include/constant_pool_classes/long_info.hpp"
 #include "../include/constant_pool_classes/double_info.hpp"
 #include "../include/constant_pool_classes/method_type_info.hpp"
 #include "../include/constant_pool_classes/invoke_dynamic_info.hpp"
 #include "../include/constant_pool_classes/method_handle_info.hpp"
+#include "../include/constant_pool_classes/unused_info.hpp"
 
 CpInfo::CpInfo(ClassFile* class_file){
   this->class_file = class_file;
@@ -19,12 +21,16 @@ CpInfo::CpInfo(ClassFile* class_file){
 
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   CpInfo* correct_instance;
+   cout << (int)tag << endl;
   switch (tag){
   case 0x1:
     correct_instance = new CP::Utf8Info(class_file);
     break;
   case 0x3:
     correct_instance = new CP::IntegerInfo(class_file);
+    break;
+  case 0x4:
+    correct_instance = new CP::FloatInfo(class_file);
     break;
   case 0x5:
     correct_instance = new CP::LongInfo(class_file);
@@ -60,7 +66,7 @@ CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
     correct_instance = new CP::InvokeDynamicInfo(class_file);
     break;
   default:
-    throw std::invalid_argument( "Not Valid Constant Pool type" );
+    correct_instance = new CP::UnusedInfo(class_file);
     break;
   }
   return correct_instance;

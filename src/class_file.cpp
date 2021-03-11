@@ -31,22 +31,29 @@ void ClassFile::printConstantPool(){
 }
 
 void ClassFile::loadConstantPool(){
-  uint8_t tag;
+  uint8_t tag = 0;
+  uint8_t last_tag = 0;
   CpInfo* cp_info;
-
 
   for(int i=0; i< this->constant_pool_count - 1;i++){
     // Le tag
-    tag = 0;
     this->setAttribute<uint8_t>(1, tag);
+
 
     // instanciar classe certa
     cp_info = CpInfo::getInstance(tag, this);
 
     // seta atributos
+    std::cout << this->constant_pool_count << '\n';
+    std::cout << (int)i << '\n';
     cp_info->setInfo();
+    cp_info->printInfo();
 
     // salva na classe
     this->constant_pool.push_back(cp_info);
+
+
+
+    last_tag = tag;
   }
 }
