@@ -19,6 +19,10 @@ CpInfo::CpInfo(ClassFile* class_file){
   this->class_file = class_file;
 }
 
+CpInfo* CpInfo::returnUnusableSpace(ClassFile* class_file){
+    return new CP::UnusedInfo(class_file);
+}
+
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   CpInfo* correct_instance;
    cout << (int)tag << endl;

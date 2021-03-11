@@ -1,6 +1,6 @@
 #include "../include/class_file.hpp"
 #include "../include/cp_info.hpp"
-#include "../include/constant_pool_classes/method_ref_info.hpp"
+
 
 ClassFile::ClassFile(string file_name){
   file_reader = new FileReader();
@@ -32,7 +32,6 @@ void ClassFile::printConstantPool(){
 
 void ClassFile::loadConstantPool(){
   uint8_t tag = 0;
-  uint8_t last_tag = 0;
   CpInfo* cp_info;
 
   for(int i=0; i< this->constant_pool_count - 1;i++){
@@ -43,6 +42,8 @@ void ClassFile::loadConstantPool(){
     // instanciar classe certa
     cp_info = CpInfo::getInstance(tag, this);
 
+
+
     // seta atributos
     std::cout << this->constant_pool_count << '\n';
     std::cout << (int)i << '\n';
@@ -52,8 +53,11 @@ void ClassFile::loadConstantPool(){
     // salva na classe
     this->constant_pool.push_back(cp_info);
 
+    // adiciona espaço inutilizável caso tenha um long ou double
+    if (tag == 0x5 || tag == 0x6) {
+        this->constant_pool.push_back(cp_info->returnUnusableSpace(this));
+    }
 
 
-    last_tag = tag;
   }
 }
