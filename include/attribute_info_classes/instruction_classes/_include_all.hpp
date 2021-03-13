@@ -1,6 +1,7 @@
 #include "./aload.hpp"
 #include "./astore.hpp"
 #include "./dup.hpp"
+#include "./getfield.hpp"
 #include "./getstatic.hpp"
 #include "./iconst.hpp"
 #include "./iload.hpp"
@@ -9,3 +10,5 @@
 #include "./lcd.hpp"
 #include "./new.hpp"
 #include "./putfield.hpp"
+#include "./return.hpp"
+#include "./athrow.hpp"

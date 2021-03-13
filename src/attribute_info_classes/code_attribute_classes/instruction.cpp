@@ -30,6 +30,12 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new InvokeVirtual(code_attr, opcode);
   case 0xb5:
     return new PutField(code_attr, opcode);
+  case 0xb1:
+    return new Return(code_attr, opcode);
+  case 0xb4:
+    return new GetField(code_attr, opcode);
+  case 0xbf:
+    return new Athrow(code_attr, opcode);
   }
 
   if(opcode >= 0x4b && opcode <= 0x4e){
