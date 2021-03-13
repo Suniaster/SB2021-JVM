@@ -3,9 +3,6 @@
 Attribute::GeneralInfo::GeneralInfo(AttrInitialValue initial_value)
     :AttributeInfo(initial_value)
   {
-}
-
-void Attribute::GeneralInfo::setInfo(){
   uint8_t byte_read;
   for(unsigned int i=0; i< this->attribute_length; i+=1){
     byte_read = 0;

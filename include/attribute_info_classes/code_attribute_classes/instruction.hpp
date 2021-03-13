@@ -17,9 +17,6 @@ namespace Instructions{
 
       virtual void print();
 
-      // retorna quantidade de bytes lidos nessa operacao
-      virtual uint8_t readOperands();
-
       static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode);
   };
 }

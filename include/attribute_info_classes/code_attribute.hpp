@@ -23,11 +23,13 @@ namespace Attribute{
 
       uint16_t attributes_count;
       vector<AttributeInfo*> attributes;
+
+      void loadInstructions();
+      void loadExceptioTable();
     public:    
       CodeAttribute(AttrInitialValue initial_value);
 
       uint16_t number_of_instructions;
-      void setInfo();
       void printInfo();
   };
 }

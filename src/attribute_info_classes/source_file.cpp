@@ -3,9 +3,6 @@
 Attribute::SourceFile::SourceFile(AttrInitialValue initial_value)
     :AttributeInfo(initial_value)
   {
-}
-
-void Attribute::SourceFile::setInfo(){
   this->class_file->setAttribute(2, this->sourcefile_index);
 }
 
@@ -16,6 +13,5 @@ void Attribute::SourceFile::printInfo(){
 }
 
 string Attribute::SourceFile::getFileName(){
-  // TODO: puxar o nome correto da constant pool
-  return "test.java";
+  return this->class_file->getConstantPoolUtf8String(this->sourcefile_index);
 }

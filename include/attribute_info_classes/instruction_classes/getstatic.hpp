@@ -12,7 +12,6 @@ namespace Instructions{
     public:    
       GetStatic(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       void print();
-      uint8_t readOperands();
   };
 }
 

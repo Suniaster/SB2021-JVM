@@ -3,9 +3,6 @@
 Attribute::ConstantValue::ConstantValue(AttrInitialValue initial_value)
     :AttributeInfo(initial_value)
   {
-}
-
-void Attribute::ConstantValue::setInfo(){
   this->class_file->setAttribute(2, this->constantvalue_index);
 }
 

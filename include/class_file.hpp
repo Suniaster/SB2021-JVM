@@ -22,11 +22,14 @@ class ClassFile{
     uint16_t fields_count;
     uint16_t attributes_count;
 
+    void loadConstantPool();
+    void loadAttributes();
+    void printConstantPool();
+
     vector<CpInfo*> constant_pool;
     vector<FieldInfo*> fields;
     vector<AttributeInfo*> attributes;
 
-    void loadConstantPool();
     void loadFields();
 
     void printFields();
@@ -37,6 +40,7 @@ class ClassFile{
     void loadClass();
     void printClass();
 
+    string getConstantPoolUtf8String(int index);
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);
 };

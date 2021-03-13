@@ -9,7 +9,6 @@ namespace Attribute{
       vector<uint8_t> info;
       GeneralInfo(AttrInitialValue initial_value);
 
-      void setInfo();
       void printInfo();
   };
 }
