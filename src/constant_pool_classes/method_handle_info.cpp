@@ -13,6 +13,6 @@ void CP::MethodHandleInfo::setInfo(){
 }
 
 void CP::MethodHandleInfo::printInfo(){
-  cout << "MethodHandle: RK " << this->reference_kind << endl;
-  cout << "MethodHandle: RI " << this->reference_index << endl;
+  cout << "\tMethodHandle: RK " << this->reference_kind << endl;
+  cout << "\tMethodHandle: RI " << this->reference_index << endl;
 }

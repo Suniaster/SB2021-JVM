@@ -12,9 +12,9 @@ void CP::DoubleInfo::setInfo(){
 }
 
 void CP::DoubleInfo::printInfo(){
-  cout << "Double: High Bytes " << hex << this->high_bytes << endl;
-  cout << "Double:  Low Bytes " << hex << this->low_bytes << endl;
-  cout << "Double: Value " << fixed <<this->returnDouble() << endl;
+  cout << "\tDouble: High Bytes " << hex << this->high_bytes << endl;
+  cout << "\tDouble:  Low Bytes " << hex << this->low_bytes << endl;
+  cout << "\tDouble: Value " << fixed <<this->returnDouble() << endl;
 }
 
 double CP::DoubleInfo::returnDouble(){

@@ -12,6 +12,6 @@ void CP::FieldRefInfo::setInfo(){
 }
 
 void CP::FieldRefInfo::printInfo(){
-  cout << "FieldRef: CI " << this->class_index << endl;
-  cout << "FieldRef: NTI " << this->name_and_type_index << endl;
+  cout << "\tFieldRef: CI " << this->class_index << endl;
+  cout << "\tFieldRef: NTI " << this->name_and_type_index << endl;
 }

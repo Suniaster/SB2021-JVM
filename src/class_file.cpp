@@ -24,7 +24,9 @@ void ClassFile::printClass(){
 }
 
 void ClassFile::printConstantPool(){
+    cout << "*************** Constant Pool ********************" << endl;
     for (int i = 0; i < this->constant_pool_count - 1; i++) {
+        cout << "[" << i << "]" << endl;
         this->constant_pool[i]->printInfo();
     }
 }

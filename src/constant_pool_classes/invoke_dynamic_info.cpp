@@ -12,6 +12,6 @@ void CP::InvokeDynamicInfo::setInfo(){
 }
 
 void CP::InvokeDynamicInfo::printInfo(){
-  cout << "InterfaceMethodRef: CI " << this->bootstrap_method_attr_index << endl;
-  cout << "InterfaceMethodRef: NTI " << this->name_and_type_index << endl;
+  cout << "\tInterfaceMethodRef: CI " << this->bootstrap_method_attr_index << endl;
+  cout << "\tInterfaceMethodRef: NTI " << this->name_and_type_index << endl;
 }

@@ -11,5 +11,5 @@ void CP::UnusedInfo::setInfo(){
 }
 
 void CP::UnusedInfo::printInfo(){
-    std::cout << "Unusable Space" << '\n';
+    std::cout << "\tUnusable Space" << endl;
 }

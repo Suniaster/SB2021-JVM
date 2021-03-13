@@ -12,6 +12,6 @@ void CP::MethodTypeInfo::setInfo(){
 }
 
 void CP::MethodTypeInfo::printInfo(){
-  
-  cout << "MethodType: DI " << this->descriptor_index << endl;
+
+  cout << "\tMethodType: DI " << this->descriptor_index << endl;
 }

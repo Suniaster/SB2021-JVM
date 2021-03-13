@@ -12,6 +12,6 @@ void CP::NameAndTypeInfo::setInfo(){
 }
 
 void CP::NameAndTypeInfo::printInfo(){
-  cout << "Name and Type: NI " << this->name_index << endl;
-  cout << "Name and Type: DI " << this->descriptor_index << endl;
+  cout << "\tName and Type: NI " << this->name_index << endl;
+  cout << "\tName and Type: DI " << this->descriptor_index << endl;
 }

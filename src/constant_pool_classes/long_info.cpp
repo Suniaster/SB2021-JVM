@@ -12,9 +12,9 @@ void CP::LongInfo::setInfo(){
 }
 
 void CP::LongInfo::printInfo(){
-  cout << "Long: High Bytes " << this->high_bytes << endl;
-  cout << "Long:  Low Bytes " << this->low_bytes << endl;
-  cout << "Long: Value " << dec << this->returnLong() << endl;
+  cout << "\tLong: High Bytes " << this->high_bytes << endl;
+  cout << "\tLong:  Low Bytes " << this->low_bytes << endl;
+  cout << "\tLong: Value " << dec << this->returnLong() << endl;
 }
 
 long long CP::LongInfo::returnLong(){

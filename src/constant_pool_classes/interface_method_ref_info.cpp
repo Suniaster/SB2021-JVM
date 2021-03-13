@@ -12,6 +12,6 @@ void CP::InterfaceMethodRefInfo::setInfo(){
 }
 
 void CP::InterfaceMethodRefInfo::printInfo(){
-  cout << "InterfaceMethodRef: CI " << this->class_index << endl;
-  cout << "InterfaceMethodRef: NTI " << this->name_and_type_index << endl;
+  cout << "\tInterfaceMethodRef: CI " << this->class_index << endl;
+  cout << "\tInterfaceMethodRef: NTI " << this->name_and_type_index << endl;
 }

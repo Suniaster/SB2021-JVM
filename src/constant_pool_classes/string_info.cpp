@@ -11,6 +11,6 @@ void CP::StringInfo::setInfo(){
 }
 
 void CP::StringInfo::printInfo(){
-  cout << "String: SI " << this->string_index << endl;
+  cout << "\tString: SI " << this->string_index << endl;
 
 }

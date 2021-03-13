@@ -24,8 +24,7 @@ string CP::Utf8Info::returnString(){
 }
 
 void CP::Utf8Info::printInfo(){
-  cout << "Utf8Info: Length " << this->length << endl;
-
-  cout << "Utf8Info: String " << this->returnString() << endl;
+  cout << "\tUtf8Info: Length " << this->length << endl;
+  cout << "\tUtf8Info: String " << this->returnString() << endl;
 
 }
