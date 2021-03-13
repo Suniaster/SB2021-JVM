@@ -5,4 +5,4 @@ CODE_ATTRS = src/attribute_info_classes/code_attribute_classes/*.cpp
 INSTRUCTIONS = src/attribute_info_classes/instruction_classes/*.cpp
 
 all : $(OBJS)
-	g++ $(OBJS) $(CONSTANT_POOL) $(ATTRIBUTES) $(CODE_ATTRS) $(INSTRUCTIONS) -std=c++11 -Wall -o bin/jvm 
+	g++ $(OBJS) $(CONSTANT_POOL) $(ATTRIBUTES) $(CODE_ATTRS) $(INSTRUCTIONS) -std=c++11 -Wall -g -o bin/jvm
