@@ -2,6 +2,10 @@
 #include "../include/cp_info.hpp"
 
 
+#include "../include/attribute_info.hpp"
+
+#include "../include/constant_pool_classes/utf8_info.hpp"
+
 ClassFile::ClassFile(string file_name){
   file_reader = new FileReader();
   file_reader->readFile(file_name);
@@ -13,6 +17,15 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->major_version);
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
   this->loadConstantPool();
+
+  // this->loadConstantPool();
+  this->file_reader->position = 0x226;
+  this->setAttribute(2, this->fields_count);
+  this->loadFields();
+
+  this->file_reader->position = 0x31f;
+  this->setAttribute<uint16_t>(2, this->attributes_count);
+  AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
 }
 
 void ClassFile::printClass(){
@@ -20,7 +33,10 @@ void ClassFile::printClass(){
   cout << (int)this->minor_version << endl;
   cout << (int)this->major_version << endl;
   cout << (int)this->constant_pool_count << endl;
+  cout << (int)this->fields_count << endl;
+
   this->printConstantPool();
+  AttributeInfo::printAttributes(this->attributes);
 }
 
 void ClassFile::printConstantPool(){
@@ -60,4 +76,28 @@ void ClassFile::loadConstantPool(){
 
 
   }
+}
+
+void ClassFile::loadFields() {
+  FieldInfo* field;
+
+  for (int i=0; i<this->fields_count; i++) {
+    field = new FieldInfo(this);
+    this->fields.push_back(field);
+  }
+}
+
+void ClassFile::printFields() {
+  cout << endl << "----- Fields Info  -----" << endl;
+
+  for(unsigned int i=0; i<this->fields.size(); i++){
+    cout << "[" << i << "]";
+    this->fields[i]->printInfo();
+  }
+}
+
+string ClassFile::getConstantPoolUtf8String(int index){
+  // TODO: Codar um throw pra caso indice nao corresponda a UTf8
+  CP::Utf8Info *utf_info = (CP::Utf8Info *)this->constant_pool[index-1];
+  return utf_info->returnString();
 }

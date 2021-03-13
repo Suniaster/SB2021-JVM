@@ -1,0 +1,4 @@
+.idea/*
+./tests/*
+./bin/*
+.vscode/*
