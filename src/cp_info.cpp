@@ -69,7 +69,7 @@ CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
     correct_instance = new CP::InvokeDynamicInfo(class_file);
     break;
   default:
-    correct_instance = new CP::UnusedInfo(class_file);
+    throw std::invalid_argument("Invalid CP Tag");
     break;
   }
   return correct_instance;

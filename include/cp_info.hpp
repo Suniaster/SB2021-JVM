@@ -22,6 +22,7 @@ class CpInfo{
 
     static CpInfo* returnUnusableSpace(ClassFile* class_file);
     static CpInfo* getInstance(uint8_t tag, ClassFile* class_file);
+    static CpInfo* getUtf8(vector<CpInfo*> constant_pool, int index);
 };
 
 

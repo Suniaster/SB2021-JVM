@@ -6,9 +6,7 @@ CP::UnusedInfo::UnusedInfo(ClassFile* class_file) : CpInfo(class_file){
 }
 
 
-void CP::UnusedInfo::setInfo(){
-
-}
+void CP::UnusedInfo::setInfo(){}
 
 void CP::UnusedInfo::printInfo(){
     std::cout << "\tUnusable Space" << endl;
