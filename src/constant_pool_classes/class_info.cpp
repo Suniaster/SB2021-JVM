@@ -11,6 +11,6 @@ void CP::ClassInfo::setInfo(){
 }
 
 void CP::ClassInfo::printInfo(){
-  cout << "Class: NI " << this->name_index << endl;
+  cout << "\tClass: NI " << this->name_index << endl;
 
 }

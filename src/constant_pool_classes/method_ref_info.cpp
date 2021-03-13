@@ -12,6 +12,6 @@ void CP::MethodRefInfo::setInfo(){
 }
 
 void CP::MethodRefInfo::printInfo(){
-  cout << "MethodRef: CI " << this->class_index << endl;
-  cout << "MethodRef: NTI " << this->name_and_type_index << endl;
+  cout << "\tMethodRef: CI " << this->class_index << endl;
+  cout << "\tMethodRef: NTI " << this->name_and_type_index << endl;
 }

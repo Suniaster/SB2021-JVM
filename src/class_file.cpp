@@ -1,6 +1,6 @@
 #include "../include/class_file.hpp"
 #include "../include/cp_info.hpp"
-#include "../include/constant_pool_classes/method_ref_info.hpp"
+
 
 #include "../include/attribute_info.hpp"
 
@@ -16,7 +16,6 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->minor_version);
   this->setAttribute<uint16_t>(2, this->major_version);
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
-
   this->loadConstantPool();
 
   // this->loadConstantPool();
@@ -41,29 +40,41 @@ void ClassFile::printClass(){
 }
 
 void ClassFile::printConstantPool(){
+    cout << "******************** Constant Pool ********************" << endl;
+    cout << "[hex] [dec]" << endl;
     for (int i = 0; i < this->constant_pool_count - 1; i++) {
+        cout << hex << "[" << i + 1 << "] ";
+        cout << dec << "[" << i + 1 << "]" << endl;
         this->constant_pool[i]->printInfo();
     }
 }
 
 void ClassFile::loadConstantPool(){
-  uint8_t tag;
+  uint8_t tag = 0;
   CpInfo* cp_info;
-
 
   for(int i=0; i< this->constant_pool_count - 1;i++){
     // Le tag
-    tag = 0;
     this->setAttribute<uint8_t>(1, tag);
+
 
     // instanciar classe certa
     cp_info = CpInfo::getInstance(tag, this);
+
+
 
     // seta atributos
     cp_info->setInfo();
 
     // salva na classe
     this->constant_pool.push_back(cp_info);
+
+    // adiciona espaço inutilizável caso tenha um long ou double
+    if (tag == 0x5 || tag == 0x6) {
+        this->constant_pool.push_back(cp_info->returnUnusableSpace(this));
+    }
+
+
   }
 }
 

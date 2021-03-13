@@ -9,7 +9,7 @@ namespace CP{
       uint32_t bytes;
 
     public:
-
+      float returnFloat();
       FloatInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

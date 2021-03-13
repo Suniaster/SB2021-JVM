@@ -9,7 +9,7 @@ namespace CP{
       uint32_t bytes;
 
     public:
-
+      int returnInteger();
       IntegerInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

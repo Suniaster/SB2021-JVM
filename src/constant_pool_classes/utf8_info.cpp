@@ -8,7 +8,7 @@ CP::Utf8Info::Utf8Info(ClassFile* class_file) : CpInfo(class_file){
 
 void CP::Utf8Info::setInfo(){
   this->class_file->setAttribute<uint16_t>(2, this->length);
-  this->bytes = (uint8_t *)malloc(sizeof(uint8_t)* this->length);
+  this->bytes = new uint8_t[this->length];
   for (size_t i = 0; i < this->length; i++) {
       this->class_file->setAttribute<uint8_t>(1, this->bytes[i]);
   }
@@ -24,8 +24,7 @@ string CP::Utf8Info::returnString(){
 }
 
 void CP::Utf8Info::printInfo(){
-  cout << "Utf8Info: Length " << this->length << endl;
-
-  cout << "Utf8Info: String " << this->returnString() << endl;
+  cout << "\tUtf8Info: Length " << this->length << endl;
+  cout << "\tUtf8Info: String " << this->returnString() << endl;
 
 }
