@@ -1,13 +1,6 @@
 #include "../../../include/attribute_info_classes/code_attribute_classes/instruction.hpp"
 
-#include "../../../include/attribute_info_classes/instruction_classes/getstatic.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/lcd.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/new.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/dup.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/iconst.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/invokespecial.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/invokevirtual.hpp"
-#include "../../../include/attribute_info_classes/instruction_classes/astore.hpp"
+#include "../../../include/attribute_info_classes/instruction_classes/include_all.hpp"
 
 using namespace Instructions;
 
@@ -35,6 +28,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new InvokeSpecial(code_attr, opcode);
   case 0xb6:
     return new InvokeVirtual(code_attr, opcode);
+  case 0xb5:
+    return new PutField(code_attr, opcode);
   }
 
   if(opcode >= 0x4b && opcode <= 0x4e){
@@ -42,6 +37,12 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
   }
   if(opcode >= 0x2 && opcode <= 0x8){
     return new Iconst(code_attr, opcode);
+  }
+  if(opcode >= 0x2a && opcode <= 0x2d){
+    return new Aload(code_attr, opcode);
+  }
+  if(opcode >= 0x1a && opcode <= 0x1d){
+    return new Iload(code_attr, opcode);
   }
 
   return new BaseInstruction(code_attr, opcode);
