@@ -11,9 +11,9 @@ using namespace std;
 
 class FileReader{
   private:
-    unsigned int position = 0;
     vector<BYTE> file;
   public:
+    unsigned int position = 0;
 
     void readFile(string);
     vector<BYTE> getBytes(int);
