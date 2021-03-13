@@ -1,6 +1,6 @@
 #include "../../../include/attribute_info_classes/code_attribute_classes/instruction.hpp"
 
-#include "../../../include/attribute_info_classes/instruction_classes/include_all.hpp"
+#include "../../../include/attribute_info_classes/instruction_classes/_include_all.hpp"
 
 using namespace Instructions;
 
