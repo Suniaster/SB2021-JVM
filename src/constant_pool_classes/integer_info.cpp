@@ -11,7 +11,7 @@ void CP::IntegerInfo::setInfo(){
 }
 
 void CP::IntegerInfo::printInfo(){
-  cout << "\tInteger: NI " << this->bytes << endl;
+  cout << "\tInteger: Bytes " << this->bytes << endl;
 
 }
 

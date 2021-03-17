@@ -12,6 +12,13 @@ void CP::NameAndTypeInfo::setInfo(){
 }
 
 void CP::NameAndTypeInfo::printInfo(){
-  cout << "\tName and Type: NI " << this->name_index << endl;
-  cout << "\tName and Type: DI " << this->descriptor_index << endl;
+    cout << "\tName and Type: Name Index " << this->name_index << endl;
+    cout << "\n";
+    CpInfo* name_utf_info = this->class_file->getConstantPoolEntry((int)this->name_index);
+    name_utf_info->printInfo();
+
+    cout << "\n\tName and Type: Descriptor Index " << this->descriptor_index << endl;
+    cout << "\n";
+    CpInfo* descriptor_utf_info = this->class_file->getConstantPoolEntry((int)this->descriptor_index);
+    descriptor_utf_info->printInfo();
 }
