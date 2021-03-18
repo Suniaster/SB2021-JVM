@@ -1,7 +1,7 @@
 #include "../../../include/attribute_info_classes/code_attribute_classes/instruction.hpp"
 
 #include "../../../include/attribute_info_classes/instruction_classes/_include_all.hpp"
-
+#include <sstream>
 using namespace Instructions;
 
 BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode){
@@ -10,19 +10,23 @@ BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t op
 }
 
 string BaseInstruction::toString(){
+  stringstream ss;
+  ss << (int)this->opcode;
   string baseName  = "Instrucao Base (0x";
-  baseName += (int)this->opcode;
+  baseName += ss.str();
   baseName += ")";
   return baseName ;
 }
 
 void BaseInstruction::print(){
-  cout << this->toString() << endl;
+  cout << dec << this->toString() << endl;
 }
 
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
 
   switch (opcode){
+  case 0x0:
+    return new Nop(code_attr, opcode);
   case 0x12:
     return new Lcd(code_attr, opcode);
   case 0xb2:

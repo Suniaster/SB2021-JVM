@@ -6,6 +6,7 @@ namespace Instructions{
 
 #include <cstdint>
 #include "../code_attribute.hpp"
+#include <sstream>
 
 namespace Instructions{
   class BaseInstruction{
