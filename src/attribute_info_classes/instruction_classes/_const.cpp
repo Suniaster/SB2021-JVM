@@ -30,7 +30,7 @@ Lconst::Lconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 string Lconst::toString(){
-  return "lconst_undefined";
+  return "lconst_" + this->intToString(this->opcode - 0x9);
 }
 
 Fconst::Fconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
@@ -38,12 +38,12 @@ Fconst::Fconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 string Fconst::toString(){
-  return "fconst_undefined";
+  return "fconst_"+this->intToString(this->opcode - 0xb);
 }
 
 Dconst::Dconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 string Dconst::toString(){
-  return "dconst_undefined";
+  return "dconst_"+this->intToString(this->opcode - 0xe);
 }

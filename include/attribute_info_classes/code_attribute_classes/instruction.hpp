@@ -14,6 +14,7 @@ namespace Instructions{
       uint8_t opcode;
       Attribute::CodeAttribute* code_attr;
       string hexToString(int);
+      string intToString(int);
     public:    
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
 

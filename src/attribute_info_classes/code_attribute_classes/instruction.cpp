@@ -26,6 +26,12 @@ string BaseInstruction::hexToString(int param){
   return paramString.str();
 }
 
+string BaseInstruction::intToString(int param){
+  stringstream paramString;
+  paramString << param;
+  return paramString.str();
+}
+
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
 
   switch (opcode){
