@@ -9,8 +9,15 @@ BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t op
   this->opcode = opcode;
 }
 
+string BaseInstruction::toString(){
+  string baseName  = "Instrucao Base (0x";
+  baseName += (int)this->opcode;
+  baseName += ")";
+  return baseName ;
+}
+
 void BaseInstruction::print(){
-  cout << "\t\tInstrucao Base (0x" << hex << (int)this->opcode << ")" << endl;
+  cout << this->toString() << endl;
 }
 
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){

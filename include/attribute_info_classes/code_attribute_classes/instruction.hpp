@@ -16,7 +16,7 @@ namespace Instructions{
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
 
       virtual void print();
-
+      virtual string toString();
       static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode);
   };
 }
