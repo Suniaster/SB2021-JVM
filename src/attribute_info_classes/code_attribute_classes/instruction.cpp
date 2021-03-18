@@ -27,6 +27,10 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
   switch (opcode){
   case 0x0:
     return new Nop(code_attr, opcode);
+  case 0x10:
+    return new Bipush(code_attr, opcode);
+  case 0x11:
+    return new Sipush(code_attr, opcode);
   case 0x12:
     return new Lcd(code_attr, opcode);
   case 0xb2:
