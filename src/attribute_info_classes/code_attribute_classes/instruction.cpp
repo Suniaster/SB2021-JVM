@@ -22,6 +22,12 @@ void BaseInstruction::print(){
   cout << dec << this->toString() << endl;
 }
 
+string BaseInstruction::hexToString(int param){
+  stringstream paramString;
+  paramString << hex << param;
+  return paramString.str();
+}
+
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
 
   switch (opcode){

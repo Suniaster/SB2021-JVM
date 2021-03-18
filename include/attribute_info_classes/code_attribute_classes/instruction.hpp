@@ -13,6 +13,7 @@ namespace Instructions{
     protected:
       uint8_t opcode;
       Attribute::CodeAttribute* code_attr;
+      string hexToString(int);
     public:    
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
 
