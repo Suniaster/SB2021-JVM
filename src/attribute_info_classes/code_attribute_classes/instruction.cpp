@@ -32,7 +32,7 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
   case 0x11:
     return new Sipush(code_attr, opcode);
   case 0x12:
-    return new Lcd(code_attr, opcode);
+    return new Ldc(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:

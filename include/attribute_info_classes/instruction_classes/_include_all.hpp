@@ -7,7 +7,7 @@
 #include "./iload.hpp"
 #include "./invokespecial.hpp"
 #include "./invokevirtual.hpp"
-#include "./lcd.hpp"
+#include "./ldc.hpp"
 #include "./new.hpp"
 #include "./putfield.hpp"
 #include "./nop.hpp"
