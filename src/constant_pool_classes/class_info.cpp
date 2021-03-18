@@ -11,6 +11,8 @@ void CP::ClassInfo::setInfo(){
 }
 
 void CP::ClassInfo::printInfo(){
-  cout << "\tClass: NI " << this->name_index << endl;
-
+  cout << "\tClass: Name Index " << this->name_index << endl;
+  cout << "\n";
+  CpInfo* utf_info = this->class_file->getConstantPoolEntry((int)this->name_index);
+  utf_info->printInfo();
 }

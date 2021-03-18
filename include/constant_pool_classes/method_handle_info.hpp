@@ -8,6 +8,10 @@ namespace CP{
   class MethodHandleInfo : public CpInfo{
       uint8_t reference_kind;
       uint16_t reference_index;
+
+    private:
+      string getReferenceKind();
+      
     public:
 
       MethodHandleInfo(ClassFile *class_file);
