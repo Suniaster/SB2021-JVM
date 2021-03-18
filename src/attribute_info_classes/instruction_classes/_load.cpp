@@ -16,7 +16,7 @@ string AbstractLoad::toString(){
   if(this->is_n_class)
     return this->getName() + "_" + this->hexToString(this->param);
   else
-    return this->getName() + " #" + this->hexToString(this->param);
+    return this->getName() + " " + this->hexToString(this->param);
 }
 
 Iload::Iload(Attribute::CodeAttribute* code_attr, uint8_t opcode)

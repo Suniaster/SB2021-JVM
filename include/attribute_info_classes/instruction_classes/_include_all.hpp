@@ -1,3 +1,4 @@
+#include "./_aload.hpp"
 #include "./_const.hpp"
 #include "./_load.hpp"
 #include "./astore.hpp"

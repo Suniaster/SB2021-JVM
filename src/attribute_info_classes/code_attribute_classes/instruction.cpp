@@ -75,6 +75,22 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Dload(code_attr, opcode);
   case 0x29 ... 0x2d:
     return new Aload(code_attr, opcode);
+  case 0x2e:
+    return new Iaload(code_attr, opcode);
+  case 0x2f:
+    return new Laload(code_attr, opcode);
+  case 0x30:
+    return new Faload(code_attr, opcode);  
+  case 0x31:
+    return new Baload(code_attr, opcode);  
+  case 0x32:
+    return new Aaload(code_attr, opcode);  
+  case 0x33:
+    return new Baload(code_attr, opcode);   
+  case 0x34:
+    return new Caload(code_attr, opcode);
+  case 0x35:
+    return new Saload(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
