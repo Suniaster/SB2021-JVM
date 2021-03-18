@@ -15,7 +15,7 @@ namespace Instructions{
 
   class LdcW : public BaseInstruction{
     private:
-      uint8_t param;
+      uint16_t param;
     public:    
       LdcW(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
@@ -23,7 +23,7 @@ namespace Instructions{
 
   class Ldc2W : public BaseInstruction{
     private:
-      uint8_t param;
+      uint16_t param;
     public:    
       Ldc2W(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();

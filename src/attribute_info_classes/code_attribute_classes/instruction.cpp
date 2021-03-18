@@ -33,6 +33,10 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Sipush(code_attr, opcode);
   case 0x12:
     return new Ldc(code_attr, opcode);
+  case 0x13:
+    return new LdcW(code_attr, opcode);
+  case 0x14:
+    return new Ldc2W(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:

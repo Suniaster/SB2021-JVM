@@ -16,3 +16,34 @@ string Ldc::toString(){
 
   return "ldc #" + paramString.str() + " <" + cp_val->toString() + ">";
 }
+
+
+LdcW::LdcW(Attribute::CodeAttribute* code_attr, uint8_t opcode)
+    :BaseInstruction(code_attr, opcode){
+  FileReader *f_reader = this->code_attr->class_file->file_reader;
+  f_reader->readBytes(2, this->param);    
+}
+
+string LdcW::toString(){
+  CpInfo* cp_val = this->code_attr->class_file->getConstantPoolEntry(this->param);
+
+  stringstream paramString;
+  paramString << (int)this->param;
+
+  return "ldc_w #" + paramString.str() + " <" + cp_val->toString() + ">";
+}
+
+Ldc2W::Ldc2W(Attribute::CodeAttribute* code_attr, uint8_t opcode)
+    :BaseInstruction(code_attr, opcode){
+  FileReader *f_reader = this->code_attr->class_file->file_reader;
+  f_reader->readBytes(2, this->param);    
+}
+
+string Ldc2W::toString(){
+  CpInfo* cp_val = this->code_attr->class_file->getConstantPoolEntry(this->param);
+
+  stringstream paramString;
+  paramString << (int)this->param;
+
+  return "ldc_w #" + paramString.str() + " <" + cp_val->toString() + ">";
+}
