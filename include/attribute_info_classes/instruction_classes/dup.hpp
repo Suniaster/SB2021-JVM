@@ -8,7 +8,7 @@ namespace Instructions{
   class Dup : public BaseInstruction{
     public:    
       Dup(Attribute::CodeAttribute* code_attr, uint8_t opcode);
-      void print();
+      string toString();
   };
 }
 

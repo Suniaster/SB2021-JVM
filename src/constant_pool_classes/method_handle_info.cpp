@@ -9,10 +9,56 @@ CP::MethodHandleInfo::MethodHandleInfo(ClassFile* class_file) : CpInfo(class_fil
 void CP::MethodHandleInfo::setInfo(){
    // TODO checar se os valores de kind e index são válidos
   this->class_file->setAttribute<uint8_t>(1, this->reference_kind);
+  if (this->getReferenceKind() == "NF") {
+      throw std::invalid_argument("Invalid MethodHandle ReferenceKind");
+  }
+
   this->class_file->setAttribute<uint16_t>(2, this->reference_index);
 }
 
 void CP::MethodHandleInfo::printInfo(){
-  cout << "\tMethodHandle: RK " << this->reference_kind << endl;
-  cout << "\tMethodHandle: RI " << this->reference_index << endl;
+  string reference_kind_text = this->getReferenceKind();
+
+  cout << "\n\tMethodHandle: Reference Kind " << this->reference_kind << endl;
+  cout << "\t" << reference_kind_text << endl;
+
+  cout << "\n\tMethodHandle: Reference Index " << this->reference_index << endl;
+  cout << "\n";
+  CpInfo* cp_info = this->class_file->getConstantPoolEntry((int)this->reference_index);
+  cp_info->printInfo();
+}
+
+string CP::MethodHandleInfo::getReferenceKind(){
+    switch (this->reference_kind) {
+        case 0x1:
+            return "REF_getField";
+            break;
+        case 0x2:
+            return "REF_getStatic";
+            break;
+        case 0x3:
+            return "REF_getPutField";
+            break;
+        case 0x4:
+            return "REF_getPutStatic";
+            break;
+        case 0x5:
+            return "REF_invokeVirtual";
+            break;
+        case 0x6:
+            return "REF_invokeStatic";
+            break;
+        case 0x7:
+            return "REF_invokeSpecial";
+            break;
+        case 0x8:
+            return "REF_newInvokeVirtual";
+            break;
+        case 0x9:
+            return "REF_invokeInterface";
+            break;
+        default:
+            return "NF";
+            break;
+    }
 }

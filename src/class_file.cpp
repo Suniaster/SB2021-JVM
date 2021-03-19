@@ -23,7 +23,7 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->fields_count);
   this->loadFields();
 
-  this->file_reader->position = 0x31f;
+  this->file_reader->position = 0x281;
   this->setAttribute<uint16_t>(2, this->attributes_count);
   AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
 }
@@ -97,6 +97,10 @@ void ClassFile::printFields() {
     cout << "[" << i << "]";
     this->fields[i]->printInfo();
   }
+}
+
+CpInfo * ClassFile::getConstantPoolEntry(int index){
+    return this->constant_pool[index- 1];
 }
 
 string ClassFile::getConstantPoolUtf8String(int index){

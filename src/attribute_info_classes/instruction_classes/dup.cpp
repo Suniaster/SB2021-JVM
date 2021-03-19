@@ -6,7 +6,6 @@ Dup::Dup(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
-void Dup::print(){
-  cout << "\t\tdup " ;
-  cout << endl;
+string Dup::toString(){
+  return "dup";
 }

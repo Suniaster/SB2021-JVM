@@ -11,7 +11,7 @@ void CP::FloatInfo::setInfo(){
 }
 
 void CP::FloatInfo::printInfo(){
-  cout << "\tFloat: NI " << this->bytes << endl;
+  cout << "\tFloat: Bytes " << this->bytes << endl;
 
 }
 
