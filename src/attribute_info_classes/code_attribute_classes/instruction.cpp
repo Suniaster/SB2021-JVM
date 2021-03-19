@@ -127,6 +127,10 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Castore(code_attr, opcode);
   case 0x56:
     return new Sastore(code_attr, opcode);
+  case 0x57:
+    return new Pop(code_attr, opcode);
+  case 0x58:
+    return new Pop2(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:

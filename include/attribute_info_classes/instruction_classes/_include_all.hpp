@@ -12,6 +12,7 @@
 #include "./new.hpp"
 #include "./putfield.hpp"
 #include "./nop.hpp"
+#include "./pop.hpp"
 #include "./push.hpp"
 #include "./return.hpp"
 #include "./athrow.hpp"
