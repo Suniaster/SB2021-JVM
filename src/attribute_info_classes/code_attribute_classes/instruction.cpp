@@ -171,6 +171,16 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Div(code_attr, opcode);
   case 0x70 ... 0x73:
     return new Rem(code_attr, opcode);
+  case 0x74 ... 0x77:
+    return new Neg(code_attr, opcode);
+  case 0x78 ... 0x79:
+    return new Shl(code_attr, opcode);
+  case 0x7a ... 0x7b:
+    return new Shr(code_attr, opcode);
+  case 0x7c ... 0x7d:
+    return new Ushr(code_attr, opcode);
+  case 0x7e ... 0x7f:
+    return new And(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
