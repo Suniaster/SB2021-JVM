@@ -143,6 +143,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Dup2X1(code_attr, opcode);
   case 0x5e:
     return new Dup2X2(code_attr, opcode);
+  case 0x5f:
+    return new Swap(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
