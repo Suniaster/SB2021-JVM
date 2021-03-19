@@ -8,25 +8,24 @@ INSTRUCTIONS = src/attribute_info_classes/instruction_classes/*.cpp
 all:
 	make -j 4 objs cp attributes code_attrs instructions
 	make executable
-	make clean
 
 objs : $(OBJS)
-	g++ $(OBJS)  -std=c++11 -Wall -c
+	g++ $(OBJS)  -std=c++11 -Wall -c -g
 
 attributes :  $(ATTRIBUTES)
-	g++ $(ATTRIBUTES)   -std=c++11 -Wall -c
+	g++ $(ATTRIBUTES)   -std=c++11 -Wall -c -g
 
 code_attrs: $(CODE_ATTRS)
-	g++  $(CODE_ATTRS) -std=c++11 -Wall -c
+	g++  $(CODE_ATTRS) -std=c++11 -Wall -c -g
 
 instructions: $(INSTRUCTIONS)
-	g++   $(INSTRUCTIONS) -std=c++11 -Wall -c
+	g++   $(INSTRUCTIONS) -std=c++11 -Wall -c -g
 
 cp : $(CONSTANT_POOL)
-	g++ $(CONSTANT_POOL) -std=c++11 -Wall -c
+	g++ $(CONSTANT_POOL) -std=c++11 -Wall -c -g
 
 executable:
-	g++ *.o -o ./bin/jvm
+	g++ *.o -g -o ./bin/jvm
 
 clean:
 	rm *.o

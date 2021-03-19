@@ -19,8 +19,8 @@ void ClassFile::loadClass(){
   this->loadConstantPool();
 
   // this->loadConstantPool();
-  this->file_reader->position = 0x226;
-  this->setAttribute(2, this->fields_count);
+  this->file_reader->position = 0x227;
+  this->setAttribute<uint16_t>(2, this->fields_count);
   this->loadFields();
 
   this->file_reader->position = 0x31f;
@@ -36,6 +36,9 @@ void ClassFile::printClass(){
   cout << (int)this->fields_count << endl;
 
   this->printConstantPool();
+  this->printFields();
+
+  cout << endl << "----- Attributes Info  -----" << endl;
   AttributeInfo::printAttributes(this->attributes);
 }
 

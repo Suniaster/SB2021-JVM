@@ -20,7 +20,7 @@ string AttributeInfo::getAttributeName(){
   return this->class_file->getConstantPoolUtf8String(this->attribute_name_index);
 }
 
-void AttributeInfo::printInfo(){
+void AttributeInfo::printInfo(uint8_t tabs){
   cout << dec;
   cout << "\tAttribute name index: \t#" << this->attribute_name_index;
   cout << " <" << this->getAttributeName() << ">" << endl;
@@ -37,7 +37,6 @@ void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t 
 }
 
 void AttributeInfo::printAttributes(vector<AttributeInfo*> attributes) {
-  cout << endl << "----- Attributes Info  -----" << endl;
   for (unsigned int i = 0; i < attributes.size(); i += 1) {
     cout << "[" << i << "]";
     attributes[i]->printInfo();
