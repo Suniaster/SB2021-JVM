@@ -181,6 +181,12 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Ushr(code_attr, opcode);
   case 0x7e ... 0x7f:
     return new And(code_attr, opcode);
+  case 0x80 ... 0x81:
+    return new Or(code_attr, opcode);
+  case 0x82 ... 0x83:
+    return new Xor(code_attr, opcode);
+  case 0x84:
+    return new Inc(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
