@@ -131,12 +131,22 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Pop(code_attr, opcode);
   case 0x58:
     return new Pop2(code_attr, opcode);
+  case 0x59:
+    return new Dup(code_attr, opcode);
+  case 0x5a:
+    return new DupX1(code_attr, opcode);
+  case 0x5b:
+    return new DupX2(code_attr, opcode);
+  case 0x5c:
+    return new Dup2(code_attr, opcode);
+  case 0x5d:
+    return new Dup2X1(code_attr, opcode);
+  case 0x5e:
+    return new Dup2X2(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
     return new New(code_attr, opcode);
-  case 0x59:
-    return new Dup(code_attr, opcode);
   case 0xb7:
     return new InvokeSpecial(code_attr, opcode);
   case 0xb6:
