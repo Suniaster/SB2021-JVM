@@ -1,8 +1,6 @@
-#include <stdio.h>
 #include "../include/class_file.hpp"
 #include <iostream>
-#include "stdio.h"
-#include "memory"
+#include <memory>
 
 int main(int argc, char **argv){
 
@@ -10,6 +8,7 @@ int main(int argc, char **argv){
       cout << "Nenhum arquivo inserido"<< endl;
       return 0;
   }
+
   unique_ptr<ClassFile> class_file (new ClassFile(argv[1]));
 
   class_file->loadClass();
