@@ -8,6 +8,11 @@ namespace Instructions{
 #include "../code_attribute.hpp"
 #include <sstream>
 
+#define I_TYPE 0x0
+#define L_TYPE 0x1
+#define F_TYPE 0x2
+#define D_TYPE 0x3
+
 namespace Instructions{
   class BaseInstruction{
     protected:
@@ -20,6 +25,7 @@ namespace Instructions{
 
       virtual void print();
       virtual string toString();
+      static string getTypePrefix(uint8_t type);
       static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode);
   };
 }

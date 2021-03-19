@@ -3,6 +3,7 @@
 #include "./_const.hpp"
 #include "./_load.hpp"
 #include "./_store.hpp"
+#include "./add.hpp"
 #include "./dup.hpp"
 #include "./getfield.hpp"
 #include "./getstatic.hpp"

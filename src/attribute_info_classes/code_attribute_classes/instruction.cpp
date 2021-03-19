@@ -32,6 +32,22 @@ string BaseInstruction::intToString(int param){
   return paramString.str();
 }
 
+
+string BaseInstruction::getTypePrefix(uint8_t type){
+  switch (type){
+    case I_TYPE :
+      return "i";
+    case F_TYPE:
+      return "f";
+    case L_TYPE:
+      return "l";
+    case D_TYPE:
+      return "d";
+    default:
+      return "indefinedPrefix";
+  }
+}
+
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
 
   switch (opcode){
@@ -145,6 +161,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Dup2X2(code_attr, opcode);
   case 0x5f:
     return new Swap(code_attr, opcode);
+  case 0x60 ... 0x63:
+    return new Add(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
