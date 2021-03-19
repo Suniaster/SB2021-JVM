@@ -2,3 +2,4 @@
 ./tests/*
 ./bin/*
 .vscode/*
+/bin/jvm
