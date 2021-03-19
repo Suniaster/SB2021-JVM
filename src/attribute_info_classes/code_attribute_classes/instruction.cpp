@@ -187,6 +187,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Xor(code_attr, opcode);
   case 0x84:
     return new Inc(code_attr, opcode);
+  case 0x85 ... 0x93:
+    return new TypeConversion(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
