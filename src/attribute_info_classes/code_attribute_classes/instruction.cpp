@@ -111,6 +111,22 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Dstore(code_attr, opcode);
   case 0x4b ... 0x4e:
     return new Astore(code_attr, opcode);
+  case 0x4f:
+    return new Iastore(code_attr, opcode);
+  case 0x50:
+    return new Lastore(code_attr, opcode);
+  case 0x51:
+    return new Fastore(code_attr, opcode);  
+  case 0x52:
+    return new Bastore(code_attr, opcode);  
+  case 0x53:
+    return new Aastore(code_attr, opcode);  
+  case 0x54:
+    return new Bastore(code_attr, opcode);   
+  case 0x55:
+    return new Castore(code_attr, opcode);
+  case 0x56:
+    return new Sastore(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
