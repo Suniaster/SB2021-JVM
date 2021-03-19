@@ -1,7 +1,7 @@
 #include "./_aload.hpp"
 #include "./_const.hpp"
 #include "./_load.hpp"
-#include "./astore.hpp"
+#include "./_store.hpp"
 #include "./dup.hpp"
 #include "./getfield.hpp"
 #include "./getstatic.hpp"

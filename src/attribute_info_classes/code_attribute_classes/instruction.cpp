@@ -91,6 +91,26 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Caload(code_attr, opcode);
   case 0x35:
     return new Saload(code_attr, opcode);
+  case 0x36:
+    return new Istore(code_attr, opcode);
+  case 0x37:
+    return new Lstore(code_attr, opcode);
+  case 0x38:
+    return new Fstore(code_attr, opcode);
+  case 0x39:
+    return new Dstore(code_attr, opcode);
+  case 0x3a:
+    return new Astore(code_attr, opcode);
+  case 0x3b ... 0x3e:
+    return new Istore(code_attr, opcode);
+  case 0x3f ... 0x42:
+    return new Lstore(code_attr, opcode);
+  case 0x43 ... 0x46:
+    return new Fstore(code_attr, opcode);
+  case 0x47 ... 0x4a:
+    return new Dstore(code_attr, opcode);
+  case 0x4b ... 0x4e:
+    return new Astore(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
@@ -109,10 +129,6 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new GetField(code_attr, opcode);
   case 0xbf:
     return new Athrow(code_attr, opcode);
-  }
-
-  if(opcode >= 0x4b && opcode <= 0x4e){
-    return new Astore(code_attr, opcode);
   }
 
   return new BaseInstruction(code_attr, opcode);
