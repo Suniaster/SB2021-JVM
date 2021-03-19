@@ -21,6 +21,7 @@ namespace Instructions{
       string hexToString(int);
       string intToString(int);
     public:    
+      uint16_t pc;
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
 
       virtual void print();
