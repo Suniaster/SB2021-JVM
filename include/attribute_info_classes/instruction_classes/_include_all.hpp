@@ -1,6 +1,7 @@
 #include "./_2_.hpp"
 #include "./_aload.hpp"
 #include "./_astore.hpp"
+#include "./_cmp.hpp"
 #include "./_const.hpp"
 #include "./_load.hpp"
 #include "./_store.hpp"
