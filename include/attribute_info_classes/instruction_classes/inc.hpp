@@ -8,6 +8,8 @@ namespace Instructions{
   class Inc : public BaseInstruction{
     const uint8_t BASE_OPCODE = 0x84;
     uint8_t type;
+    uint8_t _index;
+    uint8_t _const;
     public:    
       Inc(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
