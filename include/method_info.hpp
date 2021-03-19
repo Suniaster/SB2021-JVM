@@ -13,11 +13,12 @@ class MethodInfo{
     uint16_t name_index;
     uint16_t descriptor_index;
     uint16_t attributes_count;
-    vector<Attribute_info> * attributes;
+    ClassFile* class_file;
+    vector<AttributeInfo*> attributes;
 
   public:
-    
-
+    MethodInfo(ClassFile *class_file);
+    void printInfo();
 };
 
 #endif
