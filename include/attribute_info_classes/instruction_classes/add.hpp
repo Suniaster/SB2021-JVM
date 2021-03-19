@@ -6,7 +6,7 @@
 
 namespace Instructions{
   class Add : public BaseInstruction{
-    const uint8_t ADD_BASE_OPCODE = 0x60;
+    const uint8_t BASE_OPCODE = 0x60;
     uint8_t type;
     public:    
       Add(Attribute::CodeAttribute* code_attr, uint8_t opcode);

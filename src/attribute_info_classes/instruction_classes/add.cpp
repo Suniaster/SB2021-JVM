@@ -4,7 +4,7 @@ using namespace Instructions;
 
 Add::Add(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
-  this->type = this->opcode - this->ADD_BASE_OPCODE;  
+  this->type = this->opcode - this->BASE_OPCODE;  
 }
 
 string Add::toString(){

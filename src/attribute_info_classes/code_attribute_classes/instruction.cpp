@@ -163,6 +163,14 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Swap(code_attr, opcode);
   case 0x60 ... 0x63:
     return new Add(code_attr, opcode);
+  case 0x64 ... 0x66:
+    return new Sub(code_attr, opcode);
+  case 0x67 ... 0x6a:
+    return new Mul(code_attr, opcode);
+  case 0x6c ... 0x6f:
+    return new Div(code_attr, opcode);
+  case 0x70 ... 0x73:
+    return new Rem(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
