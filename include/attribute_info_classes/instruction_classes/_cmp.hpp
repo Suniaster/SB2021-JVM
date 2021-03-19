@@ -6,7 +6,7 @@
 
 namespace Instructions{
   class Compare : public BaseInstruction{
-    const uint8_t BASE_OPCODE = 0x85;
+    const uint8_t BASE_OPCODE = 0x94;
     const vector<string> types = {
       "lcmp", "fcmpl", 
       "fcmpg", "dcmpg"

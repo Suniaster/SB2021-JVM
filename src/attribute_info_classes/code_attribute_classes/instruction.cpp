@@ -191,6 +191,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new TypeConversion(code_attr, opcode);
   case 0x94 ... 0x98:
     return new Compare(code_attr, opcode);
+  case 0x99 ... 0x9e:
+    return new If(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
