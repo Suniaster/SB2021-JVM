@@ -19,22 +19,18 @@ void ClassFile::loadClass()
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
   this->loadConstantPool();
 
-  // this->loadConstantPool();
   this->setAttribute<uint16_t>(2, this->access_flags);
   this->setAttribute<uint16_t>(2, this->this_class);
   this->setAttribute<uint16_t>(2, this->super_class);
   this->setAttribute<uint16_t>(2, this->interfaces_count);
   this->loadInterfaces();
 
-  this->file_reader->position = 0x226;
   this->setAttribute(2, this->fields_count);
   this->loadFields();
 
-  this->file_reader->position = 0x241;
   this->setAttribute(2, this->methods_count);
   this->loadMethods();
 
-  this->file_reader->position = 0x31f;
   this->setAttribute<uint16_t>(2, this->attributes_count);
   AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
 }
@@ -59,12 +55,18 @@ void ClassFile::printClass()
   cout << "Super class: \t\tcpinfo #";
   temp = this->getConstantPoolEntry(this->super_class);
   cout << dec << (int)this->super_class << " " << temp->toString() << endl;
-  cout << "Interfaces: \t\t";
+  cout << "Interfaces count: \t\t";
   cout << (int)this->interfaces_count << endl;
-
+  cout << "Fields Count: \t\t";
   cout << (int)this->fields_count << endl;
+  cout << "Methods count: \t\t";
+  cout << (int)this->methods_count << endl;
+  cout << "Attributes count: \t\t";
+  cout << (int)this->attributes_count << endl;
 
   this->printConstantPool();
+  this->printInterfaces();
+  this->printFields();
   this->printMethods();
   AttributeInfo::printAttributes(this->attributes, 0);
 }

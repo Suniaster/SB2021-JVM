@@ -58,7 +58,6 @@ AttributeInfo* AttributeInfo::getInstance(ClassFile* class_file){
   Attribute::AttrInitialValue params = {class_file, attr_name_index, attr_length};
 
   string attr_name= class_file->getConstantPoolUtf8String(attr_name_index);
-  cout << attr_name << endl;
   if(attr_name == "SourceFile"){
     return new Attribute::SourceFile(params);
   }
