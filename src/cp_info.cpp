@@ -23,6 +23,10 @@ CpInfo* CpInfo::returnUnusableSpace(ClassFile* class_file){
     return new CP::UnusedInfo(class_file);
 }
 
+string CpInfo::toString(){
+  return "not implemented";
+}
+
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   CpInfo* correct_instance;
 

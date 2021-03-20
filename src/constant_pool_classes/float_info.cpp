@@ -11,8 +11,10 @@ void CP::FloatInfo::setInfo(){
 }
 
 void CP::FloatInfo::printInfo(){
+
   cout << "\tFloat: Bytes " << hex <<  this->bytes << endl;
   cout << "\tFloat: Value " << fixed <<  this->returnFloat() << endl;
+
 }
 
 float CP::FloatInfo::returnFloat(){

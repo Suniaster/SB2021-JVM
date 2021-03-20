@@ -11,8 +11,10 @@ void CP::IntegerInfo::setInfo(){
 }
 
 void CP::IntegerInfo::printInfo(){
+
   cout << "\tInteger: Bytes " << hex <<this->bytes << endl;
   cout << "\tInteger: Value " << dec << this->returnInteger() << endl;
+
 
 }
 

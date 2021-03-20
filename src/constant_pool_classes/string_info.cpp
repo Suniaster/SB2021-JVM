@@ -14,3 +14,8 @@ void CP::StringInfo::printInfo(){
   cout << "\tString: String Index " << this->string_index << endl;
 
 }
+
+string CP::StringInfo::toString(){
+  CpInfo* newIndex = this->class_file->getConstantPoolEntry(this->string_index);
+  return newIndex->toString();
+}

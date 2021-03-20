@@ -29,6 +29,7 @@ void Attribute::CodeAttribute::loadInstructions(){
     Instructions::BaseInstruction* newInstruction = Instructions::BaseInstruction::getInstance(this, bytecode_read);
     
     final_pos = file_reader->position;
+    newInstruction->pc = i;
     i += final_pos - initial_pos;
 
     this->code.push_back(newInstruction);
@@ -50,6 +51,7 @@ void Attribute::CodeAttribute::printInfo(){
   cout << "\tByteCode: " << endl; 
   for(int i=0; i < this->number_of_instructions;i+=1){
     newInstruction = this->code[i];
+    cout << dec <<newInstruction->pc << "\t";
     newInstruction->print();
   }
 }
