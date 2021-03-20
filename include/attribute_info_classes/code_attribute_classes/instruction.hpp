@@ -12,6 +12,7 @@ namespace Instructions{
 #define L_TYPE 0x1
 #define F_TYPE 0x2
 #define D_TYPE 0x3
+#define A_TYPE 0x4
 
 namespace Instructions{
   class BaseInstruction{

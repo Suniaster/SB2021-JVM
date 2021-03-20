@@ -43,6 +43,8 @@ string BaseInstruction::getTypePrefix(uint8_t type){
       return "l";
     case D_TYPE:
       return "d";
+    case A_TYPE:
+      return "a";
     default:
       return "indefinedPrefix";
   }
@@ -225,6 +227,13 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Goto(code_attr, opcode);
   case 0xa8:
     return new Jsr(code_attr, opcode);
+  case 0xa9:
+    return new Ret(code_attr, opcode);
+  // Faltando tableswitch e lookupswitch
+  case 0xac ... 0xb0:
+    return new _Return(code_attr, opcode);
+  case 0xb1:
+    return new Return(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
@@ -235,8 +244,6 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new InvokeVirtual(code_attr, opcode);
   case 0xb5:
     return new PutField(code_attr, opcode);
-  case 0xb1:
-    return new Return(code_attr, opcode);
   case 0xb4:
     return new GetField(code_attr, opcode);
   case 0xbf:
