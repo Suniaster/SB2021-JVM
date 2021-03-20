@@ -32,7 +32,51 @@ string BaseInstruction::intToString(int param){
   return paramString.str();
 }
 
+
+string BaseInstruction::getTypePrefix(uint8_t type){
+  switch (type){
+    case I_TYPE :
+      return "i";
+    case F_TYPE:
+      return "f";
+    case L_TYPE:
+      return "l";
+    case D_TYPE:
+      return "d";
+    case A_TYPE:
+      return "a";
+    default:
+      return "indefinedPrefix";
+  }
+}
+
+template<class InstructionClassType>
+bool instantiateInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode, BaseInstruction* &newInstance){
+  if(InstructionClassType::isValidOpcode(opcode)){
+    newInstance = new InstructionClassType(code_attr, opcode);
+    return true;
+  }
+  else{
+    newInstance = NULL;
+    return false;
+  }
+}
+
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
+
+  // BaseInstruction* temp;
+  // vector<bool (*)(Attribute::CodeAttribute*, uint8_t, BaseInstruction*&)> all_constructors = {
+  //   &instantiateInstruction<Nop>,
+  //   &instantiateInstruction<Iconst>,
+  // };
+
+  // for(unsigned int i=0;i<all_constructors.size();i+=1){
+  //   if( (*all_constructors[i])(code_attr, opcode, temp)){
+  //     return temp;
+  //   }
+  // }
+
+  // return new BaseInstruction(code_attr, opcode);
 
   switch (opcode){
   case 0x0:
@@ -127,20 +171,79 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Castore(code_attr, opcode);
   case 0x56:
     return new Sastore(code_attr, opcode);
+  case 0x57:
+    return new Pop(code_attr, opcode);
+  case 0x58:
+    return new Pop2(code_attr, opcode);
+  case 0x59:
+    return new Dup(code_attr, opcode);
+  case 0x5a:
+    return new DupX1(code_attr, opcode);
+  case 0x5b:
+    return new DupX2(code_attr, opcode);
+  case 0x5c:
+    return new Dup2(code_attr, opcode);
+  case 0x5d:
+    return new Dup2X1(code_attr, opcode);
+  case 0x5e:
+    return new Dup2X2(code_attr, opcode);
+  case 0x5f:
+    return new Swap(code_attr, opcode);
+  case 0x60 ... 0x63:
+    return new Add(code_attr, opcode);
+  case 0x64 ... 0x66:
+    return new Sub(code_attr, opcode);
+  case 0x67 ... 0x6a:
+    return new Mul(code_attr, opcode);
+  case 0x6c ... 0x6f:
+    return new Div(code_attr, opcode);
+  case 0x70 ... 0x73:
+    return new Rem(code_attr, opcode);
+  case 0x74 ... 0x77:
+    return new Neg(code_attr, opcode);
+  case 0x78 ... 0x79:
+    return new Shl(code_attr, opcode);
+  case 0x7a ... 0x7b:
+    return new Shr(code_attr, opcode);
+  case 0x7c ... 0x7d:
+    return new Ushr(code_attr, opcode);
+  case 0x7e ... 0x7f:
+    return new And(code_attr, opcode);
+  case 0x80 ... 0x81:
+    return new Or(code_attr, opcode);
+  case 0x82 ... 0x83:
+    return new Xor(code_attr, opcode);
+  case 0x84:
+    return new Inc(code_attr, opcode);
+  case 0x85 ... 0x93:
+    return new TypeConversion(code_attr, opcode);
+  case 0x94 ... 0x98:
+    return new Compare(code_attr, opcode);
+  case 0x99 ... 0x9e:
+    return new If(code_attr, opcode);
+  case 0x9f ... 0xa6:
+    return new If_cmp(code_attr, opcode);
+  case 0xa7:
+    return new Goto(code_attr, opcode);
+  case 0xa8:
+    return new Jsr(code_attr, opcode);
+  case 0xa9:
+    return new Ret(code_attr, opcode);
+  // Faltando tableswitch e lookupswitch
+  case 0xac ... 0xb0:
+    return new _Return(code_attr, opcode);
+  case 0xb1:
+    return new Return(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
     return new New(code_attr, opcode);
-  case 0x59:
-    return new Dup(code_attr, opcode);
   case 0xb7:
     return new InvokeSpecial(code_attr, opcode);
   case 0xb6:
     return new InvokeVirtual(code_attr, opcode);
   case 0xb5:
     return new PutField(code_attr, opcode);
-  case 0xb1:
-    return new Return(code_attr, opcode);
   case 0xb4:
     return new GetField(code_attr, opcode);
   case 0xbf:
