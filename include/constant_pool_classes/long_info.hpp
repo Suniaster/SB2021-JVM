@@ -11,6 +11,7 @@ namespace CP{
 
     public:
       long long returnLong();
+      string toString();
       LongInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

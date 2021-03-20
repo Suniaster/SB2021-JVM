@@ -11,6 +11,7 @@ namespace CP{
 
     public:
       double returnDouble();
+      string toString();
       DoubleInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

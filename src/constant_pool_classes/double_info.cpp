@@ -26,3 +26,6 @@ double CP::DoubleInfo::returnDouble(){
   to_return = s * m * (2^(e-1075));
   return to_return;
 }
+string CP::DoubleInfo::toString(){
+  return std::to_string(this->returnDouble());
+}

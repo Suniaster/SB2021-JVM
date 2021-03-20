@@ -22,3 +22,6 @@ long long CP::LongInfo::returnLong(){
   to_return = (signed long long)(((unsigned long long) this->high_bytes << 32) | (unsigned long long)this->low_bytes);
   return to_return;
 }
+string CP::LongInfo::toString(){
+  return std::to_string(this->returnLong());
+}
