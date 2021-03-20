@@ -36,11 +36,13 @@ class ClassFile{
   public:
     FileReader *file_reader;
     ClassFile(string file_name);
+    CpInfo* getConstantPoolEntry(int index);
 
     void loadClass();
     void printClass();
 
     string getConstantPoolUtf8String(int index);
+
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);
 };

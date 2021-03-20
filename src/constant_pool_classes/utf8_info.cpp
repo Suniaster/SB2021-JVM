@@ -23,6 +23,10 @@ string CP::Utf8Info::returnString(){
     return to_return;
 }
 
+string CP::Utf8Info::toString(){
+  return this->returnString();
+}
+
 void CP::Utf8Info::printInfo(){
   cout << "\tUtf8Info: Length " << this->length << endl;
   cout << "\tUtf8Info: String " << this->returnString() << endl;

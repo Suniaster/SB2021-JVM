@@ -12,6 +12,9 @@ void CP::InvokeDynamicInfo::setInfo(){
 }
 
 void CP::InvokeDynamicInfo::printInfo(){
-  cout << "\tInterfaceMethodRef: CI " << this->bootstrap_method_attr_index << endl;
-  cout << "\tInterfaceMethodRef: NTI " << this->name_and_type_index << endl;
+  cout << "\tInterfaceMethodRef: Bootstrap Method Index " << this->bootstrap_method_attr_index << endl;
+  cout << "\tInterfaceMethodRef: Nane and Type Index" << this->name_and_type_index << endl;
+  cout << "\n";
+  CpInfo* name_and_type_info = this->class_file->getConstantPoolEntry((int)this->name_and_type_index);
+  name_and_type_info->printInfo();
 }
