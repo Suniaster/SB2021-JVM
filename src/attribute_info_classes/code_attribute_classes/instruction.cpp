@@ -195,6 +195,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new If(code_attr, opcode);
   case 0x9f ... 0xa6:
     return new If_cmp(code_attr, opcode);
+  case 0xa7:
+    return new Goto(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
