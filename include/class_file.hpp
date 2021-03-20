@@ -5,6 +5,7 @@ class ClassFile;
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <map>
 
 #include "./cp_info.hpp"
 #include "./file_reader.hpp"
@@ -31,9 +32,11 @@ class ClassFile{
     vector<AttributeInfo*> attributes;
 
     void loadFields();
-
     void printFields();
-  public:
+
+    string beautifiedMajorVersion();
+    string beautifiedAccessFlags(uint16_t access_flag, bool is_fields);
+public:
     FileReader *file_reader;
     ClassFile(string file_name);
     CpInfo* getConstantPoolEntry(int index);

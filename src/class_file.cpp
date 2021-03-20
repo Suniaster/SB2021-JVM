@@ -18,11 +18,12 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
   this->loadConstantPool();
 
-  this->file_reader->position = 0x226;
+  this->file_reader->position = 0x227;
   this->setAttribute(2, this->fields_count);
   this->loadFields();
 
   this->file_reader->position = 0x31f;
+
   this->setAttribute<uint16_t>(2, this->attributes_count);
   AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
 }
@@ -35,6 +36,7 @@ void ClassFile::printClass(){
   cout << (int)this->fields_count << endl;
 
   this->printConstantPool();
+  this->printFields();
   AttributeInfo::printAttributes(this->attributes);
 }
 
@@ -72,8 +74,6 @@ void ClassFile::loadConstantPool(){
     if (tag == 0x5 || tag == 0x6) {
         this->constant_pool.push_back(cp_info->returnUnusableSpace(this));
     }
-
-
   }
 }
 
@@ -87,9 +87,10 @@ void ClassFile::loadFields() {
 }
 
 void ClassFile::printFields() {
-  cout << endl << "----- Fields Info  -----" << endl;
+  cout << "********************  Fields Info ********************" << endl;
+  cout << "Fields count:" << dec << (int)this->fields_count << endl;
 
-  for(unsigned int i=0; i<this->fields.size(); i++){
+  for(unsigned int i=0; i<this->fields_count; i++){
     cout << "[" << i << "]";
     this->fields[i]->printInfo();
   }
@@ -103,4 +104,81 @@ string ClassFile::getConstantPoolUtf8String(int index){
   // TODO: Codar um throw pra caso indice nao corresponda a UTf8
   CP::Utf8Info *utf_info = (CP::Utf8Info *)this->constant_pool[index-1];
   return utf_info->returnString();
+}
+
+string ClassFile::beautifiedMajorVersion() {
+  switch (this->major_version) {
+    case 46:
+      return "1.2";
+
+    case 47:
+      return "1.3";
+
+    case 48:
+      return "1.4";
+
+    case 49:
+      return "1.5";
+
+    case 50:
+      return "1.6";
+
+    case 51:
+      return "1.7";
+
+    case 52:
+      return "1.8";
+
+    case 53:
+      return "1.9";
+
+    case 54:
+      return "1.10";
+
+    case 55:
+      return "1.11";
+
+    case 56:
+      return "1.12";
+
+    case 57:
+      return "1.13";
+    default:
+      throw runtime_error("File version not supported.");
+  }
+}
+
+string ClassFile::beautifiedAccessFlags(uint16_t access_flag, bool is_fields) {
+  map <int,string> accesses;
+  string beautified;
+
+  accesses[0x0001] = "public";
+  accesses[0x0002] = "private";
+  accesses[0x0004] = "protected";
+  accesses[0x0008] = "static";
+  accesses[0x0010] = "final";
+  accesses[0x0020] = "synchronized";
+
+  if (is_fields) {
+    accesses[0x0040] = "volatile";
+    accesses[0x0080] = "transient";
+  }
+  else {
+    accesses[0x0040] = "bridge";
+    accesses[0x0080] = "varargs";
+  }
+
+  accesses[0x0100] = "native";
+  accesses[0x0200] = "interface";
+  accesses[0x0400] = "abstract";
+  accesses[0x0800] = "strictfp";
+  accesses[0x1000] = "synthetic";
+  accesses[0x4000] = "enum";
+
+  for ( const auto &access: accesses) {
+    if (access_flag & access.first)
+      beautified.append(access.second + " ");
+  }
+
+  return beautified;
 }

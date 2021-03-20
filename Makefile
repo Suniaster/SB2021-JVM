@@ -3,7 +3,6 @@ CONSTANT_POOL = src/constant_pool_classes/*.cpp
 ATTRIBUTES = src/attribute_info_classes/*.cpp
 CODE_ATTRS = src/attribute_info_classes/code_attribute_classes/*.cpp
 INSTRUCTIONS = src/attribute_info_classes/instruction_classes/*.cpp
-
 CC_FLAGS = -std=c++11 -g -Wall -c
 
 all:
