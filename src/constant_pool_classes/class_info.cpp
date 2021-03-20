@@ -15,8 +15,5 @@ string CP::ClassInfo::toString(){
 }
 
 void CP::ClassInfo::printInfo(){
-  cout << "\tClass: Name Index " << this->name_index << endl;
-  cout << "\n";
-  CpInfo* utf_info = this->class_file->getConstantPoolEntry((int)this->name_index);
-  utf_info->printInfo();
+  cout << "\tClass: Name Index " << this->name_index << " <"<< this->class_file->getConstantPoolEntry((int)this->name_index)->toString()<< ">" << endl;
 }

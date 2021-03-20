@@ -13,8 +13,6 @@ void CP::MethodTypeInfo::setInfo(){
 
 void CP::MethodTypeInfo::printInfo(){
 
-  cout << "\tMethodType: Descriptor Index " << this->descriptor_index << endl;
-  cout << "\n";
-  CpInfo* utf_info = this->class_file->getConstantPoolEntry((int)this->descriptor_index);
-  utf_info->printInfo();
+  cout << "\tMethodType: Descriptor Index cp_info#" << this->descriptor_index << " " << this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString() <<  endl;
+
 }
