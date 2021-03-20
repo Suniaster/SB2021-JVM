@@ -5,11 +5,14 @@ class ClassFile;
 #include <vector>
 #include <string>
 #include <cstdint>
+#include <map>
 
 #include "./cp_info.hpp"
 #include "./file_reader.hpp"
 #include "./field_info.hpp"
+#include "./interface_info.hpp"
 #include "./attribute_info.hpp"
+#include "./method_info.hpp"
 
 using namespace std;
 
@@ -45,18 +48,17 @@ class ClassFile{
 
     void loadMethods();
     void printMethods();
-
-    string beautifiedMajorVersion();
-    string beautifiedAccessFlags(uint16_t access_flag, bool is_fields);
 public:
     FileReader *file_reader;
     ClassFile(string file_name);
     CpInfo* getConstantPoolEntry(int index);
-
     void loadClass();
-    void printClass();
 
+    void printClass();
     string getConstantPoolUtf8String(int index);
+
+    string beautifiedMajorVersion();
+    string beautifiedAccessFlags(uint16_t access_flag, bool is_fields);
 
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);

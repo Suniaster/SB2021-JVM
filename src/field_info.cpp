@@ -10,15 +10,16 @@ FieldInfo::FieldInfo(ClassFile *class_file) {
 }
 
 void FieldInfo::printInfo() {
-  cout << dec;
-  cout << "\tName: \t#" << this->name_index << endl;
-  cout << "\tDescriptor: \t#" << this->descriptor_index << endl;
-  cout << "\tAccess flags: \t" << hex << this->access_flags << endl;
-  cout << "\tAttributes count: \t" << hex << this->attributes_count << endl;
+  cout << "\tName:              cpinfo #" << this->name_index << " <";
+  cout << this->class_file->getConstantPoolEntry(this->name_index)->toString() << ">" << endl;
+  cout << "\tDescriptor:        cpinfo #" << this->descriptor_index << " <";
+  cout << this->class_file->getConstantPoolEntry(this->descriptor_index)->toString() << ">" << endl;
+  cout << "\tAccess flags:      0x" <<  hex << this->access_flags << " " << this->class_file->beautifiedAccessFlags(this->access_flags, true) << endl;
+  cout << "\tAttributes count:  " << hex << this->attributes_count << endl;
 
   if (this->attributes_count) {
     cout << "\t Attributes:";
-    AttributeInfo::printAttributes(this->attributes, 1);
+    AttributeInfo::printAttributes(this->attributes, 2);
     cout << endl;
   }
 }

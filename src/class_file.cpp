@@ -38,47 +38,49 @@ void ClassFile::loadClass()
 void ClassFile::printClass()
 {
   CpInfo *temp;
-  cout << "******************** General Information ********************" << endl;
-  cout << "Magic number: \t\t";
+  cout << "\n******************** General Information ********************" << endl;
+  cout << "Magic number:         ";
   cout << hex << this->magic_number << endl;
-  cout << "Minor version: \t\t";
+  cout << "Minor version:        ";
   cout << (int)this->minor_version << endl;
-  cout << "Major version: \t\t";
-  cout << (int)this->major_version << endl;
-  cout << "Constant pool count: \t";
+  cout << "Major version:        ";
+  cout << dec << (int)this->major_version << " " << beautifiedMajorVersion() << endl;
+  cout << "Constant pool count:  ";
   cout << dec << (int)this->constant_pool_count << endl;
-  cout << "Access flags: \t\t";
-  cout << hex << (int)this->access_flags << endl;
-  cout << "This class: \t\tcpinfo #";
+  cout << "Access flags:         ";
+  cout << hex << "0x"<< (int)this->access_flags << " "<< beautifiedAccessFlags(this->access_flags, false) << endl;
+  cout << "This class:           cpinfo #";
   temp = this->getConstantPoolEntry(this->this_class);
   cout << dec << (int)this->this_class << " " << temp->toString() << endl;
-  cout << "Super class: \t\tcpinfo #";
+  cout << "Super class:          cpinfo #";
   temp = this->getConstantPoolEntry(this->super_class);
   cout << dec << (int)this->super_class << " " << temp->toString() << endl;
-  cout << "Interfaces count: \t\t";
+  cout << "Interfaces count:     ";
   cout << (int)this->interfaces_count << endl;
-  cout << "Fields Count: \t\t";
+  cout << "Fields Count:         ";
   cout << (int)this->fields_count << endl;
-  cout << "Methods count: \t\t";
+  cout << "Methods count:        ";
   cout << (int)this->methods_count << endl;
-  cout << "Attributes count: \t\t";
+  cout << "Attributes count:     ";
   cout << (int)this->attributes_count << endl;
 
   this->printConstantPool();
   this->printInterfaces();
   this->printFields();
   this->printMethods();
+
+  cout << "\n******************** Attributes Info ************************" << endl;
   AttributeInfo::printAttributes(this->attributes, 0);
 }
 
 void ClassFile::printConstantPool()
 {
-  cout << "******************** Constant Pool ********************" << endl;
+  cout << "\n******************** Constant Pool **************************" << endl;
   cout << "[hex] [dec]" << endl;
   for (int i = 0; i < this->constant_pool_count - 1; i++)
   {
-    cout << hex << "[" << i + 1 << "] ";
-    cout << dec << "[" << i + 1 << "]" << endl;
+    cout << hex << "[" << i + 1 << "]";
+    cout << dec << " [" << i + 1 << "]" << endl;
     this->constant_pool[i]->printInfo();
   }
 }
@@ -90,16 +92,10 @@ void ClassFile::loadConstantPool()
 
   for (int i = 0; i < this->constant_pool_count - 1; i++)
   {
-    // Le tag
     this->setAttribute<uint8_t>(1, tag);
 
-    // instanciar classe certa
     cp_info = CpInfo::getInstance(tag, this);
-
-    // seta atributos
     cp_info->setInfo();
-
-    // salva na classe
     this->constant_pool.push_back(cp_info);
 
     // adiciona espaço inutilizável caso tenha um long ou double
@@ -134,8 +130,7 @@ void ClassFile::loadFields()
 
 void ClassFile::printInterfaces()
 {
-  cout << endl
-       << "----- Interfaces Array  -----" << endl;
+  cout << "\n******************** Interface Array ************************" << endl;
 
   for (unsigned int i = 0; i < this->interfaces_count; i++)
   {
@@ -146,8 +141,7 @@ void ClassFile::printInterfaces()
 
 void ClassFile::printFields()
 {
-  cout << endl
-       << "----- Fields Info  -----" << endl;
+  cout << "\n******************** Fields Info ****************************" << endl;
 
   for (unsigned int i = 0; i < this->fields.size(); i++)
   {
@@ -167,7 +161,7 @@ void ClassFile::loadMethods() {
 }
 
 void ClassFile::printMethods() {
-  cout << endl << "----- Methods Info  -----" << endl;
+  cout << "\n******************** Methods Info ***************************" << endl;
 
   for (unsigned int i=0; i<this->methods.size(); i++) {
     cout << "[" << i << "]";
@@ -189,76 +183,76 @@ string ClassFile::getConstantPoolUtf8String(int index)
 string ClassFile::beautifiedMajorVersion() {
   switch (this->major_version) {
     case 46:
-      return "1.2";
+      return "[1.2]";
 
     case 47:
-      return "1.3";
+      return "[1.3]";
 
     case 48:
-      return "1.4";
+      return "[1.4]";
 
     case 49:
-      return "1.5";
+      return "[1.5]";
 
     case 50:
-      return "1.6";
+      return "[1.6]";
 
     case 51:
-      return "1.7";
+      return "[1.7]";
 
     case 52:
-      return "1.8";
+      return "[1.8]";
 
     case 53:
-      return "1.9";
+      return "[1.9]";
 
     case 54:
-      return "1.10";
+      return "[1.10]";
 
     case 55:
-      return "1.11";
+      return "[1.11]";
 
     case 56:
-      return "1.12";
+      return "[1.12]";
 
     case 57:
-      return "1.13";
+      return "[1.13]";
     default:
       throw runtime_error("File version not supported.");
   }
 }
 
-string ClassFile::beautifiedAccessFlags(uint16_t access_flag, bool is_fields) {
-  map <int,string> accesses;
+string ClassFile::beautifiedAccessFlags(uint16_t access_flags, bool is_fields) {
+  map <int,string> flags;
   string beautified;
 
-  accesses[0x0001] = "public";
-  accesses[0x0002] = "private";
-  accesses[0x0004] = "protected";
-  accesses[0x0008] = "static";
-  accesses[0x0010] = "final";
-  accesses[0x0020] = "synchronized";
+  flags[0x0001] = "public";
+  flags[0x0002] = "private";
+  flags[0x0004] = "protected";
+  flags[0x0008] = "static";
+  flags[0x0010] = "final";
+  flags[0x0020] = "synchronized";
 
   if (is_fields) {
-    accesses[0x0040] = "volatile";
-    accesses[0x0080] = "transient";
+    flags[0x0040] = "volatile";
+    flags[0x0080] = "transient";
   }
   else {
-    accesses[0x0040] = "bridge";
-    accesses[0x0080] = "varargs";
+    flags[0x0040] = "bridge";
+    flags[0x0080] = "varargs";
   }
 
-  accesses[0x0100] = "native";
-  accesses[0x0200] = "interface";
-  accesses[0x0400] = "abstract";
-  accesses[0x0800] = "strictfp";
-  accesses[0x1000] = "synthetic";
-  accesses[0x4000] = "enum";
+  flags[0x0100] = "native";
+  flags[0x0200] = "interface";
+  flags[0x0400] = "abstract";
+  flags[0x0800] = "strictfp";
+  flags[0x1000] = "synthetic";
+  flags[0x4000] = "enum";
 
-  for ( const auto &access: accesses) {
-    if (access_flag & access.first)
-      beautified.append(access.second + " ");
+  for ( const auto &flag: flags) {
+    if (access_flags & flag.first)
+      beautified.append(flag.second + " ");
   }
 
-  return beautified;
+  return "[" + beautified.erase(beautified.find_last_not_of(" ") + 1) + "]";
 }
