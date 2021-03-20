@@ -29,6 +29,7 @@ string CpInfo::toString(){
 
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   CpInfo* correct_instance;
+
   switch (tag){
   case 0x1:
     correct_instance = new CP::Utf8Info(class_file);
@@ -73,7 +74,8 @@ CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
     correct_instance = new CP::InvokeDynamicInfo(class_file);
     break;
   default:
-    throw std::invalid_argument("Invalid CP Tag");
+    correct_instance =  new CP::UnusedInfo(class_file);
+    // throw std::invalid_argument("Invalid CP Tag");
     break;
   }
   return correct_instance;
