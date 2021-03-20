@@ -23,6 +23,9 @@ class ClassFile{
     uint16_t fields_count;
     uint16_t methods_count;
     uint16_t attributes_count;
+    uint16_t access_flags;
+    uint16_t this_class;
+    uint16_t super_class;
 
     void loadConstantPool();
     void loadAttributes();
@@ -41,11 +44,13 @@ class ClassFile{
   public:
     FileReader *file_reader;
     ClassFile(string file_name);
+    CpInfo* getConstantPoolEntry(int index);
 
     void loadClass();
     void printClass();
 
     string getConstantPoolUtf8String(int index);
+
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);
 };

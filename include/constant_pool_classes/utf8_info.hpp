@@ -16,6 +16,7 @@ namespace CP{
       string returnString();
       void setInfo();
       void printInfo();
+      string toString();
   };
 }
 #endif

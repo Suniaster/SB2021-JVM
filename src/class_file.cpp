@@ -18,7 +18,11 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
   this->loadConstantPool();
 
-  // this->loadConstantPool();
+  this->setAttribute<uint16_t>(2, this->access_flags);
+  this->setAttribute<uint16_t>(2, this->this_class);
+  this->setAttribute<uint16_t>(2, this->super_class);
+
+
   this->file_reader->position = 0x226;
   this->setAttribute(2, this->fields_count);
   this->loadFields();
@@ -33,10 +37,27 @@ void ClassFile::loadClass(){
 }
 
 void ClassFile::printClass(){
+  CpInfo *temp;
+  cout << "******************** General Information ********************" << endl;
+  cout << "Magic number: \t\t" ;
   cout << hex << this->magic_number << endl;
+  cout << "Minor version: \t\t" ;
   cout << (int)this->minor_version << endl;
+  cout << "Major version: \t\t" ;
   cout << (int)this->major_version << endl;
-  cout << (int)this->constant_pool_count << endl;
+  cout << "Constant pool count: \t" ;
+  cout << dec << (int)this->constant_pool_count << endl;
+  cout << "Access flags: \t\t" ;
+  cout << hex <<(int)this->access_flags << endl;
+  cout << "This class: \t\tcpinfo #" ;
+  temp = this->getConstantPoolEntry(this->this_class);
+  cout << dec << (int)this->this_class << " " << temp->toString() << endl;
+  cout << "Super class: \t\tcpinfo #" ;
+  temp = this->getConstantPoolEntry(this->super_class);
+  cout << dec <<(int)this->super_class << " " << temp->toString() << endl;
+
+
+  
   cout << (int)this->fields_count << endl;
 
   this->printConstantPool();
@@ -101,6 +122,7 @@ void ClassFile::printFields() {
   }
 }
 
+
 void ClassFile::loadMethods() {
   MethodInfo* method;
 
@@ -117,6 +139,9 @@ void ClassFile::printMethods() {
     cout << "[" << i << "]";
     this->methods[i]->printInfo();
   }
+
+CpInfo * ClassFile::getConstantPoolEntry(int index){
+  return this->constant_pool[index- 1];
 }
 
 string ClassFile::getConstantPoolUtf8String(int index){

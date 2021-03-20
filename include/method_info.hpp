@@ -16,6 +16,7 @@ class MethodInfo{
     vector<AttributeInfo*> attributes;
     ClassFile *class_file;
 
+
   public:
     MethodInfo(ClassFile *class_file);
     void printInfo();

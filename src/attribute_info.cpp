@@ -37,7 +37,6 @@ void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t 
 }
 
 void AttributeInfo::printAttributes(vector<AttributeInfo*> attributes) {
-  // cout << endl << "----- Attributes Info  -----" << endl;
   for (unsigned int i = 0; i < attributes.size(); i += 1) {
     cout << "[" << i << "]";
     attributes[i]->printInfo();

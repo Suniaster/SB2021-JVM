@@ -19,6 +19,6 @@ void CP::LongInfo::printInfo(){
 
 long long CP::LongInfo::returnLong(){
   signed long long to_return;
-  to_return = (signed long long)(((unsigned long long) this->high_bytes << 32) + (unsigned long long)this->low_bytes);
+  to_return = (signed long long)(((unsigned long long) this->high_bytes << 32) | (unsigned long long)this->low_bytes);
   return to_return;
 }
