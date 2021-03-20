@@ -11,6 +11,8 @@ class ClassFile;
 #include "./field_info.hpp"
 #include "./attribute_info.hpp"
 #include "./interface_info.hpp"
+#include "./method_info.hpp"
+
 
 using namespace std;
 
@@ -21,6 +23,7 @@ class ClassFile{
     uint16_t major_version;
     uint16_t constant_pool_count;
     uint16_t fields_count;
+    uint16_t methods_count;
     uint16_t attributes_count;
     uint16_t access_flags;
     uint16_t this_class;
@@ -33,6 +36,7 @@ class ClassFile{
 
     vector<CpInfo*> constant_pool;
     vector<FieldInfo*> fields;
+    vector<MethodInfo*> methods;
     vector<AttributeInfo*> attributes;
     vector<InterfaceInfo*> interfaces;
 
@@ -41,6 +45,9 @@ class ClassFile{
 
     void loadInterfaces();
     void printInterfaces();
+
+    void loadMethods();
+    void printMethods();
 
   public:
     FileReader *file_reader;
