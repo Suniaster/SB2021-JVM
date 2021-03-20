@@ -12,6 +12,13 @@ void CP::FieldRefInfo::setInfo(){
 }
 
 void CP::FieldRefInfo::printInfo(){
-  cout << "\tFieldRef: CI " << this->class_index << endl;
-  cout << "\tFieldRef: NTI " << this->name_and_type_index << endl;
+  cout << "\tFieldRef: Class Info " << this->class_index << endl;
+  cout << "\n";
+  CpInfo* class_info = this->class_file->getConstantPoolEntry((int)this->class_index);
+  class_info->printInfo();
+
+  cout << "\n\tFieldRef: Name and Type Index " << this->name_and_type_index << endl;
+  cout << "\n";
+  CpInfo* name_and_type_index_info = this->class_file->getConstantPoolEntry((int)this->name_and_type_index);
+  name_and_type_index_info->printInfo();
 }
