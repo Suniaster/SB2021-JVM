@@ -1,11 +1,10 @@
 #ifndef __INTERFACE_INFO_H__
 #define __INTERFACE_INFO_H__
-class FieldInfo;
+class InterfaceInfo;
 
 #include <vector>
 #include <string>
 #include "./class_file.hpp"
-#include "./attribute_info.hpp"
 
 using namespace std;
 

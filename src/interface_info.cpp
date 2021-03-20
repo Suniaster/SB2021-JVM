@@ -7,5 +7,5 @@ InterfaceInfo::InterfaceInfo(ClassFile *class_file) {
 
 void InterfaceInfo::printInfo() {
   cout << dec;
-  cout << "\tIndex: \t#" << this->interface_info;
+  cout << "\tIndex: \t#" << this->interface_info << endl;
 }

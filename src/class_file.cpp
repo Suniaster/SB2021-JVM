@@ -55,10 +55,13 @@ void ClassFile::printClass()
   cout << "Super class: \t\tcpinfo #";
   temp = this->getConstantPoolEntry(this->super_class);
   cout << dec << (int)this->super_class << " " << temp->toString() << endl;
+  cout << "Interfaces: \t\t";
+  cout << (int)this->interfaces_count << endl;
 
   cout << (int)this->fields_count << endl;
 
   this->printConstantPool();
+
   AttributeInfo::printAttributes(this->attributes);
 }
 
