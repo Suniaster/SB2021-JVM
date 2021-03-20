@@ -8,14 +8,22 @@ Goto::Goto(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 string Goto::toString(){
-  int jump_total = 0;
+  int branch_pc = 0;
+  string signal = "+";
+  int16_t jump_total = this->branch_bytes;
 
-  jump_total = (int)this->pc + (int)this->branch_bytes;
+  branch_pc = (int16_t)this->pc + jump_total;
 
+  if(jump_total < 0){ 
+    signal = "-";
+    jump_total *= -1;
+  }
+
+  
   return "goto " + 
+    this->intToString(branch_pc) +
+    " (" + signal +
     this->intToString(jump_total) +
-    " (+" +
-    this->intToString(this->branch_bytes) +
     ")"
     ;
 }
