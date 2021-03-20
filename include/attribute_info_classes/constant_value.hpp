@@ -9,7 +9,7 @@ namespace Attribute{
       uint16_t constantvalue_index;
       ConstantValue(AttrInitialValue initial_val);
 
-      void printInfo();
+      void printInfo(int n_tabs);
   };
 }
 

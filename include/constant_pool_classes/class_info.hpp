@@ -12,6 +12,7 @@ namespace CP{
 
       ClassInfo(ClassFile *class_file);
       void setInfo();
+      string toString();
       void printInfo();
   };
 }

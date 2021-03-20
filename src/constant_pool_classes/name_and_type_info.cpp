@@ -11,14 +11,12 @@ void CP::NameAndTypeInfo::setInfo(){
   this->class_file->setAttribute<uint16_t>(2, this->descriptor_index);
 }
 
-void CP::NameAndTypeInfo::printInfo(){
-    cout << "\tName and Type: Name Index " << this->name_index << endl;
-    cout << "\n";
-    CpInfo* name_utf_info = this->class_file->getConstantPoolEntry((int)this->name_index);
-    name_utf_info->printInfo();
+string CP::NameAndTypeInfo::toString(){
+     return "<" + this->class_file->getConstantPoolEntry(this->name_index)->toString() + ":" +this->class_file->getConstantPoolEntry(this->descriptor_index)->toString() + ">";
+}
 
-    cout << "\n\tName and Type: Descriptor Index " << this->descriptor_index << endl;
-    cout << "\n";
-    CpInfo* descriptor_utf_info = this->class_file->getConstantPoolEntry((int)this->descriptor_index);
-    descriptor_utf_info->printInfo();
+void CP::NameAndTypeInfo::printInfo(){
+    cout << "\tName and Type: Name Index cp_info#" << this->name_index << " " <<this->class_file->getConstantPoolEntry((int)this->name_index)->toString() << endl;
+    cout << "\tName and Type: Descriptor Index cp_info#" << this->descriptor_index << " "<<  this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString() << endl;
+
 }

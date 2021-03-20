@@ -30,7 +30,7 @@ namespace Attribute{
       CodeAttribute(AttrInitialValue initial_value);
 
       uint16_t number_of_instructions;
-      void printInfo();
+      void printInfo(int n_tabs);
   };
 }
 #endif

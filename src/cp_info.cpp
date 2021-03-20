@@ -24,7 +24,7 @@ CpInfo* CpInfo::returnUnusableSpace(ClassFile* class_file){
 }
 
 string CpInfo::toString(){
-  return "not implemented";
+  return "<not implemented>";
 }
 
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){

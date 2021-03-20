@@ -9,7 +9,7 @@ namespace Attribute{
     public:    
       SourceFile(AttrInitialValue initial_value);
 
-      void printInfo();
+      void printInfo(int n_tabs);
 
       string getFileName();
   };

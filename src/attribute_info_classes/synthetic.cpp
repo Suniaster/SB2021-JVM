@@ -5,6 +5,6 @@ Attribute::Synthetic::Synthetic(AttrInitialValue initial_value)
   {
 }
 
-void Attribute::Synthetic::printInfo(){
-  AttributeInfo::printInfo();
+void Attribute::Synthetic::printInfo(int n_tabs){
+  AttributeInfo::printInfo(n_tabs);
 }

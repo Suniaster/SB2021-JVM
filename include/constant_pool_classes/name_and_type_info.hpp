@@ -10,7 +10,7 @@ namespace CP{
       uint16_t descriptor_index;
 
     public:
-
+      string toString();
       NameAndTypeInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

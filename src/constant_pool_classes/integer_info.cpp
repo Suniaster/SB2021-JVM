@@ -21,3 +21,6 @@ void CP::IntegerInfo::printInfo(){
 int CP::IntegerInfo::returnInteger(){
     return (int) this->bytes;
 }
+string CP::IntegerInfo::toString(){
+ return std::to_string(this->returnInteger());
+}

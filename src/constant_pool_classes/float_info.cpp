@@ -22,3 +22,7 @@ float CP::FloatInfo::returnFloat(){
     to_return = *(float*)&this->bytes;
     return to_return;
 }
+
+string CP::FloatInfo::toString(){
+  return std::to_string(this->returnFloat());
+}

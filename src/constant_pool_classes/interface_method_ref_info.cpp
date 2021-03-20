@@ -12,13 +12,8 @@ void CP::InterfaceMethodRefInfo::setInfo(){
 }
 
 void CP::InterfaceMethodRefInfo::printInfo(){
-  cout << "\tInterfaceMethodRef: Class Info " << this->class_index << endl;
-  cout << "\n";
-  CpInfo* class_info = this->class_file->getConstantPoolEntry((int)this->class_index);
-  class_info->printInfo();
+  cout << "\tInterfaceMethodRef: Class Info cp_info#" << this->class_index << " " << this->class_file->getConstantPoolEntry((int)this->class_index)->toString() ;
 
-  cout << "\n\tInterfaceMethodRef: Name and Type Index " << this->name_and_type_index << endl;
-  cout << "\n";
-  CpInfo* name_and_type_index_info = this->class_file->getConstantPoolEntry((int)this->name_and_type_index);
-  name_and_type_index_info->printInfo();
+  cout << "\n\tInterfaceMethodRef: Name and Type Index cp_info#" << this->name_and_type_index << " " << this->class_file->getConstantPoolEntry((int)this->name_and_type_index)->toString() << endl;
+
 }

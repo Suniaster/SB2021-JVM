@@ -11,6 +11,6 @@ Attribute::GeneralInfo::GeneralInfo(AttrInitialValue initial_value)
   }
 }
 
-void Attribute::GeneralInfo::printInfo(){
-  AttributeInfo::printInfo();
+void Attribute::GeneralInfo::printInfo(int n_tabs){
+  AttributeInfo::printInfo(n_tabs);
 }

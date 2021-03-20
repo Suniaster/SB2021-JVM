@@ -10,6 +10,7 @@ namespace CP{
 
     public:
       int returnInteger();
+      string toString();
       IntegerInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();

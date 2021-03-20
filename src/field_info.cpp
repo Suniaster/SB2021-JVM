@@ -18,7 +18,7 @@ void FieldInfo::printInfo() {
 
   if (this->attributes_count) {
     cout << "\t Attributes:";
-    AttributeInfo::printAttributes(this->attributes);
+    AttributeInfo::printAttributes(this->attributes, 1);
     cout << endl;
   }
 }
