@@ -23,6 +23,10 @@ void ClassFile::loadClass(){
   this->setAttribute(2, this->fields_count);
   this->loadFields();
 
+  this->file_reader->position = 0x241;
+  this->setAttribute(2, this->methods_count);
+  this->loadMethods();
+
   this->file_reader->position = 0x31f;
   this->setAttribute<uint16_t>(2, this->attributes_count);
   AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
@@ -36,6 +40,7 @@ void ClassFile::printClass(){
   cout << (int)this->fields_count << endl;
 
   this->printConstantPool();
+  this->printMethods();
   AttributeInfo::printAttributes(this->attributes);
 }
 
@@ -93,6 +98,24 @@ void ClassFile::printFields() {
   for(unsigned int i=0; i<this->fields.size(); i++){
     cout << "[" << i << "]";
     this->fields[i]->printInfo();
+  }
+}
+
+void ClassFile::loadMethods() {
+  MethodInfo* method;
+
+  for(int i=0; i<this->methods_count; i++) {
+    method = new MethodInfo(this);
+    this->methods.push_back(method);
+  }
+}
+
+void ClassFile::printMethods() {
+  cout << endl << "----- Methods Info  -----" << endl;
+  
+  for (unsigned int i=0; i<this->methods.size(); i++) {
+    cout << "[" << i << "]";
+    this->methods[i]->printInfo();
   }
 }
 
