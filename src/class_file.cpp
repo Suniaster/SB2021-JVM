@@ -68,7 +68,6 @@ void ClassFile::printClass()
   this->printInterfaces();
   this->printFields();
   this->printMethods();
-  this->printInterfaces();
   AttributeInfo::printAttributes(this->attributes, 0);
 }
 
