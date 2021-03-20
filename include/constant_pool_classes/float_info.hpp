@@ -10,6 +10,7 @@ namespace CP{
 
     public:
       float returnFloat();
+      string toString();
       FloatInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();
