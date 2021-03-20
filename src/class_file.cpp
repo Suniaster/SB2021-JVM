@@ -139,6 +139,7 @@ void ClassFile::printMethods() {
     cout << "[" << i << "]";
     this->methods[i]->printInfo();
   }
+}
 
 CpInfo * ClassFile::getConstantPoolEntry(int index){
   return this->constant_pool[index- 1];
