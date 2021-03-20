@@ -19,13 +19,13 @@ void ClassFile::loadClass(){
   this->loadConstantPool();
 
   // this->loadConstantPool();
-  this->file_reader->position = 0x226;
-  this->setAttribute(2, this->fields_count);
-  this->loadFields();
-
-  this->file_reader->position = 0x31f;
-  this->setAttribute<uint16_t>(2, this->attributes_count);
-  AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
+  // this->file_reader->position = 0x226;
+  // this->setAttribute(2, this->fields_count);
+  // this->loadFields();
+  //
+  // this->file_reader->position = 0x31f;
+  // this->setAttribute<uint16_t>(2, this->attributes_count);
+  // AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
 }
 
 void ClassFile::printClass(){
@@ -50,18 +50,15 @@ void ClassFile::printConstantPool(){
 }
 
 void ClassFile::loadConstantPool(){
-  uint8_t tag = 0;
+  uint8_t tag;
   CpInfo* cp_info;
 
-  for(int i=0; i< this->constant_pool_count - 1;i++){
+  for(int i=1; i< this->constant_pool_count;i++){
     // Le tag
     this->setAttribute<uint8_t>(1, tag);
 
-
     // instanciar classe certa
     cp_info = CpInfo::getInstance(tag, this);
-
-
 
     // seta atributos
     cp_info->setInfo();
@@ -73,7 +70,6 @@ void ClassFile::loadConstantPool(){
     if (tag == 0x5 || tag == 0x6) {
         this->constant_pool.push_back(cp_info->returnUnusableSpace(this));
     }
-
 
   }
 }

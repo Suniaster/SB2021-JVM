@@ -11,10 +11,15 @@ void CP::FloatInfo::setInfo(){
 }
 
 void CP::FloatInfo::printInfo(){
-  cout << "\tFloat: Bytes " << this->bytes << endl;
-
+  cout << "\tFloat: Bytes " << hex <<  this->bytes << endl;
+  cout << "\tFloat: Value " << fixed <<  this->returnFloat() << endl;
 }
 
 float CP::FloatInfo::returnFloat(){
-    return (float) this->bytes;
+    float to_return;
+    int s = ((this->bytes >> 31) == 0) ? 1 : -1;
+    int e = ((this->bytes >> 23) & 0xff);
+    int m = (e == 0) ?  (this->bytes & 0x7fffff) << 1 :(this->bytes & 0x7fffff) | 0x800000;
+    to_return = s * m * (2^(e-150));
+    return to_return;
 }
