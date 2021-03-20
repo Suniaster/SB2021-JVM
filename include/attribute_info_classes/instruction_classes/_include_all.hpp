@@ -12,6 +12,7 @@
 #include "./div.hpp"
 #include "./getfield.hpp"
 #include "./getstatic.hpp"
+#include "./if__cmp.hpp"
 #include "./if.hpp"
 #include "./inc.hpp"
 #include "./invokespecial.hpp"
