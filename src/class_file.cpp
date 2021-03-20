@@ -95,6 +95,10 @@ void ClassFile::printFields() {
   }
 }
 
+CpInfo * ClassFile::getConstantPoolEntry(int index){
+  return this->constant_pool[index- 1];
+}
+
 string ClassFile::getConstantPoolUtf8String(int index){
   // TODO: Codar um throw pra caso indice nao corresponda a UTf8
   CP::Utf8Info *utf_info = (CP::Utf8Info *)this->constant_pool[index-1];

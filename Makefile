@@ -4,7 +4,7 @@ ATTRIBUTES = src/attribute_info_classes/*.cpp
 CODE_ATTRS = src/attribute_info_classes/code_attribute_classes/*.cpp
 INSTRUCTIONS = src/attribute_info_classes/instruction_classes/*.cpp
 
-CC_FLAGS = -std=c++11 -Wall -g -c
+CC_FLAGS = -std=c++11 -g -Wall -c
 
 all:
 	make -j objs cp attributes code_attrs instructions
