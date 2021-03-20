@@ -11,9 +11,9 @@ InnerClasses::InnerClasses(AttrInitialValue initial_value)
   }
 }
 
-void InnerClasses::printInfo(){
-  AttributeInfo::printInfo();
-  cout << "\tNumber of InnerClassses index: #" << this->number_of_classes << endl;
+void InnerClasses::printInfo(int n_tabs){
+  AttributeInfo::printInfo(n_tabs);
+  cout << createTabs(n_tabs) <<"Number of InnerClassses index: #" << this->number_of_classes << endl;
 }
 
 void InnerClasses::pushNewInnerClassStructure(){

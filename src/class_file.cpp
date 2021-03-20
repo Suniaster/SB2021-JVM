@@ -62,7 +62,7 @@ void ClassFile::printClass(){
 
   this->printConstantPool();
   this->printMethods();
-  AttributeInfo::printAttributes(this->attributes);
+  AttributeInfo::printAttributes(this->attributes, 0);
 }
 
 void ClassFile::printConstantPool(){

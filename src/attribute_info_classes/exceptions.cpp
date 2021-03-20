@@ -12,10 +12,10 @@ Attribute::Exceptions::Exceptions(AttrInitialValue initial_value)
   }
 }
 
-void Attribute::Exceptions::printInfo(){
-  AttributeInfo::printInfo();
-  cout << "\tNumber of exceptions name index: #" << this->number_of_exceptions << endl;
+void Attribute::Exceptions::printInfo(int n_tabs){
+  AttributeInfo::printInfo(n_tabs);
+  cout << createTabs(n_tabs) << "Number of exceptions name index: #" << this->number_of_exceptions << endl;
   for(int i=0;i<this->number_of_exceptions;i++){
-    cout << "\t\tindex: #" << this->exception_index_table[i] << endl;
+    cout << createTabs(n_tabs+1) << "index: #" << this->exception_index_table[i] << endl;
   }
 }

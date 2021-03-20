@@ -28,13 +28,15 @@ class AttributeInfo{
 
     string getAttributeName();
 
-    virtual void printInfo();
+    virtual void printInfo(int n_tabs);
 
     static AttributeInfo* getInstance(
       ClassFile* class_file
     );
+
+    static string createTabs(int n_tabs);
     static void loadAttributes(vector<AttributeInfo*> &attributes, uint16_t size, ClassFile* class_file);
-    static void printAttributes(vector<AttributeInfo*> attributes);
+    static void printAttributes(vector<AttributeInfo*> attributes, int n_tabs);
 };
 
 

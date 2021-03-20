@@ -20,11 +20,17 @@ string AttributeInfo::getAttributeName(){
   return this->class_file->getConstantPoolUtf8String(this->attribute_name_index);
 }
 
-void AttributeInfo::printInfo(){
+string AttributeInfo::createTabs(int n_tabs){
+  string returnString = "";
+  for(int i=0;i<n_tabs;i++) returnString += "\t";
+  return returnString;
+}
+
+void AttributeInfo::printInfo(int n_tabs){
   cout << dec;
   cout << "\tAttribute name index: \t#" << this->attribute_name_index;
   cout << " <" << this->getAttributeName() << ">" << endl;
-  cout << "\tAttribute length: \t" << this->attribute_length << endl;
+  cout << createTabs(n_tabs) << "Attribute length: \t" << this->attribute_length << endl;
 }
 
 void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t size, ClassFile* class_file){
@@ -36,10 +42,10 @@ void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t 
   }
 }
 
-void AttributeInfo::printAttributes(vector<AttributeInfo*> attributes) {
+void AttributeInfo::printAttributes(vector<AttributeInfo*> attributes, int n_tabs) {
   for (unsigned int i = 0; i < attributes.size(); i += 1) {
-    cout << "[" << i << "]";
-    attributes[i]->printInfo();
+    cout << createTabs(n_tabs) << "[" << i << "]";
+    attributes[i]->printInfo(n_tabs);
   }
 }
 

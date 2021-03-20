@@ -44,14 +44,14 @@ void Attribute::CodeAttribute::loadExceptioTable(){
   }
 }
 
-void Attribute::CodeAttribute::printInfo(){
+void Attribute::CodeAttribute::printInfo(int n_tabs){
   Instructions::BaseInstruction* newInstruction;
 
-  AttributeInfo::printInfo();
-  cout << "\tByteCode: " << endl; 
+  AttributeInfo::printInfo(n_tabs);
+  cout << createTabs(n_tabs) << "ByteCode: " << endl; 
   for(int i=0; i < this->number_of_instructions;i+=1){
     newInstruction = this->code[i];
-    cout << dec <<newInstruction->pc << "\t";
+    cout << createTabs(n_tabs+1) << dec <<newInstruction->pc << "\t";
     newInstruction->print();
   }
 }

@@ -11,9 +11,8 @@ MethodInfo::MethodInfo(ClassFile *class_file) {
 
 void MethodInfo::printInfo() {
   cout << dec;
-  cout << "\tName: \t#" << this->name_index;
-  cout << "\tDescriptor: \t#" << this->descriptor_index;
-  cout << "\tAccess flags: \t" << hex << this->access_flags;
-
-  AttributeInfo::printAttributes(this->attributes);
+  cout << "\tName: \t#" << this->name_index << " " << this->class_file->getConstantPoolEntry(this->name_index)->toString() << endl;
+  cout << "\tDescriptor: \t#" << this->descriptor_index << " " << this->class_file->getConstantPoolEntry(this->name_index)->toString() << endl;
+  cout << "\tAccess flags: \t" << hex << this->access_flags << endl;
+  AttributeInfo::printAttributes(this->attributes, 2);
 }

@@ -8,7 +8,7 @@ namespace Attribute{
     public:
       Synthetic(AttrInitialValue initial_val);
 
-      void printInfo();
+      void printInfo(int n_tabs);
   };
 }
 

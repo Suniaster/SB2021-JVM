@@ -23,7 +23,7 @@ namespace Attribute{
     public:    
       InnerClasses(AttrInitialValue initial_val);
 
-      void printInfo();
+      void printInfo(int n_tabs);
   };
 }
 
