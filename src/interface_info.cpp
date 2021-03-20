@@ -7,5 +7,5 @@ InterfaceInfo::InterfaceInfo(ClassFile *class_file) {
 
 void InterfaceInfo::printInfo() {
   cout << dec;
-  cout << "\tIndex: \t#" << this->interface_info << endl;
+  cout << "\tInterface: cp_info #" << this->interface_info << " " << this->class_file->getConstantPoolEntry(this->interface_info)->toString() << endl;
 }

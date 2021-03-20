@@ -66,6 +66,7 @@ void ClassFile::printClass()
 
   this->printConstantPool();
   this->printMethods();
+  this->printInterfaces();
   AttributeInfo::printAttributes(this->attributes, 0);
 }
 
@@ -133,11 +134,11 @@ void ClassFile::loadFields()
 void ClassFile::printInterfaces()
 {
   cout << endl
-       << "----- Interfaces Array  -----" << endl;
+       << "--------------- Interfaces Info ---------------" << endl;
 
   for (unsigned int i = 0; i < this->interfaces_count; i++)
   {
-    cout << "[" << i << "]";
+    cout << "[" << i << "]" << endl;
     this->interfaces[i]->printInfo();
   }
 }
