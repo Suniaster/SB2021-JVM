@@ -10,6 +10,10 @@ void CP::ClassInfo::setInfo(){
   this->class_file->setAttribute<uint16_t>(2, this->name_index);
 }
 
+string CP::ClassInfo::toString(){
+  return "<" + this->class_file->getConstantPoolEntry(this->name_index)->toString() + ">";
+}
+
 void CP::ClassInfo::printInfo(){
   cout << "\tClass: Name Index " << this->name_index << endl;
   cout << "\n";

@@ -21,6 +21,9 @@ class ClassFile{
     uint16_t constant_pool_count;
     uint16_t fields_count;
     uint16_t attributes_count;
+    uint16_t access_flags;
+    uint16_t this_class;
+    uint16_t super_class;
 
     void loadConstantPool();
     void loadAttributes();
