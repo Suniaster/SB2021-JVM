@@ -18,6 +18,7 @@
 #include "./inc.hpp"
 #include "./invokespecial.hpp"
 #include "./invokevirtual.hpp"
+#include "./jsr.hpp"
 #include "./ldc.hpp"
 #include "./mul.hpp"
 #include "./neg.hpp"

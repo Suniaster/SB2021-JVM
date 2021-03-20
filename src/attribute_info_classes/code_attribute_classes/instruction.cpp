@@ -48,7 +48,33 @@ string BaseInstruction::getTypePrefix(uint8_t type){
   }
 }
 
+template<class InstructionClassType>
+bool instantiateInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode, BaseInstruction* &newInstance){
+  if(InstructionClassType::isValidOpcode(opcode)){
+    newInstance = new InstructionClassType(code_attr, opcode);
+    return true;
+  }
+  else{
+    newInstance = NULL;
+    return false;
+  }
+}
+
 BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
+
+  // BaseInstruction* temp;
+  // vector<bool (*)(Attribute::CodeAttribute*, uint8_t, BaseInstruction*&)> all_constructors = {
+  //   &instantiateInstruction<Nop>,
+  //   &instantiateInstruction<Iconst>,
+  // };
+
+  // for(unsigned int i=0;i<all_constructors.size();i+=1){
+  //   if( (*all_constructors[i])(code_attr, opcode, temp)){
+  //     return temp;
+  //   }
+  // }
+
+  // return new BaseInstruction(code_attr, opcode);
 
   switch (opcode){
   case 0x0:
@@ -197,6 +223,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new If_cmp(code_attr, opcode);
   case 0xa7:
     return new Goto(code_attr, opcode);
+  case 0xa8:
+    return new Jsr(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
   case 0xbb:
