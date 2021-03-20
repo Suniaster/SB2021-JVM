@@ -18,6 +18,9 @@ void ClassFile::loadClass(){
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
   this->loadConstantPool();
 
+  this->setAttribute<uint16_t>(2, this->interfaces_count);
+  this->loadInterfaces();
+
   // this->loadConstantPool();
   this->file_reader->position = 0x226;
   this->setAttribute(2, this->fields_count);
@@ -78,12 +81,30 @@ void ClassFile::loadConstantPool(){
   }
 }
 
+void ClassFile::loadInterfaces() {
+  InterfaceInfo* interface;
+
+  for (int i=0; i<this->interfaces_count; i++) {
+    interface = new InterfaceInfo(this);
+    this->interfaces.push_back(interface);
+  }
+}
+
 void ClassFile::loadFields() {
   FieldInfo* field;
 
   for (int i=0; i<this->fields_count; i++) {
     field = new FieldInfo(this);
     this->fields.push_back(field);
+  }
+}
+
+void ClassFile::printInterfaces() {
+  cout << endl << "----- Interfaces Array  -----" << endl;
+
+  for(unsigned int i=0; i<this->interfaces_count; i++){
+    cout << "[" << i << "]";
+    this->interfaces[i]->printInfo();
   }
 }
 

@@ -11,16 +11,12 @@ using namespace std;
 
 class InterfaceInfo{
 private:
-    uint16_t access_flags;
-    uint16_t name_index;
-    uint16_t descriptor_index;
-    uint16_t attributes_count;
-    vector<AttributeInfo*> attributes;
+    uint16_t interface_info;
     ClassFile *class_file;
 
 public:
     InterfaceInfo(ClassFile *class_file);
-
+    
     void printInfo();
 };
 
