@@ -17,9 +17,6 @@ void CP::FloatInfo::printInfo(){
 
 float CP::FloatInfo::returnFloat(){
     float to_return;
-    int s = ((this->bytes >> 31) == 0) ? 1 : -1;
-    int e = ((this->bytes >> 23) & 0xff);
-    int m = (e == 0) ?  (this->bytes & 0x7fffff) << 1 :(this->bytes & 0x7fffff) | 0x800000;
-    to_return = s * m * (2^(e-150));
+    to_return = *(float*)&this->bytes;
     return to_return;
 }
