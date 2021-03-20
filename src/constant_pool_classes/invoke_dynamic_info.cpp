@@ -13,8 +13,6 @@ void CP::InvokeDynamicInfo::setInfo(){
 
 void CP::InvokeDynamicInfo::printInfo(){
   cout << "\tInterfaceMethodRef: Bootstrap Method Index " << this->bootstrap_method_attr_index << endl;
-  cout << "\tInterfaceMethodRef: Nane and Type Index" << this->name_and_type_index << endl;
-  cout << "\n";
-  CpInfo* name_and_type_info = this->class_file->getConstantPoolEntry((int)this->name_and_type_index);
-  name_and_type_info->printInfo();
+  cout << "\tInterfaceMethodRef: Nane and Type Index cp_info#" << this->name_and_type_index << " " << this->class_file->getConstantPoolEntry((int)this->name_and_type_index)->toString() << endl;
+
 }

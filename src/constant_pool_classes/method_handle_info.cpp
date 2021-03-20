@@ -19,13 +19,11 @@ void CP::MethodHandleInfo::setInfo(){
 void CP::MethodHandleInfo::printInfo(){
   string reference_kind_text = this->getReferenceKind();
 
-  cout << "\n\tMethodHandle: Reference Kind " << this->reference_kind << endl;
+  cout << "\n\tMethodHandle: Reference Kind " << this->reference_kind;
   cout << "\t" << reference_kind_text << endl;
 
-  cout << "\n\tMethodHandle: Reference Index " << this->reference_index << endl;
-  cout << "\n";
-  CpInfo* cp_info = this->class_file->getConstantPoolEntry((int)this->reference_index);
-  cp_info->printInfo();
+  cout << "\n\tMethodHandle: Reference Index cp_info#" << this->class_file->getConstantPoolEntry((int)this->reference_index)->toString() << endl;
+
 }
 
 string CP::MethodHandleInfo::getReferenceKind(){
