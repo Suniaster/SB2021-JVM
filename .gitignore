@@ -2,3 +2,5 @@
 ./tests/*
 ./bin/*
 .vscode/*
+/bin/jvm
+*.o

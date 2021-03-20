@@ -13,6 +13,7 @@ namespace CP{
       StringInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();
+      string toString();
   };
 }
 #endif
