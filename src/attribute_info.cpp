@@ -20,7 +20,7 @@ string AttributeInfo::getAttributeName(){
   return this->class_file->getConstantPoolUtf8String(this->attribute_name_index);
 }
 
-void AttributeInfo::printInfo(uint8_t tabs){
+void AttributeInfo::printInfo(){
   cout << dec;
   cout << "\tAttribute name index: \t#" << this->attribute_name_index;
   cout << " <" << this->getAttributeName() << ">" << endl;
