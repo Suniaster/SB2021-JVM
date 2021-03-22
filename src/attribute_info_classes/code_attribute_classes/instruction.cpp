@@ -56,6 +56,12 @@ string BaseInstruction::intToSignedString(int32_t param){
   return signalStr + paramString.str();
 } 
 
+string BaseInstruction::createStringWithCPRef(string name, uint16_t index){
+  return name +" #" + this->intToString(index) + 
+  "<" + this->code_attr->class_file->getConstantPoolEntry(index)->toString()
+  + ">";
+}
+
 string BaseInstruction::getTypePrefix(uint8_t type){
   switch (type){
     case I_TYPE :
@@ -238,16 +244,16 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new GetStatic(code_attr, opcode);  
   case 0xb3:
     return new PutStatic(code_attr, opcode);  
-  case 0xbb:
-    return new New(code_attr, opcode);
-  case 0xb7:
-    return new InvokeSpecial(code_attr, opcode);
-  case 0xb6:
-    return new InvokeVirtual(code_attr, opcode);
-  case 0xb5:
-    return new PutField(code_attr, opcode);
   case 0xb4:
     return new GetField(code_attr, opcode);
+  case 0xb5:
+    return new PutField(code_attr, opcode);
+  case 0xb6:
+    return new InvokeVirtual(code_attr, opcode);
+  case 0xb7:
+    return new InvokeSpecial(code_attr, opcode);
+  case 0xbb:
+    return new New(code_attr, opcode);
   case 0xbf:
     return new Athrow(code_attr, opcode);
   }
