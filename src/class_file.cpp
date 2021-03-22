@@ -102,6 +102,7 @@ void ClassFile::loadConstantPool()
     if (tag == 0x5 || tag == 0x6)
     {
       this->constant_pool.push_back(cp_info->returnUnusableSpace(this));
+      i++;
     }
   }
 }
