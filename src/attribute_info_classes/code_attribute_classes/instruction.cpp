@@ -236,6 +236,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Return(code_attr, opcode);
   case 0xb2:
     return new GetStatic(code_attr, opcode);  
+  case 0xb3:
+    return new PutStatic(code_attr, opcode);  
   case 0xbb:
     return new New(code_attr, opcode);
   case 0xb7:

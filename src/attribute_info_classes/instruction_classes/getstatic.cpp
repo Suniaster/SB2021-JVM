@@ -11,7 +11,6 @@ GetStatic::GetStatic(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 
 
-void GetStatic::print(){
-  cout << "\t\tgetstatic #" ;
-  cout << hex << (int)this->indexbyte << endl;
+string GetStatic::toString(){
+  return "getstatic " + this->code_attr->class_file->getConstantPoolEntry(this->indexbyte)->toString();
 }

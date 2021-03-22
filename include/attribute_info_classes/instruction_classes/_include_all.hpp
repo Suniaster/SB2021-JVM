@@ -26,6 +26,7 @@
 #include "./neg.hpp"
 #include "./new.hpp"
 #include "./putfield.hpp"
+#include "./putstatic.hpp"
 #include "./nop.hpp"
 #include "./or.hpp"
 #include "./pop.hpp"
