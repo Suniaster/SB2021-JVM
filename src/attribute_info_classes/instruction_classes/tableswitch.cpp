@@ -25,13 +25,6 @@ TableSwitch::TableSwitch(Attribute::CodeAttribute* code_attr, uint8_t opcode, ui
     }
 }
 
-string tabs(int n_tabs){
-  string str= "";
-  while(n_tabs--)str+= "\t";
-  return str;
-}
-
-
 void TableSwitch::print(int n_tabs){
   cout << "tableswitch " << this->intToString(low_bytes);
   cout << " to " << this->intToString(high_bytes) << endl;

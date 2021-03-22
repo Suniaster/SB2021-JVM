@@ -36,6 +36,12 @@ string BaseInstruction::intToString(int param){
   return paramString.str();
 }
 
+string BaseInstruction::tabs(int n_tabs){
+  string str= "";
+  while(n_tabs--)str+= "\t";
+  return str;
+}
+
 
 string BaseInstruction::intToSignedString(int32_t param){
   string signalStr = "+";
@@ -220,9 +226,10 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Jsr(code_attr, opcode);
   case 0xa9:
     return new Ret(code_attr, opcode);
-  // Faltando tableswitch e lookupswitch
   case 0xaa:
     return new TableSwitch(code_attr, opcode, pc);
+  case 0xab:
+    return new LookupSwitch(code_attr, opcode, pc);
   case 0xac ... 0xb0:
     return new _Return(code_attr, opcode);
   case 0xb1:

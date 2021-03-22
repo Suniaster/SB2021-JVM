@@ -22,6 +22,7 @@ namespace Instructions{
       string hexToString(int);
       string intToString(int);
       string intToSignedString(int);
+      string tabs(int);
     public:    
       uint16_t pc;
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);

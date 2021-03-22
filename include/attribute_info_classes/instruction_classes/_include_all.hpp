@@ -21,6 +21,7 @@
 #include "./invokevirtual.hpp"
 #include "./jsr.hpp"
 #include "./ldc.hpp"
+#include "./lookupswitch.hpp"
 #include "./mul.hpp"
 #include "./neg.hpp"
 #include "./new.hpp"
