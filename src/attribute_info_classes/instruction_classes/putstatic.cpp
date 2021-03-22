@@ -12,5 +12,6 @@ PutStatic::PutStatic(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 
 string PutStatic::toString(){
-  return "putstatic " + this->code_attr->class_file->getConstantPoolEntry(this->param)->toString();
+  return "putstatic #" + this->intToString(this->param) +
+  " <" + this->code_attr->class_file->getConstantPoolEntry(this->param)->toString() + ">";
 }

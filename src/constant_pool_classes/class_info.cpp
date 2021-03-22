@@ -11,7 +11,7 @@ void CP::ClassInfo::setInfo(){
 }
 
 string CP::ClassInfo::toString(){
-  return "<" + this->class_file->getConstantPoolEntry(this->name_index)->toString() + ">";
+  return this->class_file->getConstantPoolEntry(this->name_index)->toString();
 }
 
 void CP::ClassInfo::printInfo(){

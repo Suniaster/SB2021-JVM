@@ -12,5 +12,6 @@ GetStatic::GetStatic(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 
 string GetStatic::toString(){
-  return "getstatic " + this->code_attr->class_file->getConstantPoolEntry(this->indexbyte)->toString();
+  return "getstatic #" + this->intToString(this->indexbyte) +
+  " <" + this->code_attr->class_file->getConstantPoolEntry(this->indexbyte)->toString() + ">";
 }

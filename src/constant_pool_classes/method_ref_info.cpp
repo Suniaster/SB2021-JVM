@@ -12,7 +12,7 @@ void CP::MethodRefInfo::setInfo(){
 }
 
 void CP::MethodRefInfo::printInfo(){
-  cout << "\tMethodRef: Class Index cp_info#" << this->class_index << " " << this->class_file->getConstantPoolEntry((int)this->class_index)->toString() ;
-  cout << "\n\tMethodRef: Name and Type Index cp_info#" << this->name_and_type_index << " " << this->class_file->getConstantPoolEntry((int)this->name_and_type_index)->toString() << endl;
+  cout << "\tMethodRef: Class Index cp_info#" << this->class_index << " <" << this->class_file->getConstantPoolEntry((int)this->class_index)->toString() << ">";
+  cout << "\n\tMethodRef: Name and Type Index cp_info#" << this->name_and_type_index << " <" << this->class_file->getConstantPoolEntry((int)this->name_and_type_index)->toString() << ">" << endl;
 
 }
