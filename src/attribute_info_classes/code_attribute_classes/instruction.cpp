@@ -254,6 +254,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new InvokeSpecial(code_attr, opcode);
   case 0xb8:
     return new InvokeStatic(code_attr, opcode);
+  case 0xb9:
+    return new InvokeInterface(code_attr, opcode);
   case 0xbb:
     return new New(code_attr, opcode);
   case 0xbf:

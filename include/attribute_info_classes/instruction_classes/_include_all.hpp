@@ -17,6 +17,7 @@
 #include "./if__cmp.hpp"
 #include "./if.hpp"
 #include "./inc.hpp"
+#include "./invokeinterface.hpp"
 #include "./invokespecial.hpp"
 #include "./invokestatic.hpp"
 #include "./invokevirtual.hpp"
