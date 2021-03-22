@@ -260,6 +260,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new New(code_attr, opcode);
   case 0xbc:
     return new NewArray(code_attr, opcode);
+  case 0xbd:
+    return new ANewArray(code_attr, opcode);
   case 0xbf:
     return new Athrow(code_attr, opcode);
   }
