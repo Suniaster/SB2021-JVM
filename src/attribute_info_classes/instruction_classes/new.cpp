@@ -8,7 +8,6 @@ New::New(Attribute::CodeAttribute* code_attr, uint8_t opcode)
   f_reader->readBytes(2, this->index);    
 }
 
-void New::print(){
-  cout << "\t\tnew #" ;
-  cout << hex << (int)this->index << endl;
+string New::toString(){
+  return this->createStringWithCPRef("new", this->index);
 }

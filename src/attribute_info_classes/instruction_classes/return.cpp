@@ -6,7 +6,6 @@ Return::Return(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
-void Return::print(){
-  cout << "\t\treturn" ;
-  cout << endl;
+string Return::toString(){
+  return "return";
 }

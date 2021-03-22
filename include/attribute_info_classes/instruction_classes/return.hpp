@@ -9,7 +9,7 @@ namespace Instructions{
     private:
     public:    
       Return(Attribute::CodeAttribute* code_attr, uint8_t opcode);
-      void print();
+      string toString();
   };
 }
 
