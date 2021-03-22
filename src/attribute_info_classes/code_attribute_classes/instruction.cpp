@@ -254,10 +254,12 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new InvokeSpecial(code_attr, opcode);
   case 0xb8:
     return new InvokeStatic(code_attr, opcode);
-  case 0xb9:
+  case 0xb9: // nao foi testado
     return new InvokeInterface(code_attr, opcode);
   case 0xbb:
     return new New(code_attr, opcode);
+  case 0xbc:
+    return new NewArray(code_attr, opcode);
   case 0xbf:
     return new Athrow(code_attr, opcode);
   }
