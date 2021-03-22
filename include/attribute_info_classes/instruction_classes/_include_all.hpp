@@ -9,6 +9,7 @@
 #include "./add.hpp"
 #include "./and.hpp"
 #include "./anewarray.hpp"
+#include "./arraylength.hpp"
 #include "./dup.hpp"
 #include "./athrow.hpp"
 #include "./div.hpp"
