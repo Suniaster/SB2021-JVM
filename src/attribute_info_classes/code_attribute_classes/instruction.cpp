@@ -266,6 +266,14 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new ArrayLength(code_attr, opcode);
   case 0xbf:
     return new Athrow(code_attr, opcode);
+  case 0xc0:
+    return new CheckCast(code_attr, opcode);
+  case 0xc1:
+    return new Instanceof(code_attr, opcode);
+  case 0xc2:
+    return new MonitorEnter(code_attr, opcode);
+  case 0xc3:
+    return new MonitorExit(code_attr, opcode);
   }
 
   return new BaseInstruction(code_attr, opcode);
