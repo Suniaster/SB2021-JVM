@@ -115,9 +115,9 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Lload(code_attr, opcode);
   case 0x23 ... 0x25:
     return new Fload(code_attr, opcode);
-  case 0x26 ... 0x28:
+  case 0x26 ... 0x29:
     return new Dload(code_attr, opcode);
-  case 0x29 ... 0x2d:
+  case 0x2a ... 0x2d:
     return new Aload(code_attr, opcode);
   case 0x2e:
     return new Iaload(code_attr, opcode);
@@ -191,9 +191,9 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Swap(code_attr, opcode);
   case 0x60 ... 0x63:
     return new Add(code_attr, opcode);
-  case 0x64 ... 0x66:
+  case 0x64 ... 0x67:
     return new Sub(code_attr, opcode);
-  case 0x67 ... 0x6a:
+  case 0x68 ... 0x6b:
     return new Mul(code_attr, opcode);
   case 0x6c ... 0x6f:
     return new Div(code_attr, opcode);

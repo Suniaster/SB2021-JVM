@@ -6,7 +6,7 @@
 
 namespace Instructions{
   class Sub : public BaseInstruction{
-    const uint8_t BASE_OPCODE = 0x65;
+    const uint8_t BASE_OPCODE = 0x64;
     uint8_t type;
     public:    
       Sub(Attribute::CodeAttribute* code_attr, uint8_t opcode);

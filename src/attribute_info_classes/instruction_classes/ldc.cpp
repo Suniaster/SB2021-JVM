@@ -45,5 +45,5 @@ string Ldc2W::toString(){
   stringstream paramString;
   paramString << (int)this->param;
 
-  return "ldc_w #" + paramString.str() + " <" + cp_val->toString() + ">";
+  return "ldc2_w #" + paramString.str() + " <" + cp_val->toString() + ">";
 }
