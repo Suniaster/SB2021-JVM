@@ -58,7 +58,7 @@ string BaseInstruction::intToSignedString(int32_t param){
 
 string BaseInstruction::createStringWithCPRef(string name, uint16_t index){
   return name +" #" + this->intToString(index) + 
-  "<" + this->code_attr->class_file->getConstantPoolEntry(index)->toString()
+  " <" + this->code_attr->class_file->getConstantPoolEntry(index)->toString()
   + ">";
 }
 

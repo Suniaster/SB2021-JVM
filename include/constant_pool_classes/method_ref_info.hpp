@@ -13,6 +13,7 @@ namespace CP{
       MethodRefInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();
+      string toString();
   };
 }
 #endif
