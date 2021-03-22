@@ -31,6 +31,7 @@
 #include "./monitorenter.hpp"
 #include "./monitorexit.hpp"
 #include "./mul.hpp"
+#include "./multianewarray.hpp"
 #include "./neg.hpp"
 #include "./new.hpp"
 #include "./newarray.hpp"
@@ -49,4 +50,5 @@
 #include "./swap.hpp"
 #include "./tableswitch.hpp"
 #include "./ushr.hpp"
+#include "./wide.hpp"
 #include "./xor.hpp"

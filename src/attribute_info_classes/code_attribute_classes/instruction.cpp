@@ -274,6 +274,10 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new MonitorEnter(code_attr, opcode);
   case 0xc3:
     return new MonitorExit(code_attr, opcode);
+  case 0xc4: // nao foi testado
+    return new Wide(code_attr, opcode);
+  case 0xc5: // nao foi testado
+    return new MultiANewArray(code_attr, opcode);
   }
 
   return new BaseInstruction(code_attr, opcode);
