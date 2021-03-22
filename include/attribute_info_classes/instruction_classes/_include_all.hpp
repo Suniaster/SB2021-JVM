@@ -36,5 +36,6 @@
 #include "./shr.hpp"
 #include "./sub.hpp"
 #include "./swap.hpp"
+#include "./tableswitch.hpp"
 #include "./ushr.hpp"
 #include "./xor.hpp"

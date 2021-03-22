@@ -21,14 +21,16 @@ namespace Instructions{
       Attribute::CodeAttribute* code_attr;
       string hexToString(int);
       string intToString(int);
+      string intToSignedString(int);
     public:    
       uint16_t pc;
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
 
       virtual void print();
+      virtual void print(int);
       virtual string toString();
       static string getTypePrefix(uint8_t type);
-      static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode);
+      static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode, uint32_t pc);
   };
 }
 

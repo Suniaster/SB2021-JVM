@@ -20,6 +20,10 @@ void BaseInstruction::print(){
   cout << dec << this->toString() << endl;
 }
 
+void BaseInstruction::print(int n_tabs){
+  this->print();
+}
+
 string BaseInstruction::hexToString(int param){
   stringstream paramString;
   paramString << hex << param;
@@ -32,6 +36,19 @@ string BaseInstruction::intToString(int param){
   return paramString.str();
 }
 
+
+string BaseInstruction::intToSignedString(int32_t param){
+  string signalStr = "+";
+  if(param < 0){
+    param *=1;
+    signalStr = "-";
+  }
+
+  stringstream paramString;
+  paramString << param;
+
+  return signalStr + paramString.str();
+} 
 
 string BaseInstruction::getTypePrefix(uint8_t type){
   switch (type){
@@ -46,37 +63,11 @@ string BaseInstruction::getTypePrefix(uint8_t type){
     case A_TYPE:
       return "a";
     default:
-      return "indefinedPrefix";
+      return "undefinedPrefix";
   }
 }
 
-template<class InstructionClassType>
-bool instantiateInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode, BaseInstruction* &newInstance){
-  if(InstructionClassType::isValidOpcode(opcode)){
-    newInstance = new InstructionClassType(code_attr, opcode);
-    return true;
-  }
-  else{
-    newInstance = NULL;
-    return false;
-  }
-}
-
-BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode){
-
-  // BaseInstruction* temp;
-  // vector<bool (*)(Attribute::CodeAttribute*, uint8_t, BaseInstruction*&)> all_constructors = {
-  //   &instantiateInstruction<Nop>,
-  //   &instantiateInstruction<Iconst>,
-  // };
-
-  // for(unsigned int i=0;i<all_constructors.size();i+=1){
-  //   if( (*all_constructors[i])(code_attr, opcode, temp)){
-  //     return temp;
-  //   }
-  // }
-
-  // return new BaseInstruction(code_attr, opcode);
+BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_attr, uint8_t opcode, uint32_t pc){
 
   switch (opcode){
   case 0x0:
@@ -230,6 +221,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
   case 0xa9:
     return new Ret(code_attr, opcode);
   // Faltando tableswitch e lookupswitch
+  case 0xaa:
+    return new TableSwitch(code_attr, opcode, pc);
   case 0xac ... 0xb0:
     return new _Return(code_attr, opcode);
   case 0xb1:

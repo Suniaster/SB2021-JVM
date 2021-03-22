@@ -26,10 +26,10 @@ void Attribute::CodeAttribute::loadInstructions(){
     initial_pos = file_reader->position;
 
     file_reader->readBytes(1, bytecode_read);
-    Instructions::BaseInstruction* newInstruction = Instructions::BaseInstruction::getInstance(this, bytecode_read);
-    
-    final_pos = file_reader->position;
+    Instructions::BaseInstruction* newInstruction = Instructions::BaseInstruction::getInstance(this, bytecode_read, i);    
     newInstruction->pc = i;
+
+    final_pos = file_reader->position;
     i += final_pos - initial_pos;
 
     this->code.push_back(newInstruction);
@@ -52,6 +52,6 @@ void Attribute::CodeAttribute::printInfo(int n_tabs){
   for(int i=0; i < this->number_of_instructions;i+=1){
     newInstruction = this->code[i];
     cout << createTabs(n_tabs+1) << dec <<newInstruction->pc << "\t";
-    newInstruction->print();
+    newInstruction->print(n_tabs+1);
   }
 }
