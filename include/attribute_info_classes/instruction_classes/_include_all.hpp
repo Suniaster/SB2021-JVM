@@ -18,6 +18,7 @@
 #include "./if.hpp"
 #include "./inc.hpp"
 #include "./invokespecial.hpp"
+#include "./invokestatic.hpp"
 #include "./invokevirtual.hpp"
 #include "./jsr.hpp"
 #include "./ldc.hpp"
