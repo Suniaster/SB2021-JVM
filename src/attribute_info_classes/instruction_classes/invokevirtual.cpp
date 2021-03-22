@@ -8,7 +8,6 @@ InvokeVirtual::InvokeVirtual(Attribute::CodeAttribute* code_attr, uint8_t opcode
   f_reader->readBytes(2, this->index);    
 }
 
-void InvokeVirtual::print(){
-  cout << "\t\tinvokevirtual #" ;
-  cout << hex << (int)this->index << endl;
+string InvokeVirtual::toString(){
+  return this->createStringWithCPRef("invokevirtual", this->index);
 }

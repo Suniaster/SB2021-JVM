@@ -8,7 +8,6 @@ InvokeSpecial::InvokeSpecial(Attribute::CodeAttribute* code_attr, uint8_t opcode
   f_reader->readBytes(2, this->index);    
 }
 
-void InvokeSpecial::print(){
-  cout << "\t\tinvokespecial #" ;
-  cout << hex << (int)this->index << endl;
+string InvokeSpecial::toString(){
+  return this->createStringWithCPRef("invokespecial", this->index);
 }

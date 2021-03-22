@@ -10,8 +10,6 @@ GetField::GetField(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 
-
-void GetField::print(){
-  cout << "\t\tgetfield #" ;
-  cout << hex << (int)this->indexbyte << endl;
+string GetField::toString(){
+  return this->createStringWithCPRef("getfield", this->indexbyte);
 }

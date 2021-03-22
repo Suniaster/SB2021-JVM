@@ -11,7 +11,6 @@ PutField::PutField(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 
 
-void PutField::print(){
-  cout << "\t\tputfield #" ;
-  cout << hex << (int)this->indexbyte << endl;
+string PutField::toString(){
+  return this->createStringWithCPRef("putfield", this->indexbyte);
 }

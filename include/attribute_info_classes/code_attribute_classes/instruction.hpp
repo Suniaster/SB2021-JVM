@@ -22,6 +22,7 @@ namespace Instructions{
       string hexToString(int);
       string intToString(int);
       string intToSignedString(int);
+      string createStringWithCPRef(string name, uint16_t index);
       string tabs(int);
     public:    
       uint16_t pc;

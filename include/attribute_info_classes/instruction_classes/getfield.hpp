@@ -10,7 +10,7 @@ namespace Instructions{
       uint16_t indexbyte;
     public:    
       GetField(Attribute::CodeAttribute* code_attr, uint8_t opcode);
-      void print();
+      string toString();
   };
 }
 
