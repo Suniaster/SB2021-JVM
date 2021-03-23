@@ -14,7 +14,13 @@ ClassFile::ClassFile(string file_name)
 void ClassFile::loadClass()
 {
   this->setAttribute<uint32_t>(4, this->magic_number);
+  if (this->magic_number != 0xcafebabe) {
+      throw std::invalid_argument("Wrong magic number");
+  }
   this->setAttribute<uint16_t>(2, this->minor_version);
+  if (this->minor_version != 0) {
+      throw std::invalid_argument("Invalid minor version");
+  }
   this->setAttribute<uint16_t>(2, this->major_version);
   this->setAttribute<uint16_t>(2, this->constant_pool_count);
   this->loadConstantPool();
@@ -222,6 +228,8 @@ string ClassFile::beautifiedMajorVersion() {
       throw runtime_error("File version not supported.");
   }
 }
+
+
 
 string ClassFile::beautifiedAccessFlags(uint16_t access_flags, bool is_fields) {
   map <int,string> flags;

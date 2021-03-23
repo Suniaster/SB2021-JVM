@@ -12,8 +12,11 @@ using namespace std;
 class FileReader{
   private:
     vector<BYTE> file;
+    string file_name;
   public:
     unsigned int position = 0;
+
+    string getFileName();
 
     void readFile(string);
     vector<BYTE> getBytes(int);

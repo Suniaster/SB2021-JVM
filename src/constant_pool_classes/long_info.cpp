@@ -12,8 +12,8 @@ void CP::LongInfo::setInfo(){
 }
 
 void CP::LongInfo::printInfo(){
-  cout << "\tLong: High Bytes " << this->high_bytes << endl;
-  cout << "\tLong:  Low Bytes " << this->low_bytes << endl;
+  cout << "\tLong: High Bytes " << hex << this->high_bytes << endl;
+  cout << "\tLong:  Low Bytes " << hex <<this->low_bytes << endl;
   cout << "\tLong: Value " << dec << this->returnLong() << endl;
 }
 

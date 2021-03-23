@@ -6,7 +6,8 @@
 namespace Attribute{
   class SourceFile : public AttributeInfo{
       uint16_t sourcefile_index;
-    public:    
+      string removeSubString(string initial, string sub_string);
+    public:
       SourceFile(AttrInitialValue initial_value);
 
       void printInfo(int n_tabs);

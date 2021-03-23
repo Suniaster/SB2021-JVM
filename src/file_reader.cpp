@@ -19,8 +19,12 @@ void FileReader::readFile(string file_name){
   for (unsigned int i=0; i<fileData.size(); i++){
     this->file.push_back(fileData[i]);
   }
-
+  this->file_name = file_name;
   file_read.close();
+}
+
+string FileReader::getFileName(){
+    return this->file_name;
 }
 
 vector<BYTE> FileReader::getBytes(int size){
