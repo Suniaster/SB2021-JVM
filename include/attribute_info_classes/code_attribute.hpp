@@ -28,6 +28,7 @@ namespace Attribute{
       void loadExceptioTable();
     public:    
       CodeAttribute(AttrInitialValue initial_value);
+      ~CodeAttribute();
 
       uint16_t number_of_instructions;
       void printInfo(int n_tabs);

@@ -6,7 +6,6 @@ Athrow::Athrow(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
-void Athrow::print(){
-  cout << "\t\tathrow" ;
-  cout << endl;
+string Athrow::toString(){
+  return "athrow";
 }

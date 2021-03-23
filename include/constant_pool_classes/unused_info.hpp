@@ -6,8 +6,6 @@
 
 namespace CP{
   class UnusedInfo : public CpInfo{
-
-
     public:
       UnusedInfo(ClassFile *class_file);
       void setInfo();

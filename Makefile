@@ -6,7 +6,7 @@ INSTRUCTIONS = src/attribute_info_classes/instruction_classes/*.cpp
 CC_FLAGS = -std=c++11 -g -Wall -c
 
 all:
-	make -j objs cp attributes code_attrs instructions
+	make -j4 objs cp attributes code_attrs instructions
 	make executable
 
 objs : $(OBJS)

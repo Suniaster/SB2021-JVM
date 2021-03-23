@@ -15,7 +15,7 @@ Attribute::SourceFile::SourceFile(AttrInitialValue initial_value)
 
 void Attribute::SourceFile::printInfo(int n_tabs){
   AttributeInfo::printInfo(n_tabs);
-  cout << createTabs(n_tabs) << "Source file name index: #" << this->sourcefile_index;
+  cout << createTabs(n_tabs+1) << "Source file name index: #" << this->sourcefile_index;
   cout << " <" << this->getFileName() << ">" << endl;
 }
 

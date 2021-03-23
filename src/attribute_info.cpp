@@ -28,9 +28,9 @@ string AttributeInfo::createTabs(int n_tabs){
 
 void AttributeInfo::printInfo(int n_tabs){
   cout << dec;
-  cout << "\tAttribute name index: \t#" << this->attribute_name_index;
+  cout << "\tAttribute name index: cpinfo #" << this->attribute_name_index;
   cout << " <" << this->getAttributeName() << ">" << endl;
-  cout << createTabs(n_tabs) << "Attribute length: \t" << this->attribute_length << endl;
+  cout << createTabs(n_tabs+1) << "Attribute length:     " << this->attribute_length << endl;
 }
 
 void AttributeInfo::loadAttributes(vector<AttributeInfo*> &attributes, uint16_t size, ClassFile* class_file){

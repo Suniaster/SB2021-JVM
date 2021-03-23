@@ -27,6 +27,7 @@ namespace Instructions{
     public:    
       uint16_t pc;
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      virtual ~BaseInstruction() {};
 
       virtual void print();
       virtual void print(int);

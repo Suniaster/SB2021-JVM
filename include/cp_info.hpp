@@ -16,6 +16,7 @@ class CpInfo{
 
   public:
     CpInfo(ClassFile *class_file);
+    virtual ~CpInfo() { };
 
     virtual void setInfo() = 0;
     virtual void printInfo() = 0;

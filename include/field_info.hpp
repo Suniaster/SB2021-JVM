@@ -20,6 +20,7 @@ private:
 
 public:
     FieldInfo(ClassFile *class_file);
+    ~FieldInfo();
 
     void printInfo();
 };

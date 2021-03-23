@@ -7,12 +7,13 @@
 namespace CP{
   class Utf8Info : public CpInfo{
       uint16_t length;
-      uint8_t * bytes;
+      uint8_t *bytes;
 
 
     public:
 
       Utf8Info(ClassFile *class_file);
+      ~Utf8Info();
       string returnString();
       void setInfo();
       void printInfo();

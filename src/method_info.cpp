@@ -9,6 +9,10 @@ MethodInfo::MethodInfo(ClassFile *class_file) {
     AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this->class_file);
 }
 
+MethodInfo::~MethodInfo() {
+  this->class_file->deleteVector(this->attributes);
+}
+
 void MethodInfo::printInfo() {
   cout << dec;
   cout << "\tName:              cpinfo #" << this->name_index << " <" << this->class_file->getConstantPoolEntry(this->name_index)->toString() << ">" << endl;

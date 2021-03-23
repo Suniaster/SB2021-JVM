@@ -51,6 +51,7 @@ class ClassFile{
 public:
     FileReader *file_reader;
     ClassFile(string file_name);
+    ~ClassFile();
     CpInfo* getConstantPoolEntry(int index);
     void loadClass();
 
@@ -62,6 +63,8 @@ public:
 
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);
+    template<typename T>
+    void deleteVector(vector<T> &attributes);
 };
 
 /*** definindo templates ***/
@@ -69,5 +72,11 @@ template<typename T>
 void ClassFile::setAttribute(int n_bytes, T& attribute){
   vector<BYTE> bytes_read = this->file_reader->getBytes(n_bytes);
   attribute = this->file_reader->vector2Int<T>(bytes_read);
+}
+
+template<typename T>
+void ClassFile::deleteVector(vector<T> &attributes){
+  for (T attr: attributes)
+    delete attr;
 }
 #endif

@@ -17,6 +17,12 @@ Attribute::CodeAttribute::CodeAttribute(AttrInitialValue initial_value)
 
 }
 
+Attribute::CodeAttribute::~CodeAttribute() {
+  this->class_file->deleteVector<AttributeInfo*>(this->attributes);
+  this->class_file->deleteVector<CodeException*>(this->exception_table);
+  this->class_file->deleteVector(this->code);
+}
+
 void Attribute::CodeAttribute::loadInstructions(){
   FileReader* file_reader = this->class_file->file_reader;
   int initial_pos, final_pos;
@@ -48,10 +54,10 @@ void Attribute::CodeAttribute::printInfo(int n_tabs){
   Instructions::BaseInstruction* newInstruction;
 
   AttributeInfo::printInfo(n_tabs);
-  cout << createTabs(n_tabs) << "ByteCode: " << endl; 
+  cout << createTabs(n_tabs+1) << "ByteCode: " << endl;
   for(int i=0; i < this->number_of_instructions;i+=1){
     newInstruction = this->code[i];
-    cout << createTabs(n_tabs+1) << dec <<newInstruction->pc << "\t";
-    newInstruction->print(n_tabs+1);
+    cout << createTabs(n_tabs+2) << dec <<newInstruction->pc << "\t";
+    newInstruction->print(n_tabs+2);
   }
 }

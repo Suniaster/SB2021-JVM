@@ -6,6 +6,10 @@ CP::Utf8Info::Utf8Info(ClassFile* class_file) : CpInfo(class_file){
   this->tag = 1;
 }
 
+CP::Utf8Info::~Utf8Info() {
+  delete this->bytes;
+}
+
 void CP::Utf8Info::setInfo(){
   this->class_file->setAttribute<uint16_t>(2, this->length);
   this->bytes = new uint8_t[this->length];

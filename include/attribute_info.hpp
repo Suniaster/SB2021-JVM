@@ -25,6 +25,7 @@ class AttributeInfo{
   public:
     ClassFile *class_file;
     AttributeInfo(Attribute::AttrInitialValue initial);
+    virtual ~AttributeInfo() {};
 
     string getAttributeName();
 

@@ -4,23 +4,21 @@
 #include <fstream>
 
 int main(int argc, char **argv){
-    string file_path = "";
+  string file_path = "";
+  file_path = argv[1];
+  ifstream file(file_path);
 
-    file_path = argv[1];
+  if (file.good()) {
+      ClassFile *class_file = new ClassFile(file_path);
 
-    ifstream file(file_path);
+      class_file->loadClass();
+      class_file->printClass();
 
-    if (file.good()) {
+      delete class_file;
+   } else {
+      throw std::invalid_argument("Esse arquivo não existe");
+   }
 
-        unique_ptr<ClassFile> class_file (new ClassFile(file_path));
-
-        class_file->loadClass();
-        class_file->printClass();
-     } else {
-        throw std::invalid_argument("Esse arquivo não existe");
-     }
-
-
-
+  file.close();
   return 0;
 }

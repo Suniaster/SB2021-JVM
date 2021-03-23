@@ -11,6 +11,15 @@ ClassFile::ClassFile(string file_name)
   file_reader->readFile(file_name);
 }
 
+ClassFile::~ClassFile() {
+  this->deleteVector<CpInfo*>(this->constant_pool);
+  this->deleteVector<FieldInfo*>(this->fields);
+  this->deleteVector<MethodInfo*>(this->methods);
+  this->deleteVector<AttributeInfo*>(this->attributes);
+  this->deleteVector<InterfaceInfo*>(this->interfaces);
+  delete this->file_reader;
+}
+
 void ClassFile::loadClass()
 {
   this->setAttribute<uint32_t>(4, this->magic_number);

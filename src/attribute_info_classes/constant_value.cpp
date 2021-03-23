@@ -8,5 +8,5 @@ Attribute::ConstantValue::ConstantValue(AttrInitialValue initial_value)
 
 void Attribute::ConstantValue::printInfo(int n_tabs){
   AttributeInfo::printInfo(n_tabs);
-  cout << createTabs(n_tabs) <<"Constant Value name index: #" << this->constantvalue_index << endl;
+  cout << createTabs(n_tabs+1) <<"Constant Value name index: #" << this->constantvalue_index << endl;
 }

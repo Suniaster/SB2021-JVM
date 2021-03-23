@@ -19,6 +19,7 @@ class MethodInfo{
 
   public:
     MethodInfo(ClassFile *class_file);
+    ~MethodInfo();
     void printInfo();
 };
 

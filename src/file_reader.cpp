@@ -20,6 +20,7 @@ void FileReader::readFile(string file_name){
     this->file.push_back(fileData[i]);
   }
   this->file_name = file_name;
+
   file_read.close();
 }
 
