@@ -278,6 +278,14 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Wide(code_attr, opcode);
   case 0xc5: // nao foi testado
     return new MultiANewArray(code_attr, opcode);
+  case 0xc6: // nao foi testado
+    return new Ifnull(code_attr, opcode);
+  case 0xc7: // nao foi testado
+    return new Ifnonnull(code_attr, opcode);
+  case 0xc8: // nao foi testado
+    return new Goto_W(code_attr, opcode);
+  case 0xc9: // nao foi testado
+    return new Jsr_W(code_attr, opcode);
   }
 
   return new BaseInstruction(code_attr, opcode);
