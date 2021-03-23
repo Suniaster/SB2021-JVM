@@ -8,7 +8,7 @@ Attribute::SourceFile::SourceFile(AttrInitialValue initial_value)
   string cp_file_name = this->class_file->getConstantPoolUtf8String(this->sourcefile_index);
   string source_file_name = this->class_file->file_reader->getFileName();
 
-  if(source_file_name.find(this->removeSubString(cp_file_name, ".java")) == std::string::npos){
+  if(source_file_name.find(this->removeSubString(cp_file_name, ".java") + ".class") == std::string::npos){
       throw std::invalid_argument("Invalid source  name");
   }
 }
