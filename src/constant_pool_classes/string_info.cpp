@@ -11,8 +11,7 @@ void CP::StringInfo::setInfo(){
 }
 
 void CP::StringInfo::printInfo(){
-  cout << "\tString: String Index " << this->string_index << endl;
-
+  cout << "\tString: String Index cp_info# " <<   this->string_index << " <" <<this->class_file->getConstantPoolEntry((int)this->string_index)->toString() << ">"  << endl;
 }
 
 string CP::StringInfo::toString(){
