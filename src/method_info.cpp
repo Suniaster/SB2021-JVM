@@ -17,6 +17,6 @@ void MethodInfo::printInfo() {
   cout << dec;
   cout << "\tName:              cpinfo #" << this->name_index << " <" << this->class_file->getConstantPoolEntry(this->name_index)->toString() << ">" << endl;
   cout << "\tDescriptor:        cpinfo #" << this->descriptor_index << " <" << this->class_file->getConstantPoolEntry(this->descriptor_index)->toString() << ">" << endl;
-  cout << "\tAccess flags:      0x" << hex << this->access_flags << " " << this->class_file->beautifiedAccessFlags(this->access_flags, false) << endl;
+  cout << "\tAccess flags:      0x" << hex << this->access_flags << " " << this->class_file->beautifiedAccessFlags(this->access_flags, false, true) << endl;
   AttributeInfo::printAttributes(this->attributes, 2);
 }

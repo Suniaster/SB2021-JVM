@@ -59,7 +59,7 @@ public:
     string getConstantPoolUtf8String(int index);
 
     string beautifiedMajorVersion();
-    string beautifiedAccessFlags(uint16_t access_flag, bool is_fields);
+    string beautifiedAccessFlags(uint16_t access_flag, bool is_fields, bool is_methods);
 
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);

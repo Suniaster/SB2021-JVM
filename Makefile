@@ -1,4 +1,3 @@
-
 SRC_DIR := ./src
 OBJ_DIR := ./obj
 SRC_FILES := $(shell find . -name "*.cpp")
@@ -9,8 +8,8 @@ SUBDIRS := $(shell find $(SRC_DIR) -type d)
 OBJSUBDIRS := $(subst src,obj,$(SUBDIRS))
 
 LDFLAGS := -g
-CPPFLAGS := -Wall -g
-CXXFLAGS := -Wall
+CPPFLAGS := -std=c++11 -g -Wall
+CXXFLAGS :=-std=c++11 -g -Wall
 
 main2:
 	make update
