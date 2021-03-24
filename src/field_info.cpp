@@ -18,7 +18,7 @@ void FieldInfo::printInfo() {
   cout << this->class_file->getConstantPoolEntry(this->name_index)->toString() << ">" << endl;
   cout << "\tDescriptor:        cpinfo #" << this->descriptor_index << " <";
   cout << this->class_file->getConstantPoolEntry(this->descriptor_index)->toString() << ">" << endl;
-  cout << "\tAccess flags:      0x" <<  hex << this->access_flags << " " << this->class_file->beautifiedAccessFlags(this->access_flags, true) << endl;
+  cout << "\tAccess flags:      0x" <<  hex << this->access_flags << " " << this->class_file->beautifiedAccessFlags(this->access_flags, true, false) << endl;
 
   AttributeInfo::printAttributes(this->attributes, 2);
 }

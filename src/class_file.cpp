@@ -63,7 +63,7 @@ void ClassFile::printClass()
   cout << "Constant pool count:  ";
   cout << dec << (int)this->constant_pool_count << endl;
   cout << "Access flags:         ";
-  cout << hex << "0x"<< (int)this->access_flags << " "<< beautifiedAccessFlags(this->access_flags, false) << endl;
+  cout << hex << "0x"<< (int)this->access_flags << " "<< beautifiedAccessFlags(this->access_flags, false, false) << endl;
   cout << "This class:           cpinfo #";
   temp = this->getConstantPoolEntry(this->this_class);
   cout << dec << (int)this->this_class << " " << temp->toString() << endl;
@@ -240,7 +240,7 @@ string ClassFile::beautifiedMajorVersion() {
 
 
 
-string ClassFile::beautifiedAccessFlags(uint16_t access_flags, bool is_fields) {
+string ClassFile::beautifiedAccessFlags(uint16_t access_flags, bool is_fields, bool is_methods) {
   map <int,string> flags;
   string beautified;
 
@@ -249,7 +249,11 @@ string ClassFile::beautifiedAccessFlags(uint16_t access_flags, bool is_fields) {
   flags[0x0004] = "protected";
   flags[0x0008] = "static";
   flags[0x0010] = "final";
-  flags[0x0020] = "synchronized";
+
+  if (is_methods)
+    flags[0x0020] = "synchronized";
+  else 
+    flags[0x0020] = "super";
 
   if (is_fields) {
     flags[0x0040] = "volatile";
