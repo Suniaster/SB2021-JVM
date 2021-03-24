@@ -2,19 +2,15 @@
 
 Para rodar a JVM basta executar o seguinte comando
 
-`./tests.sh path_to_class`
+`./tests.sh <path_to_class>`
 
 Exemplo:
 `./test.sh ./tests/Teste.class`
 
+O comando acima vai compilar o programa e executá-lo
 
-### Coisas faltando
+Para apenas compilar o programa apenas pode ser utilizado o script make. Após o make, o executável jvm vai ser criado na pasta bin.
 
-- Algumas instrucoes
-- Validacao: ver se o arquivo existe
-- Validacao: cafebabe, versao, nome do arquivo
-- ajustar alguns tabs errados
-- instrucoes nao tao mostrando informacao da constantpool
-- Mostrar access flag bonita
-- Mostrar major version bonito
-- Botar 0x antes dos valores hexa (constantpool e general info)
+Se você estiver no Windows sem um executável de make o seguinte comando pode ser chamado:
+
+`g++ src/*.cpp src/constant_pool_classes/*.cpp src/attribute_info_classes/*.cpp src/attribute_info_classes/code_attribute_classes/*.cpp src/attribute_info_classes/instruction_classes/*.cpp -std=c++11 -Wall -o bin/jvm`
