@@ -1,1 +1,1 @@
-make  && ./bin/jvm $1
+make  && ./bin/jvm2 $1

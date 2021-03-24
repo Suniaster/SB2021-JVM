@@ -1,31 +1,29 @@
-OBJS = src/*.cpp
-CONSTANT_POOL = src/constant_pool_classes/*.cpp
-ATTRIBUTES = src/attribute_info_classes/*.cpp
-CODE_ATTRS = src/attribute_info_classes/code_attribute_classes/*.cpp
-INSTRUCTIONS = src/attribute_info_classes/instruction_classes/*.cpp
-CC_FLAGS = -std=c++11 -g -Wall -c
 
-all:
-	make -j4 objs cp attributes code_attrs instructions
-	make executable
+SRC_DIR := ./src
+OBJ_DIR := ./obj
+SRC_FILES := $(shell find . -name "*.cpp")
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
-objs : $(OBJS)
-	g++ $(OBJS)  $(CC_FLAGS)
+# usado somente pra criacao de folder obj
+SUBDIRS := $(shell find $(SRC_DIR) -type d)
+OBJSUBDIRS := $(subst src,obj,$(SUBDIRS))
 
-attributes :  $(ATTRIBUTES)
-	g++ $(ATTRIBUTES)  $(CC_FLAGS)
+LDFLAGS := -g
+CPPFLAGS := -Wall -g
+CXXFLAGS := -Wall
 
-code_attrs: $(CODE_ATTRS)
-	g++  $(CODE_ATTRS) $(CC_FLAGS)
+main2:
+	make update
+	make -j10 bin/jvm2
 
-instructions: $(INSTRUCTIONS)
-	g++   $(INSTRUCTIONS) $(CC_FLAGS)
+bin/jvm2: $(OBJ_FILES)
+	g++ $(LDFLAGS) -o $@ $^
 
-cp : $(CONSTANT_POOL)
-	g++ $(CONSTANT_POOL) $(CC_FLAGS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	g++ $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
 
-executable:
-	g++ *.o -g -o ./bin/jvm
+update:
+	mkdir -p $(OBJSUBDIRS)
 
 clean:
-	rm *.o
+	rm -r ./obj/*.o

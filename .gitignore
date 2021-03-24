@@ -3,4 +3,5 @@
 ./bin/*
 .vscode/*
 /bin/jvm
+/bin/jvm2
 *.o
