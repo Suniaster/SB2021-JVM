@@ -5,10 +5,10 @@
 
 #include "../include/constant_pool_classes/utf8_info.hpp"
 
-ClassFile::ClassFile(string file_name)
+ClassFile::ClassFile(string class_name)
 {
   file_reader = new FileReader();
-  file_reader->readFile(file_name);
+  file_reader->readFile("./tests/" + class_name);
 }
 
 ClassFile::~ClassFile() {
@@ -186,6 +186,7 @@ void ClassFile::printMethods() {
 }
 
 CpInfo * ClassFile::getConstantPoolEntry(int index){
+  if(index == 0) return CpInfo::returnUnusableSpace(this);
   return this->constant_pool[index- 1];
 }
 
@@ -196,6 +197,13 @@ string ClassFile::getConstantPoolUtf8String(int index)
   return utf_info->returnString();
 }
 
+string ClassFile::getSuperClassName(){
+  return this->getConstantPoolEntry(this->super_class)->toString();
+}
+
+string ClassFile::getThisClassName(){
+  return this->getConstantPoolEntry(this->this_class)->toString();
+}
 string ClassFile::beautifiedMajorVersion() {
   switch (this->major_version) {
     case 46:

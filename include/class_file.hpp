@@ -61,6 +61,8 @@ public:
     string beautifiedMajorVersion();
     string beautifiedAccessFlags(uint16_t access_flag, bool is_fields, bool is_methods);
 
+    string getSuperClassName();
+    string getThisClassName();
     template<typename T>
     void setAttribute(int n_bytes, T&attribute);
     template<typename T>
