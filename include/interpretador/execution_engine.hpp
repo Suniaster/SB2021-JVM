@@ -7,8 +7,10 @@
 class ExecutionEngine{
   private:
     MethodArea method_area;
+    vector<Thread*> threads;
   public:
 
+    void start();
     void loadMethodArea(string intial_class_name);
 };
 #endif

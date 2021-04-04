@@ -12,3 +12,11 @@ void ExecutionEngine::loadMethodArea(string load_class_name){
   } while(load_class_name != "java/lang/Object");
   
 }
+
+void ExecutionEngine::start(){
+  this->threads.push_back(
+    new Thread(&this->method_area)
+  );
+
+  this->threads[0]->runMain();
+}

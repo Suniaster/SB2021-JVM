@@ -62,9 +62,9 @@ void Attribute::CodeAttribute::printInfo(int n_tabs){
   }
 }
 
-Instructions::BaseInstruction* Attribute::CodeAttribute::getInstructionByOpCode(int opcode){
+Instructions::BaseInstruction* Attribute::CodeAttribute::getInstructionByPc(int pc){
   for(uint32_t i=0;i<this->code.size();i++){
-    if(this->code[i]->opcode == opcode){
+    if((int)this->code[i]->pc == pc){
       return this->code[i];
     }
   }

@@ -23,8 +23,10 @@ int main(int argc, char **argv){
 
 //   file.close();
 
-   ExecutionEngine execEng;
-   execEng.loadMethodArea(file_path);
+  ExecutionEngine execEng;
+  execEng.loadMethodArea(file_path);
 
+  execEng.start();
+  
   return 0;
 }

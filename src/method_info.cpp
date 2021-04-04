@@ -24,11 +24,11 @@ Attribute::CodeAttribute* MethodInfo::getCode(){
     if(this->attributes[i]->getAttributeName() == "Code")
       return (Attribute::CodeAttribute*) this->attributes[i];
   }
-  throw runtime_error("Metodo sem atributo!");
+  throw runtime_error("Metodo sem atributo Code!");
 }
 
-Instructions::BaseInstruction* MethodInfo::getInstruction(int opcode){
-  return this->getCode()->getInstructionByOpCode(opcode);
+Instructions::BaseInstruction* MethodInfo::getInstruction(int pc){
+  return this->getCode()->getInstructionByPc(pc);
 }
 
 void MethodInfo::printInfo() {

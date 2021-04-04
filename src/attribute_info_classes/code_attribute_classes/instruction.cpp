@@ -10,6 +10,7 @@ BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t op
 }
 
 int BaseInstruction::execute(Frame* frame){
+  this->print();
   return frame->local_pc++;
 }
 

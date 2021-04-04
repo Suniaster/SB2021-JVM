@@ -31,7 +31,7 @@ namespace Attribute{
       CodeAttribute(AttrInitialValue initial_value);
       ~CodeAttribute();
 
-      Instructions::BaseInstruction* getInstructionByOpCode(int opcode);
+      Instructions::BaseInstruction* getInstructionByPc(int pc);
 
       uint16_t number_of_instructions;
       void printInfo(int n_tabs);
