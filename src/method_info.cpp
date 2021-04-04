@@ -1,4 +1,6 @@
 #include "../include/method_info.hpp"
+#include "../include/attribute_info_classes/code_attribute.hpp"
+#include "../include/attribute_info_classes/code_attribute_classes/instruction.hpp"
 
 MethodInfo::MethodInfo(ClassFile *class_file) {
     this->class_file = class_file;
@@ -11,6 +13,22 @@ MethodInfo::MethodInfo(ClassFile *class_file) {
 
 MethodInfo::~MethodInfo() {
   this->class_file->deleteVector(this->attributes);
+}
+
+string MethodInfo::getName(){
+  return this->class_file->getConstantPoolEntry(this->name_index)->toString();
+}
+
+Attribute::CodeAttribute* MethodInfo::getCode(){
+  for(uint32_t i=0;i<this->attributes.size();i+=1){
+    if(this->attributes[i]->getAttributeName() == "Code")
+      return (Attribute::CodeAttribute*) this->attributes[i];
+  }
+  throw runtime_error("Metodo sem atributo!");
+}
+
+Instructions::BaseInstruction* MethodInfo::getInstruction(int opcode){
+  return this->getCode()->getInstructionByOpCode(opcode);
 }
 
 void MethodInfo::printInfo() {

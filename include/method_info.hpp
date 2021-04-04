@@ -7,6 +7,10 @@ class MethodInfo;
 #include "./class_file.hpp"
 #include "./attribute_info.hpp"
 
+// Declaracoes pra evitar inclusao ciclica
+namespace Attribute{ class CodeAttribute; };
+namespace Instructions{ class BaseInstruction; };
+
 class MethodInfo{
   private:
     uint16_t access_flags;
@@ -14,12 +18,16 @@ class MethodInfo{
     uint16_t descriptor_index;
     uint16_t attributes_count;
     vector<AttributeInfo*> attributes;
-    ClassFile *class_file;
-
 
   public:
+    ClassFile *class_file;
     MethodInfo(ClassFile *class_file);
     ~MethodInfo();
+
+    Attribute::CodeAttribute* getCode();
+    Instructions::BaseInstruction* getInstruction(int opcode);
+
+    string getName();
     void printInfo();
 };
 

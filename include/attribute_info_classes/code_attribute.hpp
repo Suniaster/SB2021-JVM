@@ -15,7 +15,6 @@ namespace Attribute{
       uint16_t max_stack;
       uint16_t max_locals;
 
-      uint32_t code_length;
       vector<Instructions::BaseInstruction*> code;
 
       uint16_t exception_table_length;
@@ -26,9 +25,13 @@ namespace Attribute{
 
       void loadInstructions();
       void loadExceptioTable();
-    public:    
+    public:
+
+      uint32_t code_length;
       CodeAttribute(AttrInitialValue initial_value);
       ~CodeAttribute();
+
+      Instructions::BaseInstruction* getInstructionByOpCode(int opcode);
 
       uint16_t number_of_instructions;
       void printInfo(int n_tabs);

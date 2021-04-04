@@ -9,6 +9,10 @@ BaseInstruction::BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t op
   this->opcode = opcode;
 }
 
+int BaseInstruction::execute(Frame* frame){
+  return frame->local_pc++;
+}
+
 string BaseInstruction::toString(){
   string baseName  = "Instrucao Base (0x";
   baseName += this->hexToString(this->opcode);

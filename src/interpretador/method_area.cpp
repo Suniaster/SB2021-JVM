@@ -7,7 +7,24 @@ ClassFile* MethodArea::insertNewClass(string class_name){
 
   new_class->loadClass();
   cout << "Inserindo classe: " << new_class->getThisClassName() << endl;
-  classes.push_back(new_class);
+  this->classes.push_back(new_class);
 
+  this->searchMainMethod(new_class);
   return new_class;
+}
+
+void MethodArea::searchMainMethod(ClassFile* classfile){
+  for(uint32_t i=0; i<classfile->methods.size();i+=1){
+    MethodInfo* current_method = classfile->methods[i];
+
+    // TODO: verificar public static
+    if(current_method->getName() == "main"){ 
+      this->main_method = current_method;
+    }
+  }
+}
+
+MethodInfo* MethodArea::getMainMethod(){
+  // TODO: Dar throw caso main_method nao tenha sido setado;
+  return this->main_method;
 }

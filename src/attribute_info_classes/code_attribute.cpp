@@ -61,3 +61,12 @@ void Attribute::CodeAttribute::printInfo(int n_tabs){
     newInstruction->print(n_tabs+2);
   }
 }
+
+Instructions::BaseInstruction* Attribute::CodeAttribute::getInstructionByOpCode(int opcode){
+  for(uint32_t i=0;i<this->code.size();i++){
+    if(this->code[i]->opcode == opcode){
+      return this->code[i];
+    }
+  }
+  throw runtime_error("Opcode nao encontrado no codigo");
+}

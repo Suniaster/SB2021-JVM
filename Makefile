@@ -25,4 +25,4 @@ update:
 	mkdir -p $(OBJSUBDIRS)
 
 clean:
-	rm -r ./obj/*.o
+	rm -r ./obj/*

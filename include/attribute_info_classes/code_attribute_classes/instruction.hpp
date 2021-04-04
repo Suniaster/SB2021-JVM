@@ -6,6 +6,7 @@ namespace Instructions{
 
 #include <cstdint>
 #include "../code_attribute.hpp"
+#include "../../interpretador/frame.hpp"
 #include <sstream>
 
 #define I_TYPE 0x0
@@ -17,7 +18,6 @@ namespace Instructions{
 namespace Instructions{
   class BaseInstruction{
     protected:
-      uint8_t opcode;
       Attribute::CodeAttribute* code_attr;
       string hexToString(int);
       string intToString(int);
@@ -25,6 +25,7 @@ namespace Instructions{
       string createStringWithCPRef(string name, uint16_t index);
       string tabs(int);
     public:    
+      uint8_t opcode;
       uint16_t pc;
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       virtual ~BaseInstruction() {};
@@ -32,6 +33,9 @@ namespace Instructions{
       virtual void print();
       virtual void print(int);
       virtual string toString();
+
+      virtual int execute(Frame* frame);
+
       static string getTypePrefix(uint8_t type);
       static BaseInstruction* getInstance(Attribute::CodeAttribute* code_attr,uint8_t opcode, uint32_t pc);
   };

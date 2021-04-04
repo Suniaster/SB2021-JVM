@@ -36,7 +36,6 @@ class ClassFile{
 
     vector<CpInfo*> constant_pool;
     vector<FieldInfo*> fields;
-    vector<MethodInfo*> methods;
     vector<AttributeInfo*> attributes;
     vector<InterfaceInfo*> interfaces;
 
@@ -49,6 +48,7 @@ class ClassFile{
     void loadMethods();
     void printMethods();
 public:
+    vector<MethodInfo*> methods;
     FileReader *file_reader;
     ClassFile(string file_name);
     ~ClassFile();
