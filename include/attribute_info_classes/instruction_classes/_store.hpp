@@ -48,6 +48,7 @@ namespace Instructions{
     public:    
       Dstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      int execute(Frame* frame);
   };
 
   class Astore : public AbstractStore{

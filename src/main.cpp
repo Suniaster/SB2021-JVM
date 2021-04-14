@@ -7,7 +7,8 @@
 int main(int argc, char **argv){
   string file_path = "";
   file_path = argv[1];
-  // TODO: trocar lugar de checagem
+
+// TODO: trocar lugar de checagem
 //   ifstream file("./tests/"+file_path);
 
 //   if (file.good()) {

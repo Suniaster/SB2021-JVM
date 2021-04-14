@@ -4,6 +4,9 @@ class Frame;
 
 #include "./method_area.hpp"
 #include "./thread.hpp"
+#include "../JVMTypes/jvm_type.hpp"
+#include "./operand_stack.hpp"
+#include "./local_variable.hpp"
 
 using namespace std;
 
@@ -14,7 +17,8 @@ class Frame{
     
     Frame(MethodInfo*, Thread*);
 
-    vector<uint8_t> operand_stack;
+    OperandStack operand_stack;
+    LocalVariable local_variables;
     uint32_t local_pc;
 
     void runInstruction();
