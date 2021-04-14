@@ -4,6 +4,9 @@ Frame::Frame(MethodInfo* current_method, Thread* thread){
   this->current_method = current_method;
   this->thread = thread;
   this->local_pc = 0;
+
+
+  this->local_variables.initialize(current_method->getCode()->max_locals);
 }
 
 void Frame::runInstruction(){

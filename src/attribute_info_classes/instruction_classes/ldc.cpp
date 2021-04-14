@@ -47,3 +47,12 @@ string Ldc2W::toString(){
 
   return "ldc2_w #" + paramString.str() + " <" + cp_val->toString() + ">";
 }
+
+int Ldc2W::execute(Frame* frame){
+  uint64_t value = frame->current_method->class_file->getConstantPoolEntry(this->param)->getValue();
+
+  frame->operand_stack.push(value);
+
+  frame->local_pc += 3;
+  return frame->local_pc;
+}

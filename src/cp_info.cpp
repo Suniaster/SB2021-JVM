@@ -27,6 +27,11 @@ string CpInfo::toString(){
   return "<not implemented>";
 }
 
+uint64_t CpInfo::getValue(){
+  cout << "AVISO getvlaue nao implementado" << endl;
+  return 0;
+}
+
 CpInfo* CpInfo::getInstance(uint8_t tag, ClassFile* class_file){
   CpInfo* correct_instance;
 

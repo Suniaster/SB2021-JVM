@@ -17,6 +17,11 @@ void CP::DoubleInfo::printInfo(){
   cout << "\tDouble: Value " << fixed <<this->returnDouble() << endl;
 }
 
+uint64_t CP::DoubleInfo::getValue(){
+  
+  return ((uint64_t)this->high_bytes << 32) + (uint64_t) this->low_bytes;
+}
+
 double CP::DoubleInfo::returnDouble(){
   double to_return;
   uint64_t bits = ((uint64_t)this->high_bytes << 32) + (uint64_t) this->low_bytes;

@@ -3,41 +3,21 @@
 
 #include <vector>
 #include <iostream>
-#include "../JVMTypes/jvm_type.hpp"
+#include <cstdint>
+using namespace std;
 
-class LocalVariable
-{
+class LocalVariable{
   private:
-    vector<JVMType *> local_variables;
+    vector<uint64_t> local_variables;
 
   public:
-    void initialize(uint32_t max_length);
-    template <typename T>
-    T get(int index);
 
-    template <typename T>
-    void insert(int index, T data);
+    void initialize(uint32_t max_length);
+
+    uint64_t get(int index);
+
+    void insert(int index, uint64_t data);
     void print();
 };
 
-template <typename T>
-T LocalVariable::get(int index)
-{
-  return ((JVMType_t<T> *)this->local_variables[index])->data;
-}
-
-template <typename T>
-void LocalVariable::insert(int index, T data)
-{
-  if (index == this->local_variables.size())
-  {
-    JVMType_t<T> *value = new JVMType_t<T>();
-    value->data = data;
-    this->local_variables.push_back(value);
-  }
-  else
-  {
-    ((JVMType_t<T> *)this->local_variables[index])->data = data;
-  }
-}
 #endif

@@ -4,7 +4,6 @@ class Frame;
 
 #include "./method_area.hpp"
 #include "./thread.hpp"
-#include "../JVMTypes/jvm_type.hpp"
 #include "./operand_stack.hpp"
 #include "./local_variable.hpp"
 

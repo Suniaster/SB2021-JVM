@@ -41,19 +41,14 @@ Dstore::Dstore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
 
 int Dstore::execute(Frame *frame)
 {
-  cout << 1 << endl;
-  uint64_t value = 13274927492;
-  cout << 2 << endl;
+  uint64_t value = frame->operand_stack.pop();
   frame->local_variables.insert(this->param, value);
-  cout << 3 << endl;
+
   if (this->is_n_class)
     frame->local_pc += 1;
   else
     frame->local_pc += 2;
-  cout << 4 << endl;
 
-  frame->local_variables.print();
-  cout << 5 << endl;
   return frame->local_pc;
 }
 

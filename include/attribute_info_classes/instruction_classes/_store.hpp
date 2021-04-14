@@ -18,16 +18,12 @@ namespace Instructions{
   };
 
   class Istore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Istore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
   };
 
   class Lstore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Lstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
@@ -35,16 +31,12 @@ namespace Instructions{
 
 
   class Fstore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Fstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
   };
 
   class Dstore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Dstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
@@ -52,7 +44,6 @@ namespace Instructions{
   };
 
   class Astore : public AbstractStore{
-    private:
     public:    
       Astore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();

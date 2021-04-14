@@ -13,6 +13,7 @@ namespace CP{
       double returnDouble();
       string toString();
       DoubleInfo(ClassFile *class_file);
+      uint64_t getValue();
       void setInfo();
       void printInfo();
   };
