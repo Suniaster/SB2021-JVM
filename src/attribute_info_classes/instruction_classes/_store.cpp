@@ -41,8 +41,8 @@ Dstore::Dstore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
 
 int Dstore::execute(Frame *frame)
 {
-  uint64_t value = frame->operand_stack.pop();
-  frame->local_variables.insert(this->param, value);
+  uint64_t value = frame->operand_stack.pop().first;
+  frame->local_variables.insert(this->param, value, Double);
 
   if (this->is_n_class)
     frame->local_pc += 1;

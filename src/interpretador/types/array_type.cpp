@@ -1,4 +1,4 @@
-#include "../../include/interpretador/types/array_type.hpp"
+#include "../../../include/interpretador/types/array_type.hpp"
 #include <iostream>
 
 using namespace std;

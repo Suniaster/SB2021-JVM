@@ -6,8 +6,8 @@ InterfaceAload::InterfaceAload(Attribute::CodeAttribute* code_attr, uint8_t opco
 
 int InterfaceAload::execute(Frame* frame){
   cout << "executando algum aload" << endl;
-  uint64_t arrayref = frame->operand_stack.pop();
-  uint64_t index = frame->operand_stack.pop();
+  uint64_t arrayref = frame->operand_stack.pop().first;
+  uint64_t index = frame->operand_stack.pop().first;
   int index_int = (int) index;
 
   return frame->local_pc++;

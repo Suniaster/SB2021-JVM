@@ -51,7 +51,7 @@ string Ldc2W::toString(){
 int Ldc2W::execute(Frame* frame){
   uint64_t value = frame->current_method->class_file->getConstantPoolEntry(this->param)->getValue();
 
-  frame->operand_stack.push(value);
+  frame->operand_stack.push(value, Double);
 
   frame->local_pc += 3;
   return frame->local_pc;

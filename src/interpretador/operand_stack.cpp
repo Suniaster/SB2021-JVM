@@ -1,11 +1,18 @@
 #include "../../include/interpretador/operand_stack.hpp"
 
-void OperandStack::push(uint64_t value){
-  operand_stack.push_back(value);
+void OperandStack::push(uint64_t value, JVMType type){
+  PrimitiveType* newValue = new PrimitiveType(value, type);
+  operand_stack.push_back(newValue);
 }
 
-uint64_t OperandStack::pop(){
-  uint64_t value = operand_stack.back();
+pair<uint64_t, JVMType> OperandStack::pop(){
+  PrimitiveType* value = operand_stack.back();
+  pair<uint64_t, JVMType> returnPair;
+  returnPair.first = value->data;
+  returnPair.second = value->type;
+
   operand_stack.pop_back();
-  return value;
+  delete value;
+
+  return returnPair;
 }

@@ -3,16 +3,18 @@
 
 #include <vector>
 #include <cstdint>
+#include "./types/primitive_type.hpp"
+#include <utility>
 
 using namespace std;
 
 class OperandStack {
   private:
-    vector<uint64_t> operand_stack;
+    vector<PrimitiveType*> operand_stack;
   public:
 
-    uint64_t pop();
-    void push(uint64_t);
+    pair<uint64_t, JVMType> pop();
+    void push(uint64_t value, JVMType type);
 };
 
 #endif

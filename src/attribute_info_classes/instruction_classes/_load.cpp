@@ -20,8 +20,8 @@ string AbstractLoad::toString(){
 }
 
 int AbstractLoad::execute(Frame* frame){
-  uint64_t value = frame->local_variables.get(this->param);
-  frame->operand_stack.push(value);
+  uint64_t value = frame->local_variables.get(this->param).first;
+  frame->operand_stack.push(value, Int);
 
   if(this->is_n_class)
     frame->local_pc += 1;

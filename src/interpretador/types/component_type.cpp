@@ -1,4 +1,4 @@
-#include "../../include/interpretador/types/component_type.hpp"
+#include "../../../include/interpretador/types/component_type.hpp"
 
 int ComponentType::getReference(){
   return this->heap_reference;

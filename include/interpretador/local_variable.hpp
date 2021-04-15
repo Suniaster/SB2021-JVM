@@ -4,19 +4,21 @@
 #include <vector>
 #include <iostream>
 #include <cstdint>
+#include "./types/primitive_type.hpp"
+
 using namespace std;
 
 class LocalVariable{
   private:
-    vector<uint64_t> local_variables;
+    vector<PrimitiveType*> local_variables;
 
   public:
 
     void initialize(uint32_t max_length);
 
-    uint64_t get(int index);
+    pair<uint64_t, JVMType> get(int index);
 
-    void insert(int index, uint64_t data);
+    void insert(int index, uint64_t data, JVMType type);
     void print();
 };
 

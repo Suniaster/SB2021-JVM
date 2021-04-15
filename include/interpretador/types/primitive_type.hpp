@@ -11,11 +11,10 @@ typedef enum{
 } JVMType;
 
 class PrimitiveType: public ElementType{
-  private:
+  public:
     JVMType type;
     uint64_t data;
-  public:
-    PrimitiveType::PrimitiveType(uint64_t x, JVMType type){
+    PrimitiveType(uint64_t x, JVMType type){
       this->type = type;
       this->data =x;
     };
