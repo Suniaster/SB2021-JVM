@@ -16,9 +16,11 @@ class ArrayType : public ComponentType{
 
   void insert(ComponentType*);
   void print();
-  uint64_t getValueAt(int index);
 
   void setIndexAsPrimitiveType(int index, uint64_t value, JVMType type);
+  ComponentType* getIndex(int i);
+  pair<uint64_t,JVMType> getIndexAsAsPrimitiveType(int index);
+
   int getIndexReference(int index);
 };
 

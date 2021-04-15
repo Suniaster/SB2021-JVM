@@ -25,3 +25,15 @@ void ArrayType::setIndexAsPrimitiveType(int index, uint64_t value, JVMType type)
 int ArrayType::getIndexReference(int index){
   return this->data[index]->getReference();
 }
+
+ComponentType* ArrayType::getIndex(int i){
+  return this->data[i];
+}
+
+pair<uint64_t,JVMType> ArrayType::getIndexAsAsPrimitiveType(int index){
+  pair<uint64_t,JVMType> returnVal;
+  PrimitiveType* p = (PrimitiveType*)this->data[index];
+  returnVal.first = p->data;
+  returnVal.second = p->type;
+  return returnVal;
+}
