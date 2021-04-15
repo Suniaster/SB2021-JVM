@@ -13,6 +13,18 @@ AbstractStore::AbstractStore(Attribute::CodeAttribute *code_attr, uint8_t opcode
     this->param = this->opcode - _storen_base_opcode;
 }
 
+int AbstractStore::execute(Frame *frame){
+  uint64_t value = frame->operand_stack.pop().first;
+  frame->local_variables.insert(this->param, value, this->getType());
+
+  if (this->is_n_class)
+    frame->local_pc += 1;
+  else
+    frame->local_pc += 2;
+
+  return frame->local_pc;
+}
+
 string AbstractStore::toString()
 {
   if (this->is_n_class)
@@ -23,37 +35,25 @@ string AbstractStore::toString()
 
 Istore::Istore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
     : AbstractStore(code_attr, opcode, 0x36, 0x3b) {}
-
 string Istore::getName() { return "istore"; }
+JVMType Istore::getType(){return Int;}
 
 Lstore::Lstore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
     : AbstractStore(code_attr, opcode, 0x37, 0x3f) {}
-
 string Lstore::getName() { return "lstore"; }
+JVMType Lstore::getType(){return Long;}
 
 Fstore::Fstore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
     : AbstractStore(code_attr, opcode, 0x38, 0x43) {}
-
 string Fstore::getName() { return "fstore"; }
+JVMType Fstore::getType(){return Float;}
 
 Dstore::Dstore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
     : AbstractStore(code_attr, opcode, 0x39, 0x47) {}
-
-int Dstore::execute(Frame *frame)
-{
-  uint64_t value = frame->operand_stack.pop().first;
-  frame->local_variables.insert(this->param, value, Double);
-
-  if (this->is_n_class)
-    frame->local_pc += 1;
-  else
-    frame->local_pc += 2;
-
-  return frame->local_pc;
-}
-
 string Dstore::getName() { return "dstore"; }
+JVMType Dstore::getType(){return Double;}
 
 Astore::Astore(Attribute::CodeAttribute *code_attr, uint8_t opcode)
     : AbstractStore(code_attr, opcode, 0x3a, 0x4b) {}
 string Astore::getName() { return "astore"; }
+JVMType Astore::getType(){return Reference;}
