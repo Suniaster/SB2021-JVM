@@ -19,26 +19,38 @@ string AbstractLoad::toString(){
     return this->getName() + " " + this->hexToString(this->param);
 }
 
+int AbstractLoad::execute(Frame* frame){
+  uint64_t value = frame->local_variables.get(this->param).first;
+  frame->operand_stack.push(value, Int);
+
+  if(this->is_n_class)
+    frame->local_pc += 1;
+  else frame->local_pc += 2;
+
+  return frame->local_pc;
+}
+
 Iload::Iload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x15, 0x1a){}
-
 string Iload::getName(){ return "iload"; }
+JVMType Iload::getType(){return Int;}
 
 Lload::Lload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x16, 0x1e){}
-
 string Lload::getName(){ return "lload"; }
+JVMType Lload::getType(){return Long;}
 
 Fload::Fload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x17, 0x22){}
-
 string Fload::getName(){ return "fload"; }
+JVMType Fload::getType(){return Float;}
 
 Dload::Dload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x18, 0x26){}
-
 string Dload::getName(){ return "dload"; }
+JVMType Dload::getType(){return Double;}
 
 Aload::Aload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x19, 0x2a){}
 string Aload::getName(){ return "aload"; }
+JVMType Aload::getType(){return Reference;}

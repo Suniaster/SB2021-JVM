@@ -22,6 +22,8 @@ class CpInfo{
     virtual void printInfo() = 0;
     virtual string toString();
 
+    virtual uint64_t getValue();
+
     static CpInfo* returnUnusableSpace(ClassFile* class_file);
     static CpInfo* getInstance(uint8_t tag, ClassFile* class_file);
     static CpInfo* getUtf8(vector<CpInfo*> constant_pool, int index);

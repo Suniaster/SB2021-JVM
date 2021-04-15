@@ -12,49 +12,47 @@ namespace Instructions{
       uint8_t param;
     public:
       AbstractStore(Attribute::CodeAttribute* code_attr, uint8_t opcode, uint8_t _store_opcode, uint8_t _storen_base_opcode);
-
+      int execute(Frame* frame);
+      
       virtual string getName() = 0;
+      virtual JVMType getType() = 0;
       string toString();
   };
 
   class Istore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Istore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
   class Lstore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Lstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
 
   class Fstore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Fstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
   class Dstore : public AbstractStore{
-    private:
-      uint8_t param;
     public:    
       Dstore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
   class Astore : public AbstractStore{
-    private:
     public:    
       Astore(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 }
 

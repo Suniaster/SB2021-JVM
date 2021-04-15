@@ -3,11 +3,13 @@
 
 #include "../class_file.hpp"
 #include "./method_area.hpp"
+#include "./heap.hpp"
 
 class ExecutionEngine{
   private:
     MethodArea method_area;
     vector<Thread*> threads;
+    Heap heap;
   public:
 
     void start();

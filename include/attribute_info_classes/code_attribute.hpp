@@ -13,7 +13,6 @@ namespace Attribute{
   class CodeAttribute : public AttributeInfo{
     private:
       uint16_t max_stack;
-      uint16_t max_locals;
 
       vector<Instructions::BaseInstruction*> code;
 
@@ -26,8 +25,9 @@ namespace Attribute{
       void loadInstructions();
       void loadExceptioTable();
     public:
-
+      uint16_t max_locals;
       uint32_t code_length;
+
       CodeAttribute(AttrInitialValue initial_value);
       ~CodeAttribute();
 

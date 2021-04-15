@@ -14,47 +14,45 @@ namespace Instructions{
       AbstractLoad(Attribute::CodeAttribute* code_attr, uint8_t opcode, uint8_t _load_opcode, uint8_t _loadn_base_opcode);
 
       virtual string getName() = 0;
+      virtual JVMType getType() = 0;
       string toString();
+      int execute(Frame* frame);
   };
 
   class Iload : public AbstractLoad{
-    private:
-      uint8_t param;
     public:    
       Iload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
   class Lload : public AbstractLoad{
-    private:
-      uint8_t param;
     public:    
       Lload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
 
   class Fload : public AbstractLoad{
-    private:
-      uint8_t param;
     public:    
       Fload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
   class Dload : public AbstractLoad{
-    private:
-      uint8_t param;
     public:    
       Dload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 
   class Aload : public AbstractLoad{
-    private:
     public:    
       Aload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
+      JVMType getType();
   };
 }
 
