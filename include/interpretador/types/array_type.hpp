@@ -2,6 +2,7 @@
 #define __ARRAY_TYPE_H__
 
 #include "./component_type.hpp"
+#include "./primitive_type.hpp"
 
 #include <vector>
 #include <cstdint>
@@ -16,6 +17,9 @@ class ArrayType : public ComponentType{
   void insert(ComponentType*);
   void print();
   uint64_t getValueAt(int index);
+
+  void setIndexAsPrimitiveType(int index, uint64_t value, JVMType type);
+  int getIndexReference(int index);
 };
 
 #endif

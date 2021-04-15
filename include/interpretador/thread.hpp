@@ -4,6 +4,7 @@ class Thread;
 
 #include "./method_area.hpp"
 #include "./frame.hpp"
+#include "./heap.hpp"
 
 using namespace std;
 
@@ -14,8 +15,10 @@ class Thread{
     
     MethodInfo* current_method;
     vector<Frame*> frame_stack; 
+
   public:
-    Thread(MethodArea*);
+    Heap* heap_ref;
+    Thread(MethodArea*, Heap*);
 
     void runMain();
 };

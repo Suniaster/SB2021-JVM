@@ -15,7 +15,7 @@ void ExecutionEngine::loadMethodArea(string load_class_name){
 
 void ExecutionEngine::start(){
   this->threads.push_back(
-    new Thread(&this->method_area)
+    new Thread(&this->method_area, &this->heap)
   );
 
   this->threads[0]->runMain();

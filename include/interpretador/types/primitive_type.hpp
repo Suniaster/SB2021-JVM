@@ -18,6 +18,8 @@ class PrimitiveType: public ElementType{
       this->type = type;
       this->data =x;
     };
+
+    void print();
 };
 
 
