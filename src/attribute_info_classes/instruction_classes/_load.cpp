@@ -19,6 +19,17 @@ string AbstractLoad::toString(){
     return this->getName() + " " + this->hexToString(this->param);
 }
 
+int AbstractLoad::execute(Frame* frame){
+  uint64_t value = frame->local_variables.get(this->param);
+  frame->operand_stack.push(value);
+
+  if(this->is_n_class)
+    frame->local_pc += 1;
+  else frame->local_pc += 2;
+
+  return frame->local_pc;
+}
+
 Iload::Iload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x15, 0x1a){}
 
@@ -38,6 +49,7 @@ Dload::Dload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x18, 0x26){}
 
 string Dload::getName(){ return "dload"; }
+
 
 Aload::Aload(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :AbstractLoad(code_attr, opcode, 0x19, 0x2a){}

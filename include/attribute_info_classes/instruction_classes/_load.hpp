@@ -15,6 +15,7 @@ namespace Instructions{
 
       virtual string getName() = 0;
       string toString();
+      int execute(Frame* frame);
   };
 
   class Iload : public AbstractLoad{
@@ -43,15 +44,12 @@ namespace Instructions{
   };
 
   class Dload : public AbstractLoad{
-    private:
-      uint8_t param;
     public:    
       Dload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
   };
 
   class Aload : public AbstractLoad{
-    private:
     public:    
       Aload(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string getName();
