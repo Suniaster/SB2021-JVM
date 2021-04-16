@@ -15,3 +15,7 @@ JVMField::JVMField(FieldInfo* field_info):ComponentType(JVMFIELD){
 string JVMField::toString(){
   return this->field_name;
 }
+
+ComponentType* JVMField::getData(){
+  return this->data;
+};

@@ -11,6 +11,7 @@ class PrimitiveType: public ElementType{
     uint64_t data;
     PrimitiveType(uint64_t x, JVMType type);
     void print();
+    string toString();
 };
 
 

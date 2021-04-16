@@ -22,7 +22,6 @@ void ClassLoader::linkClass(string class_name, Heap* heap, MethodArea* method_ar
 
   class_file->heap_ref = heap->storeComponent(linking_class);
 
-  cout << linking_class->toString() << endl;
   class_file->state = LINKED;
 }
 

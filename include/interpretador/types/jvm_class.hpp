@@ -24,6 +24,8 @@ class JVMClass : public ComponentType{
     
     void setClassFile(ClassFile*);
     void addField(JVMField*);
+
+    JVMField* getField(string field_name);
     PrimitiveType getConstant(int index);
     string toString();
 };

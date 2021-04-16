@@ -23,6 +23,15 @@ void JVMClass::addField(JVMField* a){
   this->fields.push_back(a);
 } 
 
+JVMField* JVMClass::getField(string field_name){
+  for(uint16_t i=0;i< this->fields.size();i++){
+    if(this->fields[i]->field_name == field_name){
+      return this->fields[i];
+    }
+  }
+  throw std::runtime_error("ResolveFieldError: " + field_name + "not found");
+}
+
 string JVMClass::toString(){
   stringstream paramString;
 

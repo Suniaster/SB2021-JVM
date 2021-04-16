@@ -1,6 +1,6 @@
 #include "../../include/interpretador/execution_engine.hpp"
 #include "../../include/interpretador/class_loader.hpp"
-
+#include "../../include/interpretador/reference_resolver.hpp"
 
 void ExecutionEngine::loadMethodArea(string load_class_name){
   ClassFile* inserted_class;
@@ -28,12 +28,6 @@ void ExecutionEngine::start(){
 
   // cuida da parte de fazer Load e Link
   int heap_ref = ClassLoader::resolveClass(inital_class_name, &this->heap, &this->method_area);
-
-  // Teste:
-  ComponentType* t = this->heap.getReference(heap_ref);
-  
-  cout << "Componente armazenado eh: " << t->toString() << endl;
-
 
   this->threads[0]->runMain();
 }

@@ -2,7 +2,6 @@
 #include "../../../include/interpretador/types/primitive_type.hpp"
 #include <iostream>
 
-
 ComponentType::ComponentType(JVMType component_type){
   this->type = component_type;
 }
@@ -24,7 +23,7 @@ void ComponentType::setReference(int i){
 }
 
 void ComponentType::print(){
-  std::cout << "ComponentType";
+  std::cout << "ComponentType" << endl;
 }
 
 string ComponentType::toString(){
