@@ -29,7 +29,7 @@ string JVMClass::toString(){
   paramString << "{ Class: " << this->class_file->getThisClassName() << " ";
   paramString << "fields(" << this->fields.size() << "){";
   for(uint16_t i=0;i< this->fields.size();i++){
-    paramString << this->fields[i]->field_name;
+    paramString << this->fields[i]->toString();
     if(i!=  this->fields.size()-1){
       paramString << ", ";
     }

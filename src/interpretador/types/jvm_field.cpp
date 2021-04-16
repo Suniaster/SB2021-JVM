@@ -11,3 +11,7 @@ JVMField::JVMField(FieldInfo* field_info):ComponentType(JVMFIELD){
   // TODO: transformar descriptor em tipo certo;
   this->data = ComponentType::getDefaultValue(Int);
 }
+
+string JVMField::toString(){
+  return this->field_name;
+}

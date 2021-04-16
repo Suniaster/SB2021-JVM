@@ -20,6 +20,7 @@ class JVMField : public ComponentType{
 
     void setData(ComponentType*);
     ComponentType* getData();
+    string toString();
 };
 
 #endif
