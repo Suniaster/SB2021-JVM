@@ -16,6 +16,10 @@ class ClassFile;
 
 using namespace std;
 
+typedef enum{
+  READ, LOADED, LINKED , INITIALIZED 
+} ClassFileState;
+
 class ClassFile{
   private:
     uint32_t magic_number;
@@ -34,11 +38,6 @@ class ClassFile{
     void loadAttributes();
     void printConstantPool();
 
-    vector<CpInfo*> constant_pool;
-    vector<FieldInfo*> fields;
-    vector<AttributeInfo*> attributes;
-    vector<InterfaceInfo*> interfaces;
-
     void loadFields();
     void printFields();
 
@@ -49,6 +48,15 @@ class ClassFile{
     void printMethods();
 public:
     vector<MethodInfo*> methods;
+    vector<CpInfo*> constant_pool;
+    vector<AttributeInfo*> attributes;
+    vector<InterfaceInfo*> interfaces;
+    vector<FieldInfo*> fields;
+
+    // Variaveis usadas pelo interpretador
+    ClassFileState state;
+    uint64_t heap_ref;
+
     FileReader *file_reader;
     ClassFile(string file_name);
     ~ClassFile();

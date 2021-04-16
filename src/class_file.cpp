@@ -9,6 +9,8 @@ ClassFile::ClassFile(string class_name)
 {
   file_reader = new FileReader();
   file_reader->readFile("./tests/" + class_name);
+  this->state = READ;
+  this->heap_ref = 0;
 }
 
 ClassFile::~ClassFile() {
@@ -48,6 +50,7 @@ void ClassFile::loadClass()
 
   this->setAttribute<uint16_t>(2, this->attributes_count);
   AttributeInfo::loadAttributes(this->attributes, this->attributes_count, this);
+  this->state = LOADED;
 }
 
 void ClassFile::printClass()
