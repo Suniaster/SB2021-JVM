@@ -22,6 +22,9 @@ public:
     FieldInfo(ClassFile *class_file);
     ~FieldInfo();
 
+    string getName();
+    string getDescriptor();
+    bool isStatic();
     void printInfo();
 };
 

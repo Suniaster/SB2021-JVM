@@ -3,10 +3,11 @@
 
 #include <vector>
 #include <cstdint>
+#include <string>
 typedef enum{
   Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress,   // Tipos basicos 
-  Reference, ArrayReference, ObjectReference, InterfaceReference,       // Tipos de referencia
-  JVMArray                                                              // Tipos complexos
+  Reference, ArrayReference, ObjectReference, StringReference, InterfaceReference,       // Tipos de referencia
+  JVMArray, JVMCLASS, JVMOBJ, JVMFIELD, JVMInterface, JVMString                 // Tipos complexos
 } JVMType;
 
 using namespace std;
@@ -18,9 +19,13 @@ class ComponentType{
     JVMType type;
 
     ComponentType(JVMType component_type);
+
+    static ComponentType* getDefaultValue(JVMType);
+
     void setReference(int);
     int getReference();
     virtual void print();
+    virtual string toString();
 };
 
 #endif
