@@ -7,7 +7,7 @@
 using namespace std;
 
 typedef enum{
-  Long, Double, Byte, Short, Boolean, Char, Int, Float, Reference, ReturnAdress
+  Long, Double, Byte, Short, Boolean, Char, Int, Float, Reference, ReturnAdress, Null
 } JVMType;
 
 class PrimitiveType: public ElementType{

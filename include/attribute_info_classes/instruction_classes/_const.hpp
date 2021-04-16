@@ -8,17 +8,18 @@ namespace Instructions{
   class AconstNull : public BaseInstruction{
     public:
       AconstNull(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame *frame);
       string toString();
   };
 
   class Iconst : public BaseInstruction{
     public:
-      Iconst(Attribute::CodeAttribute* code_attr, uint8_t opcode); 
+      Iconst(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
   };
 
   class Lconst : public BaseInstruction{
-    public: 
+    public:
       Lconst(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
   };

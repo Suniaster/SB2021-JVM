@@ -5,6 +5,12 @@ AconstNull::AconstNull(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
+int AconstNull::execute(Frame *frame){
+    JVMType Null = Null;
+    frame->operand_stack.push(0, Null);
+    return frame->local_pc++;
+}
+
 string AconstNull::toString(){
   return "aconst_null";
 }

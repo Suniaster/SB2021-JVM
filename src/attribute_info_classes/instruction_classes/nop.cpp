@@ -6,7 +6,7 @@ Nop::Nop(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
-int Nop::BaseInstruction::execute(Frame *frame){
+int Nop::execute(Frame *frame){
     return frame->local_pc++;
 }
 

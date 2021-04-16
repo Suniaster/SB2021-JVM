@@ -6,8 +6,9 @@
 
 namespace Instructions{
   class Nop : public BaseInstruction{
-    public:    
+    public:
       Nop(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame *frame);
       string toString();
   };
 }
