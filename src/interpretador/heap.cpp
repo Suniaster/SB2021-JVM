@@ -4,7 +4,7 @@
 
 
 int Heap::createPrimitiveTypeArray(int length, JVMType arrayType){
-  ArrayType* newArray = new ArrayType();
+  ArrayType* newArray = new ArrayType(arrayType);
   for(int i=0;i<length;i++){
     PrimitiveType* defaultValue = new PrimitiveType(0, arrayType);
     this->storeComponent(defaultValue);
