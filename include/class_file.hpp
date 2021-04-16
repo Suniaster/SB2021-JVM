@@ -55,7 +55,7 @@ public:
 
     // Variaveis usadas pelo interpretador
     ClassFileState state;
-    uint64_t heap_ref;
+    int heap_ref;
 
     FileReader *file_reader;
     ClassFile(string file_name);
