@@ -13,7 +13,7 @@
 #include "./dup.hpp"
 #include "./athrow.hpp"
 #include "./checkcast.hpp"
-#include "./div.hpp"
+#include "./_div.hpp"
 #include "./getfield.hpp"
 #include "./getstatic.hpp"
 #include "./goto_w.hpp"

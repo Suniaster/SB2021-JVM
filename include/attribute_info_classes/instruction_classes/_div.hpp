@@ -11,8 +11,8 @@ namespace Instructions{
     public:    
       Div(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
+      int execute(Frame*);
   };
 }
 
 #endif
-
