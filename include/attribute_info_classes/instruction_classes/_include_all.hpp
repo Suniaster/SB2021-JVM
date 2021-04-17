@@ -50,7 +50,7 @@
 #include "./return.hpp"
 #include "./shl.hpp"
 #include "./shr.hpp"
-#include "./sub.hpp"
+#include "./_sub.hpp"
 #include "./swap.hpp"
 #include "./tableswitch.hpp"
 #include "./ushr.hpp"

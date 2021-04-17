@@ -15,5 +15,4 @@ namespace Instructions{
   };
 }
 
-
 #endif
