@@ -11,8 +11,8 @@ namespace Instructions{
     public:    
       Mul(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
+      int execute(Frame*);
   };
 }
 
 #endif
-
