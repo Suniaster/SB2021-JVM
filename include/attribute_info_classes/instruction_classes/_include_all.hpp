@@ -42,7 +42,7 @@
 #include "./putfield.hpp"
 #include "./putstatic.hpp"
 #include "./nop.hpp"
-#include "./or.hpp"
+#include "./_or.hpp"
 #include "./pop.hpp"
 #include "./push.hpp"
 #include "./_rem.hpp"
