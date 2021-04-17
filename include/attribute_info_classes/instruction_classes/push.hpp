@@ -17,6 +17,7 @@ namespace Instructions{
     public:
       uint16_t param;
       Sipush(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame* frame);
       string toString();
   };
 }

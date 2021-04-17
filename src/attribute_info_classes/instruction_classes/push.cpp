@@ -25,6 +25,12 @@ Sipush::Sipush(Attribute::CodeAttribute* code_attr, uint8_t opcode)
   f->readBytes(2, this->param);
 }
 
+int Sipush::execute(Frame* frame){
+
+    frame->operand_stack.push((int)this->param,Int);
+    return frame->local_pc+3;
+}
+
 string Sipush::toString(){
   stringstream temp;
   temp << (int) this->param;
