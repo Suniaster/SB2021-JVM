@@ -55,4 +55,4 @@
 #include "./tableswitch.hpp"
 #include "./_ushr.hpp"
 #include "./wide.hpp"
-#include "./xor.hpp"
+#include "./_xor.hpp"
