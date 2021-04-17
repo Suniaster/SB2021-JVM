@@ -15,6 +15,7 @@ namespace Instructions{
   class Iconst : public BaseInstruction{
     public:
       Iconst(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame *frame);
       string toString();
   };
 

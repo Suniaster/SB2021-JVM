@@ -1,7 +1,7 @@
 #include "../../include/interpretador/local_variable.hpp"
 
 void LocalVariable::initialize(uint32_t max_length){
-  for (int i = 0; i < max_length; i++){
+  for (std::size_t i = 0; i < max_length; i++){
     PrimitiveType* defaultValue = new PrimitiveType(0, Int);
     this->local_variables.push_back(defaultValue);
   }
@@ -9,7 +9,7 @@ void LocalVariable::initialize(uint32_t max_length){
 
 void LocalVariable::print(){
   cout << "[";
-  for (int i = 0; i < this->local_variables.size(); i++){
+  for (std::size_t i = 0; i < this->local_variables.size(); i++){
     cout << this->get(i).first << ", ";
   }
   cout << "]"<< endl;
