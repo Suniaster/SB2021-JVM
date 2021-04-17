@@ -96,6 +96,20 @@ string Fconst::toString(){
 Dconst::Dconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
+
+int Dconst::execute(Frame * frame){
+    switch (this->opcode) {
+        case 14:
+            frame->operand_stack.push(0.0, Double);
+            break;
+        case 15:
+            frame->operand_stack.push(1.0, Double);
+            break;
+        default:
+            throw std::runtime_error("wrong opcode Iconst");
+    }
+    return frame->local_pc++;
+}
 string Dconst::toString(){
   return "dconst_"+this->intToString(this->opcode - 0xe);
 }

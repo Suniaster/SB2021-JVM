@@ -35,6 +35,7 @@ namespace Instructions{
   class Dconst : public BaseInstruction{
     public:
       Dconst(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame *frame);
       string toString();
   };
 
