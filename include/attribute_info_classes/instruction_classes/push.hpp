@@ -6,16 +6,18 @@
 
 namespace Instructions{
   class Bipush : public BaseInstruction{
-    public:    
+    public:
       uint8_t param;
       Bipush(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame *frame);
       string toString();
   };
 
   class Sipush : public BaseInstruction{
-    public:    
+    public:
       uint16_t param;
       Sipush(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame* frame);
       string toString();
   };
 }

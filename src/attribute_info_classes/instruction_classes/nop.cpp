@@ -3,7 +3,11 @@ using namespace Instructions;
 
 
 Nop::Nop(Attribute::CodeAttribute* code_attr, uint8_t opcode)
-    :BaseInstruction(code_attr, opcode){   
+    :BaseInstruction(code_attr, opcode){
+}
+
+int Nop::execute(Frame *frame){
+    return frame->local_pc++;
 }
 
 string Nop::toString(){
