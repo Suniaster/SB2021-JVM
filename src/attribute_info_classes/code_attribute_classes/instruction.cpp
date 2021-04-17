@@ -225,8 +225,12 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Inc(code_attr, opcode);
   case 0x85 ... 0x93:
     return new TypeConversion(code_attr, opcode);
-  case 0x94 ... 0x98:
-    return new Compare(code_attr, opcode);
+  case 0x94:
+    return new Lcmp(code_attr, opcode);
+  case 0x95 ... 0x96:
+    return new Fcmp(code_attr, opcode);
+  case 0x97 ... 0x98:
+    return new Dcmp(code_attr, opcode);
   case 0x99 ... 0x9e:
     return new If(code_attr, opcode);
   case 0x9f ... 0xa6:
