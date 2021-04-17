@@ -49,7 +49,7 @@
 #include "./ret.hpp"
 #include "./return.hpp"
 #include "./_shl.hpp"
-#include "./shr.hpp"
+#include "./_shr.hpp"
 #include "./_sub.hpp"
 #include "./swap.hpp"
 #include "./tableswitch.hpp"
