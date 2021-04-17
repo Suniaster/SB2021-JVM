@@ -53,6 +53,6 @@
 #include "./_sub.hpp"
 #include "./swap.hpp"
 #include "./tableswitch.hpp"
-#include "./ushr.hpp"
+#include "./_ushr.hpp"
 #include "./wide.hpp"
 #include "./xor.hpp"
