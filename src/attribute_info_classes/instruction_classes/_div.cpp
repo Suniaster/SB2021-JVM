@@ -1,4 +1,4 @@
-#include "../../../include/attribute_info_classes/instruction_classes/div.hpp"
+#include "../../../include/attribute_info_classes/instruction_classes/_div.hpp"
 using namespace Instructions;
 
 
