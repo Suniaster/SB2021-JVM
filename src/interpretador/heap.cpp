@@ -2,6 +2,14 @@
 #include "../../include/interpretador/types/array_type.hpp"
 #include "../../include/interpretador/types/primitive_type.hpp"
 
+Heap* Heap::instance = 0;
+
+Heap* Heap::getInstance(){
+  if(instance == 0){
+    instance = new Heap();
+  }
+  return instance;
+}
 
 int Heap::createPrimitiveTypeArray(int length, JVMType arrayType){
   ArrayType* newArray = new ArrayType(arrayType);

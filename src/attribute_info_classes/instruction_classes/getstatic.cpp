@@ -18,8 +18,7 @@ int GetStatic::execute(Frame* frame){
   string symbolic_ref = frame->current_method->class_file->getConstantPoolEntry(this->indexbyte)->toString();
 
   JVMField* f = ReferenceResolver::resolveStaticFieldSymbolicReference(
-    symbolic_ref, 
-    frame->thread->heap_ref, 
+    symbolic_ref,
     frame->thread->method_area
   );
 

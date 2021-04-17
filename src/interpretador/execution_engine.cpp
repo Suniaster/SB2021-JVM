@@ -11,6 +11,7 @@ void ExecutionEngine::loadMethodArea(string load_class_name){
     super_name      = inserted_class->getSuperClassName();
   } while(load_class_name != "java/lang/Object");
   
+  this->heap = Heap::getInstance();
 }
 
 void ExecutionEngine::start(){
@@ -21,13 +22,13 @@ void ExecutionEngine::start(){
   // Rodar a main
 
   this->threads.push_back(
-    new Thread(&this->method_area, &this->heap)
+    new Thread(&this->method_area)
   );
 
   string inital_class_name = this->method_area.getMainMethod()->class_file->getThisClassName();
 
   // cuida da parte de fazer Load e Link
-  int heap_ref = ClassLoader::resolveClass(inital_class_name, &this->heap, &this->method_area);
+  int heap_ref = ClassLoader::resolveClass(inital_class_name, &this->method_area);
 
   this->threads[0]->runMain();
 }

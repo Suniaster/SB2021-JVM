@@ -18,7 +18,7 @@ class Thread{
   public:
     MethodArea* method_area;
     Heap* heap_ref;
-    Thread(MethodArea*, Heap*);
+    Thread(MethodArea*);
 
     void runMain();
 };

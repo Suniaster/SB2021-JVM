@@ -1,8 +1,8 @@
 #include "../../include/interpretador/thread.hpp"
 
-Thread::Thread(MethodArea* method_area, Heap* heap_ref){
+Thread::Thread(MethodArea* method_area){
   this->method_area = method_area;
-  this->heap_ref = heap_ref;
+  this->heap_ref = Heap::getInstance();
 }
 
 void Thread::runMain(){

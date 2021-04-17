@@ -15,7 +15,7 @@ class ReferenceResolver{
     static pair<string, string> separateSymbol(string str, string delimiter);
   public:
 
-    static JVMField* resolveStaticFieldSymbolicReference(string symbolic_reference, Heap*, MethodArea*);
+    static JVMField* resolveStaticFieldSymbolicReference(string symbolic_reference, MethodArea*);
 
 };
 

@@ -15,13 +15,14 @@ pair<string, string>  ReferenceResolver::separateSymbol(string str, string delim
   return ret;
 }
 
+JVMField* ReferenceResolver::resolveStaticFieldSymbolicReference(string symbolic_reference, MethodArea* method_area){
+  Heap* heap = Heap::getInstance();
 
-JVMField* ReferenceResolver::resolveStaticFieldSymbolicReference(string symbolic_reference, Heap* heap, MethodArea* method_area){
   pair<string,string> names = ReferenceResolver::separateSymbol(symbolic_reference, ".");
   string class_name = names.first;
   string field_name = names.second;
 
-  int class_ref = ClassLoader::resolveClass(class_name, heap, method_area);
+  int class_ref = ClassLoader::resolveClass(class_name, method_area);
   JVMClass* resolved_class = (JVMClass*)heap->getReference(class_ref);
 
   JVMField* field = resolved_class->getField(field_name);

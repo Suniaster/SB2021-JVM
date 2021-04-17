@@ -15,13 +15,13 @@ class ClassLoader{
     static bool classIsNot(ClassFileState state, string class_name, MethodArea* method_area);
 
     // Cria as estutas necessarias no heap para essa classe
-    static void linkClass(string class_name, Heap*, MethodArea*);
+    static void linkClass(string class_name, MethodArea*);
   
     static void initializeClass(string class_name, Thread*, MethodArea*);
 
   
   public:
-    static int resolveClass(string class_name, Heap*, MethodArea*);
+    static int resolveClass(string class_name, MethodArea*);
     static PrimitiveType* resolveSymbol(Heap*, MethodArea*, string symbol);
 
 };

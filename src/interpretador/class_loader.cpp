@@ -2,7 +2,8 @@
 #include "../../include/interpretador/types/jvm_class.hpp"
 #include "../../include/interpretador/types/jvm_field.hpp"
 
-void ClassLoader::linkClass(string class_name, Heap* heap, MethodArea* method_area){
+void ClassLoader::linkClass(string class_name, MethodArea* method_area){
+  Heap* heap = Heap::getInstance();
   JVMClass* linking_class = new JVMClass(class_name);
 
   ClassFile* class_file = method_area->getClassFile(class_name);
@@ -34,13 +35,13 @@ bool ClassLoader::classIsNot(ClassFileState state, string class_name, MethodArea
   return !ClassLoader::classIs(state, class_name, method_area);
 }
 
-int ClassLoader::resolveClass(string class_name, Heap* heap, MethodArea* method_area){
+int ClassLoader::resolveClass(string class_name, MethodArea* method_area){
   if(ClassLoader::classIsNot(LOADED, class_name, method_area)){
     throw runtime_error("LoadError: "+class_name+" is not loaded");
   }
 
   if(ClassLoader::classIsNot(LINKED, class_name, method_area)){
-    ClassLoader::linkClass(class_name, heap, method_area);
+    ClassLoader::linkClass(class_name, method_area);
   }
 
   // TODO: Fazer inicializacao (chamar metodo clinit)
