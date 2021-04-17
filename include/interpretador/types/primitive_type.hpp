@@ -6,20 +6,18 @@
 
 using namespace std;
 
+
 typedef enum{
-  Long, Double, Byte, Short, Boolean, Char, Int, Float, Reference, ReturnAdress, Null
+  Null, Long, Double, Byte, Short, Boolean, Char, Int, Float, Reference, ReturnAdress
 } JVMType;
+
 
 class PrimitiveType: public ElementType{
   public:
-    JVMType type;
     uint64_t data;
-    PrimitiveType(uint64_t x, JVMType type){
-      this->type = type;
-      this->data =x;
-    };
-
+    PrimitiveType(uint64_t x, JVMType type);
     void print();
+    string toString();
 };
 
 

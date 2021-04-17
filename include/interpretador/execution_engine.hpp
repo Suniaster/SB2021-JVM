@@ -9,7 +9,7 @@ class ExecutionEngine{
   private:
     MethodArea method_area;
     vector<Thread*> threads;
-    Heap heap;
+    Heap* heap;
   public:
 
     void start();

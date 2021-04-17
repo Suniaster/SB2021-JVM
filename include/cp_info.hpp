@@ -12,9 +12,9 @@ using namespace std;
 class CpInfo{
   protected:
     ClassFile *class_file;
-    uint8_t tag;
 
   public:
+    uint8_t tag;
     CpInfo(ClassFile *class_file);
     virtual ~CpInfo() { };
 

@@ -3,6 +3,8 @@
 
 using namespace std;
 
+ArrayType::ArrayType(JVMType content_type):ComponentType(content_type){}
+
 void ArrayType::print(){
   cout << "[";
   for(uint16_t i=0;i<this->data.size();i++){

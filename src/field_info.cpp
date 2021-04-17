@@ -22,3 +22,19 @@ void FieldInfo::printInfo() {
 
   AttributeInfo::printAttributes(this->attributes, 2);
 }
+
+string FieldInfo::getName() {
+  return this->class_file->getConstantPoolEntry(this->name_index)->toString();
+}
+
+string FieldInfo::getDescriptor() {
+  return this->class_file->getConstantPoolEntry(this->name_index)->toString();
+}
+
+bool FieldInfo::isStatic() {
+  if(this->class_file->beautifiedAccessFlags(this->access_flags, true, false)
+    .find("static") != string::npos
+  )
+    return true;
+  else return false;
+}

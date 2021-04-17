@@ -10,15 +10,15 @@ using namespace std;
 
 class Thread{
   private:
-    MethodArea* method_area;
     uint32_t pc_register;
     
     MethodInfo* current_method;
     vector<Frame*> frame_stack; 
 
   public:
+    MethodArea* method_area;
     Heap* heap_ref;
-    Thread(MethodArea*, Heap*);
+    Thread(MethodArea*);
 
     void runMain();
 };

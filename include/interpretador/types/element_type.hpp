@@ -6,9 +6,14 @@
 #include <vector>
 #include <cstdint>
 
-class ElementType : public ComponentType{};
+class ElementType : public ComponentType{
+  public:
+    ElementType(JVMType type):ComponentType(type){}
+};
 
-class ClassType: public ElementType{};
+class ClassInstanceType: public ElementType{
+
+};
 
 class InterfaceType: public ElementType{};
 

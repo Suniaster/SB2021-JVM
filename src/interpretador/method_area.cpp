@@ -28,3 +28,13 @@ MethodInfo* MethodArea::getMainMethod(){
   // TODO: Dar throw caso main_method nao tenha sido setado;
   return this->main_method;
 }
+
+ClassFile* MethodArea::getClassFile(string class_name){
+  for(uint16_t i=0;i<this->classes.size();i+=1){
+    string evaluated_class_name = this->classes[i]->getThisClassName();
+    if(evaluated_class_name == class_name){
+      return this->classes[i];
+    }
+  }
+  return NULL;
+}

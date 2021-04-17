@@ -1,6 +1,6 @@
 #include "../../include/interpretador/execution_engine.hpp"
-
-
+#include "../../include/interpretador/class_loader.hpp"
+#include "../../include/interpretador/reference_resolver.hpp"
 
 void ExecutionEngine::loadMethodArea(string load_class_name){
   ClassFile* inserted_class;
@@ -11,12 +11,24 @@ void ExecutionEngine::loadMethodArea(string load_class_name){
     super_name      = inserted_class->getSuperClassName();
   } while(load_class_name != "java/lang/Object");
   
+  this->heap = Heap::getInstance();
 }
 
 void ExecutionEngine::start(){
+
+  // A inicializacao da jvm consiste em:
+  // Achar classe inicial (que tem a main nela)
+  // Fazer Load, Link e Initalize dela
+  // Rodar a main
+
   this->threads.push_back(
-    new Thread(&this->method_area, &this->heap)
+    new Thread(&this->method_area)
   );
+
+  string inital_class_name = this->method_area.getMainMethod()->class_file->getThisClassName();
+
+  // cuida da parte de fazer Load e Link
+  int heap_ref = ClassLoader::resolveClass(inital_class_name, &this->method_area);
 
   this->threads[0]->runMain();
 }
