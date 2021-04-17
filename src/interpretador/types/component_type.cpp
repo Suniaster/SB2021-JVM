@@ -4,6 +4,7 @@
 
 ComponentType::ComponentType(JVMType component_type){
   this->type = component_type;
+  this->heap_reference = -1;
 }
 
 ComponentType* ComponentType::getDefaultValue(JVMType type){

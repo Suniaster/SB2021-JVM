@@ -23,6 +23,9 @@ int Heap::createPrimitiveTypeArray(int length, JVMType arrayType){
 }
 
 int Heap::storeComponent(ComponentType* toStore){
+  
+  if(toStore->getReference() >= 0) return toStore->getReference();
+
   this->heap_store.push_back(toStore);
   int newElementIndex = this->heap_store.size()-1;
   toStore->setReference(newElementIndex);
