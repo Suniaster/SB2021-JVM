@@ -11,6 +11,7 @@ namespace Instructions{
     public:    
       And(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
+      int execute(Frame*);
   };
 }
 
