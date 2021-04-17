@@ -34,7 +34,7 @@
 #include "./lookupswitch.hpp"
 #include "./monitorenter.hpp"
 #include "./monitorexit.hpp"
-#include "./mul.hpp"
+#include "./_mul.hpp"
 #include "./multianewarray.hpp"
 #include "./neg.hpp"
 #include "./new.hpp"
