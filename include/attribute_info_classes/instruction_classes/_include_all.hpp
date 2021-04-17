@@ -36,7 +36,7 @@
 #include "./monitorexit.hpp"
 #include "./_mul.hpp"
 #include "./multianewarray.hpp"
-#include "./neg.hpp"
+#include "./_neg.hpp"
 #include "./new.hpp"
 #include "./newarray.hpp"
 #include "./putfield.hpp"
