@@ -72,6 +72,23 @@ Fconst::Fconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
+int Fconst::execute(Frame * frame){
+    switch (this->opcode) {
+        case 11:
+            frame->operand_stack.push(0.0, Float);
+            break;
+        case 12:
+            frame->operand_stack.push(1.0, Float);
+            break;
+        case 13:
+            frame->operand_stack.push(2.0, Float);
+            break;
+
+        default:
+            throw std::runtime_error("wrong opcode Iconst");
+    }
+    return frame->local_pc++;
+}
 string Fconst::toString(){
   return "fconst_"+this->intToString(this->opcode - 0xb);
 }
