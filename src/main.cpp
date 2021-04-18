@@ -24,10 +24,10 @@ int main(int argc, char **argv){
 
 //   file.close();
 
-  ExecutionEngine execEng;
-  execEng.loadMethodArea(file_path);
+  ExecutionEngine* execEng = ExecutionEngine::getInstance();
+  execEng->loadMethodArea(file_path);
 
-  execEng.start();
+  execEng->start();
   
   return 0;
 }

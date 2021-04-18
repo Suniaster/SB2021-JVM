@@ -32,3 +32,11 @@ void ExecutionEngine::start(){
 
   this->threads[0]->runMain();
 }
+
+ExecutionEngine* ExecutionEngine::instance = 0;
+ExecutionEngine* ExecutionEngine::getInstance(){
+  if(instance==0){
+    ExecutionEngine::instance = new ExecutionEngine();
+  }
+  return ExecutionEngine::instance ;
+};
