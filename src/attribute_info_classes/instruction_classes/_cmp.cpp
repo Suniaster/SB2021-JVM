@@ -10,8 +10,8 @@ string Lcmp::toString() {
 }
 
 int Lcmp::execute(Frame *frame) {
-  int64_t value1 = frame->operand_stack.pop().first;
   int64_t value2 = frame->operand_stack.pop().first;
+  int64_t value1 = frame->operand_stack.pop().first;
 
   int64_t lvalue1 = (int64_t)value1;
   int64_t lvalue2 = (int64_t)value2;
@@ -50,8 +50,8 @@ string Fcmp::toString() {
 }
 
 int Fcmp::execute(Frame *frame) {
-  float value1 = frame->operand_stack.pop().first;
   float value2 = frame->operand_stack.pop().first;
+  float value1 = frame->operand_stack.pop().first;
 
   float fvalue1 = *(float *)&value1;
   float fvalue2 = *(float *)&value2;
@@ -102,8 +102,8 @@ string Dcmp::toString() {
 }
 
 int Dcmp::execute(Frame *frame) {
-  double value1 = frame->operand_stack.pop().first;
   double value2 = frame->operand_stack.pop().first;
+  double value1 = frame->operand_stack.pop().first;
 
   double dvalue1 = *(double *)&value1;
   double dvalue2 = *(double *)&value2;
