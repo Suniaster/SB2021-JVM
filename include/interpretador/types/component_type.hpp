@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <string>
 typedef enum{
-  Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress,   // Tipos basicos 
+  Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress, Null,   // Tipos basicos 
   Reference, ArrayReference, ObjectReference, StringReference, InterfaceReference,       // Tipos de referencia
   JVMArray, JVMCLASS, JVMOBJ, JVMFIELD, JVMInterface, JVMString                 // Tipos complexos
 } JVMType;
