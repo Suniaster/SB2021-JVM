@@ -11,7 +11,7 @@ string Xor::toString(){
   return BaseInstruction::getTypePrefix(this->type) + "xor";
 }
 
-int Or::execute(Frame* frame){
+int Xor::execute(Frame* frame){
   
   uint64_t value1 = frame -> operand_stack.pop().first;
   uint64_t value2 = frame -> operand_stack.pop().first;
