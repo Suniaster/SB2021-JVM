@@ -6,10 +6,11 @@
 
 namespace Instructions{
   class NewArray : public BaseInstruction{
-    public:    
+    public:
       uint8_t atype;
       string getATypeName();
       NewArray(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame* frame);
       string toString();
   };
 }

@@ -14,9 +14,9 @@ ComponentType* ComponentType::getDefaultValue(JVMType type){
     return new PrimitiveType(0, type);
   }
 
-  if(type == JVMString) return new StringType(JVMString, ""); 
+  if(type == JVMString) return new StringType( "");
 
-  throw std::runtime_error("creating componenttype without default value");
+  throw std::runtime_error("creating component type without default value");
 }
 
 JVMType ComponentType::getTypeFromDescriptor(string descriptor){
