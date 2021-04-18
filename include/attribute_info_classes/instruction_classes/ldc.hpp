@@ -8,26 +8,28 @@ namespace Instructions{
   class Ldc : public BaseInstruction{
     private:
       uint8_t param;
-    public:    
+    public:
       Ldc(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame* frame);
       string toString();
   };
 
   class LdcW : public BaseInstruction{
     private:
       uint16_t param;
-    public:    
+    public:
       LdcW(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame* frame);
       string toString();
   };
 
   class Ldc2W : public BaseInstruction{
     private:
       uint16_t param;
-    public:    
+    public:
       Ldc2W(Attribute::CodeAttribute* code_attr, uint8_t opcode);
-      string toString();
       int execute(Frame* frame);
+      string toString();
   };
 }
 

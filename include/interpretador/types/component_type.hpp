@@ -5,9 +5,9 @@
 #include <cstdint>
 #include <string>
 typedef enum{
-  Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress,   // Tipos basicos 
+  Null, Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress,   // Tipos basicos
   Reference, ArrayReference, ObjectReference, StringReference, InterfaceReference,       // Tipos de referencia
-  JVMArray, JVMCLASS, JVMOBJ, JVMFIELD, JVMInterface, JVMString                 // Tipos complexos
+  JVMArray, JVMCLASS, JVMOBJ, JVMFIELD, JVMInterface, JVMString, JVMMethodHandle                // Tipos complexos
 } JVMType;
 
 using namespace std;

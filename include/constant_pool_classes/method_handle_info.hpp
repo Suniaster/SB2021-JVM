@@ -9,11 +9,12 @@ namespace CP{
       uint8_t reference_kind;
       uint16_t reference_index;
 
-    private:
-      string getReferenceKind();
-      
-    public:
+    
 
+    public:
+      string getReferenceKindDescriptor();
+      string getReferenceKindInterpretation();
+      string getReferenceKind();
       MethodHandleInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();
