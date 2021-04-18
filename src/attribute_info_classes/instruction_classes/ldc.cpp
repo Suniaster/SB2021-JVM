@@ -108,6 +108,7 @@ int LdcW::execute(Frame* frame){
         }
 
     }
+    frame->local_pc+=3;
     return frame->local_pc+3;
 }
 
@@ -140,6 +141,7 @@ int Ldc2W::execute(Frame* frame){
         }
 
     }
+    frame->local_pc+=3;
     return frame->local_pc+3;
 }
 

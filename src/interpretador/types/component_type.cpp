@@ -10,20 +10,23 @@ ComponentType::ComponentType(JVMType component_type){
 }
 
 ComponentType* ComponentType::getDefaultValue(JVMType type){
-  if(type <= InterfaceReference){
+  if(type <= Reference){
     return new PrimitiveType(0, type);
   }
 
-  if(type == StringReference) return new StringType(JVMString, ""); 
+  if(type == JVMString) return new StringType(JVMString, ""); 
 
   throw std::runtime_error("creating componenttype without default value");
 }
 
 JVMType ComponentType::getTypeFromDescriptor(string descriptor){
-  if(descriptor == "Ljava/lang/String;") return StringReference;
   if(descriptor == "I") return Int;
+  if(descriptor == "D") return Double;
+  if(descriptor == "F") return Float;
+  if(descriptor == "J") return Long;
 
-  return Int;
+  if(descriptor[0] == 'L') return Reference;
+  return Reference;
 }
 
 int ComponentType::getReference(){

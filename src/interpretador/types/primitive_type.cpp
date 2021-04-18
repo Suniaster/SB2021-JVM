@@ -7,7 +7,7 @@ PrimitiveType::PrimitiveType(uint64_t x, JVMType type):ElementType(type){
 };
 
 void PrimitiveType::print(){
-  std::cout << "<" << this->data << ", " << this->type << ">";
+  std::cout << "<" << this->data << ", " << this->type << ">" << endl;
 }
 
 string PrimitiveType::toString(){

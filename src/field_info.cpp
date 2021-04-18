@@ -28,7 +28,7 @@ string FieldInfo::getName() {
 }
 
 string FieldInfo::getDescriptor() {
-  return this->class_file->getConstantPoolEntry(this->name_index)->toString();
+  return this->class_file->getConstantPoolEntry(this->descriptor_index)->toString();
 }
 
 bool FieldInfo::isStatic() {

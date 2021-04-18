@@ -9,8 +9,8 @@ JVMField::JVMField(FieldInfo* field_info):ComponentType(JVMFIELD){
   this->field_name = field_info->getName();
   string field_descriptor = field_info->getDescriptor();
 
-  // TODO: transformar descriptor em tipo certo;
-  this->data = ComponentType::getDefaultValue(Int);
+  JVMType type = ComponentType::getTypeFromDescriptor(field_descriptor);
+  this->data = ComponentType::getDefaultValue(type);
 
   Heap::getInstance()->storeComponent(this->data);
 }
