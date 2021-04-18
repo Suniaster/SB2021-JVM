@@ -233,8 +233,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Dcmp(code_attr, opcode);
   case 0x99 ... 0x9e:
     return new If(code_attr, opcode);
-  case 0x9f ... 0xa6:
-    return new If_cmp(code_attr, opcode);
+  case 0x9f ... 0xa4:
+    return new If_icmp(code_attr, opcode);
   case 0xa7:
     return new Goto(code_attr, opcode);
   case 0xa8:
