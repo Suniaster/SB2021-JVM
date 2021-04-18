@@ -12,10 +12,10 @@ class ExecutionEngine{
   
     MethodArea method_area;
     vector<Thread*> threads;
-    Thread* main_thread;
     Heap* heap;
   public:
 
+    Thread* main_thread;
     static ExecutionEngine* getInstance();
     void start();
     void loadMethodArea(string intial_class_name);

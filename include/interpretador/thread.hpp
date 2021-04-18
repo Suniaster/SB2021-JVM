@@ -20,7 +20,10 @@ class Thread{
     Heap* heap_ref;
     Thread(MethodArea*);
 
+    void invokeStaticMethod(string class_name, string methodName, Frame* previous_frame);
+    
     void runMain();
+    void start();
 };
 
 #endif

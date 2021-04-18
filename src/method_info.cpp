@@ -38,3 +38,30 @@ void MethodInfo::printInfo() {
   cout << "\tAccess flags:      0x" << hex << this->access_flags << " " << this->class_file->beautifiedAccessFlags(this->access_flags, false, true) << endl;
   AttributeInfo::printAttributes(this->attributes, 2);
 }
+
+string MethodInfo::getDescriptorString() {
+  return this->class_file->getConstantPoolEntry(this->descriptor_index)->toString();
+}
+
+int MethodInfo::getArgsCount(){
+  // TODO: codar isso direito
+  string descriptor = this->getDescriptorString();
+  string types = "BCDFIJSZ";
+  int n_args = 0;
+  size_t i, j;
+
+  for(i=0;i<descriptor.size();i+=1){
+    if(descriptor[i] == ')') break;
+
+    if(types.find(descriptor[i]) != string::npos){
+      n_args++;
+      continue;
+    }
+
+    for(j=i;j<descriptor.size();j+=1){
+      if(descriptor[j] == ';') break;
+    }
+    i = j; 
+  }
+  return n_args;
+}

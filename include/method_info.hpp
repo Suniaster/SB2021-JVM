@@ -27,6 +27,8 @@ class MethodInfo{
     Attribute::CodeAttribute* getCode();
     Instructions::BaseInstruction* getInstruction(int pc);
 
+    string getDescriptorString();
+    int getArgsCount();
     string getName();
     void printInfo();
 };

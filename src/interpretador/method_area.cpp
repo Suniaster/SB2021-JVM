@@ -24,6 +24,19 @@ void MethodArea::searchMainMethod(ClassFile* classfile){
   }
 }
 
+MethodInfo* MethodArea::getMethodByName(string class_name, string methodName){
+  ClassFile* class_file = this->getClassFile(class_name);
+
+  for(uint32_t i=0; i<class_file->methods.size();i+=1){
+    MethodInfo* current_method = class_file->methods[i];
+
+    if(current_method->getName() == methodName){ 
+      return current_method;
+    }
+  }
+  throw runtime_error("MethodError: " + methodName + " nao encontrado");
+}
+
 MethodInfo* MethodArea::getMainMethod(){
   // TODO: Dar throw caso main_method nao tenha sido setado;
   return this->main_method;
@@ -36,5 +49,5 @@ ClassFile* MethodArea::getClassFile(string class_name){
       return this->classes[i];
     }
   }
-  return NULL;
+  throw runtime_error("ClassError: " + class_name + " nao encontrado");
 }

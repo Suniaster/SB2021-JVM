@@ -16,7 +16,7 @@ class ReferenceResolver{
   public:
 
     static JVMField* resolveStaticFieldSymbolicReference(string symbolic_reference, MethodArea*);
-
+    static int resolveStringReference(string toResolve);
 };
 
 

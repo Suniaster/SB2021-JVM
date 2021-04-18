@@ -1,6 +1,7 @@
 #include "../../include/interpretador/class_loader.hpp"
 #include "../../include/interpretador/types/jvm_class.hpp"
 #include "../../include/interpretador/types/jvm_field.hpp"
+#include "../../include/interpretador/execution_engine.hpp"
 
 void ClassLoader::linkClass(string class_name, MethodArea* method_area){
   Heap* heap = Heap::getInstance();
@@ -26,6 +27,15 @@ void ClassLoader::linkClass(string class_name, MethodArea* method_area){
   class_file->state = LINKED;
 }
 
+void ClassLoader::initializeClass(string class_name, MethodArea* method_area){
+  ClassFile* class_file = method_area->getClassFile(class_name);
+  
+  Thread* main_thread =  ExecutionEngine::getInstance()->main_thread;
+  main_thread->invokeStaticMethod(class_name, "<clinit>", NULL);
+
+  class_file->state = INITIALIZED;
+}
+
 bool ClassLoader::classIs(ClassFileState state, string class_name, MethodArea* method_area){
   ClassFile* class_file = method_area->getClassFile(class_name);
   return class_file->state >= state;
@@ -45,6 +55,9 @@ int ClassLoader::resolveClass(string class_name, MethodArea* method_area){
   }
 
   // TODO: Fazer inicializacao (chamar metodo clinit)
+  if(ClassLoader::classIsNot(INITIALIZED, class_name, method_area)){
+    ClassLoader::initializeClass(class_name, method_area);
+  }
 
   // TODO: Resolver super-classes
 

@@ -1,4 +1,5 @@
 #include "../../../include/attribute_info_classes/instruction_classes/ldc.hpp"
+#include "../../../include/interpretador/reference_resolver.hpp"
 using namespace Instructions;
 
 
@@ -28,6 +29,14 @@ int Ldc::execute(Frame* frame){
             frame->operand_stack.push(heap_index, Reference);
             break;
         }
+        case 0x8:{
+            // int referencia = ReferenceResolver::resolveStringReference(cp_param);
+            StringType* string_component = new StringType(JVMString, cp_entry->toString());
+            int heap_index = frame->thread->heap_ref->storeComponent(string_component);
+            frame->operand_stack.push(heap_index, Reference);
+
+            break;
+        }
         case 0xf:{
             //CP::MethodHandleInfo* cp_class = (CP::MethodHandleInfo *)cp_entry;
             //MethodHandleType* method_handle_component = new MethodHandleType(JVMMethodHandle, cp_class);
@@ -46,6 +55,7 @@ int Ldc::execute(Frame* frame){
         }
 
     }
+    frame->local_pc+=2;
     return frame->local_pc+2;
 }
 

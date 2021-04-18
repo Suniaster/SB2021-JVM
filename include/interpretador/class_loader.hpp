@@ -17,8 +17,7 @@ class ClassLoader{
     // Cria as estutas necessarias no heap para essa classe
     static void linkClass(string class_name, MethodArea*);
   
-    static void initializeClass(string class_name, Thread*, MethodArea*);
-
+    static void initializeClass(string class_name, MethodArea*);
   
   public:
     static int resolveClass(string class_name, MethodArea*);

@@ -21,6 +21,7 @@ class ComponentType{
     ComponentType(JVMType component_type);
 
     static ComponentType* getDefaultValue(JVMType);
+    static JVMType getTypeFromDescriptor(string descriptor);
 
     void setReference(int);
     int getReference();

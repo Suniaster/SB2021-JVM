@@ -1,5 +1,7 @@
 #include "../../../include/interpretador/types/component_type.hpp"
 #include "../../../include/interpretador/types/primitive_type.hpp"
+#include "../../../include/interpretador/types/string_type.hpp"
+
 #include <iostream>
 
 ComponentType::ComponentType(JVMType component_type){
@@ -12,7 +14,16 @@ ComponentType* ComponentType::getDefaultValue(JVMType type){
     return new PrimitiveType(0, type);
   }
 
+  if(type == StringReference) return new StringType(JVMString, ""); 
+
   throw std::runtime_error("creating componenttype without default value");
+}
+
+JVMType ComponentType::getTypeFromDescriptor(string descriptor){
+  if(descriptor == "Ljava/lang/String;") return StringReference;
+  if(descriptor == "I") return Int;
+
+  return Int;
 }
 
 int ComponentType::getReference(){

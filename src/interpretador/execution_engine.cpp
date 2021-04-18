@@ -24,13 +24,11 @@ void ExecutionEngine::start(){
   this->threads.push_back(
     new Thread(&this->method_area)
   );
+  this->main_thread = this->threads[0];
 
   string inital_class_name = this->method_area.getMainMethod()->class_file->getThisClassName();
 
-  // cuida da parte de fazer Load e Link
-  int heap_ref = ClassLoader::resolveClass(inital_class_name, &this->method_area);
-
-  this->threads[0]->runMain();
+  this->main_thread->runMain();
 }
 
 ExecutionEngine* ExecutionEngine::instance = 0;

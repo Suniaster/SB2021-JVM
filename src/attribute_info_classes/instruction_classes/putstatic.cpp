@@ -19,6 +19,7 @@ int PutStatic::execute(Frame* frame){
 
   pair<uint64_t,JVMType> value = frame->operand_stack.pop();
 
+  cout << value.first<< " " << value.second << endl;
   JVMField* f = ReferenceResolver::resolveStaticFieldSymbolicReference(
     symbolic_ref,
     frame->thread->method_area

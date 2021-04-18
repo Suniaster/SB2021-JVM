@@ -10,6 +10,7 @@ Bipush::Bipush(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 int Bipush::execute(Frame* frame){
     frame->operand_stack.push((int)this->param,Int);
+    frame->local_pc+=2;
     return frame->local_pc+2;
 }
 
@@ -26,8 +27,8 @@ Sipush::Sipush(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 int Sipush::execute(Frame* frame){
-
     frame->operand_stack.push((int)this->param,Int);
+    frame->local_pc+=3;
     return frame->local_pc+3;
 }
 
