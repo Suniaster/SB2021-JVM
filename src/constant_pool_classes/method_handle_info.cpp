@@ -9,9 +9,7 @@ CP::MethodHandleInfo::MethodHandleInfo(ClassFile* class_file) : CpInfo(class_fil
 void CP::MethodHandleInfo::setInfo(){
    // TODO checar se os valores de kind e index são válidos
   this->class_file->setAttribute<uint8_t>(1, this->reference_kind);
-  if (this->getReferenceKind() == "NF") {
-      throw std::invalid_argument("Invalid MethodHandle ReferenceKind");
-  }
+
 
   this->class_file->setAttribute<uint16_t>(2, this->reference_index);
 }
@@ -56,7 +54,77 @@ string CP::MethodHandleInfo::getReferenceKind(){
             return "REF_invokeInterface";
             break;
         default:
-            return "NF";
+            throw std::runtime_error("wrong reference kind");
+            break;
+    }
+}
+
+string CP::MethodHandleInfo::getReferenceKindDescriptor(){
+    switch (this->reference_kind) {
+        case 0x1:
+            return "(C)T";
+            break;
+        case 0x2:
+            return "()T";
+            break;
+        case 0x3:
+            return "(C,V)T";
+            break;
+        case 0x4:
+            return "(T)V";
+            break;
+        case 0x5:
+            return "(C,A*)T";
+            break;
+        case 0x6:
+            return "(A*)T";
+            break;
+        case 0x7:
+            return "(C,A*)T";
+            break;
+        case 0x8:
+            return "(A*)C";
+            break;
+        case 0x9:
+            return "(C,A*)T";
+            break;
+        default:
+            throw std::runtime_error("wrong reference kind");
+            break;
+    }
+}
+
+string CP::MethodHandleInfo::getReferenceKindInterpretation(){
+    switch (this->reference_kind) {
+        case 0x1:
+            return "getfield C.f:T";
+            break;
+        case 0x2:
+            return "getstatic C.f:T";
+            break;
+        case 0x3:
+            return "putfield C.f:T";
+            break;
+        case 0x4:
+            return "putstatic C.f:T";
+            break;
+        case 0x5:
+            return "invokevirtual C.m:(A*)T";
+            break;
+        case 0x6:
+            return "invokestatic C.m:(A*)T";
+            break;
+        case 0x7:
+            return "invokespecial C.m:(A*)T";
+            break;
+        case 0x8:
+            return "new C; dup; invokespecial C.<init>:(A*)V";
+            break;
+        case 0x9:
+            return "invokeinterface C.m:(A*)T";
+            break;
+        default:
+            throw std::runtime_error("wrong reference kind");
             break;
     }
 }

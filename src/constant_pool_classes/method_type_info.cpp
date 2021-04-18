@@ -16,3 +16,7 @@ void CP::MethodTypeInfo::printInfo(){
   cout << "\tMethodType: Descriptor Index cp_info#" << this->descriptor_index << " " << this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString() <<  endl;
 
 }
+
+string CP::MethodTypeInfo::toString(){
+    return this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString();
+}

@@ -20,3 +20,11 @@ void CP::NameAndTypeInfo::printInfo(){
     cout << "\tName and Type: Descriptor Index cp_info#" << this->descriptor_index << " <"<<  this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString() << ">" << endl;
 
 }
+
+string CP::NameAndTypeInfo::returnResolvedName(){
+    return this->class_file->getConstantPoolEntry((int)this->name_index)->toString();
+}
+
+string CP::NameAndTypeInfo::returnResolvedType(){
+    return  this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString();
+}

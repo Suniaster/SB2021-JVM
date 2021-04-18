@@ -6,13 +6,14 @@
 
 namespace CP{
   class MethodTypeInfo : public CpInfo{
-      
+
       uint16_t descriptor_index;
     public:
 
       MethodTypeInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();
+      string toString();
   };
 }
 #endif

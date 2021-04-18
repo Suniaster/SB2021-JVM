@@ -8,6 +8,24 @@ namespace Instructions{
 #include "../code_attribute.hpp"
 #include "../../interpretador/frame.hpp"
 #include <sstream>
+#include "../../constant_pool_classes/method_ref_info.hpp"
+#include "../../constant_pool_classes/class_info.hpp"
+#include "../../constant_pool_classes/utf8_info.hpp"
+#include "../../constant_pool_classes/string_info.hpp"
+#include "../../constant_pool_classes/name_and_type_info.hpp"
+#include "../../constant_pool_classes/field_ref_info.hpp"
+#include "../../constant_pool_classes/interface_method_ref_info.hpp"
+#include "../../constant_pool_classes/integer_info.hpp"
+#include "../../constant_pool_classes/float_info.hpp"
+#include "../../constant_pool_classes/long_info.hpp"
+#include "../../constant_pool_classes/double_info.hpp"
+#include "../../constant_pool_classes/method_type_info.hpp"
+#include "../../constant_pool_classes/invoke_dynamic_info.hpp"
+#include "../../constant_pool_classes/method_handle_info.hpp"
+#include "../../constant_pool_classes/unused_info.hpp"
+#include "../../interpretador/types/string_type.hpp"
+#include "../../interpretador/types/method_handle_type.hpp"
+
 
 #define I_TYPE 0x0
 #define L_TYPE 0x1
@@ -24,7 +42,7 @@ namespace Instructions{
       string intToSignedString(int);
       string createStringWithCPRef(string name, uint16_t index);
       string tabs(int);
-    public:    
+    public:
       uint8_t opcode;
       uint16_t pc;
       BaseInstruction(Attribute::CodeAttribute* code_attr, uint8_t opcode);
