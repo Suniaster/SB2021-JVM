@@ -24,14 +24,14 @@ int Ldc::execute(Frame* frame){
         }
         case 0x7:{
             CP::ClassInfo* cp_class = (CP::ClassInfo *)cp_entry;
-            StringType* string_component = new StringType(JVMString,cp_class->toString());
+            StringType* string_component = new StringType(cp_class->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);
             break;
         }
         case 0x8:{
             // int referencia = ReferenceResolver::resolveStringReference(cp_param);
-            StringType* string_component = new StringType(JVMString, cp_entry->toString());
+            StringType* string_component = new StringType(cp_entry->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);
 
@@ -44,7 +44,7 @@ int Ldc::execute(Frame* frame){
         }
         case 0x10:{
             CP::MethodTypeInfo* cp_class = (CP::MethodTypeInfo *)cp_entry;
-            StringType* string_component = new StringType(JVMString,cp_class->toString());
+            StringType* string_component = new StringType(cp_class->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);
             break;
@@ -85,7 +85,7 @@ int LdcW::execute(Frame* frame){
         }
         case 0x7:{
             CP::ClassInfo* cp_class = (CP::ClassInfo *)cp_entry;
-            StringType* string_component = new StringType(JVMString,cp_class->toString());
+            StringType* string_component = new StringType(cp_class->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);
             break;
@@ -97,7 +97,7 @@ int LdcW::execute(Frame* frame){
         }
         case 0x10:{
             CP::MethodTypeInfo* cp_class = (CP::MethodTypeInfo *)cp_entry;
-            StringType* string_component = new StringType(JVMString,cp_class->toString());
+            StringType* string_component = new StringType(cp_class->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);
             break;

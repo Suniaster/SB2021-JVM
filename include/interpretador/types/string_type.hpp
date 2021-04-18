@@ -10,7 +10,8 @@ class StringType : public ComponentType{
     private:
         string value;
     public:
-        StringType(JVMType content_type, string value);
+
+        StringType( string value);
         string toString();
 
 };

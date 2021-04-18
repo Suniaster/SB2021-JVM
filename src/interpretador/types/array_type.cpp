@@ -39,3 +39,12 @@ pair<uint64_t,JVMType> ArrayType::getIndexAsAsPrimitiveType(int index){
   returnVal.second = p->type;
   return returnVal;
 }
+
+void ArrayType::initialize(int max_length) {
+
+    for (std::size_t i = 0; i < max_length; ++i) {
+        ComponentType* default_value = ComponentType::getDefaultValue(this->content_type);
+        this->insert(default_value);
+    }
+    
+}

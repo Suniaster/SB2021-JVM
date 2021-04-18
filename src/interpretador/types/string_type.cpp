@@ -1,6 +1,6 @@
 #include "../../../include/interpretador/types/string_type.hpp"
 
-StringType::StringType(JVMType content_type, string value):ComponentType(content_type){
+StringType::StringType(string value):ComponentType(JVMString){
     this->value = value;
 }
 
