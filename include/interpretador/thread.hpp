@@ -21,6 +21,8 @@ class Thread{
     Thread(MethodArea*);
 
     void invokeStaticMethod(string class_name, string methodName, Frame* previous_frame);
+    void popFrame();
+    Frame* getCurrentFrame();
     
     void runMain();
     void start();

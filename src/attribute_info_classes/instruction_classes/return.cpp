@@ -9,3 +9,8 @@ Return::Return(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 string Return::toString(){
   return "return";
 }
+
+int Return::execute(Frame* frame){
+  frame->thread->popFrame();
+  return 0;
+}

@@ -39,3 +39,13 @@ void Thread::invokeStaticMethod(string class_name, string methodName, Frame* pre
 
   this->frame_stack.push_back(new_frame);
 }
+
+void Thread::popFrame(){
+  Frame* current_frame = this->frame_stack.back();
+  this->frame_stack.pop_back();
+  delete current_frame;
+}
+
+Frame* Thread::getCurrentFrame(){
+  return this->frame_stack.back();
+}
