@@ -11,3 +11,14 @@ string Jsr::toString(){
   return "jsr " + this->intToString(this->branch_bytes);
 }
 
+int Jsr::execute(Frame *frame) {
+  int16_t branch_offset = this->branch_bytes;
+  uint32_t base_adress = frame->local_pc;
+
+  // falta fazer um push na pilha de operandos do opcode da proxima
+  // instrução, é do tipo returnAddress
+
+  frame->local_pc = base_adress + branch_offset;
+  return frame->local_pc;
+}
+
