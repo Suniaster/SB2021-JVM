@@ -30,6 +30,10 @@ JVMField* ReferenceResolver::resolveStaticFieldSymbolicReference(string symbolic
   return field;
 }
 
+int ReferenceResolver::resolveClassName(string class_name, MethodArea* m_a){
+  return ClassLoader::resolveClass(class_name, m_a);
+}
+
 bool ReferenceResolver::isValidClassName(string class_name){
   return class_name != "java/lang/System";
 }

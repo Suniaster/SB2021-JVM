@@ -22,15 +22,13 @@ int Ldc::execute(Frame* frame){
             frame->operand_stack.push(cp_float->returnFloat(), Float);
             break;
         }
-        case 0x7:{
-            CP::ClassInfo* cp_class = (CP::ClassInfo *)cp_entry;
-            StringType* string_component = new StringType(cp_class->toString());
-            int heap_index = frame->thread->heap_ref->storeComponent(string_component);
-            frame->operand_stack.push(heap_index, Reference);
+        case 0x7:{ // Class_info
+            string class_name = cp_entry->toString();
+            int new_ref = ReferenceResolver::resolveClassName(class_name, frame->thread->method_area);
+            frame->operand_stack.push(new_ref, Reference);
             break;
         }
-        case 0x8:{
-            // int referencia = ReferenceResolver::resolveStringReference(cp_param);
+        case 0x8:{ // String_info
             StringType* string_component = new StringType(cp_entry->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);

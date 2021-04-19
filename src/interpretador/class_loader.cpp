@@ -54,7 +54,6 @@ int ClassLoader::resolveClass(string class_name, MethodArea* method_area){
     ClassLoader::linkClass(class_name, method_area);
   }
 
-  // TODO: Fazer inicializacao (chamar metodo clinit)
   if(ClassLoader::classIsNot(INITIALIZED, class_name, method_area)){
     ClassLoader::initializeClass(class_name, method_area);
   }
