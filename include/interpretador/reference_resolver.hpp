@@ -12,11 +12,12 @@ using namespace std;
 
 class ReferenceResolver{
   private:
-    static pair<string, string> separateSymbol(string str, string delimiter);
   public:
+    static pair<string, string> separateSymbol(string str, string delimiter);
 
     static JVMField* resolveStaticFieldSymbolicReference(string symbolic_reference, MethodArea*);
     static int resolveStringReference(string toResolve);
+    static bool isValidClassName(string class_name);
 };
 
 

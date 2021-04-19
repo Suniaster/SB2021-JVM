@@ -17,15 +17,20 @@ string GetStatic::toString(){
 int GetStatic::execute(Frame* frame){
   string symbolic_ref = frame->current_method->class_file->getConstantPoolEntry(this->indexbyte)->toString();
 
-  JVMField* f = ReferenceResolver::resolveStaticFieldSymbolicReference(
-    symbolic_ref,
-    frame->thread->method_area
-  );
+  string class_name = ReferenceResolver::separateSymbol(symbolic_ref, ".").first;
 
-  // TODO: verificacao de tipo
-  PrimitiveType* field_data = (PrimitiveType*)f->getData();
-
-  frame->operand_stack.push(field_data->data, field_data->type);
+  if(ReferenceResolver::isValidClassName(class_name)){
+    JVMField* f = ReferenceResolver::resolveStaticFieldSymbolicReference(
+      symbolic_ref,
+      frame->thread->method_area
+    );
+    // TODO: verificacao de tipo
+    PrimitiveType* field_data = (PrimitiveType*)f->getData();
+    frame->operand_stack.push(field_data->data, field_data->type);
+  }
+  else{
+    frame->operand_stack.push(-1, Reference);
+  }
 
   frame->local_pc += 3;
   return frame->local_pc;

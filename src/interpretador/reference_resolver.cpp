@@ -29,3 +29,7 @@ JVMField* ReferenceResolver::resolveStaticFieldSymbolicReference(string symbolic
 
   return field;
 }
+
+bool ReferenceResolver::isValidClassName(string class_name){
+  return class_name != "java/lang/System";
+}

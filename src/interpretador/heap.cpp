@@ -1,6 +1,7 @@
 #include "../../include/interpretador/heap.hpp"
 #include "../../include/interpretador/types/array_type.hpp"
 #include "../../include/interpretador/types/primitive_type.hpp"
+#include <stdexcept>
 
 Heap* Heap::instance = 0;
 
@@ -33,5 +34,6 @@ int Heap::storeComponent(ComponentType* toStore){
 }
 
 ComponentType* Heap::getReference(int reference_id){
+  if(reference_id < 0) throw runtime_error("HeapError: Invalid heap access.");
   return this->heap_store[reference_id];
 }
