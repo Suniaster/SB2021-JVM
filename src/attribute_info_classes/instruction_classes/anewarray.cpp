@@ -1,5 +1,5 @@
 #include "../../../include/attribute_info_classes/instruction_classes/anewarray.hpp"
-
+#include "../../../include/interpretador/types/array_type.hpp"
 using namespace Instructions;
 
 
@@ -14,19 +14,20 @@ string ANewArray::toString(){
 }
 
 int ANewArray::execute(Frame *frame) {
-    CpInfo* cp_entry = this->code_attr->class_file->getConstantPoolEntry(this->index);
-    StringType* name = nullptr;
 
-    switch (this->index) {
-        case 0x7:{
-            name = new StringType(cp_entry->toString());
-            break;
-        }
-        case 0xb:{
 
-            break;
-        }
+    pair<uint64_t,JVMType> array_size = frame->operand_stack.pop();
+
+    if (this->index != 0x7 && this->index != 0xb){
+        throw std::runtime_error("anewarray wrong index code");
     }
-    frame->local_pc+=2;
-    return frame->local_pc+2;
+
+
+    ArrayType* arrayType = new ArrayType(JVMString);
+    arrayType->initialize(array_size.first);
+    int heap_index = frame->thread->heap_ref->storeComponent(arrayType);
+    frame->operand_stack.push(heap_index, Reference);
+
+    frame->local_pc+=3;
+    return frame->local_pc+3;
 }

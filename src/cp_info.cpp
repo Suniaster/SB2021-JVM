@@ -28,7 +28,7 @@ string CpInfo::toString(){
 }
 
 uint64_t CpInfo::getValue(){
-  cout << "AVISO getvlaue nao implementado" << endl;
+  cout << "AVISO getvalue nao implementado" << endl;
   return 0;
 }
 

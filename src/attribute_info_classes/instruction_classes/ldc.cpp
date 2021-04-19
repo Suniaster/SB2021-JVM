@@ -49,7 +49,6 @@ int Ldc::execute(Frame* frame){
         }
         default:{
             throw std::runtime_error("wrong LDC cpinfo tag");
-            break;
         }
 
     }
@@ -101,8 +100,7 @@ int LdcW::execute(Frame* frame){
             break;
         }
         default:{
-            throw std::runtime_error("wrong LDC cpinfo tag");
-            break;
+            throw std::runtime_error("wrong LDCW cpinfo tag");
         }
 
     }
@@ -134,8 +132,7 @@ int Ldc2W::execute(Frame* frame){
         }
 
         default:{
-            throw std::runtime_error("wrong LDC cpinfo tag");
-            break;
+            throw std::runtime_error("wrong LDC2W cpinfo tag");
         }
 
     }
