@@ -18,6 +18,19 @@ namespace Instructions{
       string toString();
       int execute(Frame *frame);
   };
+
+  class If_acmp : public BaseInstruction{
+    const uint8_t BASE_OPCODE = 0x9f;
+    const vector<string> types = {
+      "if_acmpeg", "if_acmpne"
+    };
+    uint8_t type;
+    uint16_t branch_bytes;
+    public:    
+      If_acmp(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      string toString();
+      int execute(Frame *frame);
+  };
 }
 
 #endif
