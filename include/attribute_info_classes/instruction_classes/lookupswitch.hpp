@@ -12,6 +12,7 @@ namespace Instructions{
     public:    
       LookupSwitch(Attribute::CodeAttribute* code_attr, uint8_t opcode, uint32_t pc);
       void print(int);
+      int execute(Frame *frame);
   };
 }
 

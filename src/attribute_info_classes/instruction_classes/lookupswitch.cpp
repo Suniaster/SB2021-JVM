@@ -40,3 +40,18 @@ void LookupSwitch::print(int n_tabs){
   cout << tabs(n_tabs+2) << "default: " << this->intToString(this->pc + this->default_bytes) 
   <<" (" << this->intToSignedString(this->default_bytes) << ")" << endl;
 }
+
+int LookupSwitch::execute(Frame *frame) {
+  int32_t key = frame->operand_stack.pop().first;
+  uint32_t base_address = frame->local_pc;
+
+  for (int i = 0; i < this->n_pairs; i++) {
+    if ((int32_t)key == this->matchs[i]) {
+      frame->local_pc = base_address + this->offsets[i];
+      return frame->local_pc;
+    }
+  }
+
+  frame->local_pc = base_address + this->default_bytes;
+  return frame->local_pc;
+}
