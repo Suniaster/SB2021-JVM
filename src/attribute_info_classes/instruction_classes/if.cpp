@@ -22,3 +22,57 @@ string If::toString(){
     ;
 }
 
+int If::execute(Frame *frame) {
+  int32_t value = frame->operand_stack.pop().first;
+
+  switch(this->type) {
+    case 0:
+      if((int)value == 0) {
+        return frame->local_pc + this->branch_bytes;
+      }
+      else {
+        return frame->local_pc++;
+      }
+      break;
+    case 1:
+      if((int)value != 0) {
+        return frame->local_pc + this->branch_bytes;
+      }
+      else {
+        return frame->local_pc++;
+      }
+      break;
+    case 2:
+      if((int)value < 0) {
+        return frame->local_pc + this->branch_bytes;
+      }
+      else {
+        return frame->local_pc++;
+      }
+      break;
+    case 3:
+      if((int)value >= 0) {
+        return frame->local_pc + this->branch_bytes;
+      }
+      else {
+        return frame->local_pc++;
+      }
+      break;
+    case 4:
+      if((int)value > 0) {
+        return frame->local_pc + this->branch_bytes;
+      }
+      else {
+        return frame->local_pc++;
+      }
+      break;
+    case 5:
+      if((int)value <= 0) {
+        return frame->local_pc + this->branch_bytes;
+      }
+      else {
+        return frame->local_pc++;
+      }
+      break;
+  }
+}

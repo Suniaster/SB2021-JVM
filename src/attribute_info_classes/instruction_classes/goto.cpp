@@ -28,3 +28,12 @@ string Goto::toString(){
     ;
 }
 
+int Goto::execute(Frame *frame) {
+  int16_t branch_offset = this->branch_bytes;
+  uint32_t base_adress = frame->local_pc;
+
+  frame->local_pc = base_adress + branch_offset;
+  return frame->local_pc;
+}
+
+
