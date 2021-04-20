@@ -15,6 +15,8 @@ class OperandStack {
 
     pair<uint64_t, JVMType> pop();
     void push(uint64_t value, JVMType type);
+    void insert(int index, uint64_t value, JVMType type);
+    pair<uint64_t, JVMType> readPosition(int position);
 };
 
 #endif

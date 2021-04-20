@@ -1,12 +1,8 @@
 #include "../../include/interpretador/operand_stack.hpp"
 
-void OperandStack::push(uint64_t value, JVMType type){
-  PrimitiveType* newValue = new PrimitiveType(value, type);
-  operand_stack.push_back(newValue);
-}
-
-pair<uint64_t, JVMType> OperandStack::pop(){
-  PrimitiveType* value = operand_stack.back();
+pair<uint64_t, JVMType> OperandStack::pop()
+{
+  PrimitiveType *value = operand_stack.back();
   pair<uint64_t, JVMType> returnPair;
   returnPair.first = value->data;
   returnPair.second = value->type;
@@ -15,4 +11,23 @@ pair<uint64_t, JVMType> OperandStack::pop(){
   delete value;
 
   return returnPair;
+}
+
+void OperandStack::push(uint64_t value, JVMType type)
+{
+  PrimitiveType *newValue = new PrimitiveType(value, type);
+  operand_stack.push_back(newValue);
+}
+
+void OperandStack::insert(int index, uint64_t value, JVMType type)
+{
+  PrimitiveType *newValue = new PrimitiveType(value, type);
+  operand_stack.insert(operand_stack.end() - index, newValue);
+}
+
+pair<uint64_t, JVMType> OperandStack::readPosition(int position)
+{
+  int end = operand_stack.size()-1;
+  pair<uint64_t, JVMType> positionValue(operand_stack[end-position]->data, operand_stack[end-position]->type);
+  return positionValue;
 }

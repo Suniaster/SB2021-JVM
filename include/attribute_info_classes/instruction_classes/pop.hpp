@@ -9,11 +9,13 @@ namespace Instructions{
     public:    
       Pop(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
+      int execute(Frame *frame);
   };
   class Pop2 : public BaseInstruction{
     public:    
       Pop2(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
+      int execute(Frame *frame);
   };
 }
 
