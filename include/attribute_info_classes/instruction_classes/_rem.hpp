@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include "../code_attribute_classes/instruction.hpp"
+#include <cmath>
 
 namespace Instructions{
   class Rem : public BaseInstruction{
@@ -11,6 +12,7 @@ namespace Instructions{
     public:    
       Rem(Attribute::CodeAttribute* code_attr, uint8_t opcode);
       string toString();
+      int execute(Frame*);
   };
 }
 
