@@ -32,7 +32,7 @@ int If_icmp::execute(Frame *frame) {
         return frame->local_pc + this->branch_bytes;
       }
       else {
-        return frame->local_pc++;
+        return frame->local_pc+=3;
       }
       break;
     case 1:
@@ -40,7 +40,7 @@ int If_icmp::execute(Frame *frame) {
         return frame->local_pc + this->branch_bytes;
       }
       else {
-        return frame->local_pc++;
+        return frame->local_pc+=3;
       }
       break;
     case 2:
@@ -48,7 +48,7 @@ int If_icmp::execute(Frame *frame) {
         return frame->local_pc + this->branch_bytes;
       }
       else {
-        return frame->local_pc++;
+        return frame->local_pc+=3;
       }
       break;
     case 3:
@@ -56,7 +56,7 @@ int If_icmp::execute(Frame *frame) {
         return frame->local_pc + this->branch_bytes;
       }
       else {
-        return frame->local_pc++;
+        return frame->local_pc+=3;
       }
       break;
     case 4:
@@ -64,7 +64,7 @@ int If_icmp::execute(Frame *frame) {
         return frame->local_pc + this->branch_bytes;
       }
       else {
-        return frame->local_pc++;
+        return frame->local_pc+=3;
       }
       break;
     case 5:
@@ -72,7 +72,7 @@ int If_icmp::execute(Frame *frame) {
         return frame->local_pc + this->branch_bytes;
       }
       else {
-        return frame->local_pc++;
+        return frame->local_pc+=3;
       }
       break;
   }

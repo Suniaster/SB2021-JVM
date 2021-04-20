@@ -16,18 +16,18 @@ int Ushr::execute(Frame* frame){
   uint64_t value2 = frame -> operand_stack.pop().first;
 
   switch(this->type){
-    case 0: 
+    case 0: {
       uint32_t v1 = (uint32_t)value1;
       int32_t v2 = (int32_t)value2;
       int result = v1 >> (v2 & 0x1F);
       frame -> operand_stack.push(result, Int);
-      break;
-    case 1: 
+      break;}
+    case 1: {
       uint64_t v1 = (uint64_t)value1;
       int32_t v2 = (int32_t)value2;
       int64_t result = v1 >> (v2 & 0x3F);
       frame -> operand_stack.push(result, Long);
-      break;
+      break;}
   }
 
   return frame -> local_pc++;
