@@ -40,3 +40,18 @@ void TableSwitch::print(int n_tabs){
   cout << tabs(n_tabs+2) << "default: " << this->intToString(this->pc + this->default_bytes) 
   <<" (" << this->intToSignedString(this->default_bytes) << ")" << endl;
 }
+
+int TableSwitch::execute(Frame *frame) {
+  int32_t index = frame->operand_stack.pop().first;
+  uint32_t base_address = frame->local_pc;
+
+  for (int i = this->low_bytes; i <= this->high_bytes; i++) {
+    if ((int32_t)index == i) {
+      frame->local_pc = base_address + this->jump_offsets[i];
+      return frame->local_pc;
+    }
+  }
+
+  frame->local_pc = base_address + this->default_bytes;
+  return frame->local_pc;
+}
