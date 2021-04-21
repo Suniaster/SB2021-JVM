@@ -1,10 +1,12 @@
 #include "../../include/interpretador/operand_stack.hpp"
-
+#include <iostream>
 
 void OperandStack::print(){
+  std::cout << "PILHA" << endl;
   for(size_t i=0; i < this->operand_stack.size();i++){
     this->operand_stack[i]->print();
   }
+  std::cout << "FIMPILHA" << endl;
 }
 pair<uint64_t, JVMType> OperandStack::pop(){
   PrimitiveType* value = operand_stack.back();

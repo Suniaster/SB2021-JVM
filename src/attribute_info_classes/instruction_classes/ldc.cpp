@@ -19,7 +19,9 @@ int Ldc::execute(Frame* frame){
         }
         case 0x4:{
             CP::FloatInfo* cp_float = (CP::FloatInfo *)cp_entry;
-            frame->operand_stack.push(cp_float->returnFloat(), Float);
+            float val = cp_float->returnFloat();
+            
+            frame->operand_stack.push(*(uint64_t*)&val, Float);
             break;
         }
         case 0x7:{ // Class_info
@@ -32,7 +34,6 @@ int Ldc::execute(Frame* frame){
             StringType* string_component = new StringType(cp_entry->toString());
             int heap_index = frame->thread->heap_ref->storeComponent(string_component);
             frame->operand_stack.push(heap_index, Reference);
-
             break;
         }
         case 0xf:{
@@ -127,7 +128,8 @@ int Ldc2W::execute(Frame* frame){
         }
         case 0x6:{
             CP::DoubleInfo* cp_double = (CP::DoubleInfo *)cp_entry;
-            frame->operand_stack.push(cp_double->returnDouble(), Double);
+            double val = cp_double->returnDouble();
+            frame->operand_stack.push(*(uint64_t*)&val, Double);
             break;
         }
 

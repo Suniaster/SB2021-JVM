@@ -13,8 +13,8 @@ string Div::toString(){
 
 int Div::execute(Frame* frame){
   
-  uint64_t value1 = frame -> operand_stack.pop().first;
   uint64_t value2 = frame -> operand_stack.pop().first;
+  uint64_t value1 = frame -> operand_stack.pop().first;
 
   switch(this->type){
     case 0: {
@@ -33,13 +33,13 @@ int Div::execute(Frame* frame){
       float v1 = *(float*)&value1;
       float v2 = *(float*)&value2;
       float result = v1 / v2;
-      frame -> operand_stack.push(result, Float);
+      frame -> operand_stack.push(*(uint64_t*)&result, Float);
       break;}
     case 3:{
       double v1 = *(double*)&value1;
       double v2 = *(double*)&value2;
       double result = v1 / v2;
-      frame -> operand_stack.push(result, Double);
+      frame -> operand_stack.push(*(uint64_t*)&result, Double);
       break;}
   }
 

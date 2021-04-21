@@ -1,4 +1,5 @@
 #include "../../../include/attribute_info_classes/instruction_classes/_shl.hpp"
+#include <iostream>
 using namespace Instructions;
 
 Shl::Shl(Attribute::CodeAttribute* code_attr, uint8_t opcode)
@@ -12,8 +13,8 @@ string Shl::toString(){
 
 int Shl::execute(Frame* frame){
   
-  uint64_t value1 = frame -> operand_stack.pop().first;
   uint64_t value2 = frame -> operand_stack.pop().first;
+  uint64_t value1 = frame -> operand_stack.pop().first;
 
   switch(this->type){
     case 0: {

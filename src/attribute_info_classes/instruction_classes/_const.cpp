@@ -8,7 +8,6 @@ AconstNull::AconstNull(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 int AconstNull::execute(Frame *frame){
     // JVMType Null = Null;
     frame->operand_stack.push(0, Null);
-    frame->local_pc++;
     return frame->local_pc++;
 }
 
@@ -46,7 +45,7 @@ int Iconst::execute(Frame *frame){
         default:
             throw std::runtime_error("wrong opcode Iconst");
     }
-    frame->local_pc++;
+
     return frame->local_pc++;
 }
 
@@ -89,7 +88,6 @@ int Fconst::execute(Frame * frame){
         default:
             throw std::runtime_error("wrong opcode Iconst");
     }
-    frame->local_pc++;
     return frame->local_pc++;
 }
 string Fconst::toString(){
@@ -111,7 +109,6 @@ int Dconst::execute(Frame * frame){
         default:
             throw std::runtime_error("wrong opcode Iconst");
     }
-    frame->local_pc++;
     return frame->local_pc++;
 }
 string Dconst::toString(){

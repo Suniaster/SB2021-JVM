@@ -6,7 +6,7 @@
 
 namespace Instructions{
   class Shr : public BaseInstruction{
-    const uint8_t BASE_OPCODE = 0x7c;
+    const uint8_t BASE_OPCODE = 0x7a;
     uint8_t type;
     public:    
       Shr(Attribute::CodeAttribute* code_attr, uint8_t opcode);

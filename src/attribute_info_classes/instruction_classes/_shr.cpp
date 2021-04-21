@@ -12,9 +12,9 @@ string Shr::toString(){
 
 int Shr::execute(Frame* frame){
   
-  uint64_t value1 = frame -> operand_stack.pop().first;
   uint64_t value2 = frame -> operand_stack.pop().first;
-
+  uint64_t value1 = frame -> operand_stack.pop().first;
+  cout << this->toString() << endl;
   switch(this->type){
     case 0: {
       int v1 = (int)value1;
@@ -28,7 +28,10 @@ int Shr::execute(Frame* frame){
       int64_t result = v1 >> (v2 & 0x3F);
       frame -> operand_stack.push(result, Long);
       break;}
+    default:
+      throw std::runtime_error("SHR: Type error");
   }
 
+  frame->operand_stack.print();
   return frame -> local_pc++;
 }

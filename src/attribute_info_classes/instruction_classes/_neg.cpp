@@ -28,12 +28,12 @@ int Neg::execute(Frame* frame){
     case 2:{
       float v1 = *(float*)&value1;
       float result = -v1;
-      frame -> operand_stack.push(result, Float);
+      frame -> operand_stack.push(*(uint64_t*)&result, Float);
       break;}
     case 3:{
       double v1 = *(double*)&value1;
       double result = -v1;
-      frame -> operand_stack.push(result, Double);
+      frame -> operand_stack.push(*(uint64_t*)&result, Double);
       break;}
   }
 
