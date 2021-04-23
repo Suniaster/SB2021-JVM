@@ -18,7 +18,7 @@ main2:
 bin/jvm2: $(OBJ_FILES)
 	g++ $(LDFLAGS) -o $@ $^
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp ./include/%.hpp
 	g++ $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
 
 update:

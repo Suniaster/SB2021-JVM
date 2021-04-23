@@ -9,6 +9,8 @@
 
 using namespace std;
 
+#define VERBOSE_CLASS_LOADER 1
+
 class ClassLoader{
   private:
     static bool classIs(ClassFileState state, string class_name, MethodArea* method_area);
@@ -20,6 +22,7 @@ class ClassLoader{
     static void initializeClass(string class_name, MethodArea*);
   
   public:
+    static void loadClass(string class_name, MethodArea*);
     static int resolveClass(string class_name, MethodArea*);
     static PrimitiveType* resolveSymbol(Heap*, MethodArea*, string symbol);
 

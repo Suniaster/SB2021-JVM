@@ -2,11 +2,13 @@
 
 
 ClassFile* MethodArea::insertNewClass(string class_name){
+  if(this->isAlreadyIncluded(class_name)){
+    return this->getClassFile(class_name);
+  }
   if(class_name == "java/lang/Object") class_name = "Object";
   ClassFile* new_class = new ClassFile(class_name+".class");
 
   new_class->loadClass();
-  cout << "Inserindo classe: " << new_class->getThisClassName() << endl;
   this->classes.push_back(new_class);
 
   this->searchMainMethod(new_class);
@@ -50,4 +52,14 @@ ClassFile* MethodArea::getClassFile(string class_name){
     }
   }
   throw runtime_error("ClassError: " + class_name + " nao encontrado");
+}
+
+bool MethodArea::isAlreadyIncluded(string class_name){
+  try{
+    this->getClassFile(class_name);
+    return true;
+  }
+  catch(const std::exception& e){
+    return false;
+  }
 }

@@ -22,7 +22,8 @@ class MethodArea{
     MethodInfo* getMainMethod();
     MethodInfo* getMethodByName(string class_name, string methodName);
 
-    ClassFile* getClassFile(string class_name);
+    ClassFile* getClassFile (string class_name);
+    bool isAlreadyIncluded  (string class_name);
 };
 
 #endif
