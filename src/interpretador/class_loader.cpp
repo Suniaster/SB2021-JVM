@@ -17,8 +17,11 @@ void ClassLoader::linkClass(string class_name, MethodArea* method_area){
 void ClassLoader::initializeClass(string class_name, MethodArea* method_area){
   ClassFile* class_file = method_area->getClassFile(class_name);
   
-  Thread* main_thread =  ExecutionEngine::getInstance()->main_thread;
-  main_thread->invokeStaticMethod(class_name, "<clinit>", NULL);
+  if(method_area->classHasMethod(class_name, "<clinit>")){
+    Thread newThread(method_area);
+    newThread.invokeStaticMethod(class_name, "<clinit>", NULL);
+    newThread.start();
+  }
 
   class_file->state = INITIALIZED;
 }
@@ -38,8 +41,13 @@ void ClassLoader::loadClass(string class_name, MethodArea* method_area){
 }
 
 bool ClassLoader::classIs(ClassFileState state, string class_name, MethodArea* method_area){
-  ClassFile* class_file = method_area->getClassFile(class_name);
-  return class_file->state >= state;
+  try{
+    ClassFile* class_file = method_area->getClassFile(class_name);
+    return class_file->state >= state;
+  }
+  catch(const std::exception& e){
+    return false;
+  }
 }
 
 bool ClassLoader::classIsNot(ClassFileState state, string class_name, MethodArea* method_area){

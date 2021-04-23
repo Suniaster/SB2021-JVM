@@ -29,6 +29,8 @@ class MethodArea{
 
     ClassFile* getClassFile (string class_name);
     bool isAlreadyIncluded  (string class_name);
+
+    bool classHasMethod(string class_name, string method_name);
 };
 
 #endif

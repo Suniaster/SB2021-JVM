@@ -71,3 +71,13 @@ bool MethodArea::isAlreadyIncluded(string class_name){
     return false;
   }
 }
+
+bool MethodArea::classHasMethod(string class_name, string method_name){
+  try{
+    this->getMethodByName(class_name, method_name);
+    return true;
+  }
+  catch(const std::exception& e){
+    return false;
+  }
+}
