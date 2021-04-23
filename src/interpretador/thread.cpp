@@ -24,8 +24,13 @@ void Thread::start(){
   }
 }
 
-void Thread::invokeStaticMethod(string class_name, string methodName, Frame* previous_frame){
+void Thread::invokeStaticMethod(string class_name, string methodName){
   cout << "invokeStaticMethod: Invocando metodo " << methodName << endl;
+  Frame* previous_frame = NULL;
+  
+  if(this->frame_stack.size() > 0)
+    previous_frame = this->frame_stack.back();
+
   MethodInfo* method = this->method_area->getMethodByName(class_name, methodName);
   int n_args = method->getArgsCount();
   Frame* new_frame = new Frame(method, this);

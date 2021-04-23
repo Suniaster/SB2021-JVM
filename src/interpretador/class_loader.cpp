@@ -16,14 +16,14 @@ void ClassLoader::linkClass(string class_name, MethodArea* method_area){
 
 void ClassLoader::initializeClass(string class_name, MethodArea* method_area){
   ClassFile* class_file = method_area->getClassFile(class_name);
+  class_file->state = INITIALIZED;
   
   if(method_area->classHasMethod(class_name, "<clinit>")){
     Thread newThread(method_area);
-    newThread.invokeStaticMethod(class_name, "<clinit>", NULL);
+    newThread.invokeStaticMethod(class_name, "<clinit>");
     newThread.start();
   }
 
-  class_file->state = INITIALIZED;
 }
 
 void ClassLoader::loadClass(string class_name, MethodArea* method_area){
