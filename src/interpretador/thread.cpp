@@ -17,7 +17,9 @@ void Thread::runMain(){
 void Thread::start(){
   while(this->frame_stack.size() != 0){
     Frame* current_frame = this->frame_stack.back();
-    cout << "Executando inst: " << current_frame->local_pc << endl;
+    if(VERBOSE_INSTRUCTION_PC){
+      cout << "Executando inst: " << current_frame->local_pc << endl;
+    }
     current_frame->runInstruction();
   }
 }

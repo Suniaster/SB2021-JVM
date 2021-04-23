@@ -8,6 +8,8 @@ class Thread;
 
 using namespace std;
 
+#define VERBOSE_INSTRUCTION_PC 1
+
 class Thread{
   private:
     uint32_t pc_register;
