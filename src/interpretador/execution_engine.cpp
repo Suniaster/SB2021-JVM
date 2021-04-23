@@ -3,8 +3,10 @@
 #include "../../include/interpretador/reference_resolver.hpp"
 
 void ExecutionEngine::loadMethodArea(string load_class_name){
-  ClassLoader::loadClass(load_class_name, &this->method_area);
   this->heap = Heap::getInstance();
+  this->method_area = MethodArea::getInstance();
+
+  ClassLoader::loadClass(load_class_name, this->method_area);
 }
 
 void ExecutionEngine::start(){
@@ -15,11 +17,11 @@ void ExecutionEngine::start(){
   // Rodar a main
 
   this->threads.push_back(
-    new Thread(&this->method_area)
+    new Thread(this->method_area)
   );
   this->main_thread = this->threads[0];
 
-  string inital_class_name = this->method_area.getMainMethod()->class_file->getThisClassName();
+  string inital_class_name = this->method_area->getMainMethod()->class_file->getThisClassName();
 
   this->main_thread->runMain();
 }

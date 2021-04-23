@@ -1,6 +1,14 @@
 #include "../../include/interpretador/method_area.hpp"
 
 
+MethodArea* MethodArea::instance = 0;
+MethodArea* MethodArea::getInstance(){
+  if(MethodArea::instance == 0) {
+    MethodArea::instance = new MethodArea();
+  }
+  return MethodArea::instance;
+}
+
 ClassFile* MethodArea::insertNewClass(string class_name){
   if(this->isAlreadyIncluded(class_name)){
     return this->getClassFile(class_name);

@@ -10,7 +10,7 @@ class ExecutionEngine{
     static ExecutionEngine* instance;
     ExecutionEngine(){};
   
-    MethodArea method_area;
+    MethodArea* method_area;
     vector<Thread*> threads;
     Heap* heap;
   public:

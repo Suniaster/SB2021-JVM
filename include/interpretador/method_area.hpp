@@ -14,7 +14,12 @@ class MethodArea{
 
     MethodInfo* main_method;
     void searchMainMethod(ClassFile*);
+
+    MethodArea(){};
+    static MethodArea* instance;
   public:
+    static MethodArea* getInstance();
+
     // Verifica se classe ja foi carregada e adiciona-a a lista de classes caso nao
     ClassFile* insertNewClass(string class_name);
 
