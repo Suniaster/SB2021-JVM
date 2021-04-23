@@ -6,6 +6,8 @@
 
 JVMClass::JVMClass(string class_name):ComponentType(JVMCLASS){
   this->class_name = class_name;
+  MethodArea* method_area = MethodArea::getInstance();
+  this->class_file  = method_area->getClassFile(this->class_name);
 }
 
 void JVMClass::setClassFile(ClassFile* c){
@@ -36,9 +38,7 @@ JVMField* JVMClass::getField(string field_name){
 
 void JVMClass::initializeFields(){
   Heap* heap          = Heap::getInstance();
-  MethodArea* method_area = MethodArea::getInstance();
-  ClassFile* cl_file  = method_area->getClassFile(this->class_name);
-  this->class_file    = cl_file;
+  ClassFile* cl_file  = this->class_file;
 
   for(uint16_t i=0;i< cl_file->fields.size();i+=1){
     FieldInfo* field  = cl_file->fields[i];

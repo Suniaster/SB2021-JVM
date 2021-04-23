@@ -23,12 +23,13 @@ class JVMClass : public ComponentType{
     JVMClass(string class_name);
     
     void setClassFile(ClassFile*);
-    virtual void addField(JVMField*);
-    virtual void initializeFields();
+    void addField(JVMField*);
 
     JVMField* getField(string field_name);
     PrimitiveType getConstant(int index);
-    string toString();
+    
+    virtual void initializeFields();
+    virtual string toString();
 };
 
 
