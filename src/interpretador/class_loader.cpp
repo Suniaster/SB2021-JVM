@@ -7,24 +7,11 @@ void ClassLoader::linkClass(string class_name, MethodArea* method_area){
   Heap* heap = Heap::getInstance();
   JVMClass* linking_class = new JVMClass(class_name);
 
-  ClassFile* class_file = method_area->getClassFile(class_name);
-  linking_class->setClassFile(class_file);
+  linking_class->initializeFields();
 
+  linking_class->class_file->heap_ref = heap->storeComponent(linking_class);
 
-  // Link fields
-  for(uint16_t i=0;i<class_file->fields.size();i+=1){
-    FieldInfo* field = class_file->fields[i];
-
-    if(field->isStatic()){
-      JVMField* newFieldAlocated = new JVMField(field);
-      heap->storeComponent(newFieldAlocated);
-      linking_class->addField(newFieldAlocated);
-    }
-  }
-
-  class_file->heap_ref = heap->storeComponent(linking_class);
-
-  class_file->state = LINKED;
+  linking_class->class_file->state = LINKED;
 }
 
 void ClassLoader::initializeClass(string class_name, MethodArea* method_area){

@@ -1,4 +1,6 @@
 #include "../../../include/interpretador/types/jvm_class.hpp"
+#include "../../../include/interpretador/heap.hpp"
+#include "../../../include/interpretador/method_area.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -30,6 +32,23 @@ JVMField* JVMClass::getField(string field_name){
     }
   }
   throw std::runtime_error("ResolveFieldError: " + field_name + "not found");
+}
+
+void JVMClass::initializeFields(){
+  Heap* heap          = Heap::getInstance();
+  MethodArea* method_area = MethodArea::getInstance();
+  ClassFile* cl_file  = method_area->getClassFile(this->class_name);
+  this->class_file    = cl_file;
+
+  for(uint16_t i=0;i< cl_file->fields.size();i+=1){
+    FieldInfo* field  = cl_file->fields[i];
+
+    if(field->isStatic()){
+      JVMField* newFieldAlocated = new JVMField(field);
+      heap->storeComponent(newFieldAlocated);
+      this->addField(newFieldAlocated);
+    }
+  }
 }
 
 string JVMClass::toString(){

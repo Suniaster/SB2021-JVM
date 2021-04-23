@@ -12,18 +12,19 @@
 using namespace std;
 
 class JVMClass : public ComponentType{
-  private:
+  protected:
     string class_name;
     vector<JVMField*> fields;
-    ClassFile* class_file;
   public:
+    ClassFile* class_file;
 
     // Vetor com pares de <stringConstante, referencia no heap>
     vector<pair<string, uint64_t>> constant_strings;
     JVMClass(string class_name);
     
     void setClassFile(ClassFile*);
-    void addField(JVMField*);
+    virtual void addField(JVMField*);
+    virtual void initializeFields();
 
     JVMField* getField(string field_name);
     PrimitiveType getConstant(int index);
