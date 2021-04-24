@@ -23,53 +23,53 @@ string If_icmp::toString(){
 }
 
 int If_icmp::execute(Frame *frame) {
-  int32_t value2 = frame->operand_stack.pop().first;
-  int32_t value1 = frame->operand_stack.pop().first;
+  int64_t value2 = frame->operand_stack.pop().first;
+  int64_t value1 = frame->operand_stack.pop().first;
 
   switch(this->type) {
     case 0:
-      if((int)value1 == value2) {
-        return frame->local_pc + this->branch_bytes;
+      if((int)value1 == (int)value2) {
+        return frame->local_pc += this->branch_bytes;
       }
       else {
         return frame->local_pc+=3;
       }
       break;
     case 1:
-      if((int)value1 != value2) {
-        return frame->local_pc + this->branch_bytes;
+      if((int)value1 != (int)value2) {
+        return frame->local_pc += this->branch_bytes;
       }
       else {
         return frame->local_pc+=3;
       }
       break;
     case 2:
-      if((int)value1 < value2) {
-        return frame->local_pc + this->branch_bytes;
+      if((int)value1 < (int)value2) {
+        return frame->local_pc += this->branch_bytes;
       }
       else {
         return frame->local_pc+=3;
       }
       break;
     case 3:
-      if((int)value1 >= value2) {
-        return frame->local_pc + this->branch_bytes;
+      if((int)value1 >= (int)value2) {
+        return frame->local_pc += this->branch_bytes;
       }
       else {
         return frame->local_pc+=3;
       }
       break;
     case 4:
-      if((int)value1 > value2) {
-        return frame->local_pc + this->branch_bytes;
+      if((int)value1 > (int)value2) {
+        return frame->local_pc += this->branch_bytes;
       }
       else {
         return frame->local_pc+=3;
       }
       break;
     case 5:
-      if((int)value1 <= value2) {
-        return frame->local_pc + this->branch_bytes;
+      if((int)value1 <= (int)value2) {
+        return frame->local_pc += this->branch_bytes;
       }
       else {
         return frame->local_pc+=3;

@@ -19,3 +19,9 @@ string Inc::toString(){
   this->intToString(this->_const)  ;
 }
 
+int Inc::execute(Frame* frame){
+  pair<uint64_t, JVMType> val = frame->local_variables.get(this->_index);
+  val.first = (int)val.first + (int)this->_const;
+  frame->local_variables.insert(this->_index, val.first, val.second);
+  return frame->local_pc+=3;
+}
