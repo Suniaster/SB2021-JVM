@@ -1,4 +1,5 @@
 #include "../../../include/attribute_info_classes/instruction_classes/invokevirtual.hpp"
+#include "../../../include/interpretador/reference_resolver.hpp"
 using namespace Instructions;
 
 
@@ -14,13 +15,24 @@ string InvokeVirtual::toString(){
 
 int InvokeVirtual::execute(Frame* frame){
   string symbolic_ref = frame->current_method->class_file->getConstantPoolEntry(this->index)->toString();
+  pair<string,string> names = ReferenceResolver::separateSymbol(symbolic_ref, ".");
 
   if(symbolic_ref == "java/io/PrintStream.println"){
     pair<uint64_t, JVMType> val = frame->operand_stack.pop();
     frame->operand_stack.pop();
-    PrimitiveType x(val.first, val.second);
-    cout << x.toString() << endl;
+    if(val.second == Reference){
+      ComponentType* x = Heap::getInstance()->getReference(val.first);
+      cout << x->toString() << endl;
+    }
+    else{
+      PrimitiveType x(val.first, val.second);
+      cout << x.toString() << endl;
+    }
   }
+  else{
+    frame->thread->invokeInstanceMethod(names.first, names.second);
+  }
+
 
   frame->local_pc += 3;
   return frame->local_pc;

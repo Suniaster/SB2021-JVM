@@ -35,7 +35,10 @@ JVMField* ReferenceResolver::resolveStaticFieldSymbolicReference(string symbolic
 }
 
 int ReferenceResolver::resolveClassName(string class_name, MethodArea* m_a){
-  return ClassLoader::resolveClass(class_name, m_a);
+  if(ReferenceResolver::isValidClassName(class_name)){
+    return ClassLoader::resolveClass(class_name, m_a);
+  }
+  else return -1;
 }
 
 int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<uint64_t> dims){
@@ -56,13 +59,16 @@ int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<u
   }
 
   string types = "BCDFIJSZ";
-  if(types.find(descriptor[0]) != string::npos){
+  if( types.find(descriptor[0]) != string::npos ||
+    descriptor == "Ljava/lang/String"
+  ){
     // TODO: traduzir descriptor para tipo
     string type;
     type += descriptor[0];
     JVMType p_type = ComponentType::getTypeFromDescriptor(type);
-    PrimitiveType* newprimitive = new PrimitiveType(0, p_type);
-    return Heap::getInstance()->storeComponent(newprimitive);;
+    ComponentType::getDefaultValue(p_type);
+    ComponentType* newprimitive = ComponentType::getDefaultValue(p_type);
+    return Heap::getInstance()->storeComponent(newprimitive);
   }
 
   if(descriptor[0] == 'L'){
@@ -74,7 +80,6 @@ int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<u
     ReferenceResolver::resolveClassName(class_name, m_a);
     JVMObject* newObject = new JVMObject(class_name);
     newObject->initializeFields();
-
     return  Heap::getInstance()->storeComponent(newObject);
   }
 
@@ -86,5 +91,8 @@ int ReferenceResolver::resolveInterfaceName(string interface_name, MethodArea* m
 };
 
 bool ReferenceResolver::isValidClassName(string class_name){
-  return class_name != "java/lang/System";
+  return (
+    class_name != "java/lang/System" &&
+    class_name != "java/lang/String"
+  );
 }

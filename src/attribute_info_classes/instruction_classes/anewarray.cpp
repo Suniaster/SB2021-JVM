@@ -16,28 +16,12 @@ string ANewArray::toString(){
 
 int ANewArray::execute(Frame *frame) {
 
-
-    pair<uint64_t,JVMType> array_size = frame->operand_stack.pop();
-    CpInfo* cp_entry = this->code_attr->class_file->getConstantPoolEntry(this->index);
-    ArrayType* arrayType = new ArrayType(Reference);
-    arrayType->initialize(array_size.first);
-    switch (cp_entry->tag) {
-        case 0x7:{
-            string class_name = cp_entry->toString();
-            int heap_index = ReferenceResolver::resolveClassName(class_name, frame->thread->method_area);
-        }
-        case 0xb:{
-            string interface_name = cp_entry->toString();
-            int heap_index = ReferenceResolver::resolveClassName(interface_name, frame->thread->method_area);
-        }
-        default:{
-            string array_type = cp_entry->toString();
-        }
-    }
-
-    int array_index = frame->thread->heap_ref->storeComponent(arrayType);
-    frame->operand_stack.push(array_index, Reference);
-
+    vector<uint64_t> dims;
+    dims.push_back(frame->operand_stack.pop().first);
+    string class_name = this->code_attr->class_file->getConstantPoolEntry(this->index)->toString();
+    
+    int heap_ref = ReferenceResolver::allocateArray("[L"+class_name, frame->thread->method_area, dims);
+    frame->operand_stack.push(heap_ref, Reference);
 
     return frame->local_pc+=3;
 }

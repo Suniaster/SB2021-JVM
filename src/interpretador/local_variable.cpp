@@ -10,7 +10,8 @@ void LocalVariable::initialize(uint32_t max_length){
 void LocalVariable::print(){
   cout << "[";
   for (std::size_t i = 0; i < this->local_variables.size(); i++){
-    cout << this->get(i).first << ", ";
+    PrimitiveType p(this->get(i).first, this->get(i).second);
+    cout << p.toString() << ", ";
   }
   cout << "]"<< endl;
 }

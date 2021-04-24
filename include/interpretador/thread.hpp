@@ -8,8 +8,8 @@ class Thread;
 
 using namespace std;
 
-#define VERBOSE_INSTRUCTION_PC 1
-
+#define VERBOSE_INSTRUCTION_PC 0
+#define VERBOSE_INSTRUCTION_INVOKE 0
 class Thread{
   private:
     uint32_t pc_register;
@@ -17,12 +17,15 @@ class Thread{
     MethodInfo* current_method;
     vector<Frame*> frame_stack; 
 
+    void initializeFrameVariableVector(Frame*, int n_args, int initial_pos);
+
   public:
     MethodArea* method_area;
     Heap* heap_ref;
     Thread(MethodArea*);
 
     void invokeStaticMethod(string class_name, string methodName);
+    void invokeInstanceMethod(string class_name, string methodName);
     void popFrame();
     Frame* getCurrentFrame();
     
