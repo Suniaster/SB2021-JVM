@@ -78,6 +78,6 @@ int NewArray::execute(Frame *frame) {
     int reference_index = frame->thread->heap_ref->storeComponent(arrayType);
     frame->operand_stack.push(reference_index, Reference);
 
-    frame->local_pc+=2;
-    return frame->local_pc+2;
+
+    return frame->local_pc+=2;
 }

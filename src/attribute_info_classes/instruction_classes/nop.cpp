@@ -7,7 +7,6 @@ Nop::Nop(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 int Nop::execute(Frame *frame){
-    frame->local_pc++;
     return frame->local_pc++;
 }
 

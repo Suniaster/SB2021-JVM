@@ -7,7 +7,7 @@
 typedef enum{
   Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress, Null,   // Tipos basicos 
   Reference,       // Tipos de referencia
-  JVMArray, JVMCLASS, JVMOBJ, JVMFIELD, JVMInterface, JVMString, JVMMethodHandle                // Tipos complexos
+  JVMArray, JVMCLASS, JVMOBJ, JVMFIELD, JVMINTERFACE, JVMString, JVMMethodHandle                // Tipos complexos
 } JVMType;
 
 using namespace std;

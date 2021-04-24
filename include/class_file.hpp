@@ -20,6 +20,7 @@ typedef enum{
   READ, LOADED, LINKED , INITIALIZED 
 } ClassFileState;
 
+
 class ClassFile{
   private:
     uint32_t magic_number;

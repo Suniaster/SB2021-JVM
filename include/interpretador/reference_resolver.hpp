@@ -16,6 +16,7 @@ class ReferenceResolver{
     static pair<string, string> separateSymbol(string str, string delimiter);
 
     static int resolveClassName(string class_name, MethodArea*);
+    static int resolveInterfaceName(string class_name, MethodArea*);
     static JVMField* resolveStaticFieldSymbolicReference(string symbolic_reference, MethodArea*);
     static int resolveStringReference(string toResolve);
     static bool isValidClassName(string class_name);

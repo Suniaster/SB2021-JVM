@@ -53,8 +53,8 @@ int Ldc::execute(Frame* frame){
         }
 
     }
-    frame->local_pc+=2;
-    return frame->local_pc+2;
+
+    return frame->local_pc+=2;
 }
 
 string Ldc::toString(){
@@ -105,8 +105,8 @@ int LdcW::execute(Frame* frame){
         }
 
     }
-    frame->local_pc+=3;
-    return frame->local_pc+3;
+
+    return frame->local_pc+=3;
 }
 
 LdcW::LdcW(Attribute::CodeAttribute* code_attr, uint8_t opcode)
@@ -138,8 +138,8 @@ int Ldc2W::execute(Frame* frame){
         }
 
     }
-    frame->local_pc+=3;
-    return frame->local_pc+3;
+
+    return frame->local_pc+=3;
 }
 
 string LdcW::toString(){

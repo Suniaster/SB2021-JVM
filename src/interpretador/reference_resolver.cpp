@@ -1,7 +1,9 @@
 #include "../../include/interpretador/reference_resolver.hpp"
 #include "../../include/interpretador/types/jvm_class.hpp"
+#include "../../include/interpretador/types/jvm_interface.hpp"
 #include "../../include/interpretador/types/jvm_field.hpp"
 #include "../../include/interpretador/class_loader.hpp"
+#include "../../include/interpretador/interface_loader.hpp"
 
 pair<string, string>  ReferenceResolver::separateSymbol(string str, string delimiter){
   size_t delimiter_pos = str.find(".");
@@ -33,6 +35,10 @@ JVMField* ReferenceResolver::resolveStaticFieldSymbolicReference(string symbolic
 int ReferenceResolver::resolveClassName(string class_name, MethodArea* m_a){
   return ClassLoader::resolveClass(class_name, m_a);
 }
+
+int ReferenceResolver::resolveInterfaceName(string interface_name, MethodArea* m_a){
+    return InterfaceLoader::resolveInterface(interface_name, m_a);
+};
 
 bool ReferenceResolver::isValidClassName(string class_name){
   return class_name != "java/lang/System";
