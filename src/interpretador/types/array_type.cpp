@@ -1,4 +1,5 @@
 #include "../../../include/interpretador/types/array_type.hpp"
+#include "../../../include/interpretador/heap.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -12,6 +13,11 @@ void ArrayType::print(){
   cout << "[";
   for(uint16_t i=0;i<this->data.size();i++){
     cout << this->data[i]->toString() << " (" << this->data[i]->type <<")";
+    if(this->data[i]->type == Reference){
+      PrimitiveType* p = (PrimitiveType*)this->data[i];
+      ComponentType* ref = Heap::getInstance()->getReference(p->data);
+      cout << "'" << ref->toString() << "'";
+    }
     cout << ", ";
   }
   cout << "]" << endl;
@@ -48,6 +54,7 @@ int ArrayType::getIndexReference(int index){
 }
 
 ComponentType* ArrayType::getIndex(int i){
+  if(i >= this->data.size() ) throw std::runtime_error("ArrayError: Acessando indice invalido");
   return this->data[i];
 }
 

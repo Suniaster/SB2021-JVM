@@ -66,7 +66,6 @@ int ReferenceResolver::resolveObjectByDescriptor(string descriptor, MethodArea*m
 }
 
 int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<uint64_t> dims){
-  cout << "Criando um array usando o descritor: " << descriptor << endl;
   if(descriptor[0] == '['){
     descriptor.erase(0, 1);
     JVMType array_type = ComponentType::getTypeFromDescriptor(descriptor);
@@ -86,8 +85,6 @@ int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<u
         newarray->insert(newprimitive);
       }
     }
-    
-    cout << "Criado um do tipo: " << newarray->content_type << endl;
     return Heap::getInstance()->storeComponent(newarray);;
   }
   else{
