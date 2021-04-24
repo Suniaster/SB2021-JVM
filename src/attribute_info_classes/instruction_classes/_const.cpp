@@ -65,6 +65,21 @@ Lconst::Lconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
     :BaseInstruction(code_attr, opcode){
 }
 
+int Lconst::execute(Frame *frame) {
+    switch (this->opcode) {
+        case 0x9:
+            frame->operand_stack.push(0, Long);
+            break;
+        case 0xa:
+            frame->operand_stack.push(1, Long);
+            break;
+
+        default:
+            throw std::runtime_error("wrong opcode Lconst");
+    }
+    return frame->local_pc++;
+}
+
 string Lconst::toString(){
   return "lconst_" + this->intToString(this->opcode - 0x9);
 }

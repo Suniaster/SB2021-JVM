@@ -22,6 +22,7 @@ namespace Instructions{
   class Lconst : public BaseInstruction{
     public:
       Lconst(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame *frame);
       string toString();
   };
 
