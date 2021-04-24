@@ -12,6 +12,7 @@ using namespace std;
 
 class ReferenceResolver{
   private:
+    static int resolveObjectByDescriptor(string descriptor, MethodArea*m_a);
   public:
     static pair<string, string> separateSymbol(string str, string delimiter);
 

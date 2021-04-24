@@ -31,7 +31,5 @@ int Shr::execute(Frame* frame){
     default:
       throw std::runtime_error("SHR: Type error");
   }
-
-  frame->operand_stack.print();
   return frame -> local_pc++;
 }

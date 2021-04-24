@@ -11,7 +11,7 @@ ArrayType::ArrayType(JVMType content_type):ComponentType(JVMArray){
 void ArrayType::print(){
   cout << "[";
   for(uint16_t i=0;i<this->data.size();i++){
-    cout << this->data[i]->toString();
+    cout << this->data[i]->toString() << " (" << this->data[i]->type <<")";
     cout << ", ";
   }
   cout << "]" << endl;
@@ -34,6 +34,9 @@ void ArrayType::insert(ComponentType* toinsert){
 
 void ArrayType::setIndexAsPrimitiveType(int index, uint64_t value, JVMType type){
   if((uint)index > this->data.size()) throw std::runtime_error("ArrayError: Acessando indice invalido");
+  if(type != this->content_type){ 
+    throw std::runtime_error("TypeError: Mudando elemento para tipo invalido");
+  }
 
   ComponentType* oldValue = this->data[index];
   delete oldValue;

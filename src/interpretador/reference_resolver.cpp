@@ -41,32 +41,11 @@ int ReferenceResolver::resolveClassName(string class_name, MethodArea* m_a){
   else return -1;
 }
 
-int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<uint64_t> dims){
-  
-  if(descriptor[0] == '['){
-    ArrayType* newarray = new ArrayType(Reference);
-    uint64_t array_length = dims[0];
-    dims.erase(dims.begin());
-    descriptor.erase(0, 1);
-    newarray->initialize(array_length);
-
-    for(size_t i=0;i<array_length;i+=1){
-      int ref = ReferenceResolver::allocateArray(descriptor, m_a, dims);
-      newarray->setIndexAsPrimitiveType(i, ref, Reference);
-    }
-
-    return Heap::getInstance()->storeComponent(newarray);;
-  }
-
-  string types = "BCDFIJSZ";
-  if( types.find(descriptor[0]) != string::npos ||
-    descriptor == "Ljava/lang/String"
-  ){
-    // TODO: traduzir descriptor para tipo
+int ReferenceResolver::resolveObjectByDescriptor(string descriptor, MethodArea*m_a){
+  if(descriptor == "Ljava/lang/String" ){
     string type;
     type += descriptor[0];
     JVMType p_type = ComponentType::getTypeFromDescriptor(type);
-    ComponentType::getDefaultValue(p_type);
     ComponentType* newprimitive = ComponentType::getDefaultValue(p_type);
     return Heap::getInstance()->storeComponent(newprimitive);
   }
@@ -84,6 +63,36 @@ int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<u
   }
 
   return -1;
+}
+
+int ReferenceResolver::allocateArray(string descriptor, MethodArea*m_a, vector<uint64_t> dims){
+  cout << "Criando um array usando o descritor: " << descriptor << endl;
+  if(descriptor[0] == '['){
+    descriptor.erase(0, 1);
+    JVMType array_type = ComponentType::getTypeFromDescriptor(descriptor);
+    ArrayType* newarray = new ArrayType(array_type);
+
+    uint64_t array_length = dims[0];
+    dims.erase(dims.begin());
+
+    for(size_t i=0;i<array_length;i+=1){
+      if(descriptor[0] == '[' || descriptor[0] == 'L'){
+        int ref = ReferenceResolver::allocateArray(descriptor, m_a, dims);
+        PrimitiveType* new_el = new PrimitiveType(ref, Reference);
+        newarray->insert(new_el);
+      }
+      else{
+        ComponentType* newprimitive = ComponentType::getDefaultValue(array_type);
+        newarray->insert(newprimitive);
+      }
+    }
+    
+    cout << "Criado um do tipo: " << newarray->content_type << endl;
+    return Heap::getInstance()->storeComponent(newarray);;
+  }
+  else{
+    return ReferenceResolver::resolveObjectByDescriptor(descriptor, m_a);
+  }
 }
 
 int ReferenceResolver::resolveInterfaceName(string interface_name, MethodArea* m_a){
