@@ -21,6 +21,12 @@ string AbstractLoad::toString(){
 
 int AbstractLoad::execute(Frame* frame){
   pair<uint64_t, JVMType> value = frame->local_variables.get(this->param);
+  if(value.second == Byte){
+    value.first = (int8_t)value.first;
+  }
+  if(value.second == Short){
+    value.first = (int16_t)value.first;
+  }
   frame->operand_stack.push(value.first, value.second);
 
   if(this->is_n_class)
