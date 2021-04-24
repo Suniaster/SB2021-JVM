@@ -22,7 +22,7 @@ public class Teste_marina {
         long fim = 0;
 
             
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 20; i++) {
             posicao = i + 1;
 
             inicio = System.nanoTime();
