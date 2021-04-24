@@ -61,6 +61,7 @@ int MethodInfo::getArgsCountOn(string descriptor){
       for(j=i;j<descriptor.size();j+=1){
         if(descriptor[j] == ';') break;
       }
+      n_args++;
       i = j; 
     }
   }
