@@ -16,7 +16,7 @@ public class ThreadTest {
     public static void main(String[] args) {
        Thread1 thread1 = new Thread1();
        System.out.println("Eu sou a main");
-       thread1.run();
+       thread1.start();
     }
     
 }
