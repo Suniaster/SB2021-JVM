@@ -8,6 +8,7 @@ namespace Instructions{
   class ArrayLength : public BaseInstruction{
     public:    
       ArrayLength(Attribute::CodeAttribute* code_attr, uint8_t opcode);
+      int execute(Frame*);
       string toString();
   };
 }

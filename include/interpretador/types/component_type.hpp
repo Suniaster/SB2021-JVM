@@ -4,6 +4,8 @@
 #include <vector>
 #include <cstdint>
 #include <string>
+
+#define JVMNULL 0xFFFFFFFFFFF
 typedef enum{
   Long, Double, Byte, Short, Boolean, Char, Int, Float, ReturnAdress, Null,   // Tipos basicos 
   Reference,       // Tipos de referencia

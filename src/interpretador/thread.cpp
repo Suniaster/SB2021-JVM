@@ -20,7 +20,7 @@ void Thread::start(){
   while(this->frame_stack.size() != 0){
     Frame* current_frame = this->frame_stack.back();
     if(VERBOSE_INSTRUCTION_PC){
-      cout << "(" << current_frame->current_method->class_file->getThisClassName() << ")";
+      cout << "(" << current_frame->current_method->getName() << ")";
       cout << "Executando inst: " << current_frame->local_pc << endl;
     }
     current_frame->runInstruction();

@@ -7,7 +7,7 @@ AconstNull::AconstNull(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 
 int AconstNull::execute(Frame *frame){
     // JVMType Null = Null;
-    frame->operand_stack.push(0, Null);
+    frame->operand_stack.push(JVMNULL, Reference);
     return frame->local_pc++;
 }
 

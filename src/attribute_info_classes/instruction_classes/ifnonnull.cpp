@@ -17,9 +17,9 @@ int Ifnonnull::execute(Frame *frame) {
   int16_t branch_offset = this->branch;
   uint32_t base_adress = frame->local_pc;
 
-  JVMType value = frame->operand_stack.pop().second;
+  pair<uint64_t, JVMType>value = frame->operand_stack.pop();
 
-  if (value == Reference && value != Null) {
+  if (value.first == Reference && value.second != JVMNULL) {
     frame->local_pc = base_adress + branch_offset;
     return frame->local_pc;
   }

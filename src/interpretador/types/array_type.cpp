@@ -37,7 +37,9 @@ string ArrayType::toString(){
 void ArrayType::insert(ComponentType* toinsert){
   this->data.push_back(toinsert);
 }
-
+int ArrayType::getLength(){
+  return this->data.size();
+}
 void ArrayType::setIndexAsPrimitiveType(int index, uint64_t value, JVMType type){
   if((uint)index > this->data.size()) throw std::runtime_error("ArrayError: Acessando indice invalido");
   if(type != this->content_type){ 

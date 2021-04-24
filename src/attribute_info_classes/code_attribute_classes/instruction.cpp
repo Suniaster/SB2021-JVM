@@ -89,6 +89,8 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
   switch (opcode){
   case 0x0:
     return new Nop(code_attr, opcode);
+  case 0x1:
+    return new AconstNull(code_attr, opcode);
   case 0x2 ... 0x8:
     return new Iconst(code_attr, opcode);
   case 0x9 ... 0xa:

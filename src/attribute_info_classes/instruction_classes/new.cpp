@@ -26,7 +26,7 @@ int New::execute(Frame* frame){
   int heap_ref = Heap::getInstance()->storeComponent(newObject);
   frame->operand_stack.push(heap_ref, Reference);
 
-  cout << newObject->toString() << endl;
+  // cout << newObject->toString() << endl;
   frame->local_pc+=3;
   return frame->local_pc;
 }

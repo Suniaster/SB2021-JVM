@@ -21,6 +21,7 @@ class ArrayType : public ComponentType{
   void insert(ComponentType*);
   void print();
   string toString();
+  int getLength();
   void initialize(int max_length);
 
   void setIndexAsPrimitiveType(int index, uint64_t value, JVMType type);
