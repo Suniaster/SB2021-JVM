@@ -12,8 +12,8 @@ class JVMField : public ComponentType{
   private:
     ComponentType* data;
     JVMType field_type;
-    FieldInfo* field_info_ref;
   public:
+    FieldInfo* field_info_ref;
     string field_name;
 
     JVMField(FieldInfo*);

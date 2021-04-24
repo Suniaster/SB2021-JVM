@@ -36,7 +36,7 @@ void MethodArea::searchMainMethod(ClassFile* classfile){
 
 MethodInfo* MethodArea::getMethodByName(string class_name, string methodName, string descriptor){
   ClassFile* class_file = this->getClassFile(class_name);
-  cout << "Procurando na classe: " << class_name << endl;
+  // cout << "Procurando na classe: " << class_name << endl;
 
   for(uint32_t i=0; i<class_file->methods.size();i+=1){
     MethodInfo* current_method = class_file->methods[i];

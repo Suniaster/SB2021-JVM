@@ -65,3 +65,25 @@ string JVMClass::toString(){
   paramString << "}}";
   return paramString.str();
 }
+
+vector<JVMField*> JVMClass::getFieldsFor(string class_name){
+  vector<JVMField*> allFields;
+  Heap* heap          = Heap::getInstance();
+  MethodArea* m_a = MethodArea::getInstance();
+  ClassFile* cl_file = m_a->getClassFile(class_name);
+  
+  for(uint16_t i=0;i< cl_file->fields.size();i+=1){
+    FieldInfo* field  = cl_file->fields[i];
+
+    JVMField* newFieldAlocated = new JVMField(field);
+    heap->storeComponent(newFieldAlocated);
+    allFields.push_back(newFieldAlocated);
+  }
+
+  if(cl_file->getSuperClassName() != "java/lang/Object"){
+    vector<JVMField*> superFields = JVMClass::getFieldsFor(cl_file->getSuperClassName());
+    allFields.insert(allFields.end(), superFields.begin(), superFields.end());
+  }
+
+  return allFields;
+}

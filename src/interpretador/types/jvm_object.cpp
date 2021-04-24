@@ -5,16 +5,11 @@
 JVMObject::JVMObject(string c):JVMClass(c){}
 
 void JVMObject::initializeFields(){
-  Heap* heap          = Heap::getInstance();
-  ClassFile* cl_file  = this->class_file ;
-
-  for(uint16_t i=0;i< cl_file->fields.size();i+=1){
-    FieldInfo* field  = cl_file->fields[i];
-
-    if(!field->isStatic()){
-      JVMField* newFieldAlocated = new JVMField(field);
-      heap->storeComponent(newFieldAlocated);
-      this->addField(newFieldAlocated);
+  vector<JVMField*> allFields = JVMClass::getFieldsFor(this->class_name);
+  for(size_t i=0;i<allFields.size();i+=1){
+    JVMField* field = allFields[i];
+    if(!field->field_info_ref->isStatic()){
+      this->addField(field);
     }
   }
 }

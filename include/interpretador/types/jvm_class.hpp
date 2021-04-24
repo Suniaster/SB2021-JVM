@@ -16,6 +16,8 @@ class JVMClass : public ComponentType{
     string class_name;
     vector<JVMField*> fields;
   public:
+    static vector<JVMField*> getFieldsFor(string class_name);
+    
     ClassFile* class_file;
 
     // Vetor com pares de <stringConstante, referencia no heap>
