@@ -1,4 +1,5 @@
 #include "../../include/interpretador/method_area.hpp"
+#include <fstream>
 
 
 MethodArea* MethodArea::instance = 0;
@@ -13,8 +14,11 @@ ClassFile* MethodArea::insertNewClass(string class_name){
   if(this->isAlreadyIncluded(class_name)){
     return this->getClassFile(class_name);
   }
+
+
   if(class_name == "java/lang/Object") class_name = "Object";
-  ClassFile* new_class = new ClassFile(class_name+".class");
+
+  ClassFile* new_class = new ClassFile(class_name);
 
   new_class->loadClass();
   this->classes.push_back(new_class);
