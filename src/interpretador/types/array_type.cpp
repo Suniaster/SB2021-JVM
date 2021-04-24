@@ -3,12 +3,14 @@
 
 using namespace std;
 
-ArrayType::ArrayType(JVMType content_type):ComponentType(content_type){}
+ArrayType::ArrayType(JVMType content_type):ComponentType(JVMArray){
+  this->content_type = content_type;
+}
 
 void ArrayType::print(){
   cout << "[";
   for(uint16_t i=0;i<this->data.size();i++){
-    this->data[i]->print();
+    cout << this->data[i]->toString();
     cout << ", ";
   }
   cout << "]" << endl;
@@ -19,6 +21,8 @@ void ArrayType::insert(ComponentType* toinsert){
 }
 
 void ArrayType::setIndexAsPrimitiveType(int index, uint64_t value, JVMType type){
+  if((uint)index > this->data.size()) throw std::runtime_error("ArrayError: Acessando indice invalido");
+
   ComponentType* oldValue = this->data[index];
   delete oldValue;
   this->data[index] =  new PrimitiveType(value, type);

@@ -29,7 +29,7 @@ int GetStatic::execute(Frame* frame){
     frame->operand_stack.push(field_data->data, field_data->type);
   }
   else{
-    frame->operand_stack.push(-1, Reference);
+    frame->operand_stack.push(-1, Null);
   }
 
   frame->local_pc += 3;

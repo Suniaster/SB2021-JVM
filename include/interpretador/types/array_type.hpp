@@ -12,9 +12,9 @@ using namespace std;
 class ArrayType : public ComponentType{
   private:
     vector<ComponentType*> data;
-    JVMType content_type;
     int max_length;
   public:
+  JVMType content_type;
 
   ArrayType(JVMType x);
 

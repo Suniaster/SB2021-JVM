@@ -8,19 +8,13 @@ JVMType InterfaceAstore::getType(){return Reference;}
 
 int InterfaceAstore::execute(Frame* frame){
   uint64_t arrayref, index, value;
-  arrayref  = frame->operand_stack.pop().first;
-  index     = frame->operand_stack.pop().first;
   value     = frame->operand_stack.pop().first;
-
-  /// Testando
-  // index = 2;
-  // value = 23;
-  // arrayref = frame->thread->heap_ref->createPrimitiveTypeArray(4, Float);
+  index     = frame->operand_stack.pop().first;
+  arrayref  = frame->operand_stack.pop().first;
 
   ArrayType* array = (ArrayType*)frame->thread->heap_ref->getReference(arrayref);
   array->setIndexAsPrimitiveType(index, value, this->getType());
 
-  array->print();
   return frame->local_pc++;
 }
 
