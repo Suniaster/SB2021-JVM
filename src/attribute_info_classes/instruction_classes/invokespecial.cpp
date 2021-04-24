@@ -1,5 +1,7 @@
 #include "../../../include/attribute_info_classes/instruction_classes/invokespecial.hpp"
 #include "../../../include/interpretador/reference_resolver.hpp"
+#include "../../../include/constant_pool_classes/method_ref_info.hpp"
+
 using namespace Instructions;
 
 
@@ -14,11 +16,13 @@ string InvokeSpecial::toString(){
 }
 
 int InvokeSpecial::execute(Frame* frame){
-  string symbolic_ref = frame->current_method->class_file->getConstantPoolEntry(this->index)->toString();
+  CP::MethodRefInfo* ref_info = (CP::MethodRefInfo*)frame->current_method->class_file->getConstantPoolEntry(this->index);
+  string symbolic_ref = ref_info->toString();
+  string descriptor = ref_info->getDescriptor();
   pair<string,string> names = ReferenceResolver::separateSymbol(symbolic_ref, ".");
 
   // if(ReferenceResolver::isValidClassName(names.first))
-  frame->thread->invokeInstanceMethod(names.first, names.second);
+  frame->thread->invokeInstanceMethod(names.first, names.second, descriptor);
 
   return frame->local_pc+=3;
 }

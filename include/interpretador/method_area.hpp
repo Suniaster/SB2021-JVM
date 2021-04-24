@@ -25,12 +25,12 @@ class MethodArea{
 
     // Procura pelo metodo public static main entre os arquivos carregados
     MethodInfo* getMainMethod();
-    MethodInfo* getMethodByName(string class_name, string methodName);
+    MethodInfo* getMethodByName(string class_name, string methodName, string args_descriptor);
 
     ClassFile* getClassFile (string class_name);
     bool isAlreadyIncluded  (string class_name);
 
-    bool classHasMethod(string class_name, string method_name);
+    bool classHasMethod(string class_name, string method_name, string args_descriptor);
 };
 
 #endif

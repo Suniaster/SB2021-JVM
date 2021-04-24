@@ -24,8 +24,8 @@ class Thread{
     Heap* heap_ref;
     Thread(MethodArea*);
 
-    void invokeStaticMethod(string class_name, string methodName);
-    void invokeInstanceMethod(string class_name, string methodName);
+    void invokeStaticMethod(string class_name, string methodName, string args_descriptor);
+    void invokeInstanceMethod(string class_name, string methodName, string args_descriptor);
     void popFrame();
     Frame* getCurrentFrame();
     

@@ -34,13 +34,15 @@ void MethodArea::searchMainMethod(ClassFile* classfile){
   }
 }
 
-MethodInfo* MethodArea::getMethodByName(string class_name, string methodName){
+MethodInfo* MethodArea::getMethodByName(string class_name, string methodName, string descriptor){
   ClassFile* class_file = this->getClassFile(class_name);
 
   for(uint32_t i=0; i<class_file->methods.size();i+=1){
     MethodInfo* current_method = class_file->methods[i];
 
-    if(current_method->getName() == methodName){ 
+    if(current_method->getName() == methodName
+      && current_method->getDescriptorString() == descriptor
+    ){ 
       return current_method;
     }
   }
@@ -72,9 +74,9 @@ bool MethodArea::isAlreadyIncluded(string class_name){
   }
 }
 
-bool MethodArea::classHasMethod(string class_name, string method_name){
+bool MethodArea::classHasMethod(string class_name, string method_name, string descriptor){
   try{
-    this->getMethodByName(class_name, method_name);
+    this->getMethodByName(class_name, method_name, descriptor);
     return true;
   }
   catch(const std::exception& e){

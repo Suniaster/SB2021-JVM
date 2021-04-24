@@ -53,8 +53,8 @@ void Thread::initializeFrameVariableVector(Frame* f, int n_args, int initial_pos
   }
 }
 
-void Thread::invokeStaticMethod(string class_name, string methodName){
-  MethodInfo* method = this->method_area->getMethodByName(class_name, methodName);
+void Thread::invokeStaticMethod(string class_name, string methodName, string args_descriptor){
+  MethodInfo* method = this->method_area->getMethodByName(class_name, methodName, args_descriptor);
   int n_args = method->getArgsCount();
   Frame* new_frame = new Frame(method, this);
 
@@ -66,9 +66,9 @@ void Thread::invokeStaticMethod(string class_name, string methodName){
   this->frame_stack.push_back(new_frame);
 }
 
-void Thread::invokeInstanceMethod(string class_name, string methodName){
+void Thread::invokeInstanceMethod(string class_name, string methodName, string args_descriptor){
 
-  MethodInfo* method = this->method_area->getMethodByName(class_name, methodName);
+  MethodInfo* method = this->method_area->getMethodByName(class_name, methodName, args_descriptor);
   int n_args = method->getArgsCount();
   Frame* new_frame = new Frame(method, this);
   if(VERBOSE_INSTRUCTION_INVOKE){

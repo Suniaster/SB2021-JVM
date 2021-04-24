@@ -18,9 +18,9 @@ void ClassLoader::initializeClass(string class_name, MethodArea* method_area){
   ClassFile* class_file = method_area->getClassFile(class_name);
   class_file->state = INITIALIZED;
   
-  if(method_area->classHasMethod(class_name, "<clinit>")){
+  if(method_area->classHasMethod(class_name, "<clinit>", "()V")){
     Thread newThread(method_area);
-    newThread.invokeStaticMethod(class_name, "<clinit>");
+    newThread.invokeStaticMethod(class_name, "<clinit>", "()V");
     newThread.start();
   }
 
