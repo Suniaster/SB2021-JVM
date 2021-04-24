@@ -10,13 +10,13 @@ void InvokeSimulation::println(Frame* frame, int method_ref_index){
     pair<uint64_t, JVMType> val = frame->operand_stack.pop();
     if(val.second == Reference){
       ComponentType* x = Heap::getInstance()->getReference(val.first);
-      cout << x->toString() << endl;
+      cout << x->toString();
     }
     else{
       PrimitiveType x(val.first, val.second);
-      cout << x.toString() << endl;
+      cout << x.toString();
     }
   }
-
+  cout << endl;
   frame->operand_stack.pop();
 }
