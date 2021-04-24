@@ -31,6 +31,8 @@ class Thread{
     
     void runMain();
     void start();
+
+    void handleException(Frame *frame, int index);
 };
 
 #endif

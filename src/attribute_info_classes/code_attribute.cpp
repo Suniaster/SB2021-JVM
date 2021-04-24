@@ -70,3 +70,17 @@ Instructions::BaseInstruction* Attribute::CodeAttribute::getInstructionByPc(int 
   }
   throw runtime_error("Opcode nao encontrado no codigo");
 }
+
+pair<int, int> Attribute::CodeAttribute::checkExceptionsTableForHandlers(int pc) {
+  pair<int, int> handler(-1,-1);
+
+  for(int i=0; i<this->exception_table_length; i++) {
+    handler = this->exception_table[i]->isPcHandled(pc);
+    if (handler.first >= 0)
+      return handler;
+    else
+      continue;
+  }
+
+  return handler;
+}

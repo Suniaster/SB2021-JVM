@@ -1,4 +1,5 @@
 #include "../../include/interpretador/thread.hpp"
+#include "../../include/interpretador/types/exception_type.hpp"
 #include <list>
 #include <algorithm>
 
@@ -23,8 +24,30 @@ void Thread::start(){
       cout << "(" << current_frame->current_method->class_file->getThisClassName() << ")";
       cout << "Executando inst: " << current_frame->local_pc << endl;
     }
-    current_frame->runInstruction();
+
+    try {
+      current_frame->runInstruction();
+    }
+    catch (std::runtime_error e) {
+        Attribute::CodeAttribute* code = current_frame->current_method->getCode();
+        pair<int,int> handler = code->checkExceptionsTableForHandlers(current_frame->local_pc);
+
+        if (handler.first >= 0) {
+          current_frame->local_pc = handler.first;
+          handleException(current_frame, handler.second);
+        }  
+        else
+          throw e;
+    }
   }
+}
+
+void Thread::handleException(Frame *frame, int index) { 
+  CP::ClassInfo *exception_name= (CP::ClassInfo *)frame->current_method->class_file->getConstantPoolEntry(index);
+  ExceptionType* e = new ExceptionType(exception_name->toString());
+
+  int heap_ref = Heap::getInstance()->storeComponent(e);
+  frame->operand_stack.push(heap_ref, Reference);
 }
 
 void Thread::initializeFrameVariableVector(Frame* f, int n_args, int initial_pos){
