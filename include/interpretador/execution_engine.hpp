@@ -19,5 +19,6 @@ class ExecutionEngine{
     static ExecutionEngine* getInstance();
     void start();
     void loadMethodArea(string intial_class_name);
+    ~ ExecutionEngine();
 };
 #endif

@@ -47,7 +47,7 @@ void ArrayType::setIndexAsPrimitiveType(int index, uint64_t value, JVMType type)
   }
 
   ComponentType* oldValue = this->data[index];
-  delete oldValue;
+
   this->data[index] =  new PrimitiveType(value, type);
 }
 

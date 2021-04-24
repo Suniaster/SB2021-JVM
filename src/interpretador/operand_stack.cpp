@@ -14,10 +14,7 @@ pair<uint64_t, JVMType> OperandStack::pop(){
   pair<uint64_t, JVMType> returnPair;
   returnPair.first = value->data;
   returnPair.second = value->type;
-
   operand_stack.pop_back();
-  delete value;
-
   return returnPair;
 }
 

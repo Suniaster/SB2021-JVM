@@ -17,8 +17,9 @@ class Heap{
     ComponentType* getReference(int reference_id);
     int storeComponent(ComponentType*);
     int createPrimitiveTypeArray(int n_dimensions, JVMType arrayType);
+    void clearHeap();
     static Heap* getInstance();
-
+    ~Heap();
 };
 
 #endif

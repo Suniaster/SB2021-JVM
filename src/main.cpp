@@ -29,5 +29,8 @@ int main(int argc, char **argv){
 
   execEng->start();
   
+
+  Heap::getInstance()->clearHeap();
+
   return 0;
 }

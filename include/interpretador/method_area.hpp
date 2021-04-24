@@ -31,6 +31,8 @@ class MethodArea{
     bool isAlreadyIncluded  (string class_name);
 
     bool classHasMethod(string class_name, string method_name, string args_descriptor);
+
+    ~MethodArea();
 };
 
 #endif

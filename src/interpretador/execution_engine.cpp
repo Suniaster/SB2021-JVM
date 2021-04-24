@@ -33,3 +33,13 @@ ExecutionEngine* ExecutionEngine::getInstance(){
   }
   return ExecutionEngine::instance ;
 };
+
+ExecutionEngine::~ExecutionEngine(){
+  delete this->heap;
+  delete this->method_area;
+  uint thread_len = this->threads.size();
+  for(uint i=0;i<thread_len;i+=1){
+    delete this->threads.back();
+    this->threads.pop_back();
+  }
+}

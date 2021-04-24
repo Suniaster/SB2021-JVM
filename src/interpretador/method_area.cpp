@@ -88,3 +88,12 @@ bool MethodArea::classHasMethod(string class_name, string method_name, string de
     return false;
   }
 }
+
+MethodArea::~MethodArea(){
+  uint classes_size = this->classes.size();
+  for(uint i =0;i<classes_size;i+=1){
+    ClassFile* f = this->classes.back();
+    delete f;
+    this->classes.pop_back();
+  }
+}
