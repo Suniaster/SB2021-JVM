@@ -42,7 +42,7 @@ int ReferenceResolver::resolveClassName(string class_name, MethodArea* m_a){
 }
 
 int ReferenceResolver::resolveObjectByDescriptor(string descriptor, MethodArea*m_a){
-  if(descriptor == "Ljava/lang/String" ){
+  if(descriptor == "Ljava/lang/String;" ){
     string type;
     type += descriptor[0];
     JVMType p_type = ComponentType::getTypeFromDescriptor(type);
