@@ -7,9 +7,8 @@ InterfaceAload::InterfaceAload(Attribute::CodeAttribute* code_attr, uint8_t opco
 JVMType InterfaceAload::getType(){return Reference;}
 
 int InterfaceAload::execute(Frame* frame){
-  cout << "executando algum _aload" << endl;
-  uint64_t arrayref = frame->operand_stack.pop().first;
   uint64_t index = frame->operand_stack.pop().first;
+  uint64_t arrayref = frame->operand_stack.pop().first;
   
   ArrayType* array = (ArrayType*)frame->thread->heap_ref->getReference(arrayref);
   PrimitiveType* element = (PrimitiveType*)array->getIndex(index);

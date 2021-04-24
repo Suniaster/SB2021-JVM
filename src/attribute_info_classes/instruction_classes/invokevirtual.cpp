@@ -15,7 +15,6 @@ string InvokeVirtual::toString(){
 int InvokeVirtual::execute(Frame* frame){
   string symbolic_ref = frame->current_method->class_file->getConstantPoolEntry(this->index)->toString();
 
-  frame->operand_stack.print();
   if(symbolic_ref == "java/io/PrintStream.println"){
     pair<uint64_t, JVMType> val = frame->operand_stack.pop();
     frame->operand_stack.pop();

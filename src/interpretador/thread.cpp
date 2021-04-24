@@ -25,7 +25,6 @@ void Thread::start(){
 }
 
 void Thread::invokeStaticMethod(string class_name, string methodName){
-  cout << "invokeStaticMethod: Invocando metodo " << methodName << endl;
   Frame* previous_frame = NULL;
   
   if(this->frame_stack.size() > 0)
@@ -35,11 +34,12 @@ void Thread::invokeStaticMethod(string class_name, string methodName){
   int n_args = method->getArgsCount();
   Frame* new_frame = new Frame(method, this);
 
+  cout << "invokeStaticMethod: Invocando metodo:" << methodName << " n_agrs: " << endl;
+
   for(int i=0;i<n_args;i+=1){
     // TODO: Conferir tipagem na passagem de argumento
     pair<uint64_t, JVMType> arg = previous_frame->operand_stack.pop();
-
-    new_frame->local_variables.insert(i+1, arg.first, arg.second);
+    new_frame->local_variables.insert(i, arg.first, arg.second);
 
     if(arg.second == Long || arg.second == Double)i++;
   }

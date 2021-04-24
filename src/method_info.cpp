@@ -58,10 +58,12 @@ int MethodInfo::getArgsCount(){
       continue;
     }
 
-    for(j=i;j<descriptor.size();j+=1){
-      if(descriptor[j] == ';') break;
+    if( descriptor[i] == 'L'){
+      for(j=i;j<descriptor.size();j+=1){
+        if(descriptor[j] == ';') break;
+      }
+      i = j; 
     }
-    i = j; 
   }
   return n_args;
 }

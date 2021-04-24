@@ -170,7 +170,7 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
   case 0x51:
     return new Fastore(code_attr, opcode);  
   case 0x52:
-    return new Bastore(code_attr, opcode);  
+    return new Dastore(code_attr, opcode);  
   case 0x53:
     return new Aastore(code_attr, opcode);  
   case 0x54:
