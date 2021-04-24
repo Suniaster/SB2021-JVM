@@ -43,7 +43,7 @@ int ArrayType::getLength(){
 void ArrayType::setIndexAsPrimitiveType(int index, uint64_t value, JVMType type){
   if((uint)index > this->data.size()) throw std::runtime_error("ArrayError: Acessando indice invalido");
   if(type != this->content_type){ 
-    throw std::runtime_error("TypeError: Mudando elemento para tipo invalido");
+    // throw std::runtime_error("TypeError: Mudando elemento para tipo invalido");
   }
 
   ComponentType* oldValue = this->data[index];

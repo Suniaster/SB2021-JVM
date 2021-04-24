@@ -24,6 +24,19 @@ string PrimitiveType::toString(){
   else if(this->type == Long){
     paramString << to_string(*(int64_t*)&this->data);
   }
+  else if(this->type == Byte){
+    paramString << to_string(*(int8_t*)&this->data);
+  }
+  else if(this->type == Short){
+    paramString << to_string(*(int16_t*)&this->data);
+  }
+  else if(this->type == Char){
+    paramString << *(char*)&this->data;
+  }
+  else if(this->type == Boolean){
+    if(this->data) paramString << "true";
+    else paramString << "false";
+  }
   else paramString << this->data;
 
   return paramString.str();

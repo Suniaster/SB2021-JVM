@@ -7,8 +7,8 @@ OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 SUBDIRS := $(shell find $(SRC_DIR) -type d)
 OBJSUBDIRS := $(subst src,obj,$(SUBDIRS))
 
-LDFLAGS := -g
-CPPFLAGS := -std=c++11 -g -Wall
+LDFLAGS := -g -O3
+CPPFLAGS := -std=c++11 -g -Wall -O3
 CXXFLAGS :=-std=c++11 -g -Wall
 
 main2:

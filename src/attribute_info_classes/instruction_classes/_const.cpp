@@ -89,20 +89,23 @@ Fconst::Fconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 int Fconst::execute(Frame * frame){
+    float val;
     switch (this->opcode) {
         case 11:
-            frame->operand_stack.push(0.0, Float);
+            val = 0;
             break;
         case 12:
-            frame->operand_stack.push(1.0, Float);
+            val = 1;
             break;
         case 13:
-            frame->operand_stack.push(2.0, Float);
+            val = 2;
             break;
 
         default:
             throw std::runtime_error("wrong opcode Iconst");
     }
+    // cout << "FCONST" << val << endl;
+    frame->operand_stack.push(*(uint64_t*)&val, Float);
     return frame->local_pc++;
 }
 string Fconst::toString(){
@@ -114,16 +117,18 @@ Dconst::Dconst(Attribute::CodeAttribute* code_attr, uint8_t opcode)
 }
 
 int Dconst::execute(Frame * frame){
+    double val;
     switch (this->opcode) {
         case 14:
-            frame->operand_stack.push(0.0, Double);
+            val = 0;
             break;
         case 15:
-            frame->operand_stack.push(1.0, Double);
+            val = 1;
             break;
         default:
             throw std::runtime_error("wrong opcode Iconst");
     }
+    frame->operand_stack.push(*(uint64_t*)&val, Float);
     return frame->local_pc++;
 }
 string Dconst::toString(){
