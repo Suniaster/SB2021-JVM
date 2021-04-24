@@ -22,23 +22,22 @@ int main(int argc, char **argv){
    FileReader::setFilePath(file_path);
    string file_name = FileReader::returnFileName(file_path);
 
-    if (options.find("-t") != std::string::npos){
+    if (options.find("-e") != std::string::npos){
         ClassFile* class_file = new ClassFile(file_name);
 
         class_file->loadClass();
         class_file->printClass();
-    }else if (options.find("-e") != std::string::npos){
+
+        delete class_file;
+    }else if (options.find("-i") != std::string::npos){
         ExecutionEngine* execEng = ExecutionEngine::getInstance();
         execEng->loadMethodArea(file_name);
 
         execEng->start();
+
+        delete execEng;
     }else {
         throw std::runtime_error("Invalid option");
     }
-
-  
-
-  Heap::getInstance()->clearHeap();
-
   return 0;
 }
