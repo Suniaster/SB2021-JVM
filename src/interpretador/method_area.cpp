@@ -40,6 +40,7 @@ void MethodArea::searchMainMethod(ClassFile* classfile){
 
 MethodInfo* MethodArea::getMethodByName(string class_name, string methodName, string descriptor){
   ClassFile* class_file = this->getClassFile(class_name);
+  // cout << "Procurando na classe: " << class_name << endl;
 
   for(uint32_t i=0; i<class_file->methods.size();i+=1){
     MethodInfo* current_method = class_file->methods[i];
@@ -50,6 +51,10 @@ MethodInfo* MethodArea::getMethodByName(string class_name, string methodName, st
       return current_method;
     }
   }
+  if( class_file->getSuperClassName() != "java/lang/Object" ){
+    return this->getMethodByName(class_file->getSuperClassName(), methodName, descriptor);
+  }
+
   throw runtime_error("MethodError: " + methodName + " nao encontrado");
 }
 
@@ -85,5 +90,14 @@ bool MethodArea::classHasMethod(string class_name, string method_name, string de
   }
   catch(const std::exception& e){
     return false;
+  }
+}
+
+MethodArea::~MethodArea(){
+  uint classes_size = this->classes.size();
+  for(uint i =0;i<classes_size;i+=1){
+    ClassFile* f = this->classes.back();
+    delete f;
+    this->classes.pop_back();
   }
 }

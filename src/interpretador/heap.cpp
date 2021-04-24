@@ -2,6 +2,7 @@
 #include "../../include/interpretador/types/array_type.hpp"
 #include "../../include/interpretador/types/primitive_type.hpp"
 #include <stdexcept>
+#include <iostream>
 
 Heap* Heap::instance = 0;
 
@@ -31,6 +32,21 @@ int Heap::storeComponent(ComponentType* toStore){
   int newElementIndex = this->heap_store.size()-1;
   toStore->setReference(newElementIndex);
   return newElementIndex;
+}
+
+void Heap::clearHeap(){
+  uint heap_size = this->heap_store.size();
+  // cout << "Comecando free, tamanho do heap: " << heap_size <<endl;
+  for(uint i=0 ;i<this->heap_store.size(); i++){
+    ComponentType* toDestroy = this->heap_store.back();
+    // cout << "dando free em: " << this->heap_store[i]->getReference() << endl;
+    delete toDestroy;
+    this->heap_store.pop_back();
+  }
+}
+
+Heap::~Heap(){
+  this->clearHeap();
 }
 
 ComponentType* Heap::getReference(int reference_id){
