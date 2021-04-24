@@ -14,3 +14,11 @@ string Goto_W::toString(){
     ;
 }
 
+int Goto_W::execute(Frame *frame) {
+  int32_t branch_offset = this->branch_bytes;
+  uint32_t base_adress = frame->local_pc;
+
+  frame->local_pc = base_adress + branch_offset;
+  return frame->local_pc;
+}
+
