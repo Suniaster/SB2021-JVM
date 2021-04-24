@@ -14,6 +14,7 @@ namespace CP{
       void setInfo();
       void printInfo();
       string toString();
+      string getDescriptor();
   };
 }
 #endif

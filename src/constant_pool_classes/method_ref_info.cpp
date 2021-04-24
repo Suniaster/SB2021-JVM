@@ -1,5 +1,5 @@
 #include "../../include/constant_pool_classes/method_ref_info.hpp"
-
+#include "../../include/constant_pool_classes/name_and_type_info.hpp"
 
 
 CP::MethodRefInfo::MethodRefInfo(ClassFile* class_file) : CpInfo(class_file){
@@ -17,6 +17,11 @@ string CP::MethodRefInfo::toString(){
 
   string methodNameParsed = methodName.substr(0, methodName.find(":"));
   return className + "." + methodNameParsed;
+}
+
+string CP::MethodRefInfo::getDescriptor(){
+  CP::NameAndTypeInfo* name_info = (CP::NameAndTypeInfo*)this->class_file->getConstantPoolEntry((int)this->name_and_type_index);
+  return name_info->getDescriptor();
 }
 
 void CP::MethodRefInfo::printInfo(){

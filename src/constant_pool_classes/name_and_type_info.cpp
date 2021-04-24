@@ -21,6 +21,10 @@ void CP::NameAndTypeInfo::printInfo(){
 
 }
 
+string CP::NameAndTypeInfo::getDescriptor(){
+  return this->class_file->getConstantPoolEntry((int)this->descriptor_index)->toString();
+}
+
 // string CP::NameAndTypeInfo::returnResolvedName(){
 //     return this->class_file->getConstantPoolEntry((int)this->name_index)->toString();
 // }

@@ -14,6 +14,7 @@ namespace CP{
       NameAndTypeInfo(ClassFile *class_file);
       void setInfo();
       void printInfo();
+      string getDescriptor();
   };
 }
 #endif

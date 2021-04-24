@@ -28,6 +28,7 @@ class MethodInfo{
     Instructions::BaseInstruction* getInstruction(int pc);
 
     string getDescriptorString();
+    int static getArgsCountOn(string descriptor);
     int getArgsCount();
     string getName();
     void printInfo();

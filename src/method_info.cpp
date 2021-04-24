@@ -43,9 +43,8 @@ string MethodInfo::getDescriptorString() {
   return this->class_file->getConstantPoolEntry(this->descriptor_index)->toString();
 }
 
-int MethodInfo::getArgsCount(){
-  // TODO: codar isso direito
-  string descriptor = this->getDescriptorString();
+int MethodInfo::getArgsCountOn(string descriptor){
+   // TODO: codar isso direito
   string types = "BCDFIJSZ";
   int n_args = 0;
   size_t i, j;
@@ -66,4 +65,9 @@ int MethodInfo::getArgsCount(){
     }
   }
   return n_args;
+}
+
+int MethodInfo::getArgsCount(){
+  string descriptor = this->getDescriptorString();
+  return MethodInfo::getArgsCountOn(descriptor);
 }
