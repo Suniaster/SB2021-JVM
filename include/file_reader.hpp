@@ -13,6 +13,8 @@ class FileReader{
   private:
     vector<BYTE> file;
     string file_name;
+    static string file_path;
+
   public:
     unsigned int position = 0;
 
@@ -20,6 +22,9 @@ class FileReader{
 
     void readFile(string);
     vector<BYTE> getBytes(int);
+    static void setFilePath(string);
+    static void checkFileExists(string);
+    static string returnFileName(string);
 
     template <typename T>
     T vector2Int(vector<BYTE> bytes);

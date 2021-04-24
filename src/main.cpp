@@ -1,33 +1,41 @@
 #include "../include/class_file.hpp"
 #include "../include/interpretador/execution_engine.hpp"
+
 #include <iostream>
 #include <memory>
 #include <fstream>
+#include "../include/file_reader.hpp"
 
 int main(int argc, char **argv){
   string file_path = "";
   file_path = argv[1];
+  string  options = "";
 
-// TODO: trocar lugar de checagem
-//   ifstream file("./tests/"+file_path);
 
-//   if (file.good()) {
-//       ClassFile *class_file = new ClassFile(file_path);
+    if(argc < 3){
+        throw  std::runtime_error("No option given");
+    }
+    options = argv[2];
 
-//       class_file->loadClass();
-//       class_file->printClass();
+   FileReader::checkFileExists(file_path);
 
-//       delete class_file;
-//    } else {
-//       throw std::invalid_argument("Esse arquivo não existe");
-//    }
+   FileReader::setFilePath(file_path);
+   string file_name = FileReader::returnFileName(file_path);
 
-//   file.close();
+    if (options.find("-t") != std::string::npos){
+        ClassFile* class_file = new ClassFile(file_name);
 
-  ExecutionEngine* execEng = ExecutionEngine::getInstance();
-  execEng->loadMethodArea(file_path);
+        class_file->loadClass();
+        class_file->printClass();
+    }else if (options.find("-e") != std::string::npos){
+        ExecutionEngine* execEng = ExecutionEngine::getInstance();
+        execEng->loadMethodArea(file_name);
 
-  execEng->start();
+        execEng->start();
+    }else {
+        throw std::runtime_error("Invalid option");
+    }
+
   
 
   Heap::getInstance()->clearHeap();

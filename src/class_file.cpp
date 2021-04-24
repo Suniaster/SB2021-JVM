@@ -8,7 +8,7 @@
 ClassFile::ClassFile(string class_name)
 {
   file_reader = new FileReader();
-  file_reader->readFile("./tests/" + class_name);
+  file_reader->readFile(class_name);
   this->state = READ;
   this->heap_ref = -1;
 }
