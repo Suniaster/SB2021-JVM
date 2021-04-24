@@ -18,6 +18,7 @@ class ReferenceResolver{
     static int resolveClassName(string class_name, MethodArea*);
     static int resolveInterfaceName(string class_name, MethodArea*);
     static JVMField* resolveStaticFieldSymbolicReference(string symbolic_reference, MethodArea*);
+    static int allocateArray(string descriptor, MethodArea*m_a, vector<uint64_t> dims);
     static int resolveStringReference(string toResolve);
     static bool isValidClassName(string class_name);
 };

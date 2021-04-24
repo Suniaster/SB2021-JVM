@@ -1,5 +1,6 @@
 #include "../../../include/interpretador/types/array_type.hpp"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -14,6 +15,17 @@ void ArrayType::print(){
     cout << ", ";
   }
   cout << "]" << endl;
+}
+
+string ArrayType::toString(){
+  stringstream paramString;
+  paramString << "[";
+  for(uint16_t i=0;i<this->data.size();i++){
+    paramString << this->data[i]->toString();
+    paramString << ", ";
+  }
+  paramString << "]";
+  return paramString.str();
 }
 
 void ArrayType::insert(ComponentType* toinsert){
