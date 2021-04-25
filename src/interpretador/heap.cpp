@@ -37,8 +37,6 @@ int Heap::storeComponent(ComponentType* toStore){
   this->heap_store.push_back(toStore);
   int newElementIndex = this->heap_store.size()-1;
   toStore->setReference(newElementIndex);
-  cout << "Inserindo no heap: " << newElementIndex << endl;
-  cout << toStore->type << endl;
   return newElementIndex;
 }
 
