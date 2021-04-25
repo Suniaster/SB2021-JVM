@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teste_java;
 
 /**
  *
@@ -17,7 +16,7 @@ public class Teste_java {
     public static void main(String[] args) {
        
         Teste teste = new Teste();
-        teste.setX(2);
+        teste.setX(13);
         teste.setY(1);
         int valor = teste.difference();
         System.out.println(valor);

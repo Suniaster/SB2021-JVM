@@ -2,6 +2,7 @@
 #include "../../../include/interpretador/invoke_simulation.hpp"
 #include "../../../include/interpretador/reference_resolver.hpp"
 #include "../../../include/constant_pool_classes/method_ref_info.hpp"
+#include "../../../include/interpretador/invoke_simulation.hpp"
 
 using namespace Instructions;
 
@@ -26,12 +27,12 @@ int InvokeSpecial::execute(Frame *frame)
 
   if (ReferenceResolver::isValidClassName(names.first))
     frame->thread->invokeInstanceMethod(names.first, names.second, descriptor);
-  else
-  {
-    if (names.first.find("Exception") != std::string::npos || names.first.find("Error") != std::string::npos) {
-      InvokeSimulation::exceptionInit(frame, names.first, this->index);
-    }
+  else if (names.first.find("Exception") != std::string::npos || names.first.find("Error") != std::string::npos) {
+    InvokeSimulation::exceptionInit(frame, names.first, this->index);
+  }
+  else if(names.first == "java/lang/StringBuilder" || names.first == "java/lang/String"){
+    InvokeSimulation::stringMethod(names.second, frame, this->index);
   }
 
-  return frame->local_pc += 3;
+  return frame->local_pc+=3;
 }

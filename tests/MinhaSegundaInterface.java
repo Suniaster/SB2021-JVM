@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package minhasegundainterface;
 
 /**
  *
@@ -18,7 +17,6 @@ public class MinhaSegundaInterface {
         ImplementaInterface Interface = new ImplementaInterface();
         Interface.funcaoX(2);
         Interface.funcaoY(5);
-
     }
     
 }

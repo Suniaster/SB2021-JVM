@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package minhasegundainterface;
 
 /**
  *
@@ -13,5 +12,6 @@ public interface Interface {
     
     public int funcaoX(int x);
     public int funcaoY(int y);
+    int x;
     
 }
