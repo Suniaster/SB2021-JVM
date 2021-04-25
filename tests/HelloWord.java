@@ -1,10 +1,16 @@
 class HelloWord {
   public static void main(String[] s) {
-    int loop = 3;
+    String ola;
 
-    for (int i = 1; i <= loop; i++) {
-      System.out.println(i);
-    }
-    System.out.println("Hello Ronaldo!");
+    // instanciação
+    ola = new String("Alô Mundo Java !");
+
+    // declaração e instanciação (mais prático)
+    ola = "Alô Mundo Java !";
+    String nome = "Prof. Omero Francisco Bertol.";
+
+    // concatenação (\n = pula linha)
+    String aula = ola + "\nby " + nome;
+    System.out.println(aula);
   }
 }
