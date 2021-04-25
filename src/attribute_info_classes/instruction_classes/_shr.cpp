@@ -14,7 +14,6 @@ int Shr::execute(Frame* frame){
   
   uint64_t value2 = frame -> operand_stack.pop().first;
   uint64_t value1 = frame -> operand_stack.pop().first;
-  cout << this->toString() << endl;
   switch(this->type){
     case 0: {
       int v1 = (int)value1;
