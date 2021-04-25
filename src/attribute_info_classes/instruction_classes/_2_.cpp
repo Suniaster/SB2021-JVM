@@ -23,12 +23,12 @@ int TypeConversion::execute(Frame* frame){
       break;}
     case 1: {          //i2f
       int v1 = (int)value1;
-      float result = *(float*)&v1;
+      float result = (float)v1;
       frame -> operand_stack.push(result, Float);
       break;}
     case 2:  {         //i2d
-      int v1 = (int)value1;
-      double result = *(double*)&v1;
+      int64_t v1 = (int64_t)value1;
+      double result = (double)v1;
       frame -> operand_stack.push(result, Double);
       break;}
     case 3:     {      //l2i
@@ -38,16 +38,17 @@ int TypeConversion::execute(Frame* frame){
       break;}
     case 4:{           //l2f
       int64_t v1 = (int64_t)value1;
-      float result = *(float*)&v1;
+      double double_result = (double)v1;
+      float result = (float)double_result;
       frame -> operand_stack.push(result, Float);
       break;}
     case 5:    {       //l2d
       int64_t v1 = (int64_t)value1;
-      double result = *(double*)&v1;
+      double result = (double)v1;
       frame -> operand_stack.push(result, Double);
       break;}
     case 6: {          //f2i
-      float v1 = *(float*)&value1;
+      float v1 = (float)value1;
       int result = (int)v1;
       frame -> operand_stack.push(result, Int);
       break;}

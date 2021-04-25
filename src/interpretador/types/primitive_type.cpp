@@ -13,13 +13,17 @@ void PrimitiveType::print(){
 string PrimitiveType::toString(){
   stringstream paramString;
   if(this->type == Double){
-    paramString << to_string(*(double*)&this->data);
+      int64_t value = (int64_t)this->data;
+    paramString << to_string((double)value);
   }
   else if(this->type == Float){
-    paramString << to_string(*(float*)&this->data);
+      int64_t value = (int64_t)this->data;
+      double temp_double = (double)value;
+      float float_value = (float)temp_double;
+    paramString << to_string(float_value);
   }
   else if(this->type == Int){
-    paramString << to_string(*(int*)&this->data);
+    paramString << to_string((int)this->data);
   }
   else if(this->type == Long){
     paramString << to_string(*(int64_t*)&this->data);
