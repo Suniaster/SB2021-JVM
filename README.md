@@ -30,7 +30,7 @@ Se você estiver no Windows sem um executável de make o seguinte comando pode s
 12.(X) operacoes logicas com cat 1  
 13.(X) operacoes de deslocamento com cat 1 
 14.(X) operacoes aritmeticas de cat 2 
-15.() operacoes de deslocamento de longs
+15.(X) operacoes de deslocamento de longs
 16.(X) system.out.println (int, float, string e booleano)
 17.() conversao de e para cat 2
 18.(X) iteracao

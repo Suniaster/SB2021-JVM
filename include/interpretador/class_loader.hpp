@@ -9,7 +9,7 @@
 
 using namespace std;
 
-#define VERBOSE_CLASS_LOADER 1
+#define VERBOSE_CLASS_LOADER 0
 
 class ClassLoader{
   private:
