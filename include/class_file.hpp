@@ -70,6 +70,7 @@ public:
     string beautifiedMajorVersion();
     string beautifiedAccessFlags(uint16_t access_flag, bool is_fields, bool is_methods);
 
+    bool isPublic();
     string getSuperClassName();
     string getThisClassName();
     template<typename T>

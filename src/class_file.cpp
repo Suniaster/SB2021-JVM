@@ -289,3 +289,7 @@ string ClassFile::beautifiedAccessFlags(uint16_t access_flags, bool is_fields, b
 
   return "[" + beautified.erase(beautified.find_last_not_of(" ") + 1) + "]";
 }
+
+bool ClassFile::isPublic(){
+  return this->beautifiedAccessFlags(this->access_flags, false, false).find("public") != std::string::npos;
+}
