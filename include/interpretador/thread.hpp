@@ -8,7 +8,7 @@ class Thread;
 
 using namespace std;
 
-#define VERBOSE_INSTRUCTION_PC 0
+#define VERBOSE_INSTRUCTION_PC 1
 #define VERBOSE_INSTRUCTION_INVOKE 0
 class Thread{
   private:
