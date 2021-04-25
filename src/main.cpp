@@ -35,7 +35,7 @@ int main(int argc, char **argv){
 
         execEng->start();
 
-        delete execEng;
+//        delete execEng;
     }else {
         throw std::runtime_error("Invalid option");
     }
