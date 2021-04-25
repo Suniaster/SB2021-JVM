@@ -20,7 +20,7 @@ int ANewArray::execute(Frame *frame) {
     dims.push_back(frame->operand_stack.pop().first);
     string class_name = this->code_attr->class_file->getConstantPoolEntry(this->index)->toString();
     
-    int heap_ref = ReferenceResolver::allocateArray("[L"+class_name, frame->thread->method_area, dims);
+    int heap_ref = ReferenceResolver::allocateArray("[L"+class_name+ ";", frame->thread->method_area, dims);
     frame->operand_stack.push(heap_ref, Reference);
 
     return frame->local_pc+=3;
