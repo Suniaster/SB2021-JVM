@@ -121,9 +121,9 @@ BaseInstruction* BaseInstruction::getInstance(Attribute::CodeAttribute* code_att
     return new Aload(code_attr, opcode);
   case 0x1a ... 0x1d:
     return new Iload(code_attr, opcode);
-  case 0x1e ... 0x22:
+  case 0x1e ... 0x21:
     return new Lload(code_attr, opcode);
-  case 0x23 ... 0x25:
+  case 0x22 ... 0x25:
     return new Fload(code_attr, opcode);
   case 0x26 ... 0x29:
     return new Dload(code_attr, opcode);
