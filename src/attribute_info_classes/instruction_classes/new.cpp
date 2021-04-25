@@ -28,7 +28,7 @@ int New::execute(Frame* frame){
     frame->operand_stack.push(heap_ref, Reference);
   }
   else{
-    if(class_name == "java/lang/String"){
+    if(class_name == "java/lang/String" || class_name == "java/lang/StringBuilder"){
       StringType* newString = new StringType("");
       int heap_ref = Heap::getInstance()->storeComponent(newString);
       frame->operand_stack.push(heap_ref, Reference);

@@ -13,9 +13,10 @@ using namespace std;
 
 class InvokeSimulation{
     private:
-
+    static string getResultStringFromArgs(int n_args, Frame*);
     public:
     static void println(Frame*, int method_ref_index);
+    static void stringMethod(string method_name, Frame*, int method_ref_index);
 };
 
 

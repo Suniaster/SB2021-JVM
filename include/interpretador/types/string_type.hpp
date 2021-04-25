@@ -8,8 +8,8 @@
 
 class StringType : public ComponentType{
     private:
-        string value;
     public:
+        string value;
 
         StringType( string value);
         string toString();

@@ -27,6 +27,9 @@ int InvokeVirtual::execute(Frame* frame){
   if(symbolic_ref == "java/io/PrintStream.println"){
     InvokeSimulation::println(frame, this->index);
   }
+  else if(names.first == "java/lang/StringBuilder"){
+    InvokeSimulation::stringMethod(names.second, frame, this->index);
+  }
   else{
     frame->thread->invokeInstanceMethod(names.first, names.second, descriptor);
   }
