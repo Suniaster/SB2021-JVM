@@ -32,7 +32,7 @@ Se você estiver no Windows sem um executável de make o seguinte comando pode s
 14.(X) operacoes aritmeticas de cat 2 
 15.(X) operacoes de deslocamento de longs
 16.(X) system.out.println (int, float, string e booleano)
-17.() conversao de e para cat 2
+17.(X) conversao de e para cat 2
 18.(X) iteracao
 19.(X) switches
 20.(X) fields

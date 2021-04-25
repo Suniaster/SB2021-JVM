@@ -24,12 +24,12 @@ int TypeConversion::execute(Frame* frame){
     case 1: {          //i2f
       int v1 = (int)value1;
       float result = (float)v1;
-      frame -> operand_stack.push(result, Float);
+      frame -> operand_stack.push(*(uint64_t*)&result, Float);
       break;}
     case 2:  {         //i2d
       int64_t v1 = (int64_t)value1;
       double result = (double)v1;
-      frame -> operand_stack.push(result, Double);
+      frame -> operand_stack.push(*(uint64_t*)&result, Double);
       break;}
     case 3:     {      //l2i
       int64_t v1 = (int64_t)value1;
@@ -40,15 +40,15 @@ int TypeConversion::execute(Frame* frame){
       int64_t v1 = (int64_t)value1;
       double double_result = (double)v1;
       float result = (float)double_result;
-      frame -> operand_stack.push(result, Float);
+      frame -> operand_stack.push(*(uint64_t*)&result, Float);
       break;}
     case 5:    {       //l2d
       int64_t v1 = (int64_t)value1;
       double result = (double)v1;
-      frame -> operand_stack.push(result, Double);
+      frame -> operand_stack.push(*(uint64_t*)&result, Double);
       break;}
     case 6: {          //f2i
-      float v1 = (float)value1;
+      float v1 = *(float*)&value1;
       int result = (int)v1;
       frame -> operand_stack.push(result, Int);
       break;}
@@ -60,7 +60,7 @@ int TypeConversion::execute(Frame* frame){
     case 8: {          //f2d
       float v1 = *(float*)&value1;
       double result = (double)v1;
-      frame -> operand_stack.push(result, Double);
+      frame -> operand_stack.push(*(uint64_t*)&result, Double);
       break;}
     case 9:   {        //d2i
       double v1 = *(double*)&value1;
@@ -75,7 +75,7 @@ int TypeConversion::execute(Frame* frame){
     case 11:  {         //d2f
       double v1 = *(double*)&value1;
       float result = (float)v1;
-      frame -> operand_stack.push(result, Float);
+      frame -> operand_stack.push(*(uint64_t*)&result, Float);
       break;}
     case 12:{           //i2b
       int v1 = (int)value1;
@@ -84,7 +84,7 @@ int TypeConversion::execute(Frame* frame){
       break;}
     case 13:  {         //i2c
       int v1 = (int)value1;
-      uint8_t result = (uint8_t)v1;
+      uint16_t result = (uint16_t)v1;
       frame -> operand_stack.push(result, Char);
       break;}
     case 14:{           //i2s
