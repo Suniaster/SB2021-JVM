@@ -13,8 +13,8 @@ void InvokeSimulation::println(Frame* frame, int method_ref_index){
       cout << x->toString();
     }
     else{
-      PrimitiveType x(val.first, val.second);
-      cout << x.toString();
+      PrimitiveType*x = new PrimitiveType(val.first, val.second);
+      cout << x->toString();
     }
   }
   cout << endl;

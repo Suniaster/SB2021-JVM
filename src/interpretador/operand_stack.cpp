@@ -27,7 +27,7 @@ void OperandStack::push(uint64_t value, JVMType type)
 void OperandStack::insert(int index, uint64_t value, JVMType type)
 {
   PrimitiveType *newValue = new PrimitiveType(value, type);
-  operand_stack.insert(operand_stack.end() - index, newValue);
+  operand_stack.push_back(newValue);
 }
 
 pair<uint64_t, JVMType> OperandStack::readPosition(int position)
