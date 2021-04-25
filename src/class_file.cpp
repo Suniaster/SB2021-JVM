@@ -189,7 +189,6 @@ void ClassFile::printMethods() {
 }
 
 CpInfo * ClassFile::getConstantPoolEntry(int index){
-  if(index == 0) return CpInfo::returnUnusableSpace(this);
   return this->constant_pool[index- 1];
 }
 
@@ -201,6 +200,7 @@ string ClassFile::getConstantPoolUtf8String(int index)
 }
 
 string ClassFile::getSuperClassName(){
+  if(this->super_class == 0) return "invalid constant pool reference";
   return this->getConstantPoolEntry(this->super_class)->toString();
 }
 
