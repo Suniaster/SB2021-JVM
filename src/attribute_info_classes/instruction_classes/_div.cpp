@@ -16,6 +16,9 @@ int Div::execute(Frame* frame){
   uint64_t value2 = frame -> operand_stack.pop().first;
   uint64_t value1 = frame -> operand_stack.pop().first;
 
+  if (!value2) 
+    throw std::runtime_error("ArithmeticException");
+
   switch(this->type){
     case 0: {
       int v1 = (int)value1;

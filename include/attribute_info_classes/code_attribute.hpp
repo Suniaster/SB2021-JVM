@@ -13,7 +13,6 @@ namespace Attribute{
   class CodeAttribute : public AttributeInfo{
     private:
       uint16_t max_stack;
-
       vector<Instructions::BaseInstruction*> code;
 
       uint16_t exception_table_length;
@@ -28,10 +27,12 @@ namespace Attribute{
       uint16_t max_locals;
       uint32_t code_length;
 
+
       CodeAttribute(AttrInitialValue initial_value);
       ~CodeAttribute();
 
       Instructions::BaseInstruction* getInstructionByPc(int pc);
+      pair<int, int> checkExceptionsTableForHandlers(int pc);
 
       uint16_t number_of_instructions;
       void printInfo(int n_tabs);

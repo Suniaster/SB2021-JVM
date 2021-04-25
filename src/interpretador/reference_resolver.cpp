@@ -98,7 +98,6 @@ int ReferenceResolver::resolveInterfaceName(string interface_name, MethodArea* m
 
 bool ReferenceResolver::isValidClassName(string class_name){
   return (
-    class_name != "java/lang/System" &&
-    class_name != "java/lang/String"
+    class_name.find("java/lang") == std::string::npos
   );
 }

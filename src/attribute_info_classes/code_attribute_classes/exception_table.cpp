@@ -10,3 +10,15 @@ CodeException::CodeException(CodeAttribute* code_attr){
   f_reader->readBytes(2, this->handler_pc);
   f_reader->readBytes(2, this->catch_type);
 }
+
+pair<int, int> CodeException::isPcHandled(int pc) {
+  pair<int,int> retVal(-1,-1);
+  
+  if (pc >= this->start_pc && pc <= this->end_pc) {
+    retVal.first = this->handler_pc;
+    retVal.second = this->catch_type;
+    return retVal;
+  }
+  else
+    return retVal;
+}

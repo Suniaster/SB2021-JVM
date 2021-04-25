@@ -17,6 +17,7 @@ class InvokeSimulation{
     public:
     static void println(Frame*, int method_ref_index);
     static void stringMethod(string method_name, Frame*, int method_ref_index);
+    static void exceptionInit(Frame* frame, string exception_name, int method_ref_index);
 };
 
 

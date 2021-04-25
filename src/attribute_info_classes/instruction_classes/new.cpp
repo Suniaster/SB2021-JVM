@@ -3,6 +3,7 @@
 #include "../../../include/interpretador/types/jvm_object.hpp"
 #include "../../../include/interpretador/types/string_type.hpp"
 
+#include "../../../include/interpretador/types/exception_type.hpp"
 using namespace Instructions;
 
 
@@ -27,18 +28,20 @@ int New::execute(Frame* frame){
     int heap_ref = Heap::getInstance()->storeComponent(newObject);
     frame->operand_stack.push(heap_ref, Reference);
   }
+  else if(class_name == "java/lang/String" || class_name == "java/lang/StringBuilder"){
+    StringType* newString = new StringType("");
+    int heap_ref = Heap::getInstance()->storeComponent(newString);
+    frame->operand_stack.push(heap_ref, Reference);
+  }
+  else if (class_name.find("Exception") != std::string::npos || class_name.find("Error") != std::string::npos) {
+    ExceptionType* e = new ExceptionType(class_name);
+    int heap_ref = Heap::getInstance()->storeComponent(e);
+    frame->operand_stack.push(heap_ref, Reference);
+  }
   else{
-    if(class_name == "java/lang/String" || class_name == "java/lang/StringBuilder"){
-      StringType* newString = new StringType("");
-      int heap_ref = Heap::getInstance()->storeComponent(newString);
-      frame->operand_stack.push(heap_ref, Reference);
-    }
-    else{
-      frame->operand_stack.push(-1, Reference);
-    }
+    frame->operand_stack.push(-1, Reference);
   }
 
-  // cout << newObject->toString() << endl;
   frame->local_pc+=3;
   return frame->local_pc;
 }

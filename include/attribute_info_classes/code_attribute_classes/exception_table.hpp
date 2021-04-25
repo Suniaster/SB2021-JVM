@@ -18,7 +18,7 @@ namespace Attribute{
       CodeAttribute* code_attr;
     public:    
       CodeException(CodeAttribute* code_attr);
-      
+      pair<int, int> isPcHandled(int pc);
   };
 }
 
