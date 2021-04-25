@@ -2,14 +2,19 @@
 #include <fstream>
 
 
-MethodArea* MethodArea::instance = 0;
+MethodArea* MethodArea::instance = NULL;
 MethodArea* MethodArea::getInstance(){
-  if(MethodArea::instance == 0) {
+  if(MethodArea::instance == NULL) {
     MethodArea::instance = new MethodArea();
   }
   return MethodArea::instance;
 }
-
+void MethodArea::realeaseInstance(){
+  if(MethodArea::instance != NULL) {
+    delete MethodArea::instance;
+    MethodArea::instance = NULL;
+  }
+}
 ClassFile* MethodArea::insertNewClass(string class_name){
   if(this->isAlreadyIncluded(class_name)){
     return this->getClassFile(class_name);
@@ -94,10 +99,9 @@ bool MethodArea::classHasMethod(string class_name, string method_name, string de
 }
 
 MethodArea::~MethodArea(){
-  uint classes_size = this->classes.size();
-  for(uint i =0;i<classes_size;i+=1){
-    ClassFile* f = this->classes.back();
+  for(uint i =0;i<this->classes.size();i+=1){
+    ClassFile* f = this->classes[i];
     delete f;
-    this->classes.pop_back();
   }
+  this->classes.clear();
 }

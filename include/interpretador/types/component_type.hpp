@@ -29,6 +29,7 @@ class ComponentType{
     int getReference();
     virtual void print();
     virtual string toString();
+    virtual ~ComponentType(){};
 };
 
 #endif

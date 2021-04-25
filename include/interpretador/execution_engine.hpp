@@ -9,6 +9,7 @@ class ExecutionEngine{
   private:
     static ExecutionEngine* instance;
     ExecutionEngine(){};
+    ~ExecutionEngine();
   
     MethodArea* method_area;
     vector<Thread*> threads;
@@ -17,8 +18,8 @@ class ExecutionEngine{
 
     Thread* main_thread;
     static ExecutionEngine* getInstance();
+    static void releaseInstance();
     void start();
     void loadMethodArea(string intial_class_name);
-    ~ ExecutionEngine();
 };
 #endif

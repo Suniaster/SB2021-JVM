@@ -15,11 +15,12 @@ class MethodArea{
     MethodInfo* main_method;
     void searchMainMethod(ClassFile*);
 
+    ~MethodArea();
     MethodArea(){};
     static MethodArea* instance;
   public:
     static MethodArea* getInstance();
-
+    static void realeaseInstance();
     // Verifica se classe ja foi carregada e adiciona-a a lista de classes caso nao
     ClassFile* insertNewClass(string class_name);
 
@@ -31,8 +32,6 @@ class MethodArea{
     bool isAlreadyIncluded  (string class_name);
 
     bool classHasMethod(string class_name, string method_name, string args_descriptor);
-
-    ~MethodArea();
 };
 
 #endif

@@ -4,13 +4,19 @@
 #include <stdexcept>
 #include <iostream>
 
-Heap* Heap::instance = 0;
+Heap* Heap::instance = NULL;
 
 Heap* Heap::getInstance(){
-  if(instance == 0){
-    instance = new Heap();
+  if(Heap::instance == NULL){
+    Heap::instance = new Heap();
   }
-  return instance;
+  return Heap::instance;
+}
+void Heap::releaseInstance(){
+  if(Heap::instance != NULL){
+    delete Heap::instance;
+    Heap::instance=NULL;
+  }
 }
 
 int Heap::createPrimitiveTypeArray(int length, JVMType arrayType){
@@ -31,22 +37,17 @@ int Heap::storeComponent(ComponentType* toStore){
   this->heap_store.push_back(toStore);
   int newElementIndex = this->heap_store.size()-1;
   toStore->setReference(newElementIndex);
+  cout << "Inserindo no heap: " << newElementIndex << endl;
+  cout << toStore->type << endl;
   return newElementIndex;
 }
 
-void Heap::clearHeap(){
-  uint heap_size = this->heap_store.size();
-  // cout << "Comecando free, tamanho do heap: " << heap_size <<endl;
-  for(uint i=0 ;i<this->heap_store.size(); i++){
-    ComponentType* toDestroy = this->heap_store.back();
-    // cout << "dando free em: " << this->heap_store[i]->getReference() << endl;
-    delete toDestroy;
-    this->heap_store.pop_back();
-  }
-}
-
 Heap::~Heap(){
-  this->clearHeap();
+  for(uint i=0 ;i<this->heap_store.size(); i++){
+    ComponentType* c = this->heap_store[i];
+    delete c;
+  }
+  this->heap_store.clear();
 }
 
 ComponentType* Heap::getReference(int reference_id){

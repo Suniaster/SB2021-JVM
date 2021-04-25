@@ -26,20 +26,28 @@ void ExecutionEngine::start(){
   this->main_thread->runMain();
 }
 
-ExecutionEngine* ExecutionEngine::instance = 0;
+ExecutionEngine* ExecutionEngine::instance = NULL;
 ExecutionEngine* ExecutionEngine::getInstance(){
-  if(instance==0){
+  if(instance==NULL){
     ExecutionEngine::instance = new ExecutionEngine();
   }
   return ExecutionEngine::instance ;
 };
+void ExecutionEngine::releaseInstance(){
+  if(ExecutionEngine::instance != NULL){
+    delete ExecutionEngine::instance;
+    ExecutionEngine::instance = NULL;
+  }
+}
 
 ExecutionEngine::~ExecutionEngine(){
-  delete this->heap;
-  delete this->method_area;
-  uint thread_len = this->threads.size();
-  for(uint i=0;i<thread_len;i+=1){
-    delete this->threads.back();
-    this->threads.pop_back();
+  Heap::releaseInstance();
+  MethodArea::realeaseInstance();
+  this->heap = NULL;
+  this->method_area = NULL;
+
+  for(uint i=0;i<this->threads.size();i+=1){
+    delete this->threads[i];
   }
+  this->threads.clear();
 }

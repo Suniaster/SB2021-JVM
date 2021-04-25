@@ -12,14 +12,15 @@ class Heap{
     vector<ComponentType*> heap_store;
     int size=0;
     Heap(){}
+    ~Heap();
 
   public:
+    
     ComponentType* getReference(int reference_id);
     int storeComponent(ComponentType*);
     int createPrimitiveTypeArray(int n_dimensions, JVMType arrayType);
-    void clearHeap();
     static Heap* getInstance();
-    ~Heap();
+    static void releaseInstance();
 };
 
 #endif
