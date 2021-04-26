@@ -2,10 +2,10 @@
 
 Para rodar a JVM basta executar o seguinte comando
 
-`./bin/jvm <path_to_class> <modo de entrada>`
+`./jvm <path_to_class> <modo de entrada>`
 
 Exemplo:
-`./bin/jvm ./tests/Teste.class -i`
+`./jvm ./tests/Teste.class -i`
 
 O comando acima vai compilar o programa e executá-lo
 
@@ -15,7 +15,7 @@ Para apenas compilar o programa apenas pode ser utilizado o script make. Após o
 
 Se você estiver no Windows sem um executável de make o seguinte comando pode ser chamado:
 
-`g++ -std=c++11 ./src/*.cpp ./src/attribute_info_classes/*.cpp ./src/attribute_info_classes/code_attribute_classes/*.cpp ./src/attribute_info_classes/instruction_classes/*.cpp ./src/constant_pool_classes/*.cpp ./src/interpretador/*.cpp ./src/interpretador/types/*.cpp -o bin/jvm`
+`g++ -std=c++11 ./src/*.cpp ./src/attribute_info_classes/*.cpp ./src/attribute_info_classes/code_attribute_classes/*.cpp ./src/attribute_info_classes/instruction_classes/*.cpp ./src/constant_pool_classes/*.cpp ./src/interpretador/*.cpp ./src/interpretador/types/*.cpp -o jvm`
 
 ### O que foi feito:
 
