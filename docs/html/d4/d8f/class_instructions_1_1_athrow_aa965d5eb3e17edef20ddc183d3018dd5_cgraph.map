@@ -1,0 +1,8 @@
+<map id="Instructions::Athrow::execute" name="Instructions::Athrow::execute">
+<area shape="rect" id="node1" title=" " alt="" coords="5,74,157,115"/>
+<area shape="rect" id="node2" href="$dd/d7d/class_heap.html#a4d1ab7a1d12683eff833d6199a3bdda0" title=" " alt="" coords="223,5,363,32"/>
+<area shape="rect" id="node4" href="$dd/d7d/class_heap.html#ad27db48f87a38887077fcc04a437c9d1" title=" " alt="" coords="217,56,368,83"/>
+<area shape="rect" id="node5" href="$dd/dfe/class_operand_stack.html#a98a3e6e10e9992e34e87751c19502e4e" title=" " alt="" coords="220,107,365,133"/>
+<area shape="rect" id="node6" href="$d5/d4d/class_exception_type.html#af94942d7662614b8d2256c9c5a34cd05" title=" " alt="" coords="205,157,380,184"/>
+<area shape="rect" id="node3" href="$dd/d7d/class_heap.html#a6595efd3562a6334d2f5471c2b3b7cb4" title=" " alt="" coords="428,5,527,32"/>
+</map>
