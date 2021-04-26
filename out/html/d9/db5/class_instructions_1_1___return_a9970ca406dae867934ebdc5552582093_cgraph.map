@@ -1,7 +1,0 @@
-<map id="Instructions::_Return::execute" name="Instructions::_Return::execute">
-<area shape="rect" id="node1" title=" " alt="" coords="5,74,161,115"/>
-<area shape="rect" id="node2" href="$d8/d18/class_thread.html#a6a627f212b1d5c19a6383d7a556df3ca" title=" " alt="" coords="209,5,395,32"/>
-<area shape="rect" id="node3" href="$dd/dfe/class_operand_stack.html#a98a3e6e10e9992e34e87751c19502e4e" title=" " alt="" coords="229,56,375,83"/>
-<area shape="rect" id="node4" href="$d8/d18/class_thread.html#ac9d0930b2e655802c66c76422781b435" title=" " alt="" coords="232,107,372,133"/>
-<area shape="rect" id="node5" href="$dd/dfe/class_operand_stack.html#a8ea26f5ba344c0c5d48b6c437363511b" title=" " alt="" coords="226,157,378,184"/>
-</map>

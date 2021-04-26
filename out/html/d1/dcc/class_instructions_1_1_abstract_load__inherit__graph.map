@@ -1,9 +1,0 @@
-<map id="Instructions::AbstractLoad" name="Instructions::AbstractLoad">
-<area shape="rect" id="node1" title=" " alt="" coords="260,107,451,133"/>
-<area shape="rect" id="node3" href="$dc/d17/class_instructions_1_1_aload.html" title=" " alt="" coords="499,5,642,32"/>
-<area shape="rect" id="node4" href="$d3/d83/class_instructions_1_1_dload.html" title=" " alt="" coords="499,56,643,83"/>
-<area shape="rect" id="node5" href="$d7/dc8/class_instructions_1_1_fload.html" title=" " alt="" coords="499,107,642,133"/>
-<area shape="rect" id="node6" href="$d1/d53/class_instructions_1_1_iload.html" title=" " alt="" coords="501,157,640,184"/>
-<area shape="rect" id="node7" href="$d0/d05/class_instructions_1_1_lload.html" title=" " alt="" coords="500,208,641,235"/>
-<area shape="rect" id="node2" href="$d6/dff/class_instructions_1_1_base_instruction.html" title=" " alt="" coords="5,107,212,133"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="Instructions::AbstractStore::execute" name="Instructions::AbstractStore::execute">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,200,105"/>
-<area shape="rect" id="node2" href="$dd/db3/class_instructions_1_1_abstract_store.html#abb0fc99c6068697f9f97bb64d2cb5d0f" title=" " alt="" coords="248,5,443,47"/>
-<area shape="rect" id="node3" href="$d8/d38/class_local_variable.html#a9b2a7a51be409077a292b1c5ec8415f9" title=" " alt="" coords="268,71,423,98"/>
-<area shape="rect" id="node4" href="$dd/dfe/class_operand_stack.html#a98a3e6e10e9992e34e87751c19502e4e" title=" " alt="" coords="273,122,418,149"/>
-</map>

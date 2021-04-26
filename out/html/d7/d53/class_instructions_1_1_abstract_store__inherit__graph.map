@@ -1,9 +1,0 @@
-<map id="Instructions::AbstractStore" name="Instructions::AbstractStore">
-<area shape="rect" id="node1" title=" " alt="" coords="260,107,455,133"/>
-<area shape="rect" id="node3" href="$df/dea/class_instructions_1_1_astore.html" title=" " alt="" coords="503,5,651,32"/>
-<area shape="rect" id="node4" href="$df/d77/class_instructions_1_1_dstore.html" title=" " alt="" coords="503,56,652,83"/>
-<area shape="rect" id="node5" href="$d5/d12/class_instructions_1_1_fstore.html" title=" " alt="" coords="504,107,651,133"/>
-<area shape="rect" id="node6" href="$d4/d0e/class_instructions_1_1_istore.html" title=" " alt="" coords="506,157,649,184"/>
-<area shape="rect" id="node7" href="$d7/d69/class_instructions_1_1_lstore.html" title=" " alt="" coords="504,208,651,235"/>
-<area shape="rect" id="node2" href="$d6/dff/class_instructions_1_1_base_instruction.html" title=" " alt="" coords="5,107,212,133"/>
-</map>
